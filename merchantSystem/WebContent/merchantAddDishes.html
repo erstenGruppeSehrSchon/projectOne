@@ -21,24 +21,45 @@
 		<h4>Merchant Page</h4>
 	</div>
 </div>
-	<div class = "Container">
-		<div id = "containerForm">
-		<h5>-Merchant Login-</h5>
-			<form>
-				<div class="input-group">
-					<span class="input-group-addon"><span class = "glyphicon glyphicon-user"></span></span>
-					<input id="adminLoginName" type="text" class="form-control" placeholder="Username">
-				</div>
-				<br/>
-				<div class="input-group">
-					<span class="input-group-addon"><span class = "glyphicon glyphicon-menu-right"></span></span>
-					<input id="adminLoginPassword" type="password" class="form-control" placeholder="Password"> 
-				</div>
-				<br/>
-				<p>Want to join us!? click <a href = "#">here!</a></p>
-				<a href="./merchantIndex.html" class="btn btn-default">Login</a>
+<div class = "container">
+<div id = "containerRegForm">
+<h2>Registration</h2>
+	<form action = "" method = "post">
+	<input type="hidden" value = "" id = "dishesRegShopId"/>
+	<table id = "merchantRegTable">
+		<tr>
+			<td>Dishes Name</td>
+			<td><input id="dishesRegName" type="text" class="form-control"></td>
+		</tr>
+		<tr>
+			<td>Dishes Type</td>
+			<td>
+			<select class="form-control">
+				  <option value="M">M</option>
+				  <option value="F">F</option>
+				  <option value="Unknown">Unknown</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Prices</td>
+			<td><input id="dishesRegPrices" type="text" class="form-control"></td>
+		</tr>
+		<tr>
+			<td>Dishes image:</td>
+			<td>
+			<form action="FileUpload" method="POST" enctype="multipart/form-data">
+			<label class="btn btn-default">
+				 Choose<input type="file" name="dishesPicFile" style="display: none;">
+			</label>
 			</form>
-		</div>
-	</div>
+			</td>
+		</tr>
+	</table>
+	<!--<input type="submit" class ="btn"/>-->
+	<button class ="btn">Submit</button>
+	</form>
+</div>
+</div>
 </body>
 </html>

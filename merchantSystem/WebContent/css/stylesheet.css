@@ -44,3 +44,7 @@
 #merchanIndexTable img{
 	max-width:300px;
 }
+
+#merchantRegTable td{
+	padding: 5px;
+}
