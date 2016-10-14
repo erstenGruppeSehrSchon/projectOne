@@ -1,22 +1,23 @@
 package object.merchant;
 
 import java.util.Date;
+import java.util.List;
+
+import object.Shop;
 
 public abstract class Merchant {
-	protected int id;
+	protected int mid;
 	protected String name;
-	protected int age;
+	protected Date birth;
 	protected String gender;
-	protected String status;
-	protected String description;
-	protected Date reg_date;
-	protected String image_path;
+	protected Date regDate;
+	protected List<Shop> shopList;
 	
-	public int getId() {
-		return id;
+	public int getMid() {
+		return mid;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setMid(int mid) {
+		this.mid = mid;
 	}
 	public String getName() {
 		return name;
@@ -24,11 +25,11 @@ public abstract class Merchant {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getAge() {
-		return age;
+	public Date getBirth() {
+		return birth;
 	}
-	public void setAge(int age) {
-		this.age = age;
+	public void setBirth(Date birth) {
+		this.birth = birth;
 	}
 	public String getGender() {
 		return gender;
@@ -36,28 +37,18 @@ public abstract class Merchant {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public String getStatus() {
-		return status;
+
+	public Date getRegdate() {
+		return regDate;
 	}
-	public void setStatus(String status) {
-		this.status = status;
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
 	}
-	public String getDescription() {
-		return description;
+	public List<Shop> getShopList() {
+		return shopList;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setShopList(List<Shop> shopList) {
+		this.shopList = shopList;
 	}
-	public Date getReg_date() {
-		return reg_date;
-	}
-	public void setReg_date(Date reg_date) {
-		this.reg_date = reg_date;
-	}
-	public String getImage_path() {
-		return image_path;
-	}
-	public void setImage_path(String image_path) {
-		this.image_path = image_path;
-	}
+
 }
