@@ -33,8 +33,8 @@ public class MerchantLoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// get username & password from request
-		String username = (String) request.getAttribute("username");
-		String password = (String) request.getAttribute("password");
+		String username = (String) request.getParameter("username");
+		String password = (String) request.getParameter("password");
 		
 		// check user exist in merchant side
 		if (getMerchantLoginService().checkMerchantExist(username, password)){
