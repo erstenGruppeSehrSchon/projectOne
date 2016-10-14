@@ -10,6 +10,7 @@ public abstract class Merchant {
 	protected String name;
 	protected Date birth;
 	protected String gender;
+	protected String status;
 	protected Date regDate;
 	protected List<Shop> shopList;
 	
@@ -31,18 +32,23 @@ public abstract class Merchant {
 	public void setBirth(Date birth) {
 		this.birth = birth;
 	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public Date getRegDate() {
+		return regDate;
+	}
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
+	}
 	public String getGender() {
 		return gender;
 	}
 	public void setGender(String gender) {
 		this.gender = gender;
-	}
-
-	public Date getRegdate() {
-		return regDate;
-	}
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
 	}
 	public List<Shop> getShopList() {
 		return shopList;
