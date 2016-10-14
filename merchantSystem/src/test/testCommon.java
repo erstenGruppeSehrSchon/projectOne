@@ -3,11 +3,16 @@ package test;
 import static org.junit.Assert.*;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 
 import org.junit.Assert;
 import org.junit.Test;
 
+import consts.Consts;
+import dao.impl.MerchantRegisterDaoImpl;
+import object.Shop;
+import object.merchant.MeMerchant;
 import util.DBUtil;
 
 public class testCommon {
@@ -21,5 +26,36 @@ public class testCommon {
 		con=DBUtil.createConnection();
 		Assert.assertTrue((con !=null));
 	}
+	
+	@Test
+	public void testAddMerchant(){
+		MeMerchant m = new MeMerchant();
+		m.setUserName("test");
+		m.setPassword("test");
+		m.setName("test");
+		m.setBirth(new Date(1990,11,11));
+		m.setGender("test");
+		m.setStatus(Consts.PENDING);
+		m.setRegDate(new Date(1990,11,11));
+		
+		Shop s = new Shop();
+		s.setName("test");
+		s.setDescr("test");
+		s.setImagePath("/test/");
+		m.getShopList().add(s);
+		
+		System.out.println(new MerchantRegisterDaoImpl().addMerchant(m));
+	}
 
+	@Test
+	public void testSearchMerchant(){
+		MeMerchant m = new MerchantRegisterDaoImpl().searchMerchant(4);
+		System.out.println("Username: " +m.getUserName());
+		System.out.println("Password: " +m.getPassword());
+		System.out.println("Name: " +m.getName());
+		System.out.println("Birth: " +m.getBirth().toString());
+		System.out.println("Gender: " +m.getGender());
+		System.out.println("Status: " +m.getStatus());
+		System.out.println("RegDate: " +m.getRegDate().toString());
+	}
 }

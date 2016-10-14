@@ -20,13 +20,12 @@ public class MerchantRegisterServiceImpl implements MerchantRegisterService{
 	@Override
 	public int addMerchant(MeMerchant merchant) {
 		// return mid, -1 if failed
-		return 0;
+		return merchantRegisterDao.addMerchant(merchant);
 	}
 
 	@Override
-	public int searchMerchant(int mid) {
-		// TODO Auto-generated method stub
-		return 0;
+	public MeMerchant searchMerchant(int mid) {
+		return merchantRegisterDao.searchMerchant(mid);
 	}
 
 }
