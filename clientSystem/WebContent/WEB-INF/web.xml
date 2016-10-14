@@ -9,4 +9,24 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>ViewMerchantInfoServlet</display-name>
+    <servlet-name>ViewMerchantInfoServlet</servlet-name>
+    <servlet-class>ui.ViewMerchantInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewMerchantInfoServlet</servlet-name>
+    <url-pattern>/viewMerchantInfo</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewMerchantDishesServlet</display-name>
+    <servlet-name>ViewMerchantDishesServlet</servlet-name>
+    <servlet-class>ui.ViewMerchantDishesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewMerchantDishesServlet</servlet-name>
+    <url-pattern>/viewMerchantDishes</url-pattern>
+  </servlet-mapping>
 </web-app>
