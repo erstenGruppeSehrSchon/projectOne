@@ -1,13 +1,16 @@
 package service;
 
+import java.util.List;
+
+import object.Dish;
+import object.DishImage;
+
 public interface ClientViewMerchantDishService {
 	
-	public int getDishDid();
-	public String getImagePath();
-	public int getDishPrice();
-	public int isDishAction();
-	public String getDishType();
-	public String getDishName();
-	public int getDishMid();
+	public Dish loadDish(int id);
+	public List<Dish> findAllDish();
+	
+	public DishImage loadDishImage(int id);
+	public List<DishImage> findAllDishImage();
 
 }

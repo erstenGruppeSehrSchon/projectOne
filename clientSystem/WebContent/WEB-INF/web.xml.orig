@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>clientSystem</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+<<<<<<< HEAD
+  <servlet>
+    <description></description>
+    <display-name>ViewMerchantInfoServlet</display-name>
+    <servlet-name>ViewMerchantInfoServlet</servlet-name>
+    <servlet-class>ui.ViewMerchantInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewMerchantInfoServlet</servlet-name>
+    <url-pattern>/viewMerchantInfo</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewMerchantDishesServlet</display-name>
+    <servlet-name>ViewMerchantDishesServlet</servlet-name>
+    <servlet-class>ui.ViewMerchantDishesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewMerchantDishesServlet</servlet-name>
+    <url-pattern>/viewMerchantDishes</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewMerchantMainPageServlet</display-name>
+    <servlet-name>ViewMerchantMainPageServlet</servlet-name>
+    <servlet-class>ui.ViewMerchantMainPageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewMerchantMainPageServlet</servlet-name>
+    <url-pattern>/viewMerchantMainPage</url-pattern>
+  </servlet-mapping>
+=======
+>>>>>>> 8328c168280bdb5ac68468814a4d53ccfbd28212
+</web-app>
