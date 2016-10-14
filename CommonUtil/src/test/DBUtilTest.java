@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import util.DBUtil;
 
-public class testDB {
+public class DBUtilTest {
 
 	@Test
 	public void testConnection() {
