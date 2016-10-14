@@ -1,0 +1,44 @@
+/*Genral Setting*/
+* {
+	margin: 0px;
+	padding: 0px;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 18px;
+}
+
+#indexContainer{
+	width: 100%;
+	height: 100%;
+	border-spacing: 0px;
+    border-collapse: 0px;
+}
+
+#indexContainerBanner{
+	width: 65%;
+}
+
+#indexContainerEntryAdmin{
+	background-color: #DDDDDD;
+}
+
+#indexContainerEntryClient{
+	background-color: #AAAAAA;
+}
+
+#indexContainerEntryMerchant{
+	background-color: #DDDDDD;
+}
+.indexContainerEntry{
+	height: 250px;
+	line-height:250px;
+	text-align:center;
+}
+
+.indexContainerEntry a{
+	color: #444444;
+}
+
+
+.indexContainerEntry a:hover{
+	color: #222222;
+}

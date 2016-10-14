@@ -1,0 +1,108 @@
+/*Genral Setting*/
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+
+.adminHeaderBar{
+	width: 100%;
+	padding: 15px;
+	background: #DDDDDD;
+	text-align: center;
+}
+
+
+
+.adminContainer{
+	margin: 0px auto;
+	padding: 20px;
+	width: 80%;
+}
+
+.adminContainerMsgShowBox{
+	margin: 0px auto;
+	width: 40%;
+}
+
+.adminFunctionBar{
+	width: 100%;
+	text-align: center;
+	font-weight: bold;
+}
+
+.adminFunctionBarElement{
+	margin-left: 20px;
+	margin-right: 20px;
+	font-size: 14px;
+	float: right;
+}
+
+.adminContainerTableTitlte{
+	text-align: center;
+	font-size: 16px;
+	padding: 10px;
+}
+
+.adminEditDetailsTableIcon{
+	width: 40%;
+	text-align: center;
+}
+
+.adminEditDetailsTableColName{
+	width: 30%;
+}
+
+.adminEditDetailsTableInput{
+	width: 30%;
+}
+
+#adminContainerTableOutStandingList{
+	margin: 0px auto;
+	width: 50%;
+}
+
+#adminContainerTable td{
+	padding: 5px;
+}
+
+#adminContainerForm{
+	margin: 0px auto;
+	width: 30%;
+	border: 1px solid #444444;
+	padding:20px;
+	border-radius: 10px;
+}
+
+#adminContainerTable{
+	width: 100%;
+}
+
+#adminContainerTable td{
+	width: 50%;
+}
+
+#adminContainerShowResult{
+	margin: 0px auto;
+	width: 100%;
+	
+}
+
+#adminContainerShowResult th{
+	text-align: center;
+}
+
+#adminMerchantsDetailsTable{
+	width: 100%;
+	margin: 0px auto;
+}
+
+#adminEditDetailsTable td{
+	padding: 8px;
+}
+
+#adminEditDetailsTable th{
+	text-align: center;
+	font-size: 18px;
+	padding: 10px;
+}
