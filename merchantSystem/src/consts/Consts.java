@@ -2,9 +2,9 @@ package consts;
 
 public class Consts {
 	
-	public static final int ACCEPTED = 0;
-	public static final int PENDING = 1;
-	public static final int REJECTED = 2;
-	public static final int FROZEN = 3;
+	public static final String ACCEPTED = "ACCEPTED";
+	public static final String PENDING = "PENDING";
+	public static final String REJECTED = "REJECTED";
+	public static final String FROZEN = "FROZEN";
 
 }
