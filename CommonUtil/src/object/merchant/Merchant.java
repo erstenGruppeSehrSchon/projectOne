@@ -10,7 +10,7 @@ public abstract class Merchant {
 	protected String name;
 	protected Date birth;
 	protected String gender;
-	protected Date reg_date;
+	protected Date regDate;
 	protected List<Shop> shopList;
 	
 	public int getMid() {
@@ -38,11 +38,11 @@ public abstract class Merchant {
 		this.gender = gender;
 	}
 
-	public Date getReg_date() {
-		return reg_date;
+	public Date getRegdate() {
+		return regDate;
 	}
-	public void setReg_date(Date reg_date) {
-		this.reg_date = reg_date;
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
 	}
 	public List<Shop> getShopList() {
 		return shopList;
