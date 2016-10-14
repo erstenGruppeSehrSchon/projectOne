@@ -11,22 +11,12 @@
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>ViewMerchantInfoServlet</display-name>
-    <servlet-name>ViewMerchantInfoServlet</servlet-name>
-    <servlet-class>ui.ViewMerchantInfoServlet</servlet-class>
+    <display-name>ViewMerchantMainPageServlet</display-name>
+    <servlet-name>ViewMerchantMainPageServlet</servlet-name>
+    <servlet-class>ui.ViewMerchantMainPageServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ViewMerchantInfoServlet</servlet-name>
-    <url-pattern>/viewMerchantInfo</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>ViewMerchantDishesServlet</display-name>
-    <servlet-name>ViewMerchantDishesServlet</servlet-name>
-    <servlet-class>ui.ViewMerchantDishesServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ViewMerchantDishesServlet</servlet-name>
-    <url-pattern>/viewMerchantDishes</url-pattern>
+    <servlet-name>ViewMerchantMainPageServlet</servlet-name>
+    <url-pattern>/viewMerchantMainPage</url-pattern>
   </servlet-mapping>
 </web-app>
