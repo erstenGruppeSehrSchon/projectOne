@@ -14,6 +14,7 @@ import object.merchant.MeMerchant;
 import object.merchant.Merchant;
 import service.MerchantRegisterService;
 import service.impl.MerchantRegisterServiceImpl;
+import util.PasswordEncrypter;
 
 /**
  * Servlet implementation class MerchantRegisterServlet
@@ -37,7 +38,7 @@ public class MerchantRegisterServlet extends HttpServlet {
 		// retrieve data from user
 		MeMerchant merchant = new MeMerchant();
 		merchant.setUserName(request.getParameter("username"));
-		merchant.setPassword(request.getParameter("password"));
+		merchant.setPassword(PasswordEncrypter.getPasswordEncrypter().getEncryptedPassword(request.getParameter("password")));
 		merchant.setName(request.getParameter("name"));
 		merchant.setGender(request.getParameter("gender"));
 

@@ -10,6 +10,7 @@ import com.sun.xml.internal.bind.v2.TODO;
 
 import service.MerchantLoginService;
 import service.impl.MerchantLoginServiceImpl;
+import util.PasswordEncrypter;
 
 /**
  * Servlet implementation class MerchantLoginServlet
@@ -35,11 +36,14 @@ public class MerchantLoginServlet extends HttpServlet {
 		// get username & password from request
 		String username = (String) request.getParameter("username");
 		String password = (String) request.getParameter("password");
+		String encryPw = PasswordEncrypter.getPasswordEncrypter().getEncryptedPassword(password);
+		
+		int mid = 0;
 		
 		// check user exist in merchant side
-		if (getMerchantLoginService().checkMerchantExist(username, password)){
+		if ((mid = getMerchantLoginService().checkMerchantExist(username, encryPw)) != 0){
 			
-			String status = getMerchantLoginService().retrieveMerchantStatus(username, password);
+			String status = getMerchantLoginService().retrieveMerchantStatus(mid);
 			
 			// accepted
 			if(status.equals("")){
