@@ -4,37 +4,167 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import java.util.ArrayList;
 import dao.AdminMerchantDao;
-import object.merchant.MeMerchant;
+import object.merchant.AdminMerchant;
 import util.DBUtil;
 
 public class AdminMerchantDaoImpl implements AdminMerchantDao{
-	public MeMerchant findMeMerchantById(int id){
-		MeMerchant m =null;
-		String sql = "select * from M_MERCHANT WHERE MID = ?";
-		Connection con=null;
-		PreparedStatement pst = null;
+	
+	private static String SQL_SELECT = "SELECT MID, NAME, ROUND((CURRENT_DATE - BRITH_DATE)/365) AS AGE, GENDER, STATUS, REG_DATE FROM A_MERCHANT";
+	private static int[][] AGE_RANGE = new int[][]{
+		{0, 0},
+		{0, 20},
+		{20, 40},
+		{40, 60},
+		{60, 80},
+		{80, 100}
+	};
+	
+	public AdminMerchant getMerchantById(int id) {
+		AdminMerchant aMerchant = null;
+		String sql = SQL_SELECT + " WHERE MID = ?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		con=DBUtil.createConnection();
+		conn = DBUtil.createConnection();
+		
 		try {
-			pst=con.prepareStatement(sql);
-			pst.setInt(1, id);
-			rs=pst.executeQuery();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, id);
+			rs = pstmt.executeQuery();
+			
 			if (rs.next()){
-				m = new MeMerchant();
-//				m.setMid(rs.getInt("MID"));
-//				m.setName(rs.getString("NAME"));
-//				m.setBirth(rs.getDate("BRITH_DATE"));
-//				m.setGender(rs.getString("GENDER"));
-//				m.setStatus(rs.getString("STATUS"));
-//				m.setRegDate(rs.getDate("REG_DATE"));
+				aMerchant = new AdminMerchant();
+				aMerchant.setId(rs.getInt("MID"));
+				aMerchant.setName(rs.getString("NAME"));
+				aMerchant.setAge(rs.getInt("AGE"));
+				aMerchant.setGender(rs.getString("GENDER"));
+				aMerchant.setStatus(rs.getString("STATUS"));
+				aMerchant.setReg_date(rs.getDate("REG_DATE"));
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return m;
+		
+		return aMerchant;
 	}
+	
+	@Override
+	public ArrayList<AdminMerchant> getMerchantByCriteria(Integer id, String name, Integer ageIndex, String gender, String regDate) {
+	
+		ArrayList<AdminMerchant> aMerchants = new ArrayList<>();
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		conn = DBUtil.createConnection();
+		try {
+			String sql = SQL_SELECT + " WHERE " +
+					 	 "MID LIKE ? AND " +
+					 	 "NAME LIKE ? AND " +
+					 	 "(((CURRENT_DATE - BRITH_DATE)/365 >= ? AND (CURRENT_DATE - BRITH_DATE)/365 < ?) OR 1 = ?) AND " +
+					 	 "GENDER LIKE ? AND " +
+					 	 "REG_DATE = TO_DATE(?) OR 1 = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id == null ? "%" : String.valueOf(id));
+			pstmt.setString(2, name == null ? "%" : "%" + name + "%");
+			pstmt.setInt(3, AGE_RANGE[ageIndex][0]);
+			pstmt.setInt(4, AGE_RANGE[ageIndex][1]);
+			pstmt.setInt(5, ageIndex == 0 ? 1 : 0 );	// Bypass age check if 0
+			pstmt.setString(6, gender);
+			pstmt.setString(7, regDate == null ? "1111-11-11" : regDate);
+			pstmt.setInt(8, regDate == null ? 1 : 0);	// Bypass registration date check if null
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				AdminMerchant aMerchant = new AdminMerchant();
+				aMerchant.setId(rs.getInt("MID"));
+				aMerchant.setName(rs.getString("Name"));
+				aMerchant.setAge(rs.getInt("AGE"));
+				aMerchant.setGender(rs.getString("GENDER"));
+				aMerchant.setStatus(rs.getString("STATUS"));
+				aMerchant.setReg_date(rs.getDate("RED_DATE"));
+				aMerchants.add(aMerchant);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.free(conn, pstmt, rs);
+		}
+		
+		return aMerchants;
+	}
+
+	@Override
+	public ArrayList<AdminMerchant> getAllMerchants() {
+		
+		ArrayList<AdminMerchant> aMerchants = new ArrayList<>();
+		
+		String sql = SQL_SELECT;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		conn = DBUtil.createConnection();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				AdminMerchant aMerchant = new AdminMerchant();
+				aMerchant.setId(rs.getInt("MID"));
+				aMerchant.setName(rs.getString("NAME"));
+				aMerchant.setAge(rs.getInt("AGE"));
+				aMerchant.setGender(rs.getString("GENDER"));
+				aMerchant.setStatus(rs.getString("STATUS"));
+				aMerchant.setReg_date(rs.getDate("REG_DATE"));
+				aMerchants.add(aMerchant);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.free(conn, pstmt, rs);
+		}
+		
+		return aMerchants;
+	}
+
+	@Override
+	public ArrayList<AdminMerchant> getMerchantByStatus(String status) {
+		
+		ArrayList<AdminMerchant> aMerchants = new ArrayList<>();
+		
+		String sql = SQL_SELECT + " WHERE STATUS = ?";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		conn = DBUtil.createConnection();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, status);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				AdminMerchant aMerchant = new AdminMerchant();
+				aMerchant.setId(rs.getInt("MID"));
+				aMerchant.setName(rs.getString("NAME"));
+				aMerchant.setAge(rs.getInt("AGE"));
+				aMerchant.setGender(rs.getString("GENDER"));
+				aMerchant.setStatus(rs.getString("STATUS"));
+				aMerchant.setReg_date(rs.getDate("REG_DATE"));
+				aMerchants.add(aMerchant);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.free(conn, pstmt, rs);
+		}
+		
+		return aMerchants;
+	}
+
 }

@@ -21,7 +21,7 @@ public class JunitTesting {
 	public void testDaoLoadUser() throws Exception {
 		in = new FileInputStream("test.data");
 		prop.load(in);
-		System.out.println(ad.loadUser(prop.getProperty("id"), prop.getProperty("password")));
+		System.out.println(ad.getAdmin(prop.getProperty("id"), prop.getProperty("password")));
 	}
 	
 	@Test

@@ -54,31 +54,33 @@
 		<td>
 			<form action="" method="get">
 				<table>
-					<tr><td>Merchant Id:</td><td><input type="text" id="searchMerchantId" class="form-control"/></td></tr>
-					<tr><td>Merchant Name:</td><td><input type="text" id="searchMerchantName" class="form-control"/></td></tr>
+					<tr><td>Merchant Id:</td><td><input type="text" name="id" id="searchMerchantId" class="form-control"/></td></tr>
+					<tr><td>Merchant Name:</td><td><input type="text" name="name" id="searchMerchantName" class="form-control"/></td></tr>
 					<tr><td>Age:</td>
 						<td>
-							<select class="form-control">
-							  <option value="volvo">0-20</option>
-							  <option value="saab">21-40</option>
-							  <option value="opel">40-60</option>
-							  <option value="audi">60-80</option>
-							  <option value="audi">80-100</option>
+							<select name="ageIndex" class="form-control">
+							  <option value="0"></option>
+							  <option value="1">0-20</option>
+							  <option value="2">21-40</option>
+							  <option value="3">40-60</option>
+							  <option value="4">60-80</option>
+							  <option value="5">80-100</option>
 							</select>
 						</td></tr>
 					<tr><td>Gender:</td>
 						<td>
-							<select class="form-control">
+							<select name="gender" class="form-control">
+							  <option value="%"></option>
 							  <option value="M">M</option>
 							  <option value="F">F</option>
 							  <option value="Unknown">Unknown</option>
 							</select>
 						</td>
 					</tr>
-					<tr><td>Registration Date:</td><td><input type="date" id="searchMerchantRegistrationDate" class="form-control"></td></tr>
+					<tr><td>Registration Date:</td><td><input type="date" name="regDate" id="searchMerchantRegistrationDate" class="form-control"></td></tr>
 				</table>
 			</form>
-			<a href = "./adminSerachResult.html"><button class = "btn">Search</button></a>
+			<a href = "SearchMerchantByCriteria"><button class = "btn">Search</button></a>
 		</td>
 	</tr>
 </table>

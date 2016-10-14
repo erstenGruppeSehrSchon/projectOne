@@ -7,19 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import service.AdminMerchantManager;
 import service.AdminService;
+import service.impl.AdminMerchantManagerImpl;
 import service.impl.AdminServiceImpl;
 import util.PasswordEncrypter;
 
-
-
-/**
- * Servlet implementation class loginServlet
- */
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private AdminService as = new AdminServiceImpl();
+	private AdminMerchantManager amm = new AdminMerchantManagerImpl();
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("adminLoginName");
@@ -28,7 +26,7 @@ public class LoginServlet extends HttpServlet {
 		System.out.println(password);
 		System.out.println(PasswordEncrypter.getPasswordEncrypter().getEncryptedPassword(password));
 		if (checkLogin(id, PasswordEncrypter.getPasswordEncrypter().getEncryptedPassword(password))) {
-			request.setAttribute("am", as.findOutstandingMerchants());
+			request.setAttribute("am", amm.getOutstandingMerchants());
 			request.getRequestDispatcher("adminIndex.jsp").forward(request, response);
 		} else {
 			request.setAttribute("errorMsg", "Login Fail!");
@@ -37,8 +35,8 @@ public class LoginServlet extends HttpServlet {
 	}
 	
 	public boolean checkLogin(String id, String password) {
-		System.out.println((as.loadUser(id, password) != null));
-		return as.loadUser(id, password) != null;
+		System.out.println((as.getAdmin(id, password) != null));
+		return as.getAdmin(id, password) != null;
 	}
 
 }
