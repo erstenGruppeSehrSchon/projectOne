@@ -2,12 +2,12 @@ package service;
 
 public interface ClientViewMerchantDishService {
 	
-	public int getDishDID();
-	public int getImagePath();
+	public int getDishDid();
+	public String getImagePath();
 	public int getDishPrice();
-	public boolean isDishAction();
+	public int isDishAction();
 	public String getDishType();
 	public String getDishName();
-	public int getDishMID();
+	public int getDishMid();
 
 }
