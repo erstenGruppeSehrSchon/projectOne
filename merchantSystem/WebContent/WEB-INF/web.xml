@@ -13,7 +13,7 @@
     <description></description>
     <display-name>ShowCaptcha</display-name>
     <servlet-name>ShowCaptcha</servlet-name>
-    <servlet-class>service.impl.ShowCaptcha</servlet-class>
+    <servlet-class>service.impl.ShowCaptchaServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ShowCaptcha</servlet-name>

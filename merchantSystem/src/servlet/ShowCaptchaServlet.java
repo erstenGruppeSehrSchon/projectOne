@@ -1,4 +1,4 @@
-package service.impl;
+package servlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import entity.Captcha;
 
-public class ShowCaptcha extends HttpServlet {
+public class ShowCaptchaServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L; 
 
