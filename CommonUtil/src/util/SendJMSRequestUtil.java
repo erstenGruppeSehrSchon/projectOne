@@ -14,7 +14,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import object.merchant.MeMerchant;
 
-public class sendJMSRequestUtil {
+public class SendJMSRequestUtil {
 	private final static String prefix = "failover://tcp://";
 	private final static String hostname = "cheunan-w7";
 	private final static String port = "16161";

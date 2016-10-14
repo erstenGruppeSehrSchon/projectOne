@@ -4,14 +4,14 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import util.sendJMSRequestUtil;
+import util.SendJMSRequestUtil;
 
 public class SendJMSTest {
 
 	@Test
 	public void test() {
 		try {
-			sendJMSRequestUtil.sendRegisterRequest(3);
+			SendJMSRequestUtil.sendRegisterRequest(3);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

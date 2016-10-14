@@ -1,5 +1,6 @@
 package object;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Shop {
@@ -8,7 +9,13 @@ public class Shop {
 	private String name;
 	private String descr;
 	private String imagePath;
+	private List<Dish> dishList;
 	private List <ShopContact> shopContactList;
+	
+	public Shop(){
+		shopContactList= new ArrayList<ShopContact>();
+		dishList= new ArrayList<Dish>();
+	}
 	
 	public int getSid() {
 		return sid;
@@ -40,6 +47,14 @@ public class Shop {
 	public void setImagePath(String imagePath) {
 		this.imagePath = imagePath;
 	}
+	public List<Dish> getDishList() {
+		return dishList;
+	}
+
+	public void setDishList(List<Dish> dishList) {
+		this.dishList = dishList;
+	}
+
 	public List<ShopContact> getShopContactList() {
 		return shopContactList;
 	}
