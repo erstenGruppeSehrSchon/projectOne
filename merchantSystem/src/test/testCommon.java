@@ -10,6 +10,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import consts.Consts;
+import dao.impl.MerchantLoginDaoImpl;
 import dao.impl.MerchantRegisterDaoImpl;
 import object.Shop;
 import object.merchant.MeMerchant;
@@ -28,7 +29,7 @@ public class testCommon {
 	}
 	
 	@Test
-	public void testAddMerchant(){
+	public void testAddMerchant(){ // m_register_dao
 		MeMerchant m = new MeMerchant();
 		m.setUserName("test");
 		m.setPassword("test");
@@ -48,7 +49,7 @@ public class testCommon {
 	}
 
 	@Test
-	public void testSearchMerchant(){
+	public void testSearchMerchant(){ // m_register_dao
 		MeMerchant m = new MerchantRegisterDaoImpl().searchMerchant(4);
 		System.out.println("Username: " +m.getUserName());
 		System.out.println("Password: " +m.getPassword());
@@ -57,5 +58,15 @@ public class testCommon {
 		System.out.println("Gender: " +m.getGender());
 		System.out.println("Status: " +m.getStatus());
 		System.out.println("RegDate: " +m.getRegDate().toString());
+	}
+	
+	@Test
+	public void testCheckMerchantExist(){ // m_login_dao
+		System.out.println(new MerchantLoginDaoImpl().checkMerchantExist("test", "test"));
+	}
+	
+	@Test
+	public void testRetrieveMerchantStatus(){ // m_login_dao
+		System.out.println(new MerchantLoginDaoImpl().retrieveMerchantStatus(4));
 	}
 }
