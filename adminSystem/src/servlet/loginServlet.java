@@ -7,36 +7,37 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import util.PasswordEncrypter;
+
+import dao.AdminDao;
+import dao.impl.AdminDaoImpl;
+
+
+
 /**
  * Servlet implementation class loginServlet
  */
-public class loginServlet extends HttpServlet {
+public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-//	private AdminDao ad = new AdminDaoImpl();
+	private AdminDao ad = new AdminDaoImpl();
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int id = Integer.parseInt(request.getParameter("id"));
-		String password = request.getParameter("password");
-		if (checkLogin(id, password)) {
-			request.getRequestDispatcher("XXX.jsp").forward(request, response);
+		String id = request.getParameter("adminLoginName");
+		System.out.println(id);
+		String password = request.getParameter("adminLoginPassword");
+		System.out.println(password);
+		System.out.println(PasswordEncrypter.getPasswordEncrypter().getEncryptedPassword(password));
+		if (checkLogin(id, PasswordEncrypter.getPasswordEncrypter().getEncryptedPassword(password))) {
+			request.getRequestDispatcher("adminIndex.html").forward(request, response);
 		} else {
-			request.setAttribute("errorMessage", "Fail to login!");
+			request.getRequestDispatcher("adminloginChecking.html").forward(request, response);
 		}
 	}
 	
-	private boolean checkLogin(int id, String password) {
-//		Admin admin = new Admin();
-//		List<Admin> admins = ad.getInfo(admin);
-		String dbPassword = null;
-//		for (Admin a : admins) {
-//			if (a.getId() == id) {
-//				dbPassword = a.getPassword();
-//				break;
-//			}
-//		}
-//		return StringUtils..encode(password);
-		return true;
+	public boolean checkLogin(String id, String password) {
+		System.out.println((ad.loadUser(id, password) != null));
+		return ad.loadUser(id, password) != null;
 	}
 
 }
