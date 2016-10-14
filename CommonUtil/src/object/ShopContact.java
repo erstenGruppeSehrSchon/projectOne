@@ -1,21 +1,22 @@
 package object;
 
-public class MerchantContact {
+public class ShopContact {
 	private int cid;
-	private int mid;
+	private int sid;
 	private String type;
 	private String info;
+	
 	public int getCid() {
 		return cid;
 	}
 	public void setCid(int cid) {
 		this.cid = cid;
 	}
-	public int getMid() {
-		return mid;
+	public int getSid() {
+		return sid;
 	}
-	public void setMid(int mid) {
-		this.mid = mid;
+	public void setSid(int sid) {
+		this.sid = sid;
 	}
 	public String getType() {
 		return type;
