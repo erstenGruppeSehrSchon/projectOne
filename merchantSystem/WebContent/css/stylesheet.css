@@ -18,17 +18,29 @@
 	width: 80%;
 }
 
-#containerColume{
-	
+#containerForm{
+	margin: 0px auto;
+	width: 30%;
+	border: 1px solid #444444;
+	padding:20px;
+	border-radius: 10px;
 }
 
-#clientContainerIndexView{
+#merchanIndexContainerIndexView{
 	margin: 0px auto;
 	width: 80%;
 	text-align: center;
 }
 
-#clientContainerIndexView img{
-	margin: 5px;
+#merchanIndexTable{
+	margin: 0px auto;
+}
+
+#merchanIndexTable td, #merchanIndexTableShowShop td{
+	margin: 10px;
+}
+
+
+#merchanIndexTable img{
 	max-width:300px;
 }
