@@ -29,4 +29,14 @@
     <servlet-name>ViewMerchantDishesServlet</servlet-name>
     <url-pattern>/viewMerchantDishes</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewMerchantMainPageServlet</display-name>
+    <servlet-name>ViewMerchantMainPageServlet</servlet-name>
+    <servlet-class>ui.ViewMerchantMainPageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewMerchantMainPageServlet</servlet-name>
+    <url-pattern>/viewMerchantMainPage</url-pattern>
+  </servlet-mapping>
 </web-app>
