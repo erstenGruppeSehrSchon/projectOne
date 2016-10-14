@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,14 +42,13 @@
 		<td>
 		<!-- subtable for user and status-->
 		<table id = "adminContainerTableOutStandingList" class = "table table-striped">
-			<tr>
-				<td><a href = "#">Username</a></td>
-				<td><button class = "btn">Accept</button></td>
-			</tr>
-			<tr>
-				<td><a href = "#">Username</a></td>
-				<td><button class = "btn">Accept</button></td>
-			</tr>
+			<c:forEach var="a" items="${am}">
+				<tr>
+					<td><a href = "#">${a.name}</a></td>
+					<td><button class = "btn">Accept</button></td>
+					<td><button class = "btn">Reject</button></td>
+				</tr>
+			</c:forEach>
 		</table>
 		</td>
 		<td>

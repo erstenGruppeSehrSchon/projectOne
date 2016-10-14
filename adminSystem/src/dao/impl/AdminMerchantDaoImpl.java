@@ -23,12 +23,12 @@ public class AdminMerchantDaoImpl implements AdminMerchantDao{
 			rs=pst.executeQuery();
 			if (rs.next()){
 				m = new MeMerchant();
-				m.setMid(rs.getInt("MID"));
-				m.setName(rs.getString("NAME"));
-				m.setBirth(rs.getDate("BRITH_DATE"));
-				m.setGender(rs.getString("GENDER"));
-				m.setStatus(rs.getString("STATUS"));
-				m.setRegDate(rs.getDate("REG_DATE"));
+//				m.setMid(rs.getInt("MID"));
+//				m.setName(rs.getString("NAME"));
+//				m.setBirth(rs.getDate("BRITH_DATE"));
+//				m.setGender(rs.getString("GENDER"));
+//				m.setStatus(rs.getString("STATUS"));
+//				m.setRegDate(rs.getDate("REG_DATE"));
 			}
 			
 		} catch (SQLException e) {
