@@ -15,7 +15,7 @@ public class MerchantManagerImpl implements MerchantManager {
 	@Override
 	public void setAdminMerchant(AdminMerchant adminMerchant) {
 		// TODO Auto-generated method stub
-		
+		md.setAdminMerchant(adminMerchant);
 	}
 
 }
