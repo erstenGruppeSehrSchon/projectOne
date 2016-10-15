@@ -5,6 +5,8 @@ import static org.junit.Assert.*;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -29,15 +31,18 @@ public class testCommon {
 	}
 	
 	@Test
-	public void testAddMerchant(){ // m_register_dao
+	public void testAddMerchant() throws ParseException{ // m_register_dao
 		MeMerchant m = new MeMerchant();
 		m.setUserName("test");
 		m.setPassword("test");
 		m.setName("test");
-		m.setBirth(new Date(1990,11,11));
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		java.util.Date birthDate = sdf.parse("2016-12-12 13:13:13");
+		m.setBirth(birthDate);
 		m.setGender("test");
 		m.setStatus(Consts.PENDING);
-		m.setRegDate(new Date(1990,11,11));
+		m.setRegDate(birthDate);
 		
 		Shop s = new Shop();
 		s.setName("test");

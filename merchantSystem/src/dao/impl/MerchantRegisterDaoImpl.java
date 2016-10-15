@@ -51,7 +51,7 @@ public class MerchantRegisterDaoImpl implements MerchantRegisterDao{
 	        pstMerchant.setString(3, merchant.getName()); // name
 	        pstMerchant.setDate(4, new java.sql.Date( merchant.getBirth().getTime())); // birth_date
 	        pstMerchant.setString(5, merchant.getGender()); // gender
-	        pstMerchant.setString(6, Consts.PENDING); // status
+	        pstMerchant.setString(6, merchant.getStatus()); // status
 	        pstMerchant.setDate(7, new java.sql.Date(merchant.getRegDate().getTime())); // reg_date
 	        pstMerchant.executeUpdate();
 	        
