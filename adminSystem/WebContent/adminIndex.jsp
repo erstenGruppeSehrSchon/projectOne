@@ -19,7 +19,7 @@
     <ul id="nav">
       <li><a href="./adminIndex.jsp">Search</a></li>
       <li><a href="#">My Profile</a></li>
-      <li><a href="./adminLogin.jsp">Logout</a></li>
+      <li><a href="Logout">Logout</a></li>
     </ul>
   </nav>
   <div id="main">

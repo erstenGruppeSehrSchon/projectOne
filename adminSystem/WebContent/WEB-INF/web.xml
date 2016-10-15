@@ -78,7 +78,7 @@
     <dispatcher>INCLUDE</dispatcher>
     <dispatcher>ERROR</dispatcher>
   </filter-mapping>
-    <filter>
+  <filter>
     <display-name>RequestFilter</display-name>
     <filter-name>RequestFilter</filter-name>
     <filter-class>filter.RequestFilter</filter-class>
@@ -92,4 +92,14 @@
     <url-pattern>/SearchMerchantByCriteria</url-pattern>
     <url-pattern>/ShowOutstanding</url-pattern>
   </filter-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LogoutServlet</display-name>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>servlet.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/Logout</url-pattern>
+  </servlet-mapping>
 </web-app>
