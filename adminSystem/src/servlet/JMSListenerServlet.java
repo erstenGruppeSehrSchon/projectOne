@@ -19,6 +19,7 @@ public class JMSListenerServlet extends HttpServlet {
      */
     public JMSListenerServlet() {
         try {
+        	System.out.println("JMSListener Start");
 			ListenJMSUtil.startListenRequest();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

@@ -39,6 +39,7 @@
     <display-name>JMSListenerServlet</display-name>
     <servlet-name>JMSListenerServlet</servlet-name>
     <servlet-class>servlet.JMSListenerServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
     <servlet-name>JMSListenerServlet</servlet-name>
