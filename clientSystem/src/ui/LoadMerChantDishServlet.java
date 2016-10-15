@@ -38,6 +38,7 @@ public class LoadMerChantDishServlet extends HttpServlet {
 
 		List<Dish> dishList = CVMDS.findAllDish();
 		
+		System.out.print(dishList);
 		// Store to request attribute
 		request.setAttribute("dishs", dishList);
 		

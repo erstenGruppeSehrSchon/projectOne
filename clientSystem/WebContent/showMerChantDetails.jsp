@@ -35,23 +35,23 @@
 			<td class = "adminEditDetailsTableInput"></td>
 		</tr>
 		<tr>
-			<td>Merchant Name:</td>
+			<td>Merchant Name: ${Merchant.name} </td>
 			<td></td>
 		</tr>
 		<tr>
-			<td>Brithday:</td>
+			<td>Brithday: ${Merchant.birth} </td>
 			<td></td>
 		</tr>
 		<tr>
-			<td>Gender:</td>
+			<td>Gender: ${Merchant.gender}</td>
 			<td></td>
 		</tr>
 		<tr>
-			<td>Registration Date:</td>
+			<td>Registration Date: ${Merchant.regDate} </td>
 			<td></td>
 		</tr>
 		<tr>
-			<td>Status:</td>
+			<td>Status:  ${Merchant.status}</td>
 			<td></td>
 		</tr>
 	</table>
