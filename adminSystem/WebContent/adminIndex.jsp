@@ -45,11 +45,12 @@
 			<c:forEach var="a" items="${am}">
 				<tr>
 					<td><a href = "showMerchantDetails?id=${a.id}">${a.name}</a></td>
-					<td><button class = "btn">Accept</button></td>
-					<td><button class = "btn">Reject</button></td>
+					<td><a href = "updateMerchantStatus?id=${a.id}&status=Accepted"><button class = "btn">Accept</button></a></td>
+					<td><a href = "updateMerchantStatus?id=${a.id}&status=Rejected"><button class = "btn">Reject</button></a></td>
 				</tr>
 			</c:forEach>
 		</table>
+		${message}
 		</td>
 		<td>
 			<form action="SearchMerchantByCriteria" method="get">

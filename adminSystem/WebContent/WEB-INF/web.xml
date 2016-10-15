@@ -45,4 +45,14 @@
     <servlet-name>JMSListenerServlet</servlet-name>
     <url-pattern>/JMSListener</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateMerchantStatusServlet</display-name>
+    <servlet-name>UpdateMerchantStatusServlet</servlet-name>
+    <servlet-class>servlet.UpdateMerchantStatusServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateMerchantStatusServlet</servlet-name>
+    <url-pattern>/updateMerchantStatus</url-pattern>
+  </servlet-mapping>
 </web-app>
