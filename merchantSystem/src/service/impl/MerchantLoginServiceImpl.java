@@ -1,20 +1,22 @@
 package service.impl;
 
+import dao.MerchantLoginDao;
+import dao.impl.MerchantLoginDaoImpl;
 import service.MerchantLoginService;
 
 public class MerchantLoginServiceImpl implements MerchantLoginService{
-	private MerchantLoginService service = new MerchantLoginServiceImpl();
+	private MerchantLoginDao dao = new MerchantLoginDaoImpl();
 
 	@Override
 	public int checkMerchantExist(String username, String password) {
-		return service.checkMerchantExist(username, password);
+		return dao.checkMerchantExist(username, password);
 		
 	}
 
 	@Override
 	public String retrieveMerchantStatus(int mid) {
 		// TODO Auto-generated method stub
-		return service.retrieveMerchantStatus(mid);
+		return dao.retrieveMerchantStatus(mid);
 	}
 
 }
