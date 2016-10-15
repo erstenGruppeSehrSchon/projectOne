@@ -6,14 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.junit.Test;
-
 import consts.Consts;
 import dao.MerchantLoginDao;
 import dao.MerchantRegisterDao;
-import object.Shop;
-import object.merchant.MeMerchant;
+import po.Shop;
+import po.MeMerchant;
 import util.DBUtil;
 
 public class MerchantLoginDaoImpl implements MerchantLoginDao{

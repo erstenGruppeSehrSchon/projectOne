@@ -22,8 +22,8 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import consts.Consts;
 import exception.RegisterEmptyException;
-import object.merchant.MeMerchant;
-import object.merchant.Merchant;
+import po.MeMerchant;
+import po.Merchant;
 import service.MerchantRegisterService;
 import service.impl.MerchantRegisterServiceImpl;
 import util.PasswordEncrypter;

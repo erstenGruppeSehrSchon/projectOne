@@ -2,7 +2,7 @@ package dao;
 
 import java.util.ArrayList;
 
-import object.merchant.Merchant;
+import po.Merchant;
 
 public interface MerchantDao {
 	

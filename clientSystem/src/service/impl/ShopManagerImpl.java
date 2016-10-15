@@ -2,7 +2,7 @@ package service.impl;
 
 import dao.ShopDao;
 import dao.impl.ShopDaoImpl;
-import object.Shop;
+import po.Shop;
 import service.ShopManager;
 
 public class ShopManagerImpl implements ShopManager {

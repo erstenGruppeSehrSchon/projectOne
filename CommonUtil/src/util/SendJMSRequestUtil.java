@@ -12,7 +12,7 @@ import org.apache.activemq.command.ActiveMQQueue;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import object.merchant.MeMerchant;
+import po.MeMerchant;
 
 public class SendJMSRequestUtil {
 	private final static String prefix = "failover://tcp://";

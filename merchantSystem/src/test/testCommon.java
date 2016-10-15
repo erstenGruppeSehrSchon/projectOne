@@ -7,15 +7,13 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-
 import org.junit.Assert;
 import org.junit.Test;
-
 import consts.Consts;
 import dao.impl.MerchantLoginDaoImpl;
 import dao.impl.MerchantRegisterDaoImpl;
-import object.Shop;
-import object.merchant.MeMerchant;
+import po.Shop;
+import po.MeMerchant;
 import util.DBUtil;
 
 public class testCommon {

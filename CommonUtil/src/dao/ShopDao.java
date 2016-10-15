@@ -1,7 +1,8 @@
 package dao;
 
 import java.util.ArrayList;
-import object.Shop;
+
+import po.Shop;
 
 public interface ShopDao {
 	

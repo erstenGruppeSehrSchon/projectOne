@@ -1,6 +1,6 @@
 package service;
 
-import object.Shop;
+import po.Shop;
 
 public interface ShopManager {
 	

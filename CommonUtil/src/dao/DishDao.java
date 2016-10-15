@@ -1,12 +1,13 @@
 package dao;
 
 import java.util.ArrayList;
-import object.Dish;
+
+import po.Dish;
 
 public interface DishDao {
 	
 	public Dish getDishByDid(int did);
-	public ArrayList<Dish> getDishByMid(int mid);
+	public ArrayList<Dish> getDishBySid(int sid);
 	public ArrayList<Dish> findAllDish();
 	
 }

@@ -1,7 +1,7 @@
 package service;
 
 import java.util.ArrayList;
-import object.Dish;
+import po.Dish;
 
 public interface ClientViewMerchantDishService {
 	

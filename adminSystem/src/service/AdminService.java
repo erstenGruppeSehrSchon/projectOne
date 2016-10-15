@@ -1,6 +1,6 @@
 package service;
 
-import object.Admin;
+import po.Admin;
 
 public interface AdminService {
 	

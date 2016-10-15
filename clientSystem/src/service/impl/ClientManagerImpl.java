@@ -1,6 +1,6 @@
 package service.impl;
 
-import object.merchant.MeMerchant;
+import po.MeMerchant;
 import service.ClientManager;
 import constant.Constant;
 

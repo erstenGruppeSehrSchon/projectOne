@@ -1,4 +1,4 @@
-<!--<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>!-->
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,14 +27,16 @@
 	<table>
 		<tr>
 			<td>
-				<p>Name: ${Dish.name})</p>
+				<p>Name: ${dish.name}</p>
 				<!--<p>Like Dislike</p>-->
-				<p>Type:  ${Dish.type}</p>
-				<p>Price:  ${Dish.price}</p>
-				<p>Active:  ${Dish.active}</p>
+				<p>Type:  ${dish.type}</p>
+				<p>Price:  ${dish.price}</p>
+				<p>Active:  ${dish.active}</p>
 			</td>
 			<td>
-			 <img src="${DishImage.path}" />
+				<c:forEach var="dishImage" items="${dish.dishImages}">
+					<img src="${dishImage.imgPath}" />
+				</c:forEach>
 			</td>
 			<td>
 				<p>-Merchant-</p>

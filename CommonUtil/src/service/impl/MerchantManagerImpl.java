@@ -2,8 +2,8 @@ package service.impl;
 
 import dao.MerchantDao;
 import dao.impl.MerchantDaoImpl;
-import object.merchant.MeMerchant;
-import object.merchant.Merchant;
+import po.MeMerchant;
+import po.Merchant;
 import service.MerchantManager;
 
 public class MerchantManagerImpl implements MerchantManager {

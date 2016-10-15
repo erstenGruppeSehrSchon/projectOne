@@ -2,7 +2,7 @@ package dao;
 
 import java.util.ArrayList;
 
-import object.DishImage;
+import po.DishImage;
 
 public interface DishImageDao {
 

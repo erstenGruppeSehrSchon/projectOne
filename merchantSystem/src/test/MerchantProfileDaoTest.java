@@ -1,14 +1,12 @@
 package test;
 
 import java.util.List;
-
 import org.junit.Assert;
 import org.junit.Test;
-
 import dao.impl.MerchantProfileDaoImpl;
-import object.Shop;
-import object.ShopContact;
-import object.merchant.MeMerchant;
+import po.Shop;
+import po.ShopContact;
+import po.MeMerchant;
 
 public class MerchantProfileDaoTest {
 

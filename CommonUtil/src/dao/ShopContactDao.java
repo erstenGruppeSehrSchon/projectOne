@@ -2,7 +2,7 @@ package dao;
 
 import java.util.ArrayList;
 
-import object.ShopContact;
+import po.ShopContact;
 
 public interface ShopContactDao {
 

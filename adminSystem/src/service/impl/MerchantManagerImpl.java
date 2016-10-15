@@ -3,7 +3,7 @@ package service.impl;
 import java.util.ArrayList;
 import dao.MerchantDao;
 import dao.impl.MerchantDaoImpl;
-import object.merchant.Merchant;
+import po.Merchant;
 import service.MerchantManager;
 
 public class MerchantManagerImpl implements MerchantManager {

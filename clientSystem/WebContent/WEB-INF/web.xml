@@ -6,13 +6,33 @@
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>ViewMerchantDishServlet</display-name>
-    <servlet-name>ViewMerchantDishServlet</servlet-name>
-    <servlet-class>ui.ViewMerchantDishServlet</servlet-class>
+    <display-name>ShowAllDishesServlet</display-name>
+    <servlet-name>ShowAllDishesServlet</servlet-name>
+    <servlet-class>ui.ShowAllDishesServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ViewMerchantDishServlet</servlet-name>
-    <url-pattern>/showdish</url-pattern>
+    <servlet-name>ShowAllDishesServlet</servlet-name>
+    <url-pattern>/ShowAllDishes</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ShowDishServlet</display-name>
+    <servlet-name>ShowDishServlet</servlet-name>
+    <servlet-class>ui.ShowDishServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowDishServlet</servlet-name>
+    <url-pattern>/ShowDish</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ShowMerchantDetailsServlet</display-name>
+    <servlet-name>ShowMerchantDetailsServlet</servlet-name>
+    <servlet-class>ui.ShowMerchantDetailsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowMerchantDetailsServlet</servlet-name>
+    <url-pattern>/ShowMerchantDetails</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -24,10 +44,7 @@
     <servlet-name>ViewMerchantInfoServlet</servlet-name>
     <url-pattern>/showmwerchant</url-pattern>
   </servlet-mapping>
-<<<<<<< HEAD
-  
-  
-    <servlet>
+  <servlet>
     <description></description>
     <display-name>LoadMerChantDishServlet</display-name>
     <servlet-name>LoadMerChantDishServlet</servlet-name>
@@ -37,17 +54,14 @@
     <servlet-name>LoadMerChantDishServlet</servlet-name>
     <url-pattern>/loaddish</url-pattern>
   </servlet-mapping>
-  
-=======
   <servlet>
     <description></description>
-    <display-name>ShowAllDishesServlet</display-name>
-    <servlet-name>ShowAllDishesServlet</servlet-name>
-    <servlet-class>ui.ShowAllDishesServlet</servlet-class>
+    <display-name>ShowShopAndDishesServlet</display-name>
+    <servlet-name>ShowShopAndDishesServlet</servlet-name>
+    <servlet-class>ui.ShowShopAndDishesServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ShowAllDishesServlet</servlet-name>
-    <url-pattern>/ShowAllDishes</url-pattern>
+    <servlet-name>ShowShopAndDishesServlet</servlet-name>
+    <url-pattern>/ShowShopAndDishes</url-pattern>
   </servlet-mapping>
->>>>>>> Client_clientIndex
 </web-app>

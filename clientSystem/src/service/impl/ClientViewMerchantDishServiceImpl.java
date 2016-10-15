@@ -1,7 +1,7 @@
 package service.impl;
 
 import java.util.ArrayList;
-import object.Dish;
+import po.Dish;
 import dao.DishDao;
 import dao.impl.DishDaoImpl;
 

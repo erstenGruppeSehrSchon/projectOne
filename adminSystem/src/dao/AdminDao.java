@@ -1,6 +1,6 @@
 package dao;
 
-import object.Admin;
+import po.Admin;
 
 public interface AdminDao {
 	

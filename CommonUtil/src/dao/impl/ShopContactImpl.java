@@ -5,7 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import object.ShopContact;
+
+import po.ShopContact;
 import util.DBUtil;
 import dao.ShopContactDao;
 

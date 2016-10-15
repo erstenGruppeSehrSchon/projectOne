@@ -1,7 +1,6 @@
 package ui;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -10,19 +9,20 @@ import po.Dish;
 import service.ClientViewMerchantDishService;
 import service.impl.ClientViewMerchantDishServiceImpl;
 
-public class ShowAllDishesServlet extends HttpServlet {
+public class ShowDishServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	private ClientViewMerchantDishService cvmds = new ClientViewMerchantDishServiceImpl();
-   
+
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Store to request attribute
-		ArrayList<Dish> dishList = cvmds.findAllDish();
-		request.setAttribute("dishes", dishList);
+		int did = Integer.parseInt(request.getParameter("dishId"));
+		Dish dish = cvmds.loadDish(did);
+		request.setAttribute("dish", dish);
 		
-		// Forward to index page
-  	    request.getRequestDispatcher("clientIndex.jsp").forward(request, response);
+		// Forward to dish page
+  	    request.getRequestDispatcher("showDish.jsp").forward(request, response);
 	}
 
 }

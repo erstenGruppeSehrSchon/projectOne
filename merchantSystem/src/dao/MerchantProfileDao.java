@@ -2,10 +2,10 @@ package dao;
 
 import java.util.List;
 
-import object.Dish;
-import object.Shop;
-import object.ShopContact;
-import object.merchant.MeMerchant;
+import po.Dish;
+import po.Shop;
+import po.ShopContact;
+import po.MeMerchant;
 
 public interface MerchantProfileDao {
 	public MeMerchant retrieveMerchantByMid(int mid);

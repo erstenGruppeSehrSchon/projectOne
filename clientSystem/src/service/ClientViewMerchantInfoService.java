@@ -1,6 +1,6 @@
 package service;
 
-import object.merchant.Merchant;
+import po.Merchant;
 
 public interface ClientViewMerchantInfoService {
 	

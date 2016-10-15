@@ -1,8 +1,8 @@
-package object.merchant;
+package po;
 
 import java.util.ArrayList;
 import java.util.Date;
-import object.Shop;
+
 
 public class Merchant {
 	

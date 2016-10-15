@@ -2,21 +2,16 @@ package servlet;
 
 import java.io.IOException;
 import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import consts.Consts;
-import object.Dish;
-import object.merchant.MeMerchant;
+import po.Dish;
+import po.MeMerchant;
 import service.MerchantProfileService;
 import service.impl.MerchantProfileServiceImpl;
 
-/**
- * Servlet implementation class ShowProfileServlet
- */
 public class ShowProfileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private MerchantProfileService service = new MerchantProfileServiceImpl();

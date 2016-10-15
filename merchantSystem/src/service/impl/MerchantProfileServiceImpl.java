@@ -1,12 +1,11 @@
 package service.impl;
 
 import java.util.List;
-
 import dao.MerchantProfileDao;
 import dao.impl.MerchantProfileDaoImpl;
-import object.Dish;
-import object.Shop;
-import object.merchant.MeMerchant;
+import po.Dish;
+import po.Shop;
+import po.MeMerchant;
 import service.MerchantProfileService;
 
 public class MerchantProfileServiceImpl implements MerchantProfileService {

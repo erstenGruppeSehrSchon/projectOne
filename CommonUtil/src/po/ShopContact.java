@@ -1,4 +1,4 @@
-package object;
+package po;
 
 public class ShopContact {
 	private int cid;

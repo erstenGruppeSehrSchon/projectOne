@@ -5,8 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import object.Dish;
-import object.DishImage;
+
+import po.Dish;
+import po.DishImage;
 import dao.DishDao;
 import dao.DishImageDao;
 import util.DBUtil;
@@ -44,11 +45,7 @@ public class DishDaoImpl implements DishDao{
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-<<<<<<< HEAD
-		}finally{
-=======
-		} finally{
->>>>>>> Client_clientIndex
+		} finally {
 			DBUtil.free(con, pst, rs);
 		}
 		
@@ -56,7 +53,7 @@ public class DishDaoImpl implements DishDao{
 	}
 
 	@Override
-	public ArrayList<Dish> getDishByMid(int mid) {
+	public ArrayList<Dish> getDishBySid(int sid) {
 
 		Connection con=null;
 		PreparedStatement pst =null;
@@ -64,56 +61,14 @@ public class DishDaoImpl implements DishDao{
 		
 		ArrayList<Dish> dishList = new ArrayList<Dish>();
 
-		String sql = "SELECT * FROM M_DISH WHERE MID = ?";
-		
+		String sql = "SELECT * FROM M_DISH WHERE SID = ?";
 		
 		try {
 			con = DBUtil.createConnection();
 			pst = con.prepareStatement(sql);
-			pst.setInt(1, mid);
+			pst.setInt(1, sid);
 			rs = pst.executeQuery();
 			
-<<<<<<< HEAD
-			while(rs.next()){
-				System.out.print("HERE");
-				Dish d = new Dish();
-				d.setActive(rs.getInt("IS_ACTIVE"));
-			    d.setName(rs.getString("NAME"));
-			    d.setType(rs.getString("TYPE"));
-			    d.setPrice(rs.getDouble("PRICE"));
-			    d.setMid(rs.getInt("SID"));
-			    d.setId(rs.getInt("DID"));
-			    DishList.add(d);
-			}
-			
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally{
-			DBUtil.free(con, pst, rs);
-		}
-		return DishList;
-	}
-
-
-
-	@Override
-	public void addDishImg(DishImage di) {
-		
-		Connection con=null;
-		String sql = "insert into M_DISH_IMG(IMG_ID,DID,IMG_PATH)values(M_DISH_IMG_SEQ,?,?)";
-		PreparedStatement pst =null;
-		
-		
-		try {
-			con = DBUtil.createConnection();
-			pst = con.prepareStatement(sql);
-			pst.setInt(1,di.getImageId());
-			pst.setString(2, di.getPath());
-			
-			pst.executeUpdate();
-=======
 			while (rs.next()) {
 				Dish dish = new Dish();
 				dish.setActive(rs.getInt("IS_ACTIVE"));
@@ -131,7 +86,7 @@ public class DishDaoImpl implements DishDao{
 			    // Add to list
 			    dishList.add(dish);
 			}
->>>>>>> Client_clientIndex
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally{
@@ -145,38 +100,11 @@ public class DishDaoImpl implements DishDao{
 	public ArrayList<Dish> findAllDish() {
 		
 		Connection con=null;
-<<<<<<< HEAD
-		String sql = "delete from M_DISH_IMG where IMG_ID =?";
-		PreparedStatement pst =null;
-		
-		
-		try {
-			con = DBUtil.createConnection();
-			pst = con.prepareStatement(sql);
-			pst.setInt(1,imgid);
-			
-			pst.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally{
-			DBUtil.free(con, pst, null);
-		}
-		
-	}
 
-	@Override
-	public DishImage loadDishImage(int id) {
-		Connection con=null;
-		String sql = "Select * from M_DISH_IMG where IMG_ID = ?";
-		PreparedStatement pst =null;
-=======
 		String sql = "SELECT * FROM M_DISH";
 		PreparedStatement pst =null;
->>>>>>> Client_clientIndex
 		ResultSet rs = null;
 		ArrayList<Dish> dishList = new ArrayList<Dish>();
-		
 		
 		try {
 			con = DBUtil.createConnection();

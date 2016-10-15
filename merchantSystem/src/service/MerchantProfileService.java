@@ -1,10 +1,9 @@
 package service;
 
 import java.util.List;
-
-import object.Dish;
-import object.Shop;
-import object.merchant.MeMerchant;
+import po.Dish;
+import po.Shop;
+import po.MeMerchant;
 
 public interface MerchantProfileService {
 	

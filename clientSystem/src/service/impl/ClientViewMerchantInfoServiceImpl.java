@@ -1,6 +1,6 @@
 package service.impl;
 
-import object.merchant.Merchant;
+import po.Merchant;
 import service.ClientViewMerchantInfoService;
 
 public class ClientViewMerchantInfoServiceImpl implements ClientViewMerchantInfoService{

@@ -1,4 +1,4 @@
-package object.merchant;
+package po;
 
 public class MeMerchant extends Merchant{
 	private String userName;

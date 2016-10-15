@@ -5,9 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import object.Shop;
-import object.ShopContact;
+
+import po.Dish;
+import po.Shop;
+import po.ShopContact;
 import util.DBUtil;
+import dao.DishDao;
 import dao.ShopContactDao;
 import dao.ShopDao;
 
@@ -31,13 +34,6 @@ public class ShopDaoImpl implements ShopDao{
 			rs=pst.executeQuery();
 			
 			if (rs.next()){
-<<<<<<< HEAD
-				s.setSid(rs.getInt("SID"));
-				s.setMid(rs.getInt("MID"));
-				s.setName(rs.getString("NAME"));
-				s.setImagePath(rs.getString("IMG_PATH"));
-				s.setDescr(rs.getString("DESCRIPTION"));
-=======
 				shop = new Shop();
 				shop.setSid(rs.getInt("SID"));
 				shop.setMid(rs.getInt("MID"));
@@ -49,7 +45,11 @@ public class ShopDaoImpl implements ShopDao{
 				ShopContactDao scd = new ShopContactImpl();
 				ArrayList<ShopContact> shopContacts = scd.getShopContactsBySID(shop.getSid());
 				shop.setShopContactList(shopContacts);
->>>>>>> Client_clientIndex
+				
+				// Get Shop Dish
+				DishDao dd = new DishDaoImpl();
+				ArrayList<Dish> dishList = dd.getDishBySid(shop.getSid());
+				shop.setDishList(dishList);
 			}
 			
 		} catch (SQLException e) {
@@ -78,15 +78,6 @@ public class ShopDaoImpl implements ShopDao{
 			pst = con.prepareStatement(sql);
 			rs = pst.executeQuery();
 			if (rs.next()){
-<<<<<<< HEAD
-				s = new Shop();
-				s.setSid(rs.getInt("SID"));
-				s.setMid(rs.getInt("MID"));
-				s.setName(rs.getString("NAME"));
-				s.setImagePath(rs.getString("IMG_PATH"));
-				s.setDescr(rs.getString("DESCRIPTION"));
-				ShopList.add(s);
-=======
 				shop = new Shop();
 				shop.setSid(rs.getInt("SID"));
 				shop.setMid(rs.getInt("MID"));
@@ -96,7 +87,6 @@ public class ShopDaoImpl implements ShopDao{
 				
 				// Add to list
 				ShopList.add(shop);
->>>>>>> Client_clientIndex
 			}
 			
 		} catch (SQLException e) {

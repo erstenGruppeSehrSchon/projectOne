@@ -11,6 +11,8 @@
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 <link rel="stylesheet" href="css/stylesheet.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
 </head>
 <body>
 <div class="container">
@@ -32,27 +34,27 @@
 		<tr>
 			<td rowspan="6" class = "adminEditDetailsTableIcon"><img src= "http://www.icon2s.com/img256/256x256-black-white-android-user.png"/></td>
 			<td class = "adminEditDetailsTableColName">Merchant ID:</td>
-			<td class = "adminEditDetailsTableInput"></td>
+			<td class = "adminEditDetailsTableInput">${merchant.mid}</td>
 		</tr>
 		<tr>
-			<td>Merchant Name: ${Merchant.name} </td>
-			<td></td>
+			<td>Merchant Name:</td>
+			<td>${merchant.name}</td>
 		</tr>
 		<tr>
-			<td>Brithday: ${Merchant.birth} </td>
-			<td></td>
+			<td>Brithday:</td>
+			<td>${merchant.birth}</td>
 		</tr>
 		<tr>
-			<td>Gender: ${Merchant.gender}</td>
-			<td></td>
+			<td>Gender:</td>
+			<td>${merchant.gender}</td>
 		</tr>
 		<tr>
-			<td>Registration Date: ${Merchant.regDate} </td>
-			<td></td>
+			<td>Registration Date:</td>
+			<td>${merchant.regDate}</td>
 		</tr>
 		<tr>
-			<td>Status:  ${Merchant.status}</td>
-			<td></td>
+			<td>Status:</td>
+			<td>${merchant.status}</td>
 		</tr>
 	</table>
 </div>

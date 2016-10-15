@@ -1,7 +1,7 @@
 package service;
 
-import object.merchant.MeMerchant;
-import object.merchant.Merchant;
+import po.MeMerchant;
+import po.Merchant;
 
 public interface MerchantRegisterService {
 	public int addMerchant(MeMerchant merchant);

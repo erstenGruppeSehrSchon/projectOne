@@ -2,10 +2,9 @@ package test;
 
 import org.junit.Assert;
 import org.junit.Test;
-
-import object.Shop;
-import object.ShopContact;
-import object.merchant.MeMerchant;
+import po.Shop;
+import po.ShopContact;
+import po.MeMerchant;
 import service.MerchantProfileService;
 import service.impl.MerchantProfileServiceImpl;
 

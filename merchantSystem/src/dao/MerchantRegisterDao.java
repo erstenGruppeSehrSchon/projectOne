@@ -1,7 +1,7 @@
 package dao;
 
-import object.merchant.MeMerchant;
-import object.merchant.Merchant;
+import po.MeMerchant;
+import po.Merchant;
 
 public interface MerchantRegisterDao {
 	public int addMerchant(MeMerchant merchant);

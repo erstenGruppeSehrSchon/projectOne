@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import object.DishImage;
+import po.DishImage;
 import util.DBUtil;
 import dao.DishImageDao;
 

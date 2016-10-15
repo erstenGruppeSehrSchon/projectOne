@@ -5,8 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import po.Merchant;
 import dao.MerchantDao;
-import object.merchant.Merchant;
 import util.DBUtil;
 
 public class MerchantDaoImpl implements MerchantDao{

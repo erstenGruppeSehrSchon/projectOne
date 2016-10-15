@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import object.Admin;
+import po.Admin;
 import service.AdminService;
 import service.impl.AdminServiceImpl;
 import util.PasswordEncrypter;

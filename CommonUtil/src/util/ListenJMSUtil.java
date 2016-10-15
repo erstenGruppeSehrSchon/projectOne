@@ -15,8 +15,9 @@ import org.apache.activemq.command.ActiveMQQueue;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import object.merchant.MeMerchant;
-import object.merchant.Merchant;
+
+import po.MeMerchant;
+import po.Merchant;
 import service.MerchantManager;
 import service.impl.MerchantManagerImpl;
 
