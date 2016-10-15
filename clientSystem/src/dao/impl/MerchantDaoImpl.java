@@ -6,13 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import dao.MerchantDao;
-import object.merchant.AdminMerchant;
-import object.merchant.MeMerchant;
+
+import po.Merchant;
 import util.DBUtil;
 
 public class MerchantDaoImpl implements MerchantDao {
-	public MeMerchant findMeMerchantById(int id){
-		MeMerchant m =null;
+	public Merchant findMeMerchantById(int id){
+		Merchant m =null;
 		String sql = "select * from M_MERCHANT WHERE MID = ?";
 		Connection con=null;
 		PreparedStatement pst = null;
@@ -23,7 +23,7 @@ public class MerchantDaoImpl implements MerchantDao {
 			pst.setInt(1, id);
 			rs=pst.executeQuery();
 			if (rs.next()){
-				m = new MeMerchant();
+				m = new Merchant();
 				m.setMid(rs.getInt("MID"));
 				m.setName(rs.getString("NAME"));
 				m.setBirth(rs.getDate("BRITH_DATE"));
@@ -42,27 +42,5 @@ public class MerchantDaoImpl implements MerchantDao {
 		return m;
 	}
 
-	@Override
-	public void setAdminMerchant(AdminMerchant adminMerchant) {
-		// TODO Auto-generated method stub
-		String sql = "INSERT INTO A_MERCHANT VALUES (?, ?, ?, ?, ?, ?)";
-		Connection con=null;
-		PreparedStatement pst = null;
-		con=DBUtil.createConnection();
-		try {
-			pst=con.prepareStatement(sql);
-			pst.setInt(1, adminMerchant.getMid());
-			pst.setString(2, adminMerchant.getName());
-			pst.setDate(3, new java.sql.Date(adminMerchant.getBirth().getTime()));
-			pst.setString(4, adminMerchant.getGender());
-			pst.setString(5, adminMerchant.getStatus());
-			pst.setDate(6, new java.sql.Date(adminMerchant.getRegDate().getTime()));
-			pst.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally{
-			DBUtil.free(con, pst, null);
-		}
-	}
+
 }

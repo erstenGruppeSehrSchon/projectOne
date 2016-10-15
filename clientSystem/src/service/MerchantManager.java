@@ -1,10 +1,9 @@
 package service;
 
-import object.merchant.AdminMerchant;
-import object.merchant.MeMerchant;
+import po.Merchant;
 
 public interface MerchantManager {
-	public MeMerchant findMeMerchantById(int id);
+	public Merchant findMeMerchantById(int id);
 	
-	public void setAdminMerchant(AdminMerchant adminMerchant);
+	
 }

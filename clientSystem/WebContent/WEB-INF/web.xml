@@ -32,4 +32,16 @@
     <url-pattern>/showmwerchant</url-pattern>
   </servlet-mapping>
   
+  
+    <servlet>
+    <description></description>
+    <display-name>LoadMerChantDishServlet</display-name>
+    <servlet-name>LoadMerChantDishServlet</servlet-name>
+    <servlet-class>ui.LoadMerChantDishServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoadMerChantDishServlet</servlet-name>
+    <url-pattern>/loaddish</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

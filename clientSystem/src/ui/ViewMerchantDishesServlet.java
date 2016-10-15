@@ -65,8 +65,10 @@ public class ViewMerchantDishesServlet extends HttpServlet {
 			request.setAttribute("DishImage",CVD.loadDishImage(DID));
 			request.setAttribute("Dish", CVD.loadDish(DID));
 			request.setAttribute("Merchant", MM.findMeMerchantById(MID));
-			request.setAttribute("Shop", SM.findShopById(MID));
 			
+			
+//			request.setAttribute("Shop", SM.findShopById(MID));
+//			
 		
 			
 				
@@ -75,6 +77,7 @@ public class ViewMerchantDishesServlet extends HttpServlet {
 		}else{
 			
 			System.out.print("no ID found");
+			 request.getRequestDispatcher("Error.jsp").forward(request, response);
    		}
 		
 		

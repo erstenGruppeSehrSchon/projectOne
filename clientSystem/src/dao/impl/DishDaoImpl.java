@@ -126,7 +126,7 @@ public class DishDaoImpl implements DishDao{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally{
-			DBUtil.free(con, pst, null);
+			DBUtil.free(con, pst, rs);
 		}
 		return d;
 	}
@@ -140,17 +140,19 @@ public class DishDaoImpl implements DishDao{
 		List<Dish> DishList = new ArrayList<Dish>();
 		
 		
+		
 		try {
 			con = DBUtil.createConnection();
 			pst = con.prepareStatement(sql);
 			rs = pst.executeQuery();
 			
 			while(rs.next()){
+				System.out.print("HERE");
 				Dish d = new Dish();
 				d.setActive(rs.getInt("IS_ACTIVE"));
 			    d.setName(rs.getString("NAME"));
 			    d.setType(rs.getString("TYPE"));
-			    d.setPrice(rs.getDouble("Price"));
+			    d.setPrice(rs.getDouble("PRICE"));
 			    d.setMid(rs.getInt("SID"));
 			    d.setId(rs.getInt("DID"));
 			    DishList.add(d);
@@ -161,7 +163,7 @@ public class DishDaoImpl implements DishDao{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally{
-			DBUtil.free(con, pst, null);
+			DBUtil.free(con, pst, rs);
 		}
 		return DishList;
 	}
@@ -219,7 +221,7 @@ public class DishDaoImpl implements DishDao{
 	@Override
 	public void deleteDishImg(int imgid) {
 		Connection con=null;
-		String sql = "delete from M_DISH where IMG_ID =?";
+		String sql = "delete from M_DISH_IMG where IMG_ID =?";
 		PreparedStatement pst =null;
 		
 		
@@ -241,16 +243,11 @@ public class DishDaoImpl implements DishDao{
 	@Override
 	public DishImage loadDishImage(int id) {
 		Connection con=null;
-		String sql = "Select * from M_DISH where IMG_ID = ?";
+		String sql = "Select * from M_DISH_IMG where IMG_ID = ?";
 		PreparedStatement pst =null;
-		
-		try {
-			pst.setInt(1,id);
-		} catch (SQLException e1) {
-			e1.printStackTrace();
-		}
 		ResultSet rs = null;
 		DishImage di = new DishImage();
+		
 		
 		
 		try {

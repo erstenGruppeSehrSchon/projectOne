@@ -10,10 +10,22 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
+
+
+
+
+
+
+
+
+
+import po.Merchant;
 import service.ClientManager;
 import service.ClientViewMerchantInfoService;
+import service.MerchantManager;
 import service.impl.ClientManagerImpl;
 import service.impl.ClientViewMerchantInfoServiceImpl;
+import service.impl.MerchantManagerImpl;
 import constant.Constant;
 
 /**
@@ -21,7 +33,9 @@ import constant.Constant;
  */
 public class ViewMerchantInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private ClientViewMerchantInfoService CVM = new ClientViewMerchantInfoServiceImpl();
+    private MerchantManager MM = new MerchantManagerImpl();
+    private Merchant M = null;
+    private int MID = -1;
     /**
      * Default constructor. 
      */
@@ -33,24 +47,35 @@ public class ViewMerchantInfoServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-          int id = Integer.parseInt(request.getParameter(Constant.MERCHANT_PARAMETER_MID));        
-          if(CM.isMerchanAccept(id)){
-        	  request.setAttribute(Constant.MERCHANT_PARAMETER_MID, id);
-        	  request.setAttribute(Constant.MERCHANT_PARAMETER_MID, id);
+          try {
+  			
+        	   MID = Integer.parseInt(request.getParameter(Constant.MERCHANT_PARAMETER_MID));
+      		
+      		}catch(NumberFormatException nfe){
+      		     
+      		     MID = -1;
+      		}
+          
+          if (MID>0){
         	  
+        	  M = MM.findMeMerchantById(MID);
+        	  
+        	  if(M.getName()!=null){
+        		  request.setAttribute("Merchant", M);
+        		  request.getRequestDispatcher("showMerchantDetails.jsp").forward(request, response);         	 
+        		  }else{
+            		  request.getRequestDispatcher("Error.jsp").forward(request, response);         	 
 
+        		  }
         	  
         	  
-        	  
-        	  
-        	  
-        	  request.getRequestDispatcher("showMerchantDetails.html").forward(request, response);   //accpeted and view info jsp 
-          }else if(!(CM.isMerchanAccept(id))){
-        	  request.getRequestDispatcher("xxxxxxx.jsp").forward(request, response);  //rejected jsp
+          
+          
+          
+          
+          }else{
+        	  System.out.println("ID not FOUND");
           }
-          
-          
-          
           
           
           

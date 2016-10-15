@@ -33,6 +33,8 @@ public class LoadMerChantDishServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		System.out.print("get in doget");
 
 		List<Dish> dishList = CVMDS.findAllDish();
 		
