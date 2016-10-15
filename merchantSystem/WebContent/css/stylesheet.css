@@ -1,0 +1,50 @@
+/*Genral Setting*/
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+
+.headerBar{
+	width: 100%;
+	padding: 15px;
+	background: #DDDDDD;
+	text-align: center;
+}
+
+.container{
+	margin: 0px auto;
+	padding: 20px;
+	width: 80%;
+}
+
+#containerForm{
+	margin: 0px auto;
+	width: 30%;
+	border: 1px solid #444444;
+	padding:20px;
+	border-radius: 10px;
+}
+
+#merchanIndexContainerIndexView{
+	margin: 0px auto;
+	width: 80%;
+	text-align: center;
+}
+
+#merchanIndexTable{
+	margin: 0px auto;
+}
+
+#merchanIndexTable td, #merchanIndexTableShowShop td{
+	margin: 10px;
+}
+
+
+#merchanIndexTable img{
+	max-width:300px;
+}
+
+#merchantRegTable td{
+	padding: 5px;
+}

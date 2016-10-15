@@ -15,38 +15,50 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class = "adminHeaderBar">
+<div class = "headerBar">
 	<div>
 		<h3>-Qing Mi Ji Rou Chang-</h3>
-		<h4>Admin Page</h4>
+		<h4>Merchant Page</h4>
 	</div>
 </div>
-<div class="dropdown">
-		<button class="btn dropdown-toggle" type="button" data-toggle="dropdown"><span class = "glyphicon glyphicon-align-justify"></span>
-		<span class="caret"></span></button>
-		<ul class="dropdown-menu">
-		  <li><a href="#">Search</a></li>
-		  <li class="divider"></li>
-		  <li><a href="#">My Profile</a></li>
-		  <li><a href="./adminLogin.html">Logout</a></li>
-		</ul>
+<div class = "container">
+<div id = "containerRegForm">
+<h2>Registration</h2>
+	<form action = "" method = "post">
+	<table id = "merchantRegTable">
+		<tr>
+			<td>Name</td>
+			<td><input id="merchantRegName" type="text" class="form-control"></td>
+		</tr>
+		<tr>
+			<td>Gender</td>
+			<td>
+				<select class="form-control">
+				  <option value="M">M</option>
+				  <option value="F">F</option>
+				  <option value="Unknown">Unknown</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>birthday</td>
+			<td><input type="date" id="searchMerchantRegistrationDate" class="form-control"></td>
+		</tr>
+		<tr>
+			<td>Icon</td>
+			<td>
+			<form action="FileUpload" method="POST" enctype="multipart/form-data">
+			<label class="btn btn-default">
+				 Choose<input type="file" name="searchMerchantIconFile" style="display: none;">
+			</label>
+			</form>
+			</td>
+		</tr>
+	</table>
+	<!--<input type="submit" class ="btn"/>-->
+	<button class ="btn">Submit</button>
+	</form>
 </div>
-<div class = "adminContainer">
-<h4>Search Criteria: </h4>
-<table id = "adminContainerShowResult" class = "table">
-	<tr>
-		<th>User Id</th>
-		<th>User Name</th>
-		<th>Status</th>
-		<th>Edit</th>
-	</tr>
-	<tr>
-		<td><a href="./showMerchantDetails.html">1</a></td>
-		<td><a href="./showMerchantDetails.html">User1</a></td>
-		<td>Status1</td>
-		<th><a href="./editMerchantDetails.html" class="btn btn-default">Edit</a></th>
-	</tr>
-</table>
 </div>
 </body>
 </html>
