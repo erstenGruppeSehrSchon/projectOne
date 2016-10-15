@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import consts.Consts;
+import exception.RegisterEmptyException;
 import object.merchant.MeMerchant;
 import object.merchant.Merchant;
 import service.MerchantRegisterService;
@@ -37,12 +39,36 @@ public class MerchantRegisterServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// retrieve data from user
 		MeMerchant merchant = new MeMerchant();
-		merchant.setUserName(request.getParameter("username"));
-		merchant.setPassword(PasswordEncrypter.getPasswordEncrypter().getEncryptedPassword(request.getParameter("password")));
-		merchant.setName(request.getParameter("name"));
-		merchant.setGender(request.getParameter("gender"));
-
 		try {
+			
+			// check username is empty
+			String username= request.getParameter("username");
+			if(username != null && !username.equals(""))
+				merchant.setUserName(username);
+			else
+				throw new RegisterEmptyException(Consts.USERNAME_CANNOT_EMPTY);
+			
+			// check password is empty
+			String password = request.getParameter("password");
+			if(password !=null && !password.equals(""))
+				merchant.setPassword(PasswordEncrypter.getPasswordEncrypter().getEncryptedPassword(password));
+			else 
+				throw new RegisterEmptyException(Consts.PASSWORD_CANNOT_EMPTY);
+			
+			// check name is empty
+			String name = request.getParameter("name");
+			if(name != null && !name.equals(""))
+				merchant.setName(name);
+			else
+				throw new RegisterEmptyException(Consts.NAME_CANNOT_EMPTY);
+			
+			//check gender is empty
+			String gender = request.getParameter("gender");
+			if(gender != null && !name.equals(""))
+				merchant.setGender(gender);
+			else
+				throw new RegisterEmptyException(Consts.GENDER_CANNOT_EMPTY);
+
 			String birthDateStr = request.getParameter("birth_date");
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			Date birthDate = sdf.parse(birthDateStr);
@@ -52,9 +78,18 @@ public class MerchantRegisterServlet extends HttpServlet {
 			Date regDate = sdf.parse(regDateStr);
 			merchant.setRegDate(regDate);
 			
+			// default status = pending
+			String status = Consts.PENDING;
+			merchant.setStatus(status);
+			
+			// to do : some shop here .....
+			
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			request.setAttribute("errorMsg", Consts.INVALID_DATE);
+			request.getRequestDispatcher("xxxxxxxxxxxxxxxxxxxxxxxxx").forward(request, response);
+		} catch (RegisterEmptyException e){
+			request.setAttribute("errorMsg", e.getMessage());
+			request.getRequestDispatcher("xxxxxxxxxxxxxxxxxxxxxxxxx").forward(request, response);
 		}
 		
 				
