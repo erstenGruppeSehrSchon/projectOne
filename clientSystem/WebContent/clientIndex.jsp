@@ -36,13 +36,13 @@
 <div class = "container">
 
 <table id = "clientContainerIndexView">
-	<c:forEach var="dish" items="${dishs}">
+	<c:forEach var="dish" items="${dishes}">
 		<tr>
 			<td colspan="3"><h3>-${dish.name}-</h3></td>
 		</tr>
 		<tr>
-			<c:forEach var="dishImage" items="${dish.images}">
-				<td><a href="showdish?MerchantId=${dish.sid}& DishId=${dish.did"}><img src="${disImage.imgPath}"/></td>
+			<c:forEach var="dishImage" items="${dish.dishImages}">
+				<td><a href="showDish?merchantId=${dish.sid}&dishId=${dish.did}"><img src="${dishImage.imgPath}"/></td>
 			</c:forEach>
 		</tr>
 	</c:forEach>

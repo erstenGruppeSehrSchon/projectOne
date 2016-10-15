@@ -33,6 +33,7 @@ public class ViewMerchantInfoServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/*
           int id = Integer.parseInt(request.getParameter(Constant.MERCHANT_PARAMETER_MID));        
           if(CM.isMerchanAccept(id)){
         	  request.setAttribute(Constant.MERCHANT_PARAMETER_MID, id);
@@ -52,7 +53,7 @@ public class ViewMerchantInfoServlet extends HttpServlet {
           
           
           
-          
+          */
           
 
 		

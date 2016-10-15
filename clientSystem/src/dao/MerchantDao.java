@@ -1,10 +1,11 @@
 package dao;
 
-import object.merchant.AdminMerchant;
+import object.merchant.Merchant;
 import object.merchant.MeMerchant;
 
 public interface MerchantDao {
+	
 	public MeMerchant findMeMerchantById(int id);
 	
-	public void setAdminMerchant(AdminMerchant adminMerchant);
+	public void setAdminMerchant(Merchant adminMerchant);
 }

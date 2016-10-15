@@ -10,27 +10,19 @@ import object.Dish;
 import service.ClientViewMerchantDishService;
 import service.impl.ClientViewMerchantDishServiceImpl;
 
-public class LoadMerchantDishServlet extends HttpServlet {
-
-	private static final long serialVersionUID = 1L;
+public class ShowAllDishesServlet extends HttpServlet {
 	
+	private static final long serialVersionUID = 1L;
 	private ClientViewMerchantDishService cvmds = new ClientViewMerchantDishServiceImpl();
-
+   
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Store to request attribute
 		List<Dish> dishList = cvmds.findAllDish();
+		request.setAttribute("dishes", dishList);
 		
-		
-		request.setAttribute("dishs", dishList);
-		
-  	    request.getRequestDispatcher("clientIndex.jsp").forward(request, response);   //accpeted and view DISH info jsp 
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		// Forward to index page
+  	    request.getRequestDispatcher("clientIndex.jsp").forward(request, response);
 	}
 
 }
