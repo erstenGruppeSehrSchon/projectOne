@@ -17,6 +17,7 @@ import object.merchant.Merchant;
 import service.MerchantRegisterService;
 import service.impl.MerchantRegisterServiceImpl;
 import util.PasswordEncrypter;
+import util.SendJMSRequestUtil;
 
 /**
  * Servlet implementation class MerchantRegisterServlet
@@ -98,9 +99,17 @@ public class MerchantRegisterServlet extends HttpServlet {
 		if((result = getMerchantRegisterService().addMerchant(merchant)) != -1){
 			System.out.println("add merchant success");
 			
+			// call jms
+			try {
+				SendJMSRequestUtil.sendRegisterRequest(result);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			// wait admin to accept page
 			// still can modify shop name, shop logo, shop tel, shop address
-			request.setAttribute("id", result);
+			request.setAttribute("mid", result);
 			request.getRequestDispatcher("xxxxxxxxxxxxxxxxxxxxxxxxx").forward(request, response);
 		}
 		else{
