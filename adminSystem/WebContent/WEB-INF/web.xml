@@ -34,4 +34,14 @@
     <servlet-name>ShowMerchantDetailsServlet</servlet-name>
     <url-pattern>/showMerchantDetails</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>JMSListenerServlet</display-name>
+    <servlet-name>JMSListenerServlet</servlet-name>
+    <servlet-class>servlet.JMSListenerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>JMSListenerServlet</servlet-name>
+    <url-pattern>/JMSListener</url-pattern>
+  </servlet-mapping>
 </web-app>
