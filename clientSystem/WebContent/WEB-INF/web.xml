@@ -4,6 +4,19 @@
   <welcome-file-list>
     <welcome-file>ShowAllDishes</welcome-file>
   </welcome-file-list>
+  <filter>
+    <display-name>ExceptionFilter</display-name>
+    <filter-name>ExceptionFilter</filter-name>
+    <filter-class>filter.ExceptionFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>ExceptionFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>INCLUDE</dispatcher>
+    <dispatcher>ERROR</dispatcher>
+  </filter-mapping>
   <servlet>
     <description></description>
     <display-name>ShowAllDishesServlet</display-name>
