@@ -37,12 +37,12 @@ public class AdminMerchantDaoImpl implements AdminMerchantDao{
 			
 			if (rs.next()){
 				aMerchant = new AdminMerchant();
-				aMerchant.setId(rs.getInt("MID"));
+				aMerchant.setMid(rs.getInt("MID"));
 				aMerchant.setName(rs.getString("NAME"));
 				aMerchant.setAge(rs.getInt("AGE"));
 				aMerchant.setGender(rs.getString("GENDER"));
 				aMerchant.setStatus(rs.getString("STATUS"));
-				aMerchant.setReg_date(rs.getDate("REG_DATE"));
+				aMerchant.setRegDate(rs.getDate("REG_DATE"));
 			}
 			
 		} catch (SQLException e) {
@@ -82,12 +82,12 @@ public class AdminMerchantDaoImpl implements AdminMerchantDao{
 			
 			while (rs.next()) {
 				AdminMerchant aMerchant = new AdminMerchant();
-				aMerchant.setId(rs.getInt("MID"));
+				aMerchant.setMid(rs.getInt("MID"));
 				aMerchant.setName(rs.getString("Name"));
 				aMerchant.setAge(rs.getInt("AGE"));
 				aMerchant.setGender(rs.getString("GENDER"));
 				aMerchant.setStatus(rs.getString("STATUS"));
-				aMerchant.setReg_date(rs.getDate("REG_DATE"));
+				aMerchant.setRegDate(rs.getDate("REG_DATE"));
 				aMerchants.add(aMerchant);
 			}
 			
@@ -116,12 +116,12 @@ public class AdminMerchantDaoImpl implements AdminMerchantDao{
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				AdminMerchant aMerchant = new AdminMerchant();
-				aMerchant.setId(rs.getInt("MID"));
+				aMerchant.setMid(rs.getInt("MID"));
 				aMerchant.setName(rs.getString("NAME"));
 				aMerchant.setAge(rs.getInt("AGE"));
 				aMerchant.setGender(rs.getString("GENDER"));
 				aMerchant.setStatus(rs.getString("STATUS"));
-				aMerchant.setReg_date(rs.getDate("REG_DATE"));
+				aMerchant.setRegDate(rs.getDate("REG_DATE"));
 				aMerchants.add(aMerchant);
 			}
 		} catch (SQLException e) {
@@ -150,12 +150,12 @@ public class AdminMerchantDaoImpl implements AdminMerchantDao{
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				AdminMerchant aMerchant = new AdminMerchant();
-				aMerchant.setId(rs.getInt("MID"));
+				aMerchant.setMid(rs.getInt("MID"));
 				aMerchant.setName(rs.getString("NAME"));
 				aMerchant.setAge(rs.getInt("AGE"));
 				aMerchant.setGender(rs.getString("GENDER"));
 				aMerchant.setStatus(rs.getString("STATUS"));
-				aMerchant.setReg_date(rs.getDate("REG_DATE"));
+				aMerchant.setRegDate(rs.getDate("REG_DATE"));
 				aMerchants.add(aMerchant);
 			}
 		} catch (SQLException e) {
