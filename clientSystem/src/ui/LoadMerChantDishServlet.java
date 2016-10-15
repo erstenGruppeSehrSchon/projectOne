@@ -34,13 +34,12 @@ public class LoadMerChantDishServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		List<Dish> DishList = CVMDS.findAllDish();
+		List<Dish> dishList = CVMDS.findAllDish();
+		
+		// Store to request attribute
+		request.setAttribute("dishs", dishList);
+		
   	    request.getRequestDispatcher("clientIndex.jsp").forward(request, response);   //accpeted and view DISH info jsp 
-	
-		
-		
-
-		
 	}
 
 	/**
