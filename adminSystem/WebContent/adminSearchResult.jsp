@@ -34,6 +34,7 @@
 		</ul>
 </div>
 <div class = "adminContainer">
+<h4>Search Criteria: </h4>
 <table id = "adminContainerShowResult" class = "table">
 	<tr>
 		<th>User Id</th>
