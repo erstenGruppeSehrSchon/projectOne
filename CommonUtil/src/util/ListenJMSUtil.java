@@ -1,7 +1,6 @@
 package util;
 
 import java.io.IOException;
-
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
@@ -11,16 +10,13 @@ import javax.jms.MessageConsumer;
 import javax.jms.MessageListener;
 import javax.jms.Session;
 import javax.jms.TextMessage;
-
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.command.ActiveMQQueue;
-
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import object.merchant.AdminMerchant;
 import object.merchant.MeMerchant;
+import object.merchant.Merchant;
 import service.MerchantManager;
 import service.impl.MerchantManagerImpl;
 
@@ -52,25 +48,21 @@ public class ListenJMSUtil {
 					
 					MeMerchant m = mapper.readValue(msg.getText(), MeMerchant.class);
 					MeMerchant merchant = mm.findMeMerchantById(m.getMid());
-					AdminMerchant adMerchant = new AdminMerchant();
+					Merchant adMerchant = new Merchant();
 					adMerchant.setMid(merchant.getMid());
 					adMerchant.setName(merchant.getName());
 					adMerchant.setBirth(merchant.getBirth());
 					adMerchant.setGender(merchant.getGender());
 					adMerchant.setStatus(merchant.getStatus());
 					adMerchant.setRegDate(merchant.getRegDate());
-					mm.setAdminMerchant(adMerchant);						
+					mm.setMerchant(adMerchant);						
 				} catch (JMSException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (JsonParseException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (JsonMappingException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}

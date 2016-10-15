@@ -1,11 +1,10 @@
 package service.impl;
 
-import java.util.List;
-
+import java.util.ArrayList;
+import object.Dish;
 import dao.DishDao;
 import dao.impl.DishDaoImpl;
-import po.Dish;
-import po.DishImage;
+
 import service.ClientViewMerchantDishService;
 
 public class ClientViewMerchantDishServiceImpl implements ClientViewMerchantDishService{
@@ -14,32 +13,13 @@ public class ClientViewMerchantDishServiceImpl implements ClientViewMerchantDish
 
 	@Override
 	public Dish loadDish(int id) {
-		return dish.loadDish(id);
+		return dish.getDishByDid(id);
 		
 	}
+	
 	@Override
-	public List<Dish> findAllDish() {
-		// TODO Auto-generated method stub
+	public ArrayList<Dish> findAllDish() {
 		return dish.findAllDish();
 	}
-	
-	
-
-
-	@Override
-	public DishImage loadDishImage(int id) {
-		// TODO Auto-generated method stub
-		return dish.loadDishImage(id);
-	}
-
-	@Override
-	public List<DishImage> findAllDishImage() {
-		// TODO Auto-generated method stub
-		return dish.findAllDishImage();
-	}
-
-	
-
-	
 
 }

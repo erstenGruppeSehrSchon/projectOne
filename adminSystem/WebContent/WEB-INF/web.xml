@@ -55,17 +55,6 @@
     <servlet-name>UpdateMerchantStatusServlet</servlet-name>
     <url-pattern>/updateMerchantStatus</url-pattern>
   </servlet-mapping>
-  <filter>
-    <display-name>RequestFilter</display-name>
-    <filter-name>RequestFilter</filter-name>
-    <filter-class>filter.RequestFilter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>RequestFilter</filter-name>
-    <url-pattern>/adminIndex.jsp</url-pattern>
-    <url-pattern>/adminSearchMerchantDetails.jsp</url-pattern>
-    <url-pattern>/showMerchantDetails.jsp</url-pattern>
-  </filter-mapping>
   <servlet>
     <description></description>
     <display-name>ShowOutstandingServlet</display-name>
@@ -76,4 +65,31 @@
     <servlet-name>ShowOutstandingServlet</servlet-name>
     <url-pattern>/ShowOutstanding</url-pattern>
   </servlet-mapping>
+  <filter>
+    <display-name>ExceptionFilter</display-name>
+    <filter-name>ExceptionFilter</filter-name>
+    <filter-class>filter.ExceptionFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>ExceptionFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>INCLUDE</dispatcher>
+    <dispatcher>ERROR</dispatcher>
+  </filter-mapping>
+    <filter>
+    <display-name>RequestFilter</display-name>
+    <filter-name>RequestFilter</filter-name>
+    <filter-class>filter.RequestFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>RequestFilter</filter-name>
+    <url-pattern>/adminIndex.jsp</url-pattern>
+    <url-pattern>/adminSearchMerchantDetails.jsp</url-pattern>
+    <url-pattern>/showMerchantDetails.jsp</url-pattern>
+    <url-pattern>/showMerchantDetails</url-pattern>
+    <url-pattern>/SearchMerchantByCriteria</url-pattern>
+    <url-pattern>/ShowOutstanding</url-pattern>
+  </filter-mapping>
 </web-app>

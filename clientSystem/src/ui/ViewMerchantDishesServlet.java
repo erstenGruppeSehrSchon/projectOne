@@ -19,9 +19,6 @@ import service.impl.ClientViewMerchantInfoServiceImpl;
 import service.impl.MerchantManagerImpl;
 import service.impl.ShopManagerImpl;
 
-/**
- * Servlet implementation class ViewMerchantDishesServlet
- */
 public class ViewMerchantDishesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private int DID = -1;
@@ -62,7 +59,7 @@ public class ViewMerchantDishesServlet extends HttpServlet {
 			request.setAttribute(Constant.MERCHANT_PARAMETER_MID, MID);
 			request.setAttribute(Constant.MERCHANT_DISH_DID, DID);
 			
-			request.setAttribute("DishImage",CVD.loadDishImage(DID));
+			//request.setAttribute("DishImage",CVD.loadDishImage(DID));
 			request.setAttribute("Dish", CVD.loadDish(DID));
 			request.setAttribute("Merchant", MM.findMeMerchantById(MID));
 			

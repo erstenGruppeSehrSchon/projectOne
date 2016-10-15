@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="css/stylesheet.css">
 </head>
 <body>
+<<<<<<< HEAD
 <div class="container">
   <header>
     <div id="logo"><a href="./clientIndex.jsp"><img src="img/logo.png" alt=""></a></div>
@@ -26,12 +27,39 @@
   <div id="main">
 	<table>
 	<c:forEach var="dish" items="${dishs}">
+=======
+<div class = "headerBar">
+	<div>
+		<h3>-Qing Mi Ji Rou Chang-</h3>
+		<h4>Client Page</h4>
+	</div>
+</div>
+<div class="dropdown">
+		<button class="btn dropdown-toggle" type="button" data-toggle="dropdown"><span class = "glyphicon glyphicon-align-justify"></span>
+		<span class="caret"></span></button>
+		<ul class="dropdown-menu">
+		  <li><a href="#">Search</a></li>
+		  <li class="divider"></li>
+		  <li><a href="#">My Profile</a></li>
+		  <li><a href="./adminLogin.html">Logout</a></li>
+		</ul>
+</div>
+<div class = "container">
+
+<table id = "clientContainerIndexView">
+	<c:forEach var="dish" items="${dishes}">
+>>>>>>> Client_clientIndex
 		<tr>
 			<td colspan="3"><h3>-${dish.name}-</h3></td>
 		</tr>
 		<tr>
+<<<<<<< HEAD
 			<c:forEach var="dishImage" items="${dish.images}">
 				<td><a href="showdish?MerchantId=${dish.sid}& DishId=${dish.did"}></a><img src="${disImage.imgPath}"/></td>
+=======
+			<c:forEach var="dishImage" items="${dish.dishImages}">
+				<td><a href="showDish?merchantId=${dish.sid}&dishId=${dish.did}"><img src="${dishImage.imgPath}"/></td>
+>>>>>>> Client_clientIndex
 			</c:forEach>
 		</tr>
 	</c:forEach>

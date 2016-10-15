@@ -7,16 +7,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import object.merchant.AdminMerchant;
-
-import dao.AdminMerchantDao;
-import dao.impl.AdminMerchantDaoImpl;
+import object.merchant.Merchant;
+import dao.MerchantDao;
+import dao.impl.MerchantDaoImpl;
 
 public class SearchMerchantByCriteriaServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-    private AdminMerchantDao am = new AdminMerchantDaoImpl();
+    private MerchantDao md = new MerchantDaoImpl();
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -40,7 +38,7 @@ public class SearchMerchantByCriteriaServlet extends HttpServlet {
 		}
 		
 		// Search merchant based on input
-		ArrayList<AdminMerchant> aMerchants = am.getMerchantByCriteria(id, name, ageIndex, gender, regDate);
+		ArrayList<Merchant> aMerchants = md.getMerchantByCriteria(id, name, ageIndex, gender, regDate);
 
 		// Store search result and forward to result page
 		request.setAttribute("aMerchants", aMerchants);

@@ -47,6 +47,7 @@ public class ViewMerchantInfoServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+<<<<<<< HEAD
           try {
   			
         	   MID = Integer.parseInt(request.getParameter(Constant.MERCHANT_PARAMETER_MID));
@@ -57,6 +58,16 @@ public class ViewMerchantInfoServlet extends HttpServlet {
       		}
           
           if (MID>0){
+=======
+		/*
+          int id = Integer.parseInt(request.getParameter(Constant.MERCHANT_PARAMETER_MID));        
+          if(CM.isMerchanAccept(id)){
+        	  request.setAttribute(Constant.MERCHANT_PARAMETER_MID, id);
+        	  request.setAttribute(Constant.MERCHANT_PARAMETER_MID, id);
+        	  
+
+        	  
+>>>>>>> Client_clientIndex
         	  
         	  M = MM.findMeMerchantById(MID);
         	  
@@ -73,11 +84,15 @@ public class ViewMerchantInfoServlet extends HttpServlet {
           
           
           
+<<<<<<< HEAD
           }else{
         	  System.out.println("ID not FOUND");
           }
           
           
+=======
+          */
+>>>>>>> Client_clientIndex
           
 
 		
