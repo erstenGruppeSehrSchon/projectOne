@@ -33,6 +33,7 @@
 		</ul>
 </div>
 <div class = "adminContainer">
+${message}
 <table id = "adminContainerTable" border = "1">
 	<tr>
 		<td class = "adminContainerTableTitlte"><span class = "glyphicon glyphicon-user"></span> Outstanding List</td>
@@ -50,7 +51,6 @@
 				</tr>
 			</c:forEach>
 		</table>
-		${message}
 		</td>
 		<td>
 			<form action="SearchMerchantByCriteria" method="get">

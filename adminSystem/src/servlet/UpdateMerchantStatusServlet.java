@@ -5,7 +5,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import service.AdminMerchantManager;
 import service.impl.AdminMerchantManagerImpl;
 
@@ -26,8 +25,9 @@ public class UpdateMerchantStatusServlet extends HttpServlet {
 		} else {
 			request.setAttribute("message", "Fail to update, pls try again!");
 		}
-		request.setAttribute("am", amm.getOutstandingMerchants());
-		request.getRequestDispatcher("adminIndex.jsp").forward(request, response);
+		
+		// Forward to ShowOutstanding servlet for getting outstanding merchant list
+		request.getRequestDispatcher("ShowOutstanding").forward(request, response);
 	}
 	
 	@Override
