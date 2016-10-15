@@ -1,0 +1,34 @@
+/*Genral Setting*/
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+
+.headerBar{
+	width: 100%;
+	padding: 15px;
+	background: #DDDDDD;
+	text-align: center;
+}
+
+.container{
+	margin: 0px auto;
+	padding: 20px;
+	width: 80%;
+}
+
+#containerColume{
+	
+}
+
+#clientContainerIndexView{
+	margin: 0px auto;
+	width: 80%;
+	text-align: center;
+}
+
+#clientContainerIndexView img{
+	margin: 5px;
+	max-width:300px;
+}
