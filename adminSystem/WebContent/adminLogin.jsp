@@ -28,6 +28,8 @@
 					<input name="adminLoginPassword" type="text" class="form-control" placeholder="Password"> 
 				</div>
 				<br/>
+				${errorMsg}
+				<br/>
 				<input type="submit" value="Login" class="btn btn-default">
 			</form>
 		</div>

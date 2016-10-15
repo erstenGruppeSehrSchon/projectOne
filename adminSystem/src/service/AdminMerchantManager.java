@@ -8,5 +8,6 @@ public interface AdminMerchantManager {
 	public AdminMerchant getMerchantById(int id);
 	public ArrayList<AdminMerchant> getAllMerchants();
 	public ArrayList<AdminMerchant> getOutstandingMerchants();
+	public boolean updateMerchantStatus(String status, int id);
 	
 }

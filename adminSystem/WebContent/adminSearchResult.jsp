@@ -30,7 +30,7 @@
 		  <li><a href="#">Search</a></li>
 		  <li class="divider"></li>
 		  <li><a href="#">My Profile</a></li>
-		  <li><a href="./adminLogin.html">Logout</a></li>
+		  <li><a href="./adminLogin.jsp">Logout</a></li>
 		</ul>
 </div>
 <div class = "adminContainer">

@@ -16,5 +16,6 @@ public interface AdminMerchantDao {
 	public AdminMerchant getMerchantById(int id);
 	public ArrayList<AdminMerchant> getMerchantByStatus(String status);
 	public ArrayList<AdminMerchant> getMerchantByCriteria(Integer id, String name, Integer ageIndex, String gender, String regDate);
+	public boolean updateMerchantStatus(String status, int id);
 
 }

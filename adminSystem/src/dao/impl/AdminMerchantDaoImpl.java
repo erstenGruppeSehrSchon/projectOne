@@ -167,4 +167,31 @@ public class AdminMerchantDaoImpl implements AdminMerchantDao{
 		return aMerchants;
 	}
 
+	@Override
+	public boolean updateMerchantStatus(String status, int id) {
+		String sql = "update A_MERCHANT set STATUS = ? where MID = ?";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		conn = DBUtil.createConnection();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, status);
+			pstmt.setInt(2, id);
+			result = pstmt.executeUpdate();
+			if (result == 0) {
+				return false;
+			} else {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.free(conn, pstmt, null);
+		}
+		
+		return false;
+	}
+
 }

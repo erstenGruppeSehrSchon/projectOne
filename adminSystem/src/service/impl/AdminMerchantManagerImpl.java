@@ -25,4 +25,9 @@ public class AdminMerchantManagerImpl implements AdminMerchantManager {
 		ArrayList<AdminMerchant> outstandingMerchants = ad.getMerchantByStatus(AdminMerchantDao.STATUS_PENDING);
 		return outstandingMerchants;
 	}
+
+	@Override
+	public boolean updateMerchantStatus(String status, int id) {
+		return ad.updateMerchantStatus(status, id);
+	}
 }

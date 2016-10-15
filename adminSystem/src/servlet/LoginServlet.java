@@ -21,21 +21,17 @@ public class LoginServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("adminLoginName");
-		System.out.println(id);
 		String password = request.getParameter("adminLoginPassword");
-		System.out.println(password);
-		System.out.println(PasswordEncrypter.getPasswordEncrypter().getEncryptedPassword(password));
 		if (checkLogin(id, PasswordEncrypter.getPasswordEncrypter().getEncryptedPassword(password))) {
 			request.setAttribute("am", amm.getOutstandingMerchants());
 			request.getRequestDispatcher("adminIndex.jsp").forward(request, response);
 		} else {
 			request.setAttribute("errorMsg", "Login Fail!");
-			request.getRequestDispatcher("adminLogin.html").forward(request, response);
+			request.getRequestDispatcher("adminLogin.jsp").forward(request, response);
 		}
 	}
 	
 	public boolean checkLogin(String id, String password) {
-		System.out.println((as.getAdmin(id, password) != null));
 		return as.getAdmin(id, password) != null;
 	}
 
