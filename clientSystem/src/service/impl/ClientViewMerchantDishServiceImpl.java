@@ -4,8 +4,8 @@ import java.util.List;
 
 import dao.DishDao;
 import dao.impl.DishDaoImpl;
-import object.Dish;
-import object.DishImage;
+import po.Dish;
+import po.DishImage;
 import service.ClientViewMerchantDishService;
 
 public class ClientViewMerchantDishServiceImpl implements ClientViewMerchantDishService{

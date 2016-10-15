@@ -36,17 +36,18 @@
 		<tr>
 			<td>
 			<div>
-				<p>Name:</p>
+				<p>Name: ${Dish.name})</p>
 				<p>Like Dislike</p>
-				<p>Type:</p>
-				<p>Price:</p>
-				<p>Active:</p>
+				<p>Type:  ${Dish.type}</p>
+				<p>Price:  ${Dish.price}</p>
+				<p>Active:  ${Dish.active}</p>
 			</div>
 			</td>
 			<td>
 			<div>
-				<img src = "https://g-search2.alicdn.com/bao/uploaded/i2/18451023137110950/T1RBSCXDtgXXXXXXXX_!!0-item_pic.jpg_240x240q50"/>
-			</div>
+				<!--<img src = "https://g-search2.alicdn.com/bao/uploaded/i2/18451023137110950/T1RBSCXDtgXXXXXXXX_!!0-item_pic.jpg_240x240q50"/> -->
+                 <img src="${DishImage.path}" />		
+                 </div>
 			</td>
 		</tr>
 		<tr>
@@ -58,7 +59,7 @@
 			<td>
 			<div>
 			<p>-Merchant-</p>
-			<a href = "./showMerchantDetails.html"><img src= "http://www.icon2s.com/img256/256x256-black-white-android-user.png"/>
+			<a href = "showmerchant?MerchantId=${Merchant.}"><img src= "http://www.icon2s.com/img256/256x256-black-white-android-user.png"/>
 			<p>Name: Merchant Name</p></img></a>		
 			</div>
 			</td>

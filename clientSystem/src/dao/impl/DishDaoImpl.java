@@ -1,7 +1,7 @@
 package dao.impl;
 
-import object.Dish;
-import object.DishImage;
+import po.Dish;
+import po.DishImage;
 
 
 

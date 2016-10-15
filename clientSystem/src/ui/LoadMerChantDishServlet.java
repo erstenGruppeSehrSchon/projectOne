@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import object.Dish;
+import po.Dish;
 import service.ClientManager;
 import service.ClientViewMerchantDishService;
 import service.impl.ClientManagerImpl;
@@ -35,6 +35,7 @@ public class LoadMerChantDishServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		List<Dish> DishList = CVMDS.findAllDish();
+  	    request.getRequestDispatcher("clientIndex.jsp").forward(request, response);   //accpeted and view DISH info jsp 
 	
 		
 		

@@ -2,8 +2,8 @@ package dao;
 
 import java.util.List;
 
-import object.Dish;
-import object.DishImage;
+import po.Dish;
+import po.DishImage;
 
 public interface DishDao {
 	
