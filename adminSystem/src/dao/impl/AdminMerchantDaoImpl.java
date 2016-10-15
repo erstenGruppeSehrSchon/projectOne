@@ -76,7 +76,7 @@ public class AdminMerchantDaoImpl implements AdminMerchantDao{
 			pstmt.setInt(4, AGE_RANGE[ageIndex][1]);
 			pstmt.setInt(5, ageIndex == 0 ? 1 : 0 );	// Bypass age check if 0
 			pstmt.setString(6, gender);
-			pstmt.setString(7, regDate == null ? "1111-11-11" : regDate);System.out.println(regDate);
+			pstmt.setString(7, regDate == null ? "1111-11-11" : regDate);
 			pstmt.setInt(8, regDate == null ? 1 : 0);	// Bypass registration date check if null
 			rs = pstmt.executeQuery();
 			

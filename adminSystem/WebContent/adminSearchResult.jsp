@@ -43,8 +43,8 @@
 	</tr>		
 	<c:forEach var="merchant" items="${aMerchants}">
 		<tr>
-			<td><a href="./showMerchantDetails.html">${merchant.id}</a></td>
-			<td><a href="./showMerchantDetails.html">${merchant.name}</a></td>
+			<td><a href="GetMerchant?id=${merchant.id}">${merchant.id}</a></td>
+			<td><a href="GetMerchant?id=${merchant.id}">${merchant.name}</a></td>
 			<td>${merchant.status}</td>
 			<th><a href="./editMerchantDetails.html" class="btn btn-default">Edit</a></th>
 		</tr>
