@@ -1,7 +1,6 @@
 package util;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,7 +24,6 @@ public class DBUtil {
 			ds.setUsername(userName);
 			ds.setPassword(pw);
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -39,7 +37,6 @@ public class DBUtil {
 		try {
 			con= ds.getConnection();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -58,7 +55,6 @@ public class DBUtil {
 				con.close();
 			}
 		}catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

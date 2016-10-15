@@ -4,19 +4,22 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import dao.MerchantDao;
-import object.merchant.AdminMerchant;
 import object.merchant.MeMerchant;
+import object.merchant.Merchant;
 import util.DBUtil;
 
 public class MerchantDaoImpl implements MerchantDao {
+	
 	public MeMerchant findMeMerchantById(int id){
 		MeMerchant m =null;
+		
 		String sql = "select * from M_MERCHANT WHERE MID = ?";
+		
 		Connection con=null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
+		
 		con=DBUtil.createConnection();
 		try {
 			pst=con.prepareStatement(sql);
@@ -33,7 +36,6 @@ public class MerchantDaoImpl implements MerchantDao {
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally{
@@ -43,23 +45,24 @@ public class MerchantDaoImpl implements MerchantDao {
 	}
 
 	@Override
-	public void setAdminMerchant(AdminMerchant adminMerchant) {
-		// TODO Auto-generated method stub
+	public void setMerchant(Merchant merchant) {
 		String sql = "INSERT INTO A_MERCHANT VALUES (?, ?, ?, ?, ?, ?)";
+		
 		Connection con=null;
 		PreparedStatement pst = null;
 		con=DBUtil.createConnection();
+		
 		try {
 			pst=con.prepareStatement(sql);
-			pst.setInt(1, adminMerchant.getMid());
-			pst.setString(2, adminMerchant.getName());
-			pst.setDate(3, new java.sql.Date(adminMerchant.getBirth().getTime()));
-			pst.setString(4, adminMerchant.getGender());
-			pst.setString(5, adminMerchant.getStatus());
-			pst.setDate(6, new java.sql.Date(adminMerchant.getRegDate().getTime()));
+			pst.setInt(1, merchant.getMid());
+			pst.setString(2, merchant.getName());
+			pst.setDate(3, new java.sql.Date(merchant.getBirth().getTime()));
+			pst.setString(4, merchant.getGender());
+			pst.setString(5, merchant.getStatus());
+			pst.setDate(6, new java.sql.Date(merchant.getRegDate().getTime()));
 			pst.executeUpdate();
+			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally{
 			DBUtil.free(con, pst, null);

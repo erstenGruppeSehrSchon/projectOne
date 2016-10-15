@@ -5,11 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import dao.AdminMerchantDao;
-import object.merchant.AdminMerchant;
+import dao.MerchantDao;
+import object.merchant.Merchant;
 import util.DBUtil;
 
-public class AdminMerchantDaoImpl implements AdminMerchantDao{
+public class MerchantDaoImpl implements MerchantDao{
 	
 	private static String SQL_SELECT = "SELECT MID, NAME, ROUND((CURRENT_DATE - BIRTH_DATE)/365) AS AGE, GENDER, STATUS, REG_DATE FROM A_MERCHANT";
 	private static int[][] AGE_RANGE = new int[][]{
@@ -21,8 +21,8 @@ public class AdminMerchantDaoImpl implements AdminMerchantDao{
 		{80, 100}
 	};
 	
-	public AdminMerchant getMerchantById(int id) {
-		AdminMerchant aMerchant = null;
+	public Merchant getMerchantById(int id) {
+		Merchant aMerchant = null;
 		String sql = SQL_SELECT + " WHERE MID = ?";
 		
 		Connection conn = null;
@@ -36,7 +36,7 @@ public class AdminMerchantDaoImpl implements AdminMerchantDao{
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()){
-				aMerchant = new AdminMerchant();
+				aMerchant = new Merchant();
 				aMerchant.setMid(rs.getInt("MID"));
 				aMerchant.setName(rs.getString("NAME"));
 				aMerchant.setAge(rs.getInt("AGE"));
@@ -53,9 +53,9 @@ public class AdminMerchantDaoImpl implements AdminMerchantDao{
 	}
 	
 	@Override
-	public ArrayList<AdminMerchant> getMerchantByCriteria(Integer id, String name, Integer ageIndex, String gender, String regDate) {
+	public ArrayList<Merchant> getMerchantByCriteria(Integer id, String name, Integer ageIndex, String gender, String regDate) {
 	
-		ArrayList<AdminMerchant> aMerchants = new ArrayList<>();
+		ArrayList<Merchant> aMerchants = new ArrayList<>();
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -81,7 +81,7 @@ public class AdminMerchantDaoImpl implements AdminMerchantDao{
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
-				AdminMerchant aMerchant = new AdminMerchant();
+				Merchant aMerchant = new Merchant();
 				aMerchant.setMid(rs.getInt("MID"));
 				aMerchant.setName(rs.getString("Name"));
 				aMerchant.setAge(rs.getInt("AGE"));
@@ -101,9 +101,9 @@ public class AdminMerchantDaoImpl implements AdminMerchantDao{
 	}
 
 	@Override
-	public ArrayList<AdminMerchant> getAllMerchants() {
+	public ArrayList<Merchant> getAllMerchants() {
 		
-		ArrayList<AdminMerchant> aMerchants = new ArrayList<>();
+		ArrayList<Merchant> aMerchants = new ArrayList<>();
 		
 		String sql = SQL_SELECT;
 		Connection conn = null;
@@ -115,7 +115,7 @@ public class AdminMerchantDaoImpl implements AdminMerchantDao{
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				AdminMerchant aMerchant = new AdminMerchant();
+				Merchant aMerchant = new Merchant();
 				aMerchant.setMid(rs.getInt("MID"));
 				aMerchant.setName(rs.getString("NAME"));
 				aMerchant.setAge(rs.getInt("AGE"));
@@ -134,9 +134,9 @@ public class AdminMerchantDaoImpl implements AdminMerchantDao{
 	}
 
 	@Override
-	public ArrayList<AdminMerchant> getMerchantByStatus(String status) {
+	public ArrayList<Merchant> getMerchantByStatus(String status) {
 		
-		ArrayList<AdminMerchant> aMerchants = new ArrayList<>();
+		ArrayList<Merchant> aMerchants = new ArrayList<>();
 		
 		String sql = SQL_SELECT + " WHERE STATUS = ?";
 		Connection conn = null;
@@ -149,7 +149,7 @@ public class AdminMerchantDaoImpl implements AdminMerchantDao{
 			pstmt.setString(1, status);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				AdminMerchant aMerchant = new AdminMerchant();
+				Merchant aMerchant = new Merchant();
 				aMerchant.setMid(rs.getInt("MID"));
 				aMerchant.setName(rs.getString("NAME"));
 				aMerchant.setAge(rs.getInt("AGE"));
