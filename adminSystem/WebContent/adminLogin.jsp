@@ -23,21 +23,20 @@
   <div id="main">
 	 <div class="block-divider"></div>
 		<form id="admin-login-form" action="login" method="POST">
-				<div class="input-group">
-					<span class="input-group-addon"><span class = "glyphicon glyphicon-user"></span></span>
-					<input name="adminLoginName" type="text" class="form-control" placeholder="Username">
-				</div>
-				<br/>
-				<div class="input-group">
-					<span class="input-group-addon"><span class = "glyphicon glyphicon-menu-right"></span></span>
-					<input name="adminLoginPassword" type="text" class="form-control" placeholder="Password"> 
-				</div>
-				<br/>
-				<div id="admin-logn-form-error">${errorMsg}</div>
-				<br/>
-				<input type="submit" value="Login" class="btn btn-default">
-			</form>
-	  </form>
+			<div class="input-group">
+				<span class="input-group-addon"><span class = "glyphicon glyphicon-user"></span></span>
+				<input name="adminLoginName" type="text" class="form-control" placeholder="Username">
+			</div>
+			<br/>
+			<div class="input-group">
+				<span class="input-group-addon"><span class = "glyphicon glyphicon-menu-right"></span></span>
+				<input name="adminLoginPassword" type="text" class="form-control" placeholder="Password"> 
+			</div>
+			<br/>
+			<div id="admin-logn-form-error">${errorMsg}</div>
+			<br/>
+			<input type="submit" value="Login" class="btn btn-default">
+		</form>
   </div>
 </div>
 </body>
