@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,20 +28,29 @@
 	<div class = "Container">
 		<div id = "containerForm">
 		<h5>-Merchant Login-</h5>
-			<form>
+			<form action="login" method="POST">
 				<div class="input-group">
 					<span class="input-group-addon"><span class = "glyphicon glyphicon-user"></span></span>
-					<input id="adminLoginName" type="text" class="form-control" placeholder="Username">
+					<input id="username" name="username" type="text" class="form-control" placeholder="Username">
 				</div>
 				<br/>
 				<div class="input-group">
 					<span class="input-group-addon"><span class = "glyphicon glyphicon-menu-right"></span></span>
-					<input id="adminLoginPassword" type="password" class="form-control" placeholder="Password"> 
+					<input id="password" name="password" type="password" class="form-control" placeholder="Password"> 
 				</div>
 				<br/>
-				<p>Want to join us!? click <a href="./merchantRegistration.html">here!</a></p>
-				<a href="./merchantIndex.html" class="btn btn-default">Login</a>
+				<c:if test="${not empty errorMsg}">
+				   <c:out value="${errorMsg}"/>
+				</c:if>
+				<br/>
+				<br/>
+				<input type="submit" value="Login" class="btn btn-default">
+				<br/>
+				<br/>
 			</form>
+			<c:if test="${empty status}">
+				<p>Want to join us!? click <a href="./merchantRegistration.jsp">here!</a></p>
+			</c:if>
 		</div>
 	</div>
 </body>

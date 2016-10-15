@@ -19,8 +19,20 @@ public class MerchantRegisterServiceImpl implements MerchantRegisterService{
 
 	@Override
 	public int addMerchant(MeMerchant merchant) {
+		// check field empty
+		if(merchant.getUserName() == null || merchant.getUserName().equals(""))
+			return -1;
+		if(merchant.getPassword() ==null || merchant.getPassword().equals(""))
+			return -1;
+		if(merchant.getName() == null || merchant.getName().equals(""))
+			return -1;
+		if(merchant.getGender() == null || merchant.getGender().equals(""))
+			return -1;
+		if(merchant.getBirth() == null)
+			return -1;
+		
 		// return mid, -1 if failed
-		return merchantRegisterDao.addMerchant(merchant);
+		return merchantRegisterDao.addMerchantWithoutShop(merchant);
 	}
 
 	@Override

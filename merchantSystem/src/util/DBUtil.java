@@ -69,8 +69,8 @@ public class DBUtil {
 			if (rs!=null){
 				rs.close();
 			}
-			if (pst!=null){
-				for(PreparedStatement ps: pst){
+			for(PreparedStatement ps: pst){
+				if (ps!=null){
 					ps.close();
 				}
 			}

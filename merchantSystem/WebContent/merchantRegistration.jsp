@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,16 +29,24 @@
 <div class = "container">
 <div id = "containerRegForm">
 <h2>Registration</h2>
-	<form action = "" method = "post">
+	<form action = "register" method = "post">
 	<table id = "merchantRegTable">
 		<tr>
+			<td>Username</td>
+			<td><input id="merchantUserName" name="merchantUserName" type="text" class="form-control"></td>
+		</tr>
+		<tr>
+			<td>Password</td>
+			<td><input id="merchantPassword" name="merchantPassword" type="text" class="form-control"></td>
+		</tr>
+		<tr>
 			<td>Name</td>
-			<td><input id="merchantRegName" type="text" class="form-control"></td>
+			<td><input id="merchantRegName" name="merchantRegName" type="text" class="form-control"></td>
 		</tr>
 		<tr>
 			<td>Gender</td>
 			<td>
-				<select class="form-control">
+				<select id="merchantGender" name="merchantGender" class="form-control">
 				  <option value="M">M</option>
 				  <option value="F">F</option>
 				  <option value="Unknown">Unknown</option>
@@ -41,22 +54,18 @@
 			</td>
 		</tr>
 		<tr>
-			<td>birthday</td>
-			<td><input type="date" id="searchMerchantRegistrationDate" class="form-control"></td>
-		</tr>
-		<tr>
-			<td>Icon</td>
-			<td>
-			<form action="FileUpload" method="POST" enctype="multipart/form-data">
-			<label class="btn btn-default">
-				 Choose<input type="file" name="searchMerchantIconFile" style="display: none;">
-			</label>
-			</form>
-			</td>
+			<td>Birthday</td>
+			<!--<td><input type="date" id="merchantBirthDate" name="merchantBirthDate" class="form-control"></td>-->
+			<td><input type="text" id="merchantBirthDate" name="merchantBirthDate" class="form-control"></td>
 		</tr>
 	</table>
 	<!--<input type="submit" class ="btn"/>-->
-	<button class ="btn">Submit</button>
+	<br/>
+	<c:if test="${not empty errorMsg}">
+		<c:out value="${errorMsg}"/>
+	</c:if>
+	<br/>
+	<input type="submit" value="Register" class="btn btn-default">
 	</form>
 </div>
 </div>

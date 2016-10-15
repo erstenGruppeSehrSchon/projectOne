@@ -2,21 +2,49 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>merchantSystem</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>merchantLogin.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
     <description></description>
     <display-name>ShowCaptcha</display-name>
     <servlet-name>ShowCaptcha</servlet-name>
-    <servlet-class>service.impl.ShowCaptchaServlet</servlet-class>
+    <servlet-class>servlet.ShowCaptchaServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ShowCaptcha</servlet-name>
     <url-pattern>/ShowCaptcha</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>MerchantLoginServlet</display-name>
+    <servlet-name>MerchantLoginServlet</servlet-name>
+    <servlet-class>servlet.MerchantLoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MerchantLoginServlet</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>MerchantRegisterServlet</display-name>
+    <servlet-name>MerchantRegisterServlet</servlet-name>
+    <servlet-class>servlet.MerchantRegisterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MerchantRegisterServlet</servlet-name>
+    <url-pattern>/register</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>ShowProfileServlet</display-name>
+    <servlet-name>ShowProfileServlet</servlet-name>
+    <servlet-class>servlet.ShowProfileServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowProfileServlet</servlet-name>
+    <url-pattern>/showProfile</url-pattern>
   </servlet-mapping>
 </web-app>
