@@ -7,15 +7,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import object.Merchant;
-import object.merchant.MeMerchant;
+
+
+
+import service.ClientManager;
+import service.ClientViewMerchantInfoService;
+import service.impl.ClientManagerImpl;
+import service.impl.ClientViewMerchantInfoServiceImpl;
+import constant.Constant;
 
 /**
  * Servlet implementation class ViewMerchantInfoServlet
  */
 public class ViewMerchantInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private MeMerchant merchant = new MeMerchant();
+    private ClientViewMerchantInfoService CVM = new ClientViewMerchantInfoServiceImpl();
     /**
      * Default constructor. 
      */
@@ -27,8 +33,25 @@ public class ViewMerchantInfoServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-          int id = Integer.parseInt(request.getParameter("MerchantId"));
-          MarchantManager.
+          int id = Integer.parseInt(request.getParameter(Constant.MERCHANT_PARAMETER_MID));        
+          if(CM.isMerchanAccept(id)){
+        	  request.setAttribute(Constant.MERCHANT_PARAMETER_MID, id);
+        	  request.setAttribute(Constant.MERCHANT_PARAMETER_MID, id);
+        	  
+
+        	  
+        	  
+        	  
+        	  
+        	  
+        	  request.getRequestDispatcher("showMerchantDetails.html").forward(request, response);   //accpeted and view info jsp 
+          }else if(!(CM.isMerchanAccept(id))){
+        	  request.getRequestDispatcher("xxxxxxx.jsp").forward(request, response);  //rejected jsp
+          }
+          
+          
+          
+          
           
           
 
