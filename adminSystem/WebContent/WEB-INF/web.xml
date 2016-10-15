@@ -2,7 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>adminSystem</display-name>
   <welcome-file-list>
-    <welcome-file>adminLogin.html</welcome-file>
+    <welcome-file>adminLogin.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
     <description></description>
@@ -55,4 +55,15 @@
     <servlet-name>UpdateMerchantStatusServlet</servlet-name>
     <url-pattern>/updateMerchantStatus</url-pattern>
   </servlet-mapping>
+  <filter>
+    <display-name>RequestFilter</display-name>
+    <filter-name>RequestFilter</filter-name>
+    <filter-class>filter.RequestFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>RequestFilter</filter-name>
+    <url-pattern>/adminIndex.jsp</url-pattern>
+    <url-pattern>/adminSearchMerchantDetails.jsp</url-pattern>
+    <url-pattern>/showMerchantDetails.jsp</url-pattern>
+  </filter-mapping>
 </web-app>

@@ -6,6 +6,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import object.Admin;
 
 import service.AdminMerchantManager;
 import service.AdminService;
@@ -18,21 +21,28 @@ public class LoginServlet extends HttpServlet {
 	
 	private AdminService as = new AdminServiceImpl();
 	private AdminMerchantManager amm = new AdminMerchantManagerImpl();
-
+	
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("adminLoginName");
 		String password = request.getParameter("adminLoginPassword");
-		if (checkLogin(id, PasswordEncrypter.getPasswordEncrypter().getEncryptedPassword(password))) {
-			request.setAttribute("am", amm.getOutstandingMerchants());
+		
+		PasswordEncrypter encrypter = PasswordEncrypter.getPasswordEncrypter();
+		Admin admin = as.getAdmin(id, encrypter.getEncryptedPassword(password));
+
+		if (admin != null) {
+			// Store admin to session
+			HttpSession session = request.getSession(true);
+			session.setAttribute("admin", admin);
+			
+			// Store outstanding merchants pending list
+			request.setAttribute("aMerchants", amm.getOutstandingMerchants());
 			request.getRequestDispatcher("adminIndex.jsp").forward(request, response);
 		} else {
 			request.setAttribute("errorMsg", "Login Fail!");
 			request.getRequestDispatcher("adminLogin.jsp").forward(request, response);
 		}
 	}
-	
-	public boolean checkLogin(String id, String password) {
-		return as.getAdmin(id, password) != null;
-	}
+
 
 }
