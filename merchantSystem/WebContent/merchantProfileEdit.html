@@ -22,34 +22,41 @@
 	</div>
 </div>
 <div class = "container">
-<div id = "containerRegForm">
-<h2>Add new Shop</h2>
-	<form action = "" method = "post">
-	<table id = "merchantRegTable">
-		<tr>
-			<td>Shop Name</td>
-			<td><input id="shopRegName" type="text" class="form-control"></td>
-		</tr>
-		<tr>
-			<td>Description</td>
-			<td><textarea id = "shopRegDescriptione" class="form-control" ></textarea></td>
-		</tr>
-		<tr>
-			<td>Shop image:</td>
-			<td>
-			<form action="FileUpload" method="POST" enctype="multipart/form-data">
+<table>
+	<tr>		
+		<th colspan = "3">-My Profile-</th>
+	</tr>
+	<tr>
+		<td rowspan="6"><img src= "http://www.icon2s.com/img256/256x256-black-white-android-user.png"/></td>
+		<td>Merchant Name:</td>
+		<td><input type = "text" class = "form-control"/></td>
+	</tr>
+	<tr>
+		<td>Password:</td>
+		<td><input type = "text" class = "form-control"/></td>
+	</tr>
+	<tr>
+		<td>Reenter password:</td>
+		<td><input type = "text" class = "form-control"/></td>
+	</tr>
+	<tr>
+		<td>Brithday:</td>
+		<td><input type = "text" class = "form-control"/></td>
+	</tr>
+	<tr>
+		<td>Gender:</td>
+		<td><input type = "text" class = "form-control"/></td>
+	</tr>
+	<tr>
+		<td>Icon:</td>
+		<td><form action="FileUpload" method="POST" enctype="multipart/form-data">
 			<label class="btn btn-default">
-				 Choose<input type="file" name="shopPicFile" style="display: none;">
+				 Choose<input type="file" name="searchMerchantIconFile" style="display: none;">
 			</label>
-			</form>
-			</td>
-		</tr>
-	</table>
-	<!--<input type="submit" class ="btn"/>-->
-	<!--<button class ="btn">Submit</button>-->
-	<a href="./merchantIndex.html" class="btn btn-default">Submit</a>
-	</form>
-</div>
+			</form></td>
+	</tr>
+</table>
+<a href="./merchantIndex.html" class="btn btn-default">Submit</a>
 </div>
 </body>
 </html>

@@ -22,34 +22,38 @@
 	</div>
 </div>
 <div class = "container">
-<div id = "containerRegForm">
-<h2>Add new Shop</h2>
-	<form action = "" method = "post">
-	<table id = "merchantRegTable">
-		<tr>
-			<td>Shop Name</td>
-			<td><input id="shopRegName" type="text" class="form-control"></td>
-		</tr>
-		<tr>
-			<td>Description</td>
-			<td><textarea id = "shopRegDescriptione" class="form-control" ></textarea></td>
-		</tr>
-		<tr>
-			<td>Shop image:</td>
-			<td>
-			<form action="FileUpload" method="POST" enctype="multipart/form-data">
-			<label class="btn btn-default">
-				 Choose<input type="file" name="shopPicFile" style="display: none;">
-			</label>
-			</form>
+<h3>Show Dish Name</h3>
+<table>
+	<tr>
+		<td>Dish Name</td>
+		<td><input type = "text" class = "form-control"/></td>
+	</tr>
+	<tr>
+		<td>Dish Type</td>
+		<td>
+			<select class="form-control">
+				  <option value="M">M</option>
+				  <option value="F">F</option>
+				  <option value="Unknown">Unknown</option>
+				</select>
 			</td>
-		</tr>
-	</table>
-	<!--<input type="submit" class ="btn"/>-->
-	<!--<button class ="btn">Submit</button>-->
-	<a href="./merchantIndex.html" class="btn btn-default">Submit</a>
-	</form>
-</div>
+	</tr>
+	<tr>
+		<td>Dish Prices</td>
+		<td><input type = "text" class = "form-control"/></td>
+	</tr>
+	<tr>
+		<td>Dish image</td>
+		<td><form action="FileUpload" method="POST" enctype="multipart/form-data">
+			<label class="btn btn-default">
+				 Choose<input type="file" name="searchMerchantIconFile" style="display: none;">
+			</label>
+			</form></td>
+	</tr>
+	
+</table>
+
+<a href="./merchantIndex.html" class="btn btn-default">Edit</a>
 </div>
 </body>
 </html>
