@@ -11,7 +11,7 @@ import util.DBUtil;
 
 public class AdminMerchantDaoImpl implements AdminMerchantDao{
 	
-	private static String SQL_SELECT = "SELECT MID, NAME, ROUND((CURRENT_DATE - BRITH_DATE)/365) AS AGE, GENDER, STATUS, REG_DATE FROM A_MERCHANT";
+	private static String SQL_SELECT = "SELECT MID, NAME, ROUND((CURRENT_DATE - BIRTH_DATE)/365) AS AGE, GENDER, STATUS, REG_DATE FROM A_MERCHANT";
 	private static int[][] AGE_RANGE = new int[][]{
 		{0, 0},
 		{0, 20},
@@ -66,9 +66,9 @@ public class AdminMerchantDaoImpl implements AdminMerchantDao{
 			String sql = SQL_SELECT + " WHERE " +
 					 	 "MID LIKE ? AND " +
 					 	 "NAME LIKE ? AND " +
-					 	 "(((CURRENT_DATE - BRITH_DATE)/365 >= ? AND (CURRENT_DATE - BRITH_DATE)/365 < ?) OR 1 = ?) AND " +
+					 	 "(((CURRENT_DATE - BIRTH_DATE)/365 >= ? AND (CURRENT_DATE - BIRTH_DATE)/365 < ?) OR 1 = ?) AND " +
 					 	 "GENDER LIKE ? AND " +
-					 	 "REG_DATE = TO_DATE(?) OR 1 = ?";
+					 	 "(TRUNC(REG_DATE, 'DD') = TO_DATE(?, 'YYYY-MM-DD') OR 1 = ?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id == null ? "%" : String.valueOf(id));
 			pstmt.setString(2, name == null ? "%" : "%" + name + "%");
@@ -76,7 +76,7 @@ public class AdminMerchantDaoImpl implements AdminMerchantDao{
 			pstmt.setInt(4, AGE_RANGE[ageIndex][1]);
 			pstmt.setInt(5, ageIndex == 0 ? 1 : 0 );	// Bypass age check if 0
 			pstmt.setString(6, gender);
-			pstmt.setString(7, regDate == null ? "1111-11-11" : regDate);
+			pstmt.setString(7, regDate == null ? "1111-11-11" : regDate);System.out.println(regDate);
 			pstmt.setInt(8, regDate == null ? 1 : 0);	// Bypass registration date check if null
 			rs = pstmt.executeQuery();
 			
@@ -87,7 +87,7 @@ public class AdminMerchantDaoImpl implements AdminMerchantDao{
 				aMerchant.setAge(rs.getInt("AGE"));
 				aMerchant.setGender(rs.getString("GENDER"));
 				aMerchant.setStatus(rs.getString("STATUS"));
-				aMerchant.setReg_date(rs.getDate("RED_DATE"));
+				aMerchant.setReg_date(rs.getDate("REG_DATE"));
 				aMerchants.add(aMerchant);
 			}
 			

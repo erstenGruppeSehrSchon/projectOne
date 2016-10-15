@@ -40,15 +40,15 @@
 		<th>User Name</th>
 		<th>Status</th>
 		<th>Edit</th>
-	</tr>
-	<tr>
-		<c:forEach var="merchant" items="${aMerchants}">
+	</tr>		
+	<c:forEach var="merchant" items="${aMerchants}">
+		<tr>
 			<td><a href="./showMerchantDetails.html">${merchant.id}</a></td>
 			<td><a href="./showMerchantDetails.html">${merchant.name}</a></td>
 			<td>${merchant.status}</td>
 			<th><a href="./editMerchantDetails.html" class="btn btn-default">Edit</a></th>
-		</c:forEach>
-	</tr>
+		</tr>
+	</c:forEach>
 </table>
 </div>
 </body>

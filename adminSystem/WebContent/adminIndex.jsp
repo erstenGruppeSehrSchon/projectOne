@@ -52,14 +52,14 @@
 		</table>
 		</td>
 		<td>
-			<form action="" method="get">
+			<form action="SearchMerchantByCriteria" method="get">
 				<table>
 					<tr><td>Merchant Id:</td><td><input type="text" name="id" id="searchMerchantId" class="form-control"/></td></tr>
 					<tr><td>Merchant Name:</td><td><input type="text" name="name" id="searchMerchantName" class="form-control"/></td></tr>
 					<tr><td>Age:</td>
 						<td>
 							<select name="ageIndex" class="form-control">
-							  <option value="0"></option>
+							  <option value="0" selected></option>
 							  <option value="1">0-20</option>
 							  <option value="2">21-40</option>
 							  <option value="3">40-60</option>
@@ -70,7 +70,7 @@
 					<tr><td>Gender:</td>
 						<td>
 							<select name="gender" class="form-control">
-							  <option value="%"></option>
+							  <option value="%" selected></option>
 							  <option value="M">M</option>
 							  <option value="F">F</option>
 							  <option value="Unknown">Unknown</option>
@@ -79,8 +79,8 @@
 					</tr>
 					<tr><td>Registration Date:</td><td><input type="date" name="regDate" id="searchMerchantRegistrationDate" class="form-control"></td></tr>
 				</table>
+				<button class = "btn">Search</button>
 			</form>
-			<a href = "SearchMerchantByCriteria"><button class = "btn">Search</button></a>
 		</td>
 	</tr>
 </table>
