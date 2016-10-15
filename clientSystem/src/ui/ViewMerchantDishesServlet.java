@@ -11,11 +11,13 @@ import service.ClientManager;
 import service.ClientViewMerchantDishService;
 import service.ClientViewMerchantInfoService;
 import service.MerchantManager;
+import service.ShopManager;
 import constant.Constant;
 import service.impl.ClientManagerImpl;
 import service.impl.ClientViewMerchantDishServiceImpl;
 import service.impl.ClientViewMerchantInfoServiceImpl;
 import service.impl.MerchantManagerImpl;
+import service.impl.ShopManagerImpl;
 
 /**
  * Servlet implementation class ViewMerchantDishesServlet
@@ -29,6 +31,7 @@ public class ViewMerchantDishesServlet extends HttpServlet {
 	private ClientViewMerchantDishService CVD = new ClientViewMerchantDishServiceImpl();
 	private ClientViewMerchantInfoService CVM = new ClientViewMerchantInfoServiceImpl();
 	private MerchantManager MM = new MerchantManagerImpl();
+	private ShopManager SM = new ShopManagerImpl();
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -46,20 +49,23 @@ public class ViewMerchantDishesServlet extends HttpServlet {
 		
 		try {
 			
-			
 	    DID = Integer.parseInt(request.getParameter(Constant.MERCHANT_DISH_DID));
 		MID = Integer.parseInt(request.getParameter(Constant.MERCHANT_PARAMETER_MID));
+		
 		}catch(NumberFormatException nfe){
 		     DID = -1;
 		     MID = -1;
 		}
 		
 		if((DID>=0)&&(MID>=0)){
+			
 			request.setAttribute(Constant.MERCHANT_PARAMETER_MID, MID);
 			request.setAttribute(Constant.MERCHANT_DISH_DID, DID);
+			
 			request.setAttribute("DishImage",CVD.loadDishImage(DID));
 			request.setAttribute("Dish", CVD.loadDish(DID));
 			request.setAttribute("Merchant", MM.findMeMerchantById(MID));
+			request.setAttribute("Shop", SM.findShopById(MID));
 			
 		
 			

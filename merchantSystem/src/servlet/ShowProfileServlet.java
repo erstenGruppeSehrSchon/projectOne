@@ -21,6 +21,13 @@ public class ShowProfileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private MerchantProfileService service = new MerchantProfileServiceImpl();
 
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doPost(req, resp);
+	}
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

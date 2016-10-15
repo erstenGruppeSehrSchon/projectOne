@@ -1,4 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -33,38 +36,42 @@
 		  <li><a href="./adminLogin.html">Logout</a></li>
 		</ul>
 </div>
-<div class = "container">
 
-<table id = "clientContainerIndexView">
-	<c:forEach var="dish" items="${dishs}">
+
+
+<div class = "container">
+	<table id = "containerColume" style = "width:100%">
 		<tr>
-			<td colspan="3"><h3>-${dish.name}-</h3></td>
+			<td>
+			<div>
+				<p>Name: ${Dish.name})</p>
+				<p>Like Dislike</p>
+				<p>Type:  ${Dish.type}</p>
+				<p>Price:  ${Dish.price}</p>
+				<p>Active:  ${Dish.active}</p>
+			</div>
+			</td>
+			<td>
+			<div>
+                 <img src="${DishImage.path}" />		
+                 </div>
+			</td>
 		</tr>
 		<tr>
-			<c:forEach var="dishImage" items="${dish.images}">
-				<td><a href="showdish?MerchantId=${dish.sid}& DishId=${dish.did"}><img src="${disImage.imgPath}"/></td>
-			</c:forEach>
+			<td>
+				<p>
+					-Comments-
+				</p>
+			</td>
+			<td>
+			<div>
+			<p>-Merchant-</p>
+			<a href = "showmerchant?MerchantId=${Merchant.mid}"><img src= "http://www.icon2s.com/img256/256x256-black-white-android-user.png"/>
+			<p>Name: Merchant Name</p></img></a>		
+			</div>
+			</td>
 		</tr>
-	</c:forEach>
-	<!--
-	<tr>
-		<td colspan="3"><h3>-雞肉腸-</h3></td>
-	</tr>
-	<tr>
-		<td><img src = "https://g-search2.alicdn.com/bao/uploaded/i2/18451023137110950/T1RBSCXDtgXXXXXXXX_!!0-item_pic.jpg_240x240q50"/></td>
-		<td><img src = "http://szepuikee.com.hk/content/up-products-images/98/600x600/1_848e38aeb8.jpg"/></td>
-		<td><img src = "http://commune.server239.com/products_pic/080014.jpg"/></td>
-	</tr>
-	<tr>
-		<td colspan="3"><h3>-豬肉腸-</h3></td>
-	</tr>
-	<tr>
-		<td><img src = "http://www.elders.com.cn/wp-content/uploads/2013/03/28460-964.jpg"/></td>
-		<td><img src = "http://img.zhuyun.cn/M00/58/60/wKgJNFVXBjmAf_WSAAYgIWHSMdE689.png"/></td>
-		<td><img src = "http://sadia.com.hk/sites/sadiahk/files/styles/product/public/products/cheddar_pork_sausage_b.png?itok=SUjYxDvZ"/></td>
-	</tr>
-	-->
-</table>
+	</table>
 </div>
 </body>
 </html>

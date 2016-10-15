@@ -99,6 +99,74 @@ public class MerchantRegisterDaoImpl implements MerchantRegisterDao{
 	        return mid;
 	    }
 	}
+	
+	@Override
+	public int addMerchantWithoutShop(MeMerchant merchant){
+		// user_seq01.nextval
+		String sqlMerchant = "insert into M_MERCHANT(MID, USERNAME,PASSWORD,NAME,BRITH_DATE,GENDER,STATUS,REG_DATE)"
+				+ " values (M_MERCHANT_SEQ.nextval,?,?,?,?,?,?,?)";
+		String sqlQuery = "select mid from M_MERCHANT where rowid=(select max(rowid) from M_MERCHANT)";
+		Connection con = null;
+		PreparedStatement pstMerchant = null;
+		PreparedStatement pstQuery = null;
+		List<PreparedStatement> pst = new ArrayList<>();
+		ResultSet rs= null;
+		
+		int mid = -1;
+				
+		// create connection
+		con = DBUtil.createConnection();
+				
+		// insert record to multiple table, rollback if fail
+		try {
+	        con.setAutoCommit(false);
+	        pstMerchant = con.prepareStatement(sqlMerchant);
+	        pst.add(pstMerchant);
+	        pstQuery = con.prepareStatement(sqlQuery);
+	        pst.add(pstQuery);
+			
+
+			// insert to m_merchant table
+	        pstMerchant.setString(1, merchant.getUserName()); // username
+	        pstMerchant.setString(2, merchant.getPassword()); // password
+	        pstMerchant.setString(3, merchant.getName()); // name
+			pstMerchant.setDate(4, new java.sql.Date( merchant.getBirth().getTime())); // birth_date
+			pstMerchant.setString(5, merchant.getGender()); // gender
+			pstMerchant.setString(6, merchant.getStatus()); // status
+			pstMerchant.setDate(7, new java.sql.Date(merchant.getRegDate().getTime())); // reg_date
+			pstMerchant.executeUpdate();
+			        
+			rs = pstQuery.executeQuery();
+			if(rs.next()){
+				mid = rs.getInt("mid");
+			}
+			        
+		    // commit when both is executed
+		    con.commit();
+			        
+		} catch (SQLException e ) {
+			e.printStackTrace();
+			System.err.println(e.getMessage());
+			if (con != null) {
+				try {
+					System.err.print("Transaction is being rolled back");
+			        con.rollback();
+			    } catch(SQLException excep) {
+			        System.err.println(e.getMessage());
+			    }
+			}
+		} finally { 
+			try {
+				con.setAutoCommit(true);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}     
+			// free all connection
+			DBUtil.free(con, pst, rs);   
+			return mid;
+		}
+	}
 
 	@Override
 	public MeMerchant searchMerchant(int mid) {
