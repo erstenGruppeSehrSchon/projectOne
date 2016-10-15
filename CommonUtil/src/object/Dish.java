@@ -1,5 +1,7 @@
 package object;
 
+import java.util.ArrayList;
+
 public class Dish {
 	private int did;
 	private String name;
@@ -7,6 +9,7 @@ public class Dish {
 	private double price;
 	private int sid;
 	private int active;
+	private ArrayList<DishImage> dishImages;
 	
 	public int getId() {
 		return did;
