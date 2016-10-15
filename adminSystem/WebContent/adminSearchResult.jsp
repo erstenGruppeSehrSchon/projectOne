@@ -14,7 +14,7 @@
 <body>
 <div class="container">
   <header>
-    <div id="logo"><a href="index.html"><img src="img/logo.png" alt=""></a></div>
+    <div id="logo"><a href="./adminIndex.jsp"><img src="img/logo.png" alt=""></a></div>
   </header>
   <nav>
     <ul id="nav">
