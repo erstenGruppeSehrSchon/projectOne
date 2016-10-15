@@ -53,27 +53,27 @@
 	<tr>
 		<td rowspan="6" class = "adminEditDetailsTableIcon"><img src= "http://www.icon2s.com/img256/256x256-black-white-android-user.png"/></td>
 		<td class = "adminEditDetailsTableColName">Merchant ID:</td>
-		<td class = "adminEditDetailsTableInput"></td>
+		<td class = "adminEditDetailsTableInput">${merchant.id}</td>
 	</tr>
 	<tr>
 		<td>Merchant Name:</td>
-		<td></td>
+		<td>${merchant.name}</td>
 	</tr>
 	<tr>
-		<td>Brithday:</td>
-		<td></td>
+		<td>Age:</td>
+		<td>${merchant.age}</td>
 	</tr>
 	<tr>
 		<td>Gender:</td>
-		<td></td>
+		<td>${merchant.gender}</td>
 	</tr>
 	<tr>
 		<td>Registration Date:</td>
-		<td></td>
+		<td>${merchant.reg_date}</td>
 	</tr>
 	<tr>
 		<td>Status:</td>
-		<td></td>
+		<td>${merchant.status}</td>
 	</tr>
 	
 </table>

@@ -24,4 +24,14 @@
     <servlet-name>SearchMerchantByCriteriaServlet</servlet-name>
     <url-pattern>/SearchMerchantByCriteria</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ShowMerchantDetailsServlet</display-name>
+    <servlet-name>ShowMerchantDetailsServlet</servlet-name>
+    <servlet-class>servlet.ShowMerchantDetailsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowMerchantDetailsServlet</servlet-name>
+    <url-pattern>/showMerchantDetails</url-pattern>
+  </servlet-mapping>
 </web-app>

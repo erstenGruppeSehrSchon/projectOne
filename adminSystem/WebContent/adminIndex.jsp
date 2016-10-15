@@ -44,7 +44,7 @@
 		<table id = "adminContainerTableOutStandingList" class = "table table-striped">
 			<c:forEach var="a" items="${am}">
 				<tr>
-					<td><a href = "#">${a.name}</a></td>
+					<td><a href = "showMerchantDetails?id=${a.id}">${a.name}</a></td>
 					<td><button class = "btn">Accept</button></td>
 					<td><button class = "btn">Reject</button></td>
 				</tr>
