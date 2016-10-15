@@ -37,17 +37,18 @@ public class LoginServlet extends HttpServlet {
 			String password = request.getParameter("adminLoginPassword");
 			PasswordEncrypter encrypter = PasswordEncrypter.getPasswordEncrypter();
 			admin = as.getAdmin(id, encrypter.getEncryptedPassword(password));
+			
+			if (admin == null) {	// Login fail, store error msg
+				request.setAttribute("errorMsg", "Login Fail!");
+			} else {				// Login successful, store admin to session
+				session.setAttribute("admin", admin);
+
+			}
 		}
 
-		if (admin != null) {
-			// Store admin to session
-			session.setAttribute("admin", admin);
-			
-			// Redirect to ShowOutstanding servlet for getting outstanding merchant list
+		if (admin != null) {	// Redirect to ShowOutstanding servlet for getting outstanding merchant list
 			response.sendRedirect("ShowOutstanding");
-
-		} else {
-			request.setAttribute("errorMsg", "Login Fail!");
+		} else {				// Redirect to login page
 			request.getRequestDispatcher("adminLogin.jsp").forward(request, response);
 		}
 	}

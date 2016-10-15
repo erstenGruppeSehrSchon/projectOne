@@ -25,13 +25,17 @@ public class RequestFilter implements Filter {
 
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
+		
 		HttpServletRequest request = (HttpServletRequest)req;
 		HttpServletResponse response = (HttpServletResponse)res;
+		
 		HttpSession session = request.getSession();
 		if (session.getAttribute("admin") == null) {
 			response.sendRedirect("adminLogin.jsp");
+		} else {
+			chain.doFilter(request, response);
 		}
-		chain.doFilter(request, response);
+
 	}
 
 }
