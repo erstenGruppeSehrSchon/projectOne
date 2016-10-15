@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import util.ListenJMSUtil;
+
 /**
  * Servlet implementation class JMSListenerServlet
  */
@@ -16,6 +18,11 @@ public class JMSListenerServlet extends HttpServlet {
      * @see HttpServlet#HttpServlet()
      */
     public JMSListenerServlet() {
-        
+        try {
+			ListenJMSUtil.startListenRequest();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 }

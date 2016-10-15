@@ -30,9 +30,9 @@ public class ListenJMSUtil {
 	private final static String port = "16161";
 	private final static String connectionStr = prefix+hostname+":"+port;
 	
-	private MerchantManager mm = new MerchantManagerImpl();
+	private static MerchantManager mm = new MerchantManagerImpl();
 	
-	public void startListenRequest() throws Exception{
+	public static void startListenRequest() throws Exception{
 		//create consumer always listens->When receives msg, go to findMeMerchantById to get M_Merchant table info
 		//->Create AdminMerchant by MeMerchant->save to table
 		ConnectionFactory factory = new ActiveMQConnectionFactory(connectionStr);
@@ -76,4 +76,5 @@ public class ListenJMSUtil {
 			}
 		});
 	}
+	
 }
