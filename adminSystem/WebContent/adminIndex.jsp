@@ -42,11 +42,11 @@
 		<td>
 		<!-- subtable for user and status-->
 		<table id = "adminContainerTableOutStandingList" class = "table table-striped">
-			<c:forEach var="a" items="${am}">
+			<c:forEach var="merchant" items="${aMerchants}">
 				<tr>
-					<td><a href = "showMerchantDetails?id=${a.id}">${a.name}</a></td>
-					<td><a href = "updateMerchantStatus?id=${a.id}&status=Accepted"><button class = "btn">Accept</button></a></td>
-					<td><a href = "updateMerchantStatus?id=${a.id}&status=Rejected"><button class = "btn">Reject</button></a></td>
+					<td><a href = "showMerchantDetails?id=${merchant.mid}">${merchant.name}</a></td>
+					<td><a href = "updateMerchantStatus?id=${merchant.mid}&status=Accepted"><button class = "btn">Accept</button></a></td>
+					<td><a href = "updateMerchantStatus?id=${merchant.mid}&status=Rejected"><button class = "btn">Reject</button></a></td>
 				</tr>
 			</c:forEach>
 		</table>

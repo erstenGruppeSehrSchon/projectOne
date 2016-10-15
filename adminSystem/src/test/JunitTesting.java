@@ -3,10 +3,7 @@ package test;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Properties;
-
 import org.junit.Test;
-
-import servlet.LoginServlet;
 import util.PasswordEncrypter;
 import dao.AdminDao;
 import dao.impl.AdminDaoImpl;
@@ -22,12 +19,6 @@ public class JunitTesting {
 		in = new FileInputStream("test.data");
 		prop.load(in);
 		System.out.println(ad.getAdmin(prop.getProperty("id"), prop.getProperty("password")));
-	}
-	
-	@Test
-	public void testCheckLogin() throws Exception {
-		LoginServlet l = new LoginServlet();
-		l.checkLogin(prop.getProperty("id"), prop.getProperty("password"));
 	}
 	
 	@Test

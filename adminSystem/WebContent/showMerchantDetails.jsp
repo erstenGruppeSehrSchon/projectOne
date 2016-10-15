@@ -1,3 +1,5 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,9 +53,9 @@
 		<th colspan = "3">-Merchant Information-</th>
 	</tr>
 	<tr>
-		<td rowspan="6" class = "adminEditDetailsTableIcon"><img src= "http://www.icon2s.com/img256/256x256-black-white-android-user.png"/></td>
+		<td rowspan="7" class = "adminEditDetailsTableIcon"><img src= "http://www.icon2s.com/img256/256x256-black-white-android-user.png"/></td>
 		<td class = "adminEditDetailsTableColName">Merchant ID:</td>
-		<td class = "adminEditDetailsTableInput">${merchant.id}</td>
+		<td class = "adminEditDetailsTableInput">${merchant.mid}</td>
 	</tr>
 	<tr>
 		<td>Merchant Name:</td>
@@ -69,13 +71,30 @@
 	</tr>
 	<tr>
 		<td>Registration Date:</td>
-		<td>${merchant.reg_date}</td>
+		<td>${merchant.regDate}</td>
 	</tr>
 	<tr>
 		<td>Status:</td>
 		<td>${merchant.status}</td>
 	</tr>
-	
+	<tr>
+		<td>Action:</td>
+		<td>
+			<c:if test="${merchant.status == 'Accepted'}">
+				<a href="updateMerchantStatus?id=${merchant.mid}&status=Frozen" class="btn btn-default">Blacklist</a>
+			</c:if>
+			<c:if test="${merchant.status == 'Pending'}">
+				<a href="updateMerchantStatus?id=${merchant.mid}&status=Accepted" class="btn btn-default">Accept</a>
+				<a href="updateMerchantStatus?id=${merchant.mid}&status=Rejected" class="btn btn-default">Reject</a>
+			</c:if>
+			<c:if test="${merchant.status == 'Frozen'}">
+				<a href="updateMerchantStatus?id=${merchant.mid}&status=Accepted" class="btn btn-default">Resume</a>			
+			</c:if>
+			<c:if test="${merchant.status == 'Rejected'}">
+				<a href="updateMerchantStatus?id=${merchant.mid}&status=Accepted" class="btn btn-default">Accept</a>			
+			</c:if>			
+		</td>
+	</tr>
 </table>
 
 </div>
