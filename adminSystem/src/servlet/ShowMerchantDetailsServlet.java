@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import object.merchant.AdminMerchant;
+
 import service.AdminMerchantManager;
 import service.impl.AdminMerchantManagerImpl;
 
@@ -18,8 +20,11 @@ public class ShowMerchantDetailsServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int id = Integer.parseInt(request.getParameter("id"));
-		request.setAttribute("merchant", amm.getMerchantById(id));
+		if (request.getParameter("id") != null) {
+			int id = Integer.parseInt(request.getParameter("id"));
+			AdminMerchant aMerchant = amm.getMerchantById(id);
+			request.setAttribute("merchant", aMerchant);
+		}
 		request.getRequestDispatcher("showMerchantDetails.jsp").forward(request, response);
 	}
 
