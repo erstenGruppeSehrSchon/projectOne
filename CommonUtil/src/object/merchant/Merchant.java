@@ -1,5 +1,6 @@
 package object.merchant;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -13,6 +14,10 @@ public abstract class Merchant {
 	protected String status;
 	protected Date regDate;
 	protected List<Shop> shopList;
+	
+	public Merchant(){
+		shopList= new ArrayList<Shop>();
+	}
 	
 	public int getMid() {
 		return mid;

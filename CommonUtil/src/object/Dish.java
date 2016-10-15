@@ -1,18 +1,18 @@
 package object;
 
 public class Dish {
-	private int id;
+	private int did;
 	private String name;
 	private String type;
 	private double price;
-	private int mid;
+	private int sid;
 	private int active;
 	
 	public int getId() {
-		return id;
+		return did;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setId(int did) {
+		this.did = did;
 	}
 	public String getName() {
 		return name;
@@ -33,10 +33,10 @@ public class Dish {
 		this.price = price;
 	}
 	public int getMid() {
-		return mid;
+		return sid;
 	}
-	public void setMid(int mid) {
-		this.mid = mid;
+	public void setMid(int sid) {
+		this.sid = sid;
 	}
 	public int getActive() {
 		return active;
