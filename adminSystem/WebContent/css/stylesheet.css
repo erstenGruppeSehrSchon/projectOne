@@ -1,108 +1,101 @@
-/*Genral Setting*/
-* {
-	margin: 0px;
-	padding: 0px;
-}
-
-
-.adminHeaderBar{
-	width: 100%;
-	padding: 15px;
-	background: #DDDDDD;
-	text-align: center;
-}
-
-
-
-.adminContainer{
-	margin: 0px auto;
-	padding: 20px;
-	width: 80%;
-}
-
-.adminContainerMsgShowBox{
-	margin: 0px auto;
-	width: 40%;
-}
-
-.adminFunctionBar{
-	width: 100%;
-	text-align: center;
-	font-weight: bold;
-}
-
-.adminFunctionBarElement{
-	margin-left: 20px;
-	margin-right: 20px;
-	font-size: 14px;
-	float: right;
-}
-
-.adminContainerTableTitlte{
-	text-align: center;
+body {
+	font-family: Verdana, Geneva, sans-serif;
 	font-size: 16px;
+	line-height: 1.5em;
+	color: #6b3b25;
+	background-color:#38363B;
+}
+.container {
+	width: 1000px;
+	margin: 30px auto 80px auto;
+	background: #F8FAE5;
+}
+
+header {
+	min-height: 155px;
+}
+header #logo {
+	margin-top: 42px;
+	margin-bottom: 20px;
+	float: left;
+}
+header #logo:hover {
+	opacity: 0.8;
+}
+header #logo img {
+	display: block;
+	margin: 0 0 0 30px;
+}
+nav {
+	background: url(../img/nav.png) no-repeat top center;
+	height: 65px;
+	width: 1038px;
+	margin-left: -20px;
+	font-family: 'Palatino Linotype';
+	font-size: 17px;
+	font-weight: 700;
+}
+nav #nav {
+	display: block;
+	margin-left: 35px;
+}
+nav #nav > li {
+	display: block;
+	float: left;
+}
+nav #nav > li:hover a,
+nav #nav > li.current-menu-item a{
+	background: #62493d;
+	text-shadow: 0px 2px 0px #444;
+}
+nav #nav > li > a {
+	display: block;
+	line-height: 65px;
+	padding-left: 15px;
+	padding-right: 15px;
+	text-decoration: none;
+	color: #dedad3;
+	text-shadow: 0px 2px 0px #c68301;
+}
+
+#main {
+	min-height: 700px;
+	position: relative;
+	border-top: 5px solid #c6c2bc;
+	margin: 0 auto;
+}
+
+#admin-login-form{
+	width: 30%;
+	margin: 0px auto;
+}
+
+#admin-logn-form-error{
+	color: #D92A55;
+	font-size: 14px;
+}
+
+#main table{
+	margin: 0 auto;
 	padding: 10px;
 }
 
-.adminEditDetailsTableIcon{
-	width: 40%;
+#main th{
+	padding: 5px;
+	font-size: 20px;
 	text-align: center;
+	padding: 15px;
 }
 
-.adminEditDetailsTableColName{
-	width: 30%;
+#main img{
+	max-width: 500px;
+	margin: 10px;
 }
-
-.adminEditDetailsTableInput{
-	width: 30%;
-}
-
-#adminContainerTableOutStandingList{
-	margin: 0px auto;
-	width: 50%;
-}
-
-#adminContainerTable td{
+#main td{
 	padding: 5px;
 }
-
-#adminContainerForm{
-	margin: 0px auto;
-	width: 30%;
-	border: 1px solid #444444;
-	padding:20px;
-	border-radius: 10px;
-}
-
-#adminContainerTable{
-	width: 100%;
-}
-
-#adminContainerTable td{
-	width: 50%;
-}
-
-#adminContainerShowResult{
-	margin: 0px auto;
-	width: 100%;
-	
-}
-
-#adminContainerShowResult th{
-	text-align: center;
-}
-
-#adminMerchantsDetailsTable{
-	width: 100%;
-	margin: 0px auto;
-}
-
-#adminEditDetailsTable td{
-	padding: 8px;
-}
-
-#adminEditDetailsTable th{
-	text-align: center;
-	font-size: 18px;
-	padding: 10px;
+/*Admin Login Page*/
+.block-divider {
+	background: url(../img/divider-line.png) no-repeat center center;
+	height: 51px;
 }
