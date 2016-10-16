@@ -1,6 +1,6 @@
 package service.impl;
 
-import po.Admin;
+import common.po.Admin;
 import service.AdminService;
 import dao.AdminDao;
 import dao.impl.AdminDaoImpl;
