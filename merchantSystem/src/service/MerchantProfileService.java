@@ -30,6 +30,9 @@ public interface MerchantProfileService {
 	// update both merchant & shop info
 	public boolean updateMerchantInfo(MeMerchant merchant, String oldPassword);
 	
+	// Update merchant status
+	public void updateMerchantStatus(int mid, String status);
+	
 	// only update shop info
 	public void updateShopInfo(Shop shop);
 }

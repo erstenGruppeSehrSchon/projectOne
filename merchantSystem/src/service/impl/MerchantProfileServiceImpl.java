@@ -101,6 +101,11 @@ public class MerchantProfileServiceImpl implements MerchantProfileService {
 		// update shop contact info according to sid & cid
 	}
 
+	@Override
+	public void updateMerchantStatus(int mid, String status) {
+		dao.updateMerchantStatus(mid, status);		
+	}
+
 
 
 }

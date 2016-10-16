@@ -6,14 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-package dao.impl;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import dao.MerchantProfileDao;
 import po.Dish;
 import po.DishImage;
@@ -285,6 +277,25 @@ public class MerchantProfileDaoImpl implements MerchantProfileDao {
 		finally{
 			DBUtil.free(con, pst, null);
 		}
+	}
+
+	@Override
+	public void updateMerchantStatus(int mid, String status) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = "UPDATE M_MERCHANT SET STATUS = ? WHERE MID = ?";
+		conn = DBUtil.createConnection();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, status);
+			pstmt.setInt(2, mid);
+			pstmt.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.free(conn, pstmt, null);
+		}		
 	}
 
 }

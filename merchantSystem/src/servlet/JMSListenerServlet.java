@@ -16,8 +16,6 @@ import service.MerchantProfileService;
 import service.impl.MerchantProfileServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import common.po.MeMerchant;
-import common.service.MerchantManager;
-import common.service.impl.MerchantManagerImpl;
 
 public class JMSListenerServlet extends HttpServlet {
 	
@@ -28,7 +26,6 @@ public class JMSListenerServlet extends HttpServlet {
 	private final static String CONNECTION_STR = PREFIX +HOSTNAME + ":" + PORT;
 	private final static String QUEUE = "MER_STAT_UPD_Q001";
 	
-	private MerchantManager mm = new MerchantManagerImpl();
 	private MerchantProfileService mps = new MerchantProfileServiceImpl();
 
     public JMSListenerServlet() {
@@ -69,10 +66,8 @@ public class JMSListenerServlet extends HttpServlet {
 					System.out.println(msg.getText());
 					ObjectMapper mapper = new ObjectMapper();
 					
-					MeMerchant receiveMerchant = mapper.readValue(msg.getText(), MeMerchant.class);
-					MeMerchant merchant = mm.findMeMerchantById(receiveMerchant.getMid());
-					merchant.setStatus(receiveMerchant.getStatus());
-					mps.updateMerchantInfo(merchant);
+					MeMerchant merchant = mapper.readValue(msg.getText(), MeMerchant.class);
+					mps.updateMerchantStatus(merchant.getMid(), merchant.getStatus());
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
