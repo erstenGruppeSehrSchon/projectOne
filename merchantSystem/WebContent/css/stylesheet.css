@@ -70,6 +70,11 @@ nav #nav > li > a {
 }
 
 #merchant-logn-form-error{
+	color: #D92A55;
+	font-size: 14px;
+}
+
+#merchant-logn-form{
 	color: #43B4A0;
 	font-size: 14px;
 }

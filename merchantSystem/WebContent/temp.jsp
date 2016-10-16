@@ -25,32 +25,23 @@
     </ul>
   </nav>
   <div id="main">
-	<h3>Edit shop: Shop Name</h3>
-	<div class="merchant-form-control">
-	<form action = "" method = "post">
-	<table>
-		<tr>
-			<td>Shop Name</td>
-			<td><input type = "text" class = "form-control"/></td>
-		</tr>
-		<tr>
-			<td>Description</td>
-			<td><input type = "text" class = "form-control"/></td>
-		</tr>
-		<tr>
-			<td>Shop image</td>
-			<td><form action="FileUpload" method="POST" enctype="multipart/form-data">
-				<label class="btn btn-default">
-					 Choose<input type="file" name="searchMerchantIconFile" style="display: none;">
-				</label>
-				</form></td>
-		</tr>
-		<tr>
-			<td rowspan="2"><a href="./merchantIndex.html" class="btn btn-default">Edit</a></td>
-		</tr>
-	</table>
-	</form>
-	</div>
+	<div class="block-divider"></div>
+		<form id="merchant-login-form" action="login" method="POST">
+			<div class="input-group">
+				<span class="input-group-addon"><span class = "glyphicon glyphicon-user"></span></span>
+				<input name="adminLoginName" type="text" class="form-control" placeholder="Username">
+			</div>
+			<br/>
+			<div class="input-group">
+				<span class="input-group-addon"><span class = "glyphicon glyphicon-menu-right"></span></span>
+				<input name="adminLoginPassword" type="text" class="form-control" placeholder="Password"> 
+			</div>
+			<br/>
+			<div id="merchant-logn-form-error">${errorMsg}</div>
+			<div id="merchant-logn-form-text"><p>Want to join us!? click <a href="./merchantRegistration.jsp">here!</a></p></div>
+			<input type="submit" value="Login" class="btn btn-default">
+		</form>
+  </div>
   </div>
 </div>
 </body>
