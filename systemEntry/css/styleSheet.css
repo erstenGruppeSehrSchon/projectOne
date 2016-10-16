@@ -18,17 +18,27 @@
 	width: 65%;
 }
 
-#indexContainerEntryAdmin{
-	background-color: #DDDDDD;
+#indexContainerEntryAdmin,#indexContainerEntryClient,#indexContainerEntryMerchant{
+	background-color: #FFFFFF;
 }
 
-#indexContainerEntryClient{
-	background-color: #AAAAAA;
+#indexContainerEntryAdmin img,#indexContainerEntryClient img,#indexContainerEntryMerchant img{
+	background-color: #FFFFFF;
 }
 
-#indexContainerEntryMerchant{
-	background-color: #DDDDDD;
+#indexContainerEntryAdmin {
+ margin-bottom: 10px;
+ width: 160px;
+ height:160px;
+ display:block;
+ background:transparent url('./img/adminButtonNormal.png') center top no-repeat;
 }
+
+#indexContainerEntryAdmin:hover {
+   background-image: url('./img/adminButtonHover.png');
+}
+
+
 .indexContainerEntry{
 	height: 250px;
 	line-height:250px;
