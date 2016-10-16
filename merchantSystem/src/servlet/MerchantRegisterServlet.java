@@ -9,31 +9,42 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
+import javax.jms.Connection;
+import javax.jms.ConnectionFactory;
+import javax.jms.Destination;
+import javax.jms.MessageProducer;
+import javax.jms.Session;
+import javax.jms.TextMessage;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import org.apache.activemq.ActiveMQConnectionFactory;
+import org.apache.activemq.command.ActiveMQQueue;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
 import consts.Consts;
-import exception.RegisterEmptyException;
 import po.MeMerchant;
 import po.Merchant;
 import service.MerchantRegisterService;
 import service.impl.MerchantRegisterServiceImpl;
 import util.PasswordEncrypter;
-import util.SendJMSRequestUtil;
 
 /**
  * Servlet implementation class MerchantRegisterServlet
  */
 public class MerchantRegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private final static String PREFIX = "failover://tcp://";
+	private final static String HOSTNAME = "cheunan-w7";
+	private final static String PORT = "16161";
+	private final static String CONNECTION_STR = PREFIX +HOSTNAME + ":" + PORT;
+	private final static String QUEUE = "REG_REQUEST_Q001";
+
 	private MerchantRegisterService merchantRegisterService = new MerchantRegisterServiceImpl();
 	
 	public MerchantRegisterService getMerchantRegisterService() {
@@ -106,7 +117,7 @@ public class MerchantRegisterServlet extends HttpServlet {
 		if((result = getMerchantRegisterService().addMerchant(merchant)) != -1){			
 			// call jms
 			try {
-				SendJMSRequestUtil.sendRegisterRequest(result);
+				sendRegRequestJMS(result);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -181,6 +192,46 @@ public class MerchantRegisterServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 		}
 
+	}
+	
+	// Send Registration Request JMS to Admin System
+	private void sendRegRequestJMS(int id) {
+		Connection conn = null;
+		Session session = null;
+		MessageProducer producer = null;
+		
+		try {
+			ConnectionFactory factory = new ActiveMQConnectionFactory(CONNECTION_STR);
+			Destination queue = new ActiveMQQueue(QUEUE);
+			conn = factory.createConnection();
+			conn.start();
+			
+			//Message ack mode
+			session = conn.createSession(false, Session.CLIENT_ACKNOWLEDGE);
+			producer = session.createProducer(queue);
+			ObjectMapper mapper = new ObjectMapper();
+			MeMerchant m = new MeMerchant();
+			m.setMid(id);
+			String msgStr = mapper.writeValueAsString(m);
+			TextMessage msg = session.createTextMessage(msgStr);
+			producer.send(msg);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (producer != null) {
+					producer.close();
+				}
+				if (session != null) {
+					session.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 }

@@ -14,7 +14,6 @@
     <servlet-name>ShowCaptcha</servlet-name>
     <url-pattern>/ShowCaptcha</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>MerchantLoginServlet</display-name>
@@ -25,7 +24,6 @@
     <servlet-name>MerchantLoginServlet</servlet-name>
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>MerchantRegisterServlet</display-name>
@@ -36,7 +34,6 @@
     <servlet-name>MerchantRegisterServlet</servlet-name>
     <url-pattern>/register</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>ShowProfileServlet</display-name>
@@ -46,5 +43,16 @@
   <servlet-mapping>
     <servlet-name>ShowProfileServlet</servlet-name>
     <url-pattern>/showProfile</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>JMSListenerServlet</display-name>
+    <servlet-name>JMSListenerServlet</servlet-name>
+    <servlet-class>servlet.JMSListenerServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>    
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>JMSListenerServlet</servlet-name>
+    <url-pattern>/JMSListenerServlet</url-pattern>
   </servlet-mapping>
 </web-app>

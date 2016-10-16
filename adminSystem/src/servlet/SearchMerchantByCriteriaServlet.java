@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import po.Merchant;
+import common.po.Merchant;
 import dao.MerchantDao;
 import dao.impl.MerchantDaoImpl;
 

@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import util.PasswordEncrypter;
+import common.util.PasswordEncrypter;
 
 public class PasswordEncrypterTest {
 

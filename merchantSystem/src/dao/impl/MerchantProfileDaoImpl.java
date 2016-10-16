@@ -6,12 +6,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import common.util.DBUtil;
+
 import dao.MerchantProfileDao;
 import po.Dish;
 import po.Shop;
 import po.ShopContact;
 import po.MeMerchant;
-import util.DBUtil;
 
 public class MerchantProfileDaoImpl implements MerchantProfileDao {
 
@@ -132,10 +134,25 @@ public class MerchantProfileDaoImpl implements MerchantProfileDao {
 		return null;
 	}
 
+	// Only status is allowed to be updated
 	@Override
-	public void updateMerchantInfo(MeMerchant merchant) {
-		// TODO Auto-generated method stub
-
+	public void updateMerchantInfo(MeMerchant merchant) { 
+		String sql = "UPDATE M_MERCHANT SET STATUS = ? WHERE MID = ?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		conn = DBUtil.createConnection();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, merchant.getMid());
+			pstmt.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally{
+			DBUtil.free(conn, pstmt, null);
+		}
 	}
 
 	@Override
