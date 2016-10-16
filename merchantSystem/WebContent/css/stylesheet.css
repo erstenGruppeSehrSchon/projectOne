@@ -8,7 +8,9 @@ body {
 .container {
 	width: 1000px;
 	margin: 30px auto 80px auto;
+	padding-bottom:50px;
 	background: #F8FAE5;
+	
 }
 
 header {
@@ -86,7 +88,7 @@ nav #nav > li > a {
 
 #main img{
 	max-width: 500px;
-	margin: 30px;
+	margin: 5px 30px 30px 30px;
 }
 
 /**/
@@ -135,4 +137,7 @@ nav #nav > li > a {
 	padding: 5px;
 }
 
-
+.show-border td{
+	border: 1px dotted #FFEB8A;
+	margin: 10px;
+}
