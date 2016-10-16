@@ -91,9 +91,7 @@ nav #nav > li > a {
 	max-width: 500px;
 	margin: 30px;
 }
-#main td{
-	padding: 5px 100px 5px 5px;
-}
+
 
 /**/
 .main-show-dishes img{
@@ -114,4 +112,41 @@ nav #nav > li > a {
 
 .client-shop-merchant img{
 	width: 300px;
+}
+
+/*client show shop*/
+.index-show-merchant{
+	width: 900px;
+}
+
+
+.index-show-merchant-icon{
+	width: 400px;
+}
+
+.index-show-merchant p{
+	padding-bottom: 5px;
+}
+
+.index-show-latest p{
+	text-align: center;
+	font-size: 14px;
+}
+
+.index-show-latest img{
+	width: 250px;
+	padding:0px;
+}
+
+.merchant-form-control{
+	margin: 0 auto;
+}
+
+.merchant-form-control td{
+	padding: 5px;
+}
+
+.show-border td{
+	border: 1px dotted #FFEB8A;
+	margin: 10px;
 }

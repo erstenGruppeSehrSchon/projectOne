@@ -41,25 +41,8 @@
 			<td>
 				<p>-Merchant-</p>
 				<a href = "showmerchant?MerchantId=${Merchant.mid}"><img src= "http://www.icon2s.com/img256/256x256-black-white-android-user.png"/>
-				<p>Name: Merchant Name</p></img></a>
-			</td>
-		</tr>
-	</table>
-	
-	<div class="block-divider-index"></div>
-		<table class="client-shop-merchant">
-		<tr>
-			<td colspan="2"><h4>Shop Details</h4></td>
-		</tr>
-		<tr>
-			<td>
-			<img src= "https://buffaloeats.files.wordpress.com/2012/02/front-store.jpg"/>
-			</td>
-			<td>
-				<p><b>Name: shop Name</b></p>
-				<p>Description: shop description shop descriptionshop descriptionshop descriptionshop descriptionshop descriptionshop descriptionshop descriptionshop descriptionshop descriptionshop descriptionshop descriptionshop descriptionshop description</p>
-				<p>Contact type: Contact type here</p>
-				<p>Contact information: Contact information</p>
+				<p><b>Name:</b> Merchant Name</p></img></a>
+				<p><b>shop:</b> <a href="./clientShowShop.html">shop name</a></p>
 			</td>
 		</tr>
 	</table>
