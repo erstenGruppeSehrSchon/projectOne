@@ -26,13 +26,13 @@
       <li><a href="#">Manage My Shops</a></li>
       <li><a href="#">Manage My Dishes</a></li>
       <li><a href="#">My Profile</a></li>
-      <li><a href="./adminLogin.jsp">Logout</a></li>
+      <li><a href="./merchantLogin.jsp">Logout</a></li>
     </ul>
   </nav>
   <div id="main">
 	<h3>Registration</h3>
 	<div class="merchant-form-control">
-	<form action = "" method = "post">
+	<form action = "register" method = "post">
 	<table>
 		<tr>
 			<td>Username</td>

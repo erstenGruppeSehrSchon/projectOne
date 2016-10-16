@@ -25,7 +25,7 @@
       <li><a href="#">Manage My Shops</a></li>
       <li><a href="#">Manage My Dishes</a></li>
       <li><a href="#">My Profile</a></li>
-      <li><a href="./adminLogin.jsp">Logout</a></li>
+      <li><a href="./merchantLogin.jsp">Logout</a></li>
     </ul>
   </nav>
   <div id="main">
@@ -33,15 +33,16 @@
 		<form id="merchant-login-form" action="login" method="POST">
 			<div class="input-group">
 				<span class="input-group-addon"><span class = "glyphicon glyphicon-user"></span></span>
-				<input name="adminLoginName" type="text" class="form-control" placeholder="Username">
+				<input name="merchantLoginName" type="text" class="form-control" placeholder="Username">
 			</div>
 			<br/>
 			<div class="input-group">
 				<span class="input-group-addon"><span class = "glyphicon glyphicon-menu-right"></span></span>
-				<input name="adminLoginPassword" type="text" class="form-control" placeholder="Password"> 
+				<input name="merchantLoginPassword" type="text" class="form-control" placeholder="Password"> 
 			</div>
 			<br/>
 			<div id="merchant-logn-form-error">${errorMsg}</div>
+			<br/>
 			<div id="merchant-logn-form-text"><p>Want to join us!? click <a href="./merchantRegistration.jsp">here!</a></p></div>
 			<input type="submit" value="Login" class="btn btn-default">
 		</form>

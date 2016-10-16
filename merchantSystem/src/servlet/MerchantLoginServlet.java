@@ -34,11 +34,11 @@ public class MerchantLoginServlet extends HttpServlet {
 		
 		// check user & password is empty
 		try {
-			username = (String) request.getParameter("username");
+			username = (String) request.getParameter("merchantLoginName");
 			if(username == null || username.equals(""))
 				throw new LoginEmptyException(Consts.USERNAME_CANNOT_EMPTY);
 			
-			String password = (String) request.getParameter("password");
+			String password = (String) request.getParameter("merchantLoginPassword");
 			if(password == null || password.equals(""))
 				throw new LoginEmptyException(Consts.PASSWORD_CANNOT_EMPTY);
 			
