@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="BIG5">
@@ -28,16 +28,16 @@
 	<h3>Edit Dish : Dish name</h3>
 	<div class="merchant-form-control">
 	<form action = "" method = "post">
-	<input type="hidden" value = "" id = "dishesRegShopId"/>
+	<input type="hidden" value = "" id = "dishesRegShopId" name = "dishesRegShopId"/>
 	<table>
 	<tr>
 		<td>Dish Name</td>
-		<td><input type = "text" class = "form-control"/></td>
+		<td><input type = "text" class = "form-control" name = "dishname"/></td>
 	</tr>
 	<tr>
 		<td>Dish Type</td>
 		<td>
-			<select class="form-control">
+			<select class="form-control" name = "dishtype">
 					<option value="AU">Australia</option>
 					<option value="AT">Austria</option>
 					<option value="BE">Belgium</option>
@@ -81,7 +81,7 @@
 			</form></td>
 	</tr>
 	<tr>
-		<td rowspan="2"><a href="./merchantIndex.html" class="btn btn-default">Edit</a></td>
+		<td rowspan="2"><a href="editdish" class="btn btn-default">Edit</a></td>
 	</tr>
 	</table>
 	</form>
