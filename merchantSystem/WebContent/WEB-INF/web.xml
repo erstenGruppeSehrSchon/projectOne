@@ -47,6 +47,17 @@
     <servlet-name>ShowProfileServlet</servlet-name>
     <url-pattern>/showProfile</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>JMSListenerServlet</display-name>
+    <servlet-name>JMSListenerServlet</servlet-name>
+    <servlet-class>servlet.JMSListenerServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>    
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>JMSListenerServlet</servlet-name>
+    <url-pattern>/JMSListenerServlet</url-pattern>
+  </servlet-mapping>
   
   <servlet>
     <description></description>

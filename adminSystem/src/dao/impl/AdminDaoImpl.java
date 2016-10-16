@@ -5,8 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.apache.commons.lang3.StringUtils;
-import po.Admin;
-import util.DBUtil;
+import common.po.Admin;
+import common.util.DBUtil;
 import util.Utility;
 import dao.AdminDao;
 

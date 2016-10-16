@@ -3,16 +3,14 @@ package test;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Properties;
-
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 import org.junit.Test;
-
 import service.AdminService;
 import service.MerchantManager;
 import service.impl.AdminServiceImpl;
 import service.impl.MerchantManagerImpl;
-import util.PasswordEncrypter;
+import common.util.PasswordEncrypter;
 
 public class JunitTesting {
 	

@@ -17,5 +17,5 @@ public interface MerchantProfileDao {
 	public boolean updateMerchantInfo(MeMerchant merchant, String oldPassword);
 	public void updateShopInfo(Shop shop);
 	public void updateShopContactInfo(ShopContact shopContact);
-	
+	public void updateMerchantStatus(int mid, String status);
 }
