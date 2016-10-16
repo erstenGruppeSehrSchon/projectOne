@@ -31,7 +31,7 @@
 		</tr>
 		<tr>
 			<c:forEach var="dishImage" items="${dish.dishImages}">
-				<td><a href="ShowDish?merchantId=${dish.sid}&dishId=${dish.did}"><img src="${dishImage.imgPath}"/></td>
+				<td><a href="ShowDish?merchantId=${dish.sid}&dishId=${dish.did}"></a><img src="${dishImage.imgPath}"/></td>
 			</c:forEach>
 		</tr>
 	</c:forEach>
