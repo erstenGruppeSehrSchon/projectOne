@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Properties;
 import org.junit.Test;
-import util.PasswordEncrypter;
+import common.util.PasswordEncrypter;
 import dao.AdminDao;
 import dao.impl.AdminDaoImpl;
 

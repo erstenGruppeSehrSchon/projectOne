@@ -1,7 +1,7 @@
 package service;
 
 import java.util.ArrayList;
-import po.Merchant;
+import common.po.Merchant;
 
 public interface MerchantManager {
 	
