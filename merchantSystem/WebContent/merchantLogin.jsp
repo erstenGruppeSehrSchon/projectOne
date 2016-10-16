@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="css/stylesheet.css">
 </head>
 <body>
+<<<<<<< HEAD
 <div class="container">
 <header>
     <div id="logo"><a href="./clientIndex.jsp"><img src="img/logo.png" alt=""></a></div>
@@ -32,6 +33,38 @@
 		<div class="input-group">
 			<span class="input-group-addon"><span class = "glyphicon glyphicon-user"></span></span>
 			<input id="username" name="username" type="text" class="form-control" placeholder="Username">
+=======
+<div class = "headerBar">
+	<div>
+		<h3>-Qing Mi Ji Rou Chang-</h3>
+		<h4>Merchant Page</h4>
+	</div>
+</div>
+	<div class = "Container">
+		<div id = "containerForm">
+		<h5>-Merchant Login-</h5>
+			<form action="login" method="POST">
+				<div class="input-group">
+					<span class="input-group-addon"><span class = "glyphicon glyphicon-user"></span></span>
+					<input id="username" name="username" type="text" class="form-control" placeholder="Username">
+				</div>
+				<br/>
+				<div class="input-group">
+					<span class="input-group-addon"><span class = "glyphicon glyphicon-menu-right"></span></span>
+					<input id="password" name="password" type="password" class="form-control" placeholder="Password"> 
+				</div>
+				<br/>
+				<c:if test="${not empty errorMsg}">
+				   <c:out value="${errorMsg}"/>
+				</c:if>
+				<br/>
+				<br/>
+				<input type="submit" value="Login" class="btn btn-default">
+				<br/>
+				<br/>
+			</form>
+			<p>Want to join us!? click <a href="./merchantRegistration.jsp">here!</a></p>
+>>>>>>> b33be0af5acc1f992747bad7fcf6db9d1642f8a8
 		</div>
 		<br/>
 		<div class="input-group">

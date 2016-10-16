@@ -25,42 +25,30 @@
     </ul>
   </nav>
   <div id="main">
-	<h3>Edit My Profile</h3>
+	<h3>Edit shop: Shop Name</h3>
 	<div class="merchant-form-control">
 	<form action = "" method = "post">
 	<table>
-	<tr>
-		<td>Merchant Name:</td>
-		<td><input type = "text" class = "form-control"/></td>
-	</tr>
-	<tr>
-		<td>Password:</td>
-		<td><input type = "text" class = "form-control"/></td>
-	</tr>
-	<tr>
-		<td>Recent password:</td>
-		<td><input type = "text" class = "form-control"/></td>
-	</tr>
-	<tr>
-		<td>Brithday:</td>
-		<td><input type = "text" class = "form-control"/></td>
-	</tr>
-	<tr>
-		<td>Gender:</td>
-		<td><input type = "text" class = "form-control"/></td>
-	</tr>
-	<tr>
-		<td>Icon:</td>
-		<td><form action="FileUpload" method="POST" enctype="multipart/form-data">
-			<label class="btn btn-default">
-				 Choose<input type="file" name="searchMerchantIconFile" style="display: none;">
-			</label>
-			</form></td>
-	</tr>
-	<tr>
-		<td rowspan="2"><a href="./merchantIndex.html" class="btn btn-default">Submit</a></td>
-	</tr>
-</table>	
+		<tr>
+			<td>Shop Name</td>
+			<td><input type = "text" class = "form-control"/></td>
+		</tr>
+		<tr>
+			<td>Description</td>
+			<td><input type = "text" class = "form-control"/></td>
+		</tr>
+		<tr>
+			<td>Shop image</td>
+			<td><form action="FileUpload" method="POST" enctype="multipart/form-data">
+				<label class="btn btn-default">
+					 Choose<input type="file" name="searchMerchantIconFile" style="display: none;">
+				</label>
+				</form></td>
+		</tr>
+		<tr>
+			<td rowspan="2"><a href="./merchantIndex.html" class="btn btn-default">Edit</a></td>
+		</tr>
+	</table>
 	</form>
 	</div>
   </div>
