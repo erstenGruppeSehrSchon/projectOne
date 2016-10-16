@@ -25,23 +25,33 @@
     </ul>
   </nav>
   <div id="main">
-	<div class="block-divider"></div>
-		<form id="merchant-login-form" action="login" method="POST">
-			<div class="input-group">
-				<span class="input-group-addon"><span class = "glyphicon glyphicon-user"></span></span>
-				<input name="adminLoginName" type="text" class="form-control" placeholder="Username">
-			</div>
-			<br/>
-			<div class="input-group">
-				<span class="input-group-addon"><span class = "glyphicon glyphicon-menu-right"></span></span>
-				<input name="adminLoginPassword" type="text" class="form-control" placeholder="Password"> 
-			</div>
-			<br/>
-			<div id="merchant-logn-form-error">${errorMsg}</div>
-			<div id="merchant-logn-form-text"><p>Want to join us!? click <a href="./merchantRegistration.jsp">here!</a></p></div>
-			<input type="submit" value="Login" class="btn btn-default">
-		</form>
-  </div>
+	<h3>Shop name: </h3>
+		<table class="index-show-merchant">
+			<tr>
+				<td>-Description-</td>
+				<td rowspan = "3" class="index-show-merchant-icon"><img src=  "https://buffaloeats.files.wordpress.com/2012/02/front-store.jpg"/></td>
+			</tr>
+			<tr>
+				<td>Hi here is description...</td>
+			</tr>
+			<tr>
+				<td><a href="./merchantShopEdit.html" class="btn btn-default">Edit</a></td>
+			</tr>
+		</table>
+		<div class="block-divider-index"></div>
+		<h4>Dishes in this shop</h4>
+		<table class="index-show-latest show-border">
+			<tr>
+				<td><a href = "./merchantShowDish.html"><p>Dish 1</p><img width = "300px" src=  "http://sadia.com.hk/sites/sadiahk/files/styles/product/public/products/cheddar_pork_sausage_b.png?itok=SUjYxDvZ"/></a></td>
+				<td><a href = "./merchantShowDish.html"><p>Dish 1</p><img width = "300px" src=  "http://sadia.com.hk/sites/sadiahk/files/styles/product/public/products/cheddar_pork_sausage_b.png?itok=SUjYxDvZ"/></a></td>
+				<td><a href = "./merchantShowDish.html"><p>Dish 1</p><img width = "300px" src=  "http://sadia.com.hk/sites/sadiahk/files/styles/product/public/products/cheddar_pork_sausage_b.png?itok=SUjYxDvZ"/></a></td>
+			</tr>
+			<tr>
+				<td><a href = "./merchantShowDish.html"><p>Dish 1</p><img width = "300px" src=  "http://sadia.com.hk/sites/sadiahk/files/styles/product/public/products/cheddar_pork_sausage_b.png?itok=SUjYxDvZ"/></a></td>
+				<td><a href = "./merchantShowDish.html"><p>Dish 1</p><img width = "300px" src=  "http://sadia.com.hk/sites/sadiahk/files/styles/product/public/products/cheddar_pork_sausage_b.png?itok=SUjYxDvZ"/></a></td>
+				<td><a href = "./merchantShowDish.html"><p>Dish 1</p><img width = "300px" src=  "http://sadia.com.hk/sites/sadiahk/files/styles/product/public/products/cheddar_pork_sausage_b.png?itok=SUjYxDvZ"/></a></td>
+			</tr>
+		</table>
   </div>
 </div>
 </body>

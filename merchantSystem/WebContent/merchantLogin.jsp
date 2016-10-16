@@ -21,11 +21,11 @@
   </header>
   <nav>
     <ul id="nav">
-      <li><a href="#">Search</a></li>
+      <!--<li><a href="#">Search</a></li>
       <li><a href="#">Manage My Shops</a></li>
       <li><a href="#">Manage My Dishes</a></li>
       <li><a href="#">My Profile</a></li>
-      <li><a href="./adminLogin.jsp">Logout</a></li>
+      <li><a href="./adminLogin.jsp">Logout</a></li>-->
     </ul>
   </nav>
   <div id="main">
