@@ -36,13 +36,11 @@ public class MerchantLoginServlet extends HttpServlet {
 		try {
 			username = (String) request.getParameter("username");
 			if(username == null || username.equals(""))
-//				throw new LoginEmptyException(Consts.USERNAME_CANNOT_EMPTY);
-				throw new LoginEmptyException(Consts.LOGIN_FAILURE);
+				throw new LoginEmptyException(Consts.USERNAME_CANNOT_EMPTY);
 			
 			String password = (String) request.getParameter("password");
 			if(password == null || password.equals(""))
-//				throw new LoginEmptyException(Consts.PASSWORD_CANNOT_EMPTY);
-				throw new LoginEmptyException(Consts.LOGIN_FAILURE);
+				throw new LoginEmptyException(Consts.PASSWORD_CANNOT_EMPTY);
 			
 			encryPw = PasswordEncrypter.getPasswordEncrypter().getEncryptedPassword(password);
 		} catch (LoginEmptyException e) {
@@ -69,29 +67,25 @@ public class MerchantLoginServlet extends HttpServlet {
 				request.setAttribute("mid", mid);
 				
 				// show profile
-//				request.getRequestDispatcher("showProfile?mid="+mid);
-				request.getRequestDispatcher("showProfile").forward(request, response);
+				request.getRequestDispatcher("showIndex").forward(request, response);
 			}
 			// rejected
 			else if(status.equals(Consts.REJECTED)) {
 				request.setAttribute("status", status);
-//				request.setAttribute("errorMsg", Consts.REJECTED_ERROR);
-				request.setAttribute("errorMsg", Consts.LOGIN_FAILURE);
+				request.setAttribute("errorMsg", Consts.REJECTED_ERROR);
 				request.getRequestDispatcher("merchantLogin.jsp").forward(request, response);
 			}
 			// frozen
 			else if(status.equals(Consts.FROZEN)) {
 				request.setAttribute("status", status);
-//				request.setAttribute("errorMsg", Consts.FROZEN_ERROR);
-				request.setAttribute("errorMsg", Consts.LOGIN_FAILURE);
+				request.setAttribute("errorMsg", Consts.FROZEN_ERROR);
 				request.getRequestDispatcher("merchantLogin.jsp").forward(request, response);
 			}
 			// pending
 			else if(status.equals(Consts.PENDING)) {
+				request.setAttribute("mid", mid);
 				request.setAttribute("status", status);
-//				request.setAttribute("errorMsg", Consts.PENDING_ERROR);
-				request.setAttribute("errorMsg", Consts.LOGIN_FAILURE);
-				request.getRequestDispatcher("merchantLogin.jsp").forward(request, response);
+				request.getRequestDispatcher("showIndex").forward(request, response);
 			}
 			// invalid status
 			else {
@@ -102,8 +96,7 @@ public class MerchantLoginServlet extends HttpServlet {
 		}
 		else {
 			// user not exist in system
-//			request.setAttribute("errorMsg", Consts.USER_NOT_EXIST);
-			request.setAttribute("errorMsg", Consts.LOGIN_FAILURE);
+			request.setAttribute("errorMsg", Consts.USER_NOT_EXIST);
 			request.getRequestDispatcher("merchantLogin.jsp").forward(request, response);
 		}
 		

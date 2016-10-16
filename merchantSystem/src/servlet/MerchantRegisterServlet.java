@@ -93,6 +93,7 @@ public class MerchantRegisterServlet extends HttpServlet {
 			e1.printStackTrace();
 			request.setAttribute("errorMsg", Consts.REGISTER_FAIL);
 			request.getRequestDispatcher("merchantRegistration.jsp").forward(request, response);
+			return;
 		}
 			
 		// default status = pending
@@ -113,8 +114,10 @@ public class MerchantRegisterServlet extends HttpServlet {
 			
 			// wait admin to accept page
 			// still can modify shop name, shop logo, shop tel, shop address
+			
 			request.setAttribute("mid", result);
-			request.getRequestDispatcher("showProfile").forward(request, response);
+			request.setAttribute("status", status);
+			request.getRequestDispatcher("showIndex").forward(request, response);
 		}
 		else{
 			request.setAttribute("errorMsg", Consts.REGISTER_FAIL);

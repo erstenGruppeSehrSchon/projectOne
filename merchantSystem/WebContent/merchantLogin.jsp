@@ -48,9 +48,7 @@
 				<br/>
 				<br/>
 			</form>
-			<c:if test="${empty status}">
-				<p>Want to join us!? click <a href="./merchantRegistration.jsp">here!</a></p>
-			</c:if>
+			<p>Want to join us!? click <a href="./merchantRegistration.jsp">here!</a></p>
 		</div>
 	</div>
 </body>

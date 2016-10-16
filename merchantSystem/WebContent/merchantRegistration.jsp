@@ -33,7 +33,7 @@
 	<table id = "merchantRegTable">
 		<tr>
 			<td>Username</td>
-			<td><input id="merchantUserName" name="merchantUserName" type="text" class="form-control"></td>
+			<td><input id="merchantUsername" name="merchantUsername" type="text" class="form-control"></td>
 		</tr>
 		<tr>
 			<td>Password</td>
