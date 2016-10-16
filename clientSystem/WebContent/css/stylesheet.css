@@ -99,3 +99,19 @@ nav #nav > li > a {
 .main-show-dishes img{
 	max-width: 300px;
 }
+
+}
+.block-divider {
+	height: 50px;
+}
+
+.block-divider-index {
+	height: 50px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	background: url(../img/line.png) no-repeat center center;
+}
+
+.client-shop-merchant img{
+	width: 300px;
+}
