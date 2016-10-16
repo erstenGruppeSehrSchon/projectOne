@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,14 +18,14 @@
 <body>
 <div class="container">
 <header>
-    <div id="logo"><a href="./clientIndex.jsp"><img src="img/logo.png" alt=""></a></div>
+    <div id="logo"><a href="showIndex?mid=${mid }"><img src="img/logo.png" alt=""></a></div>
   </header>
   <nav>
     <ul id="nav">
       <li><a href="#">Search</a></li>
-      <li><a href="#">Manage My Shops</a></li>
+      <li><a href="showAllShop?mid=${mid}">Manage My Shops</a></li>
       <li><a href="#">Manage My Dishes</a></li>
-      <li><a href=<%="showProfile?mid="+request.getAttribute("mid") %>>My Profile</a></li>
+      <li><a href="showProfile?mid=${mid}">My Profile</a></li>
       <li><a href="./merchantLogin.jsp">Logout</a></li>
     </ul>
   </nav>
@@ -56,7 +57,9 @@
 				
 				<c:forEach items="${merchant.shopList }" var="shop">
 				<p>${ shop.name}</p>
-				<img src="https://buffaloeats.files.wordpress.com/2012/02/front-store.jpg">
+				<c:if test="${fn:length(shop.imagePath) >0}">
+					<img src="${shop.imagePath.get(0)}">
+				</c:if>
 				</c:forEach>
 				</tr>
 			</c:when>
@@ -82,7 +85,9 @@
 					
 					<c:forEach items="${dishes }" var="dish">
 					<p>${ dish.name}</p>
-					<img src="https://buffaloeats.files.wordpress.com/2012/02/front-store.jpg">
+					<c:if test="${fn:length(dish.dishImages) >0}">
+						<img src="${dish.dishImages.get(0)}">
+					</c:if>
 					</c:forEach>
 					
 					</tr>

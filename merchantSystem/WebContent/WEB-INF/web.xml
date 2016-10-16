@@ -80,4 +80,15 @@
     <servlet-name>ShowEditPageServlet</servlet-name>
     <url-pattern>/showEditProfile</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>ShowAllShopServlet</display-name>
+    <servlet-name>ShowAllShopServlet</servlet-name>
+    <servlet-class>servlet.ShowAllShopServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowAllShopServlet</servlet-name>
+    <url-pattern>/showAllShop</url-pattern>
+  </servlet-mapping>
 </web-app>

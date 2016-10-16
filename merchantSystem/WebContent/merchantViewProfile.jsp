@@ -20,14 +20,14 @@
 <body>
 <div class="container">
 <header>
-    <div id="logo"><a href="./merchantIndex.jsp"><img src="img/logo.png" alt=""></a></div>
+    <div id="logo"><a href="showIndex?mid=${mid }"><img src="img/logo.png" alt=""></a></div>
   </header>
   <nav>
     <ul id="nav">
       <li><a href="./merchantSearch.jsp">Search</a></li>
-      <li><a href="./merchantShowAllShop.jsp">Manage My Shops</a></li>
+      <li><a href="showAllShop?mid=${mid}">Manage My Shops</a></li>
       <li><a href="./merchantShowAllDishes.jsp">Manage My Dishes</a></li>
-      <li><a href="./merchantViewProfile.jsp">My Profile</a></li>
+      <li><a href="showProfile?mid=${mid}">My Profile</a></li>
       <li><a href="./merchantLogin.jsp">Logout</a></li>
     </ul>
   </nav>
