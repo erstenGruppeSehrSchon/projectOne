@@ -11,15 +11,23 @@ public class ClientViewMerchantDishServiceImpl implements ClientViewMerchantDish
 	
 	private DishDao dish = new DishDaoImpl();
 
-	@Override
-	public Dish loadDish(int id) {
-		return dish.getDishByDid(id);
-		
-	}
+	
 	
 	@Override
 	public ArrayList<Dish> findAllDish() {
-		return dish.findAllDish();
+		return (ArrayList<Dish>) dish.findAllDish();
+	}
+
+	@Override
+	public ArrayList<Dish> loadDishBySid(int sid) {
+		// TODO Auto-generated method stub
+		return dish.getDishBySid(sid);
+	}
+
+	@Override
+	public Dish loadDishByDid(int did) {
+		// TODO Auto-generated method stub
+		return dish.getDishByDid(did);
 	}
 
 }

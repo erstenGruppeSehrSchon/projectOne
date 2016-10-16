@@ -1,12 +1,13 @@
 package service.impl;
 
-import po.MeMerchant;
+
+import po.Merchant;
 import service.ClientManager;
 import constant.Constant;
 
 public class ClientManagerImpl implements ClientManager{
 	
-	MeMerchant merchant = new MeMerchant();
+    Merchant merchant = new Merchant();
 
 	@Override
 	public int getMarchantId() {
