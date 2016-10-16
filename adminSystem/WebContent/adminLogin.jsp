@@ -16,8 +16,8 @@
   </header>
   <nav>
     <ul id="nav">
-      <li><a href="#">Search</a></li>
-      <li><a href="#">My Profile</a></li>
+      <!--<li><a href="#">Search</a></li>
+      <li><a href="#">My Profile</a></li>-->
     </ul>
   </nav>
   <div id="main">

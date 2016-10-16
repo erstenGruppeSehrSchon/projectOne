@@ -1,50 +1,133 @@
-/*Genral Setting*/
-* {
-	margin: 0px;
-	padding: 0px;
+body {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 16px;
+	line-height: 1.5em;
+	color: #6b3b25;
+	background-color:#38363B;
+}
+.container {
+	width: 1000px;
+	margin: 30px auto 80px auto;
+	background: #F8FAE5;
 }
 
-
-.headerBar{
-	width: 100%;
-	padding: 15px;
-	background: #DDDDDD;
-	text-align: center;
+header {
+	min-height: 155px;
+}
+header #logo {
+	margin-top: 42px;
+	margin-bottom: 20px;
+	float: left;
+}
+header #logo:hover {
+	opacity: 0.8;
+}
+header #logo img {
+	display: block;
+	margin: 0 0 0 30px;
+}
+nav {
+	background: url(../img/nav.png) no-repeat top center;
+	height: 65px;
+	width: 1038px;
+	margin-left: -20px;
+	font-family: 'Palatino Linotype';
+	font-size: 17px;
+	font-weight: 700;
+}
+nav #nav {
+	display: block;
+}
+nav #nav > li {
+	display: block;
+	float: left;
+}
+nav #nav > li:hover a,
+nav #nav > li.current-menu-item a{
+	background: #62493d;
+	text-shadow: 0px 2px 0px #444;
+}
+nav #nav > li > a {
+	display: block;
+	line-height: 65px;
+	padding-left: 10px;
+	padding-right: 10px;
+	text-decoration: none;
+	color: #905D07;
+	text-shadow: 0px 2px 0px #F8FAE5;
 }
 
-.container{
-	margin: 0px auto;
-	padding: 20px;
-	width: 80%;
+#main {
+	min-height: 700px;
+	position: relative;
+	border-top: 5px solid #c6c2bc;
+	margin: 0 auto;
 }
 
-#containerForm{
-	margin: 0px auto;
+#merchant-login-form{
 	width: 30%;
-	border: 1px solid #444444;
-	padding:20px;
-	border-radius: 10px;
+	margin: 0px auto;
 }
 
-#merchanIndexContainerIndexView{
-	margin: 0px auto;
-	width: 80%;
+#merchant-logn-form-error{
+	color: #43B4A0;
+	font-size: 14px;
+}
+
+#main table{
+	margin: 0 auto;
+	padding:10px;
+}
+
+#main img{
+	max-width: 500px;
+	margin: 30px;
+}
+
+/**/
+.main-show-dishes img{
+	max-width: 300px;
+}
+/*merchant login page*/
+.block-divider {
+	height: 50px;
+}
+
+.block-divider-index {
+	height: 50px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	background: url(../img/line.png) no-repeat center center;
+}
+
+.index-show-merchant{
+	width: 900px;
+}
+
+.index-show-merchant-icon{
+	width: 400px;
+}
+
+.index-show-merchant p{
+	padding-bottom: 5px;
+}
+
+.index-show-latest p{
 	text-align: center;
+	font-size: 14px;
 }
 
-#merchanIndexTable{
-	margin: 0px auto;
+.index-show-latest img{
+	width: 250px;
+	padding:0px;
 }
 
-#merchanIndexTable td, #merchanIndexTableShowShop td{
-	margin: 10px;
+.merchant-form-control{
+	margin: 0 auto;
 }
 
-
-#merchanIndexTable img{
-	max-width:300px;
-}
-
-#merchantRegTable td{
+.merchant-form-control td{
 	padding: 5px;
 }
+
+
