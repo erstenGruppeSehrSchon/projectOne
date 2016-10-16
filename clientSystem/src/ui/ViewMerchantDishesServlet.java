@@ -60,7 +60,7 @@ public class ViewMerchantDishesServlet extends HttpServlet {
 			request.setAttribute(Constant.MERCHANT_DISH_DID, DID);
 			
 			//request.setAttribute("DishImage",CVD.loadDishImage(DID));
-			request.setAttribute("Dish", CVD.loadDish(DID));
+			request.setAttribute("Dish", CVD.loadDishByDid(DID));
 			request.setAttribute("Merchant", MM.findMeMerchantById(MID));
 			
 			

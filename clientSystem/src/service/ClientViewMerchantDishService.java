@@ -5,7 +5,8 @@ import po.Dish;
 
 public interface ClientViewMerchantDishService {
 	
-	public Dish loadDish(int id);
+	public ArrayList<Dish> loadDishBySid(int sid);
+	public Dish loadDishByDid(int did);
 	public ArrayList<Dish> findAllDish();
 
 }
