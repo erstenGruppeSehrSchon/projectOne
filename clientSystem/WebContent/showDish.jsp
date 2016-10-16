@@ -1,4 +1,4 @@
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,9 +40,9 @@
 			</td>
 			<td>
 				<p>-Merchant-</p>
-				<a href = "showmerchant?MerchantId=${Merchant.mid}"><img src= "http://www.icon2s.com/img256/256x256-black-white-android-user.png"/>
-				<p><b>Name:</b> Merchant Name</p></img></a>
-				<p><b>shop:</b> <a href="./clientShowShop.html">shop name</a></p>
+				<a href = "showmerchant?MerchantId=${merchant.mid}"><img src= "http://www.icon2s.com/img256/256x256-black-white-android-user.png"/></a>
+				<p><b>Name:</b> ${merchant.name}</p>
+				<p><b>shop:</b> <a href="showshop?ShopId=${shop.sid}">${shop.name}</a></p>
 			</td>
 		</tr>
 	</table>

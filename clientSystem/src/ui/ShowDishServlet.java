@@ -28,9 +28,10 @@ public class ShowDishServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Store to request attribute
 		int did = Integer.parseInt(request.getParameter("dishId"));
-		int sid = Integer.parseInt(request.getParameter("ShopId"));
+		int sid = Integer.parseInt(request.getParameter("shopId"));
 	    
-		
+		System.out.println("HI1" + did); //2
+		System.out.println("HI2" + sid); //5
 		
 		Dish dish = cvmds.loadDishByDid(did);
 		Shop shop = sm.findShopById(sid);
@@ -41,7 +42,7 @@ public class ShowDishServlet extends HttpServlet {
 		request.setAttribute("merchant", merchant);
 		
 		// Forward to dish page
-  	    request.getRequestDispatcher("showDishes.jsp").forward(request, response);
+  	    request.getRequestDispatcher("showDish.jsp").forward(request, response);
 	}
 
 }

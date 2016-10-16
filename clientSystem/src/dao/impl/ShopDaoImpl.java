@@ -37,7 +37,7 @@ public class ShopDaoImpl implements ShopDao{
 				shop = new Shop();
 				shop.setSid(rs.getInt("SID"));
 				shop.setMid(rs.getInt("MID"));
-				shop.setName(rs.getString("NANE"));
+				shop.setName(rs.getString("NAME"));
 				shop.setImagePath(rs.getString("IMG_PATH"));
 				shop.setDescr(rs.getString("DESCRIPTION"));
 				
@@ -81,7 +81,7 @@ public class ShopDaoImpl implements ShopDao{
 				shop = new Shop();
 				shop.setSid(rs.getInt("SID"));
 				shop.setMid(rs.getInt("MID"));
-				shop.setName(rs.getString("NANE"));
+				shop.setName(rs.getString("NAME"));
 				shop.setImagePath(rs.getString("IMG_PATH"));
 				shop.setDescr(rs.getString("DESCRIPTION"));
 				

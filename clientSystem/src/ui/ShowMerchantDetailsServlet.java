@@ -17,8 +17,8 @@ public class ShowMerchantDetailsServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (request.getParameter("id") != null) {
-			int id = Integer.parseInt(request.getParameter("id"));
+		if (request.getParameter("MerchantId") != null) {
+			int id = Integer.parseInt(request.getParameter("MerchantId"));
 			Merchant merchant = mm.findMeMerchantById(id);
 			request.setAttribute("merchant", merchant);
 		}
