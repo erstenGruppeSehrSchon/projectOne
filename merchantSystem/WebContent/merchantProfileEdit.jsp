@@ -42,7 +42,7 @@
 	</tr>
 	<tr>
 		<td>Old Password:</td>
-		<td><input type = "text" name="merchantOldPassword" class = "form-control"/></td>
+		<td><input type = "text" name="merchantOldPassword" class = "form-control" /></td>
 	</tr>
 	<tr>
 		<td>New password:</td>
@@ -68,7 +68,7 @@
 </table>
 <br/>
 <br/>
-{$errorMsg}
+${errorMsg}
 <br/>
 <br/>
 <input type="submit" value="Submit" class="btn btn-default">

@@ -1,12 +1,18 @@
 package servlet;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import po.Dish;
+import po.DishImage;
 import po.MeMerchant;
+import po.Shop;
 import service.MerchantProfileService;
 import service.impl.MerchantProfileServiceImpl;
 
@@ -33,11 +39,17 @@ public class ShowIndexPageServlet extends HttpServlet {
 		// get mid from login servlet
 		int mid= (Integer) request.getAttribute("mid");
 		MeMerchant merchant = service.retrieveMerchantOnly(mid);
+		
+		// get shop by mid
+		List<Shop> shops = service.retrieveShopOnly(mid);
+		merchant.setShopList((ArrayList<Shop>) shops);
+		
+		// get dish by mid
 		List<Dish> dishes = service.retrieveDishesByMid(mid);
 				
 		// get dish image by did
 		for (Dish dish: dishes){
-			dish.setDishImages(service.retrieveDishImagesByDid(dish.getDid()));
+			dish.setDishImages((ArrayList<DishImage>) service.retrieveDishImagesByDid(dish.getDid()));
 		}
 		
 		request.setAttribute("merchant", merchant);

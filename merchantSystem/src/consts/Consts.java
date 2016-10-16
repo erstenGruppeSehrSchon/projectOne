@@ -21,4 +21,7 @@ public class Consts {
 	public static final String REJECTED_ERROR = "Login failed. Your request is rejected by admin.";
 	public static final String FROZEN_ERROR = "Login failed. Your account is backlisted by admin.";
 	public static final String PENDING_ERROR = "Your registration is pending to be accepted. Please wait ....";
+
+	// update merchant profile
+	public static final String UPDATE_FAIL = "Update profile failed. Please retry.";
 }

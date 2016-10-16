@@ -28,7 +28,7 @@ public interface MerchantProfileService {
 	public List<DishImage> retrieveDishImagesByDid(int did);
 	
 	// update both merchant & shop info
-	public void updateMerchantInfo(MeMerchant merchant);
+	public boolean updateMerchantInfo(MeMerchant merchant, String oldPassword);
 	
 	// only update shop info
 	public void updateShopInfo(Shop shop);

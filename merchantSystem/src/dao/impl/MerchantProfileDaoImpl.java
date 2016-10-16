@@ -183,7 +183,7 @@ public class MerchantProfileDaoImpl implements MerchantProfileDao {
 			while(rs.next()){
 				DishImage img = new DishImage();
 				img.setDid(rs.getInt("did"));
-				img.setImgId(rs.getInt("img_id"));
+				img.setImageId(rs.getInt("img_id"));
 				img.setImgPath(rs.getString("img_path"));
 				images.add(img);
 			}
@@ -198,9 +198,9 @@ public class MerchantProfileDaoImpl implements MerchantProfileDao {
 	}
 
 	@Override
-	public void updateMerchantInfo(MeMerchant merchant) {
+	public boolean updateMerchantInfo(MeMerchant merchant, String oldPassword) {
 		// TODO Auto-generated method stub
-		String sql = "update m_merchant set name=?, password=?, birthday=?, gender=? where mid=?";
+		String sql = "update m_merchant set name=?, password=?, brith_date=?, gender=? where mid=? and password=?";
 		Connection con = null;
 		PreparedStatement pst = null;
 		
@@ -211,16 +211,24 @@ public class MerchantProfileDaoImpl implements MerchantProfileDao {
 			pst.setString(1, merchant.getName());
 			pst.setString(2, merchant.getPassword());
 			pst.setDate(3, new java.sql.Date( merchant.getBirth().getTime()));
-			pst.setInt(4, merchant.getGender());
+			pst.setString(4, merchant.getGender());
 			pst.setInt(5, merchant.getMid());
+			pst.setString(6, oldPassword);
 			
-			pst.executeUpdate();
+			int n = pst.executeUpdate();
+			
+			// not updating the db
+			if(n == 0)
+				return false;
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return false;
 		}
 		finally{
 			DBUtil.free(con, pst, null);
 		}
+		return true;
 	}
 
 	@Override
@@ -235,7 +243,7 @@ public class MerchantProfileDaoImpl implements MerchantProfileDao {
 			pst = con.prepareStatement(sql);
 			
 			pst.setString(1, shop.getName());
-			pst.setString(2, shop.getImgPath());
+			pst.setString(2, shop.getImagePath());
 			pst.setInt(3, shop.getSid());
 			
 			pst.executeUpdate();
@@ -259,7 +267,7 @@ public class MerchantProfileDaoImpl implements MerchantProfileDao {
 			pst = con.prepareStatement(sql);
 			
 			pst.setString(1, shopContact.getInfo());
-			pst.setSid(2, shopContact.getSid());
+			pst.setInt(2, shopContact.getSid());
 			pst.setString(3, shopContact.getType());
 			
 			pst.executeUpdate();

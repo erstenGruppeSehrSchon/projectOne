@@ -24,7 +24,7 @@
       <li><a href="#">Search</a></li>
       <li><a href="#">Manage My Shops</a></li>
       <li><a href="#">Manage My Dishes</a></li>
-      <li><a href="#">My Profile</a></li>
+      <li><a href=<%="showProfile?mid="+request.getAttribute("mid") %>>My Profile</a></li>
       <li><a href="./merchantLogin.jsp">Logout</a></li>
     </ul>
   </nav>
@@ -34,9 +34,9 @@
 			<td class="index-show-merchant-icon"><a href=<%="showProfile?mid="+request.getAttribute("mid") %>><img src= "http://www.icon2s.com/img256/256x256-black-white-android-user.png"/></a></td>
 			<td>
 			 <!-- request.getAttribute("mid") -->
-				<h3>Name: </h3> ${merchant.name} 
-				<p>Registration date:</p> ${merchant.regDate}
-				<p>Number of Shops:</p> ${fn:length(merchant.shopList) }
+				<h3>Name: ${merchant.name} </h3>
+				<p>Registration date: ${merchant.regDate}</p> 
+				<p>Number of Shops:  ${fn:length(merchant.shopList) }</p>
 				<p>Number of Dishes: ${fn:length(dishes) }</p> 
 			</td>
 		</tr>

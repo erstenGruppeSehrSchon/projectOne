@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.io.*,java.util.*" %>
 <%@ page import="javax.servlet.*,java.text.*" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
@@ -36,33 +37,36 @@
 		<table class="index-show-merchant">
 		<tr>
 			<td rowspan="6" class="index-show-merchant-icon"><img src= "http://www.icon2s.com/img256/256x256-black-white-android-user.png"/></td>
-			<td>Merchant ID: </td><input type="text" name="mid" value="${merchant.mid}" readonly>
+			<td>Merchant ID: <input type="text" name="mid" value="${merchant.mid}" readonly></td>
+			<td><input type="hidden" name="password" value="${merchant.password}"></td>
 			<td></td>
 		</tr>
-		<tr>
-		<td>Merchant Name: </td><input type="text" name="name" value="${merchant.name }" readonly>
+	<tr>
+		<td>Merchant Name: <input type="text" name="name" value="${merchant.name }" readonly></td>
 		<td></td>
 	</tr>
 	<tr>
-		<td>Birthday: </td><input type="text" name="birth" value="<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" 
-            value="${merchant.birth}"/>" readonly>
+		<td>Birthday: <input type="text" name="birth" value="<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" 
+            value="${merchant.birth}"/>" readonly></td>
 		<td></td>
 	</tr>
 	<tr>
-		<td>Gender:</td> <input type="text" name="gender" value="${merchant.gender }" readonly>
+		<td>Gender: <input type="text" name="gender" value="${merchant.gender }" readonly></td> 
 		<td></td>
 	</tr>
 	<tr>
-		<td>Registration Date:</td><input type="text" name="regDate" value="<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" 
-            value="${merchant.regDate}"/>"" readonly> 
+		<td>Registration Date: <input type="text" name="regDate" value="<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" 
+            value="${merchant.regDate}"/>" readonly> </td>
 		<td></td>
 	</tr>
 	<tr>
-		<td>Status:</td> <input type="text" name="status" value="${merchant.status }" readonly>
+		<td>Status: <input type="text" name="status" value="${merchant.status }" readonly></td> 
 		<td></td>
 	</tr>
 	</table>
-	<input type="submit" value="Edit" class="btn btn-default">
+	<c:if test="${not empty merchant.status and merchant.status eq 'Accepted'}">
+		<input type="submit" value="Edit" class="btn btn-default">
+	</c:if>
 	</form>
   </div>
 </div>

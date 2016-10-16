@@ -30,11 +30,18 @@ public class ShowProfileServlet extends HttpServlet {
 		// for security reason, only post request can be received
 		
 		// get mid from login servlet
-		int mid= Integer.parseInt(request.getParameter("mid"));
-		MeMerchant merchant = service.retrieveMerchantInfo(mid);
+		int mid= 0;
+		if(request.getParameter("mid") != null){
+			mid = Integer.parseInt(request.getParameter("mid"));
+		}
+		else{
+			mid = (Integer) request.getAttribute("mid");
+		}
+		
+		MeMerchant merchant = service.retrieveMerchantOnly(mid);
 		
 		request.setAttribute("merchant", merchant);
-		request.getRequestDispatcher("xxxxxxxxxxxxxxxx").forward(request, response);
+		request.getRequestDispatcher("merchantViewProfile.jsp").forward(request, response);
 	}
 
 }

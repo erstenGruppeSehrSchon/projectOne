@@ -14,7 +14,7 @@ public interface MerchantProfileDao {
 	public List<ShopContact> retrieveShopContactBySid(int sid);
 	public List<Dish> retrieveDishesByMid(int mid);
 	public List<DishImage> retrieveDishImagesByDid(int did);
-	public void updateMerchantInfo(MeMerchant merchant);
+	public boolean updateMerchantInfo(MeMerchant merchant, String oldPassword);
 	public void updateShopInfo(Shop shop);
 	public void updateShopContactInfo(ShopContact shopContact);
 	

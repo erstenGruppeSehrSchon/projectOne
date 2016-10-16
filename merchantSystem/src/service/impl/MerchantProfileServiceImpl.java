@@ -1,5 +1,6 @@
 package service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import dao.MerchantProfileDao;
 import dao.impl.MerchantProfileDaoImpl;
@@ -46,12 +47,12 @@ public class MerchantProfileServiceImpl implements MerchantProfileService {
 		merchant = dao.retrieveMerchantByMid(mid);
 		
 		// retrieve from shop table
-		merchant.setShopList(dao.retrieveShopInfoByMid(mid));
+		merchant.setShopList((ArrayList<Shop>) dao.retrieveShopInfoByMid(mid));
 		
 		// retrieve from shop contact table
 		for(Shop shop : merchant.getShopList()){
 			int sid = shop.getSid();
-			shop.setShopContactList(dao.retrieveShopContactBySid(sid));
+			shop.setShopContactList((ArrayList<ShopContact>) dao.retrieveShopContactBySid(sid));
 		}
 		
 		return merchant;
@@ -74,9 +75,23 @@ public class MerchantProfileServiceImpl implements MerchantProfileService {
 	}
 
 	@Override
-	public void updateMerchantInfo(MeMerchant merchant) {
+	public boolean updateMerchantInfo(MeMerchant merchant, String oldPassword) {
+		// check field empty
+		if(merchant.getMid() == 0)
+			return false;
+		if(oldPassword == null || oldPassword.equals(""))
+			return false;
+		if(merchant.getPassword() ==null || merchant.getPassword().equals(""))
+			return false;
+		if(merchant.getName() == null || merchant.getName().equals(""))
+			return false;
+		if(merchant.getGender() == null || merchant.getGender().equals(""))
+			return false;
+		if(merchant.getBirth() == null)
+			return false;
+		
 		// update merchant info
-
+		return dao.updateMerchantInfo(merchant, oldPassword);
 	}
 
 	@Override
