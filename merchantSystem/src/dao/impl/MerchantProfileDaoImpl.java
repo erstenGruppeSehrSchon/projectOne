@@ -73,7 +73,7 @@ public class MerchantProfileDaoImpl implements MerchantProfileDao {
 			
 			shops = new ArrayList<Shop>();
 			
-			if(rs.next()){
+			while(rs.next()){
 				Shop shop = new Shop();
 				shop.setMid(rs.getInt("mid"));
 				shop.setSid(rs.getInt("sid"));
@@ -90,6 +90,40 @@ public class MerchantProfileDaoImpl implements MerchantProfileDao {
 			DBUtil.free(con, pst, rs);
 		}
 		return shops;
+	}
+	
+	@Override
+	public Shop retrieveShopBySid(int sid) {
+		String sql = "select * from m_shop where sid=?";
+		Connection con = null;
+		PreparedStatement pst = null;
+		ResultSet rs= null;
+		Shop shop = null;
+		
+		con = DBUtil.createConnection();
+		try {
+			pst = con.prepareStatement(sql);
+			pst.setInt(1, sid);
+			
+			rs = pst.executeQuery();
+			
+			shop = new Shop();
+			
+			if(rs.next()){
+				shop.setMid(rs.getInt("mid"));
+				shop.setSid(rs.getInt("sid"));
+				shop.setName(rs.getString("name"));
+				shop.setDescr(rs.getString("description"));
+				shop.setImagePath(rs.getString("img_path"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally{
+			DBUtil.free(con, pst, rs);
+		}
+		return shop;
 	}
 	
 	@Override
@@ -129,7 +163,7 @@ public class MerchantProfileDaoImpl implements MerchantProfileDao {
 
 	@Override
 	public List<Dish> retrieveDishesByMid(int mid) {
-		String sql = "select distinct d.did, c.mid, c.sid,  d.name "
+		String sql = "select distinct d.did, c.mid, c.sid,  d.name, d.type, d.price "
 				+ "from (select a.mid, b.sid from m_merchant a ,m_shop b "
 				+ "where a.mid = b.mid) c ,M_DISH d where c.sid = d.sid and c.mid=?";
 		Connection con = null;
@@ -151,6 +185,46 @@ public class MerchantProfileDaoImpl implements MerchantProfileDao {
 				dish.setDid(rs.getInt("did"));
 				dish.setSid(rs.getInt("sid"));
 				dish.setName(rs.getString("name"));
+				dish.setType(rs.getString("type"));
+				dish.setPrice(rs.getDouble("price"));
+				dishes.add(dish);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally{
+			DBUtil.free(con, pst, rs);
+		}
+		return dishes;
+	}
+	
+	@Override
+	public List<Dish> retrieveDishesBySid(int sid) {
+		String sql = "select distinct d.did, c.mid, c.sid,  d.name, d.type, d.price "
+				+ "from (select a.mid, b.sid from m_merchant a ,m_shop b "
+				+ "where a.mid = b.mid) c ,M_DISH d where c.sid = d.sid and c.sid=?";
+		Connection con = null;
+		PreparedStatement pst = null;
+		ResultSet rs= null;
+		List<Dish> dishes = null;
+		
+		con = DBUtil.createConnection();
+		try {
+			pst = con.prepareStatement(sql);
+			pst.setInt(1, sid);
+			
+			rs = pst.executeQuery();
+			
+			dishes = new ArrayList<Dish>();
+			
+			while(rs.next()){
+				Dish dish = new Dish();
+				dish.setDid(rs.getInt("did"));
+				dish.setSid(rs.getInt("sid"));
+				dish.setName(rs.getString("name"));
+				dish.setType(rs.getString("type"));
+				dish.setPrice(rs.getDouble("price"));
 				dishes.add(dish);
 			}
 			

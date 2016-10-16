@@ -14,7 +14,6 @@
     <servlet-name>ShowCaptcha</servlet-name>
     <url-pattern>/ShowCaptcha</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>MerchantLoginServlet</display-name>
@@ -25,7 +24,6 @@
     <servlet-name>MerchantLoginServlet</servlet-name>
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>MerchantRegisterServlet</display-name>
@@ -36,7 +34,6 @@
     <servlet-name>MerchantRegisterServlet</servlet-name>
     <url-pattern>/register</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>ShowProfileServlet</display-name>
@@ -52,13 +49,12 @@
     <display-name>JMSListenerServlet</display-name>
     <servlet-name>JMSListenerServlet</servlet-name>
     <servlet-class>servlet.JMSListenerServlet</servlet-class>
-    <load-on-startup>1</load-on-startup>    
+    <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
     <servlet-name>JMSListenerServlet</servlet-name>
     <url-pattern>/JMSListenerServlet</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>ShowIndexPageServlet</display-name>
@@ -69,7 +65,6 @@
     <servlet-name>ShowIndexPageServlet</servlet-name>
     <url-pattern>/showIndex</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>EditProfileServlet</display-name>
@@ -80,7 +75,6 @@
     <servlet-name>EditProfileServlet</servlet-name>
     <url-pattern>/editProfile</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>ShowEditPageServlet</display-name>
@@ -91,7 +85,6 @@
     <servlet-name>ShowEditPageServlet</servlet-name>
     <url-pattern>/showEditProfile</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>ShowAllShopServlet</display-name>
@@ -101,5 +94,15 @@
   <servlet-mapping>
     <servlet-name>ShowAllShopServlet</servlet-name>
     <url-pattern>/showAllShop</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ShowShopServlet</display-name>
+    <servlet-name>ShowShopServlet</servlet-name>
+    <servlet-class>servlet.ShowShopServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowShopServlet</servlet-name>
+    <url-pattern>/showShop</url-pattern>
   </servlet-mapping>
 </web-app>

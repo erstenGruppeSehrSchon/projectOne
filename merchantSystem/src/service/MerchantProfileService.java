@@ -12,6 +12,9 @@ public interface MerchantProfileService {
 	// retrieve merchant only
 	public MeMerchant retrieveMerchantOnly(int mid);
 	
+	//retrieve shop by sid
+	public Shop retrieveShopBySid(int sid);
+	
 	//retrieve shop only
 	public List<Shop> retrieveShopOnly(int mid);
 	
@@ -24,7 +27,10 @@ public interface MerchantProfileService {
 	// retrieve merchant's dish info
 	public List<Dish> retrieveDishesByMid(int mid);
 	
-	// retrieve merchant's dish info
+	// retrieve merchant's dish info by sid
+	public List<Dish> retrieveDishesBySid(int sid);
+	
+	// retrieve merchant's dish info by did
 	public List<DishImage> retrieveDishImagesByDid(int did);
 	
 	// update both merchant & shop info

@@ -25,6 +25,13 @@ public class MerchantProfileServiceImpl implements MerchantProfileService {
 		return merchant;
 	}
 	
+	//retrieve shop by sid
+	@Override
+	public Shop retrieveShopBySid(int sid){
+		// retrieve from shop table
+		return dao.retrieveShopBySid(sid);
+	}
+		
 	//retrieve shop only
 	@Override
 	public List<Shop> retrieveShopOnly(int mid){
@@ -63,6 +70,12 @@ public class MerchantProfileServiceImpl implements MerchantProfileService {
 		// retrieve from dish & dish image table
 		List<Dish> dishes = dao.retrieveDishesByMid(mid);
 		
+		return dishes;
+	}
+	
+	@Override
+	public List<Dish> retrieveDishesBySid(int sid){
+		List<Dish> dishes = dao.retrieveDishesBySid(sid);
 		return dishes;
 	}
 	

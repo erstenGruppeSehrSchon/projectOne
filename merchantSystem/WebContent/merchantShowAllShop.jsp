@@ -37,10 +37,12 @@
 					<tr>
 					
 					<c:forEach items="${shops }" var="shop">
+					<a href="showShop?sid=${sid}&mid=${mid}">
 					<p>${ shop.name}</p>
 					<c:if test="${fn:length(shop.imagePath) >0}">
-						<img src="${shop.imagePath.get(0)}">
+						<img src="${shop.imagePath[0]}">
 					</c:if>
+					</a>
 					</c:forEach>
 					</tr>
 				</c:when>

@@ -58,7 +58,7 @@
 				<c:forEach items="${merchant.shopList }" var="shop">
 				<p>${ shop.name}</p>
 				<c:if test="${fn:length(shop.imagePath) >0}">
-					<img src="${shop.imagePath.get(0)}">
+					<img src="${shop.imagePath[0]}">
 				</c:if>
 				</c:forEach>
 				</tr>
@@ -86,7 +86,7 @@
 					<c:forEach items="${dishes }" var="dish">
 					<p>${ dish.name}</p>
 					<c:if test="${fn:length(dish.dishImages) >0}">
-						<img src="${dish.dishImages.get(0)}">
+						<img src="${dish.dishImages[0]}">
 					</c:if>
 					</c:forEach>
 					

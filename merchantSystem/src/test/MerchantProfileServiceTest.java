@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import po.Dish;
 import po.Shop;
 import po.ShopContact;
 import po.MeMerchant;
@@ -73,7 +75,28 @@ public class MerchantProfileServiceTest {
 	}
 	
 	@Test
-	public void testRetrieveDishesByMid(){
+	public void testRetrieveShopBySid(){
 		
+		Shop shop = service.retrieveShopBySid(5);
+		System.out.println("Shop sid: " + shop.getSid());
+		System.out.println("Shop mid: " + shop.getMid());
+		System.out.println("Shop name: " + shop.getName());
+		System.out.println("Shop decription: " + shop.getDescr());
+		System.out.println("Shop image_path: " + shop.getImagePath());
+
+	}
+	
+	@Test
+	public void testRetrieveDishesByMid(){
+		List<Dish> dishes = service.retrieveDishesByMid(9);
+		for(Dish dish : dishes){
+			System.out.println("Dish cid: " + dish.getDid());
+			System.out.println("Dish sid: " + dish.getSid());
+			System.out.println("Dish name: " + dish.getName());
+			System.out.println("Dish type: " + dish.getType());
+			System.out.println("Dish price: " + dish.getPrice());
+			System.out.println("Dish is active: " + dish.getActive());
+			System.out.println();
+		}
 	}
 }
