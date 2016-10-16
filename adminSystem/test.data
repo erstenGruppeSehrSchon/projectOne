@@ -1,0 +1,17 @@
+admin.id.valid=T
+admin.password.valid=TEST1PWD
+admin.encryptedPassword.valid=468FB5FF1A26B4D57F0A84E61CA582FFBC912DF55DA865048A0B813A1144A127
+
+admin.id.invalid=T1
+admin.password.invalid=TEST
+
+merchant.status.accepted=Accepted
+merchant.status.rejected=Rejected
+merchant.status.pending=Pending
+merchant.status.frozen=Frozen
+
+merchant.id.valid=1
+merchant.id.invalid=2
+
+merchant.all.amount=11
+merchant.outstanding.amount=4
