@@ -30,7 +30,7 @@
 			<br/>
 			<div class="input-group">
 				<span class="input-group-addon"><span class = "glyphicon glyphicon-menu-right"></span></span>
-				<input name="adminLoginPassword" type="text" class="form-control" placeholder="Password"> 
+				<input name="adminLoginPassword" type="password" class="form-control" placeholder="Password"> 
 			</div>
 			<br/>
 			<div id="admin-logn-form-error">${errorMsg}</div>
