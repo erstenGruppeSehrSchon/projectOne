@@ -1,3 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.io.*,java.util.*" %>
+<%@ page import="javax.servlet.*,java.text.*" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,42 +27,43 @@
       <li><a href="./merchantShowAllShop.jsp">Manage My Shops</a></li>
       <li><a href="./merchantShowAllDishes.jsp">Manage My Dishes</a></li>
       <li><a href="./merchantViewProfile.jsp">My Profile</a></li>
-      <li><a href="./adminLogin.jsp">Logout</a></li>
+      <li><a href="./merchantLogin.jsp">Logout</a></li>
     </ul>
   </nav>
   <div id="main">
 	<h3>My Profile</h3>
+	<form action="showEditProfile" method="get">
 		<table class="index-show-merchant">
 		<tr>
 			<td rowspan="6" class="index-show-merchant-icon"><img src= "http://www.icon2s.com/img256/256x256-black-white-android-user.png"/></td>
-			<td>Merchant ID:</td>
+			<td>Merchant ID: </td><input type="text" name="mid" value="${merchant.mid}" readonly>
 			<td></td>
 		</tr>
 		<tr>
-			<td>Merchant Name:</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>Brithday:</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>Gender:</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>Registration Date:</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>Status:</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td rowspan="2"><a href="./merchantProfileEdit.html" class="btn btn-default">Edit</a></td>
-		</tr>
+		<td>Merchant Name: </td><input type="text" name="name" value="${merchant.name }" readonly>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Birthday: </td><input type="text" name="birth" value="<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" 
+            value="${merchant.birth}"/>" readonly>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Gender:</td> <input type="text" name="gender" value="${merchant.gender }" readonly>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Registration Date:</td><input type="text" name="regDate" value="<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" 
+            value="${merchant.regDate}"/>"" readonly> 
+		<td></td>
+	</tr>
+	<tr>
+		<td>Status:</td> <input type="text" name="status" value="${merchant.status }" readonly>
+		<td></td>
+	</tr>
 	</table>
+	<input type="submit" value="Edit" class="btn btn-default">
+	</form>
   </div>
 </div>
 </body>

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import dao.MerchantProfileDao;
 import po.Dish;
+import po.DishImage;
 import po.Shop;
 import po.ShopContact;
 import po.MeMerchant;
@@ -128,26 +129,146 @@ public class MerchantProfileDaoImpl implements MerchantProfileDao {
 
 	@Override
 	public List<Dish> retrieveDishesByMid(int mid) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select distinct d.did, c.mid, c.sid,  d.name "
+				+ "from (select a.mid, b.sid from m_merchant a ,m_shop b "
+				+ "where a.mid = b.mid) c ,M_DISH d where c.sid = d.sid and c.mid=?";
+		Connection con = null;
+		PreparedStatement pst = null;
+		ResultSet rs= null;
+		List<Dish> dishes = null;
+		
+		con = DBUtil.createConnection();
+		try {
+			pst = con.prepareStatement(sql);
+			pst.setInt(1, mid);
+			
+			rs = pst.executeQuery();
+			
+			dishes = new ArrayList<Dish>();
+			
+			while(rs.next()){
+				Dish dish = new Dish();
+				dish.setDid(rs.getInt("did"));
+				dish.setSid(rs.getInt("sid"));
+				dish.setName(rs.getString("name"));
+				dishes.add(dish);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally{
+			DBUtil.free(con, pst, rs);
+		}
+		return dishes;
+	}
+	
+	@Override
+	public List<DishImage> retrieveDishImagesByDid(int did){
+		String sql = "select * from m_dish_img where did=?";
+		Connection con = null;
+		PreparedStatement pst = null;
+		ResultSet rs= null;
+		List<DishImage> images = null;
+		
+		con = DBUtil.createConnection();
+		try {
+			pst = con.prepareStatement(sql);
+			pst.setInt(1, did);
+			
+			rs = pst.executeQuery();
+			
+			images = new ArrayList<DishImage>();
+			
+			while(rs.next()){
+				DishImage img = new DishImage();
+				img.setDid(rs.getInt("did"));
+				img.setImgId(rs.getInt("img_id"));
+				img.setImgPath(rs.getString("img_path"));
+				images.add(img);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally{
+			DBUtil.free(con, pst, rs);
+		}
+		return images;
 	}
 
 	@Override
 	public void updateMerchantInfo(MeMerchant merchant) {
 		// TODO Auto-generated method stub
-
+		String sql = "update m_merchant set name=?, password=?, birthday=?, gender=? where mid=?";
+		Connection con = null;
+		PreparedStatement pst = null;
+		
+		con = DBUtil.createConnection();
+		try {
+			pst = con.prepareStatement(sql);
+			
+			pst.setString(1, merchant.getName());
+			pst.setString(2, merchant.getPassword());
+			pst.setDate(3, new java.sql.Date( merchant.getBirth().getTime()));
+			pst.setInt(4, merchant.getGender());
+			pst.setInt(5, merchant.getMid());
+			
+			pst.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally{
+			DBUtil.free(con, pst, null);
+		}
 	}
 
 	@Override
 	public void updateShopInfo(Shop shop) {
 		// TODO Auto-generated method stub
-
+		String sql = "update m_shop set name=?, img_path=? where sid=?";
+		Connection con = null;
+		PreparedStatement pst = null;
+		
+		con = DBUtil.createConnection();
+		try {
+			pst = con.prepareStatement(sql);
+			
+			pst.setString(1, shop.getName());
+			pst.setString(2, shop.getImgPath());
+			pst.setInt(3, shop.getSid());
+			
+			pst.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally{
+			DBUtil.free(con, pst, null);
+		}
 	}
 
 	@Override
 	public void updateShopContactInfo(ShopContact shopContact) {
 		// TODO Auto-generated method stub
-
+		String sql = "update m_shop_contact set info=? where sid=? and type=?";
+		Connection con = null;
+		PreparedStatement pst = null;
+		
+		con = DBUtil.createConnection();
+		try {
+			pst = con.prepareStatement(sql);
+			
+			pst.setString(1, shopContact.getInfo());
+			pst.setSid(2, shopContact.getSid());
+			pst.setString(3, shopContact.getType());
+			
+			pst.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally{
+			DBUtil.free(con, pst, null);
+		}
 	}
 
 }

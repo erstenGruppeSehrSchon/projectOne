@@ -1,8 +1,5 @@
 package servlet;
 
-import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +13,7 @@ import service.impl.MerchantProfileServiceImpl;
 /**
  * Servlet implementation class ShowAllInfo
  */
-public class ShowIndexPage extends HttpServlet {
+public class ShowIndexPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private MerchantProfileService service = new MerchantProfileServiceImpl();
 
@@ -35,11 +32,16 @@ public class ShowIndexPage extends HttpServlet {
 		
 		// get mid from login servlet
 		int mid= (Integer) request.getAttribute("mid");
-		MeMerchant merchant = service.retrieveMerchantInfo(mid);
-//		List<Dish> dishes = service.retrieveDishesByMid(mid);
+		MeMerchant merchant = service.retrieveMerchantOnly(mid);
+		List<Dish> dishes = service.retrieveDishesByMid(mid);
 				
+		// get dish image by did
+		for (Dish dish: dishes){
+			dish.setDishImages(service.retrieveDishImagesByDid(dish.getDid()));
+		}
+		
 		request.setAttribute("merchant", merchant);
-//		request.setAttribute("dishes", dishes);
+		request.setAttribute("dishes", dishes);
 		request.setAttribute("mid", mid);
 		request.getRequestDispatcher("merchantIndex.jsp").forward(request, response);
 	}

@@ -4,12 +4,39 @@ import java.util.List;
 import dao.MerchantProfileDao;
 import dao.impl.MerchantProfileDaoImpl;
 import po.Dish;
+import po.DishImage;
 import po.Shop;
+import po.ShopContact;
 import po.MeMerchant;
 import service.MerchantProfileService;
 
 public class MerchantProfileServiceImpl implements MerchantProfileService {
 	private MerchantProfileDao dao = new MerchantProfileDaoImpl();
+	
+	// retrieve merchant only
+	@Override
+	public MeMerchant retrieveMerchantOnly(int mid){
+		MeMerchant merchant = new MeMerchant();
+
+		// retrieve from merchant table
+		merchant = dao.retrieveMerchantByMid(mid);
+		
+		return merchant;
+	}
+	
+	//retrieve shop only
+	@Override
+	public List<Shop> retrieveShopOnly(int mid){
+		// retrieve from shop table
+		return dao.retrieveShopInfoByMid(mid);
+	}
+	
+	//retrieve shop contact only
+	@Override
+	public List<ShopContact> retrieveShopContactOnly(int sid){
+		// retrieve from shop contact table
+		return dao.retrieveShopContactBySid(sid);
+	}
 	
 	@Override
 	public MeMerchant retrieveMerchantInfo(int mid) {
@@ -37,6 +64,14 @@ public class MerchantProfileServiceImpl implements MerchantProfileService {
 		
 		return dishes;
 	}
+	
+	// retrieve merchant's dish info
+	@Override
+	public List<DishImage> retrieveDishImagesByDid(int did){
+		List<DishImage> images = dao.retrieveDishImagesByDid(did);
+		
+		return images;
+	}
 
 	@Override
 	public void updateMerchantInfo(MeMerchant merchant) {
@@ -45,7 +80,7 @@ public class MerchantProfileServiceImpl implements MerchantProfileService {
 	}
 
 	@Override
-	public void updateShopInfo(List<Shop> shops) {
+	public void updateShopInfo(Shop shop) {
 		// update shop info according to mid & sid
 		
 		// update shop contact info according to sid & cid

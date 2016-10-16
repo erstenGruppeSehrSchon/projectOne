@@ -47,4 +47,37 @@
     <servlet-name>ShowProfileServlet</servlet-name>
     <url-pattern>/showProfile</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>ShowIndexPageServlet</display-name>
+    <servlet-name>ShowIndexPageServlet</servlet-name>
+    <servlet-class>servlet.ShowIndexPageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowIndexPageServlet</servlet-name>
+    <url-pattern>/showIndex</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>EditProfileServlet</display-name>
+    <servlet-name>EditProfileServlet</servlet-name>
+    <servlet-class>servlet.EditProfileServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditProfileServlet</servlet-name>
+    <url-pattern>/editProfile</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>ShowEditPageServlet</display-name>
+    <servlet-name>ShowEditPageServlet</servlet-name>
+    <servlet-class>servlet.ShowEditPageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowEditPageServlet</servlet-name>
+    <url-pattern>/showEditProfile</url-pattern>
+  </servlet-mapping>
 </web-app>
