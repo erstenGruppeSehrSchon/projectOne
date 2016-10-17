@@ -105,4 +105,14 @@
     <servlet-name>ShowShopServlet</servlet-name>
     <url-pattern>/showShop</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddDishServlet</display-name>
+    <servlet-name>AddDishServlet</servlet-name>
+    <servlet-class>servlet.AddDishServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddDishServlet</servlet-name>
+    <url-pattern>/AddDish</url-pattern>
+  </servlet-mapping>
 </web-app>
