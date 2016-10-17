@@ -32,7 +32,7 @@
   <div id="main">
 	<table class="index-show-merchant">
 		<tr>
-			<td class="index-show-merchant-icon"><a href=<%="showProfile?mid="+request.getAttribute("mid") %>><img src= "http://www.icon2s.com/img256/256x256-black-white-android-user.png"/></a></td>
+			<td class="index-show-merchant-icon"><a href="showProfile?mid=${mid} }"><img src= "http://www.icon2s.com/img256/256x256-black-white-android-user.png"/></a></td>
 			<td>
 			 <!-- request.getAttribute("mid") -->
 				<h3>Name: ${merchant.name} </h3>

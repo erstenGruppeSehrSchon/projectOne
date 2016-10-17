@@ -274,7 +274,7 @@ public class MerchantProfileDaoImpl implements MerchantProfileDao {
 	@Override
 	public boolean updateMerchantInfo(MeMerchant merchant, String oldPassword) {
 		// TODO Auto-generated method stub
-		String sql = "update m_merchant set name=?, password=?, brith_date=?, gender=? where mid=? and password=?";
+		String sql = "update m_merchant set name=?, password=?, brith_date=TO_DATE(?, 'YYYY-MM-DD'), gender=? where mid=? and password=?";
 		Connection con = null;
 		PreparedStatement pst = null;
 		
