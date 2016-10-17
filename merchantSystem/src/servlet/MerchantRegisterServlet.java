@@ -94,7 +94,7 @@ public class MerchantRegisterServlet extends HttpServlet {
 			String birthDateStr = request.getParameter("merchantBirthDate");
 			if(birthDateStr != null && !birthDateStr.trim().equals("")){
 				birthDateStr = request.getParameter("merchantBirthDate").trim();
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 				Date birthDate = sdf.parse(birthDateStr);
 				merchant.setBirth(birthDate);
 			}
