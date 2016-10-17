@@ -1,6 +1,7 @@
 package util;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -27,9 +28,9 @@ public class FileUploader {
 	}
 	
 	// Return img URL
-	public String upload(ServletContext servletContext, HttpServletRequest request, String type, int id) {
+	public ArrayList<String> upload(ServletContext servletContext, HttpServletRequest request, String type, int id) {
 		
-		String imgUrl = null;
+		ArrayList<String> imgUrls = new ArrayList<>();
 		
 		// Check if the upload file exists
 		if (ServletFileUpload.isMultipartContent(request)) {
@@ -62,7 +63,9 @@ public class FileUploader {
 							fileItem.write(storeFile);
 							
 							// Format image URL for return
-							imgUrl = request.getServerName() + ":" + request.getServerPort() + servletContext.getContextPath() + "/" + FOLDER + "/" + type + id + "/" + fileName;
+							String imgUrl = request.getServerName() + ":" + request.getServerPort() + servletContext.getContextPath() + "/" + FOLDER + "/" + type + id + "/" + fileName;
+							imgUrls.add(imgUrl);
+							
 						}
 					}
 				}
@@ -71,6 +74,6 @@ public class FileUploader {
 			}
 		}
 		
-		return imgUrl;
+		return imgUrls;
 	}
 }
