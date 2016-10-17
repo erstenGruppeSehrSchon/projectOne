@@ -167,6 +167,10 @@ nav #nav > li > a {
 	width: 300px;
 }
 
-#show-merchant-infor{
+.show-merchant-infor{
 	width: 800px;
+}
+
+.show-merchant-infor td{
+	padding: 5px;
 }
