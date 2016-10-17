@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import po.Dish;
 import po.Shop;
 import po.ShopContact;
-import util.DBUtil;
+import common.util.DBUtil;
 import dao.DishDao;
 import dao.ShopContactDao;
 import dao.ShopDao;

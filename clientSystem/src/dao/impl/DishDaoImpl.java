@@ -10,7 +10,7 @@ import po.Dish;
 import po.DishImage;
 import dao.DishDao;
 import dao.DishImageDao;
-import util.DBUtil;
+import common.util.DBUtil;
 
 public class DishDaoImpl implements DishDao{
 

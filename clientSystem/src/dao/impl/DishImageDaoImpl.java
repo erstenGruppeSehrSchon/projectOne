@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import po.DishImage;
-import util.DBUtil;
+import common.util.DBUtil;
 import dao.DishImageDao;
 
 public class DishImageDaoImpl implements DishImageDao {

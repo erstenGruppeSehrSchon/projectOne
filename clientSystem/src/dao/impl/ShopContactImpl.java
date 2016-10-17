@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import po.ShopContact;
-import util.DBUtil;
+import common.util.DBUtil;
 import dao.ShopContactDao;
 
 public class ShopContactImpl implements ShopContactDao {
