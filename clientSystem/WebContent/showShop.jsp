@@ -28,58 +28,42 @@
     </ul>
   </nav>
   <div id="main">
-	<h3>Shop name: </h3>
+	<h3>Shop name: ${shop.name}</h3>
 		<table class="index-show-merchant">
 			<tr>
 				<td><b>-Description-</b></td>
-				<td rowspan = "5" class="index-show-merchant-icon"><img src=  "https://buffaloeats.files.wordpress.com/2012/02/front-store.jpg"/></td>
+				<td rowspan = "10" class="index-show-merchant-icon"><img src=  "https://buffaloeats.files.wordpress.com/2012/02/front-store.jpg"/></td>
 			</tr>
 			<tr>
-				<td>Description: ${shop.descr}</td>
+				<td>${shop.descr}</td>
 			</tr>
-			<tr>
-			   
-				<td>
-				
-				<c:forEach var="contact" items="${shop.shopContactList}"> 
+			<c:forEach var="contact" items="${shop.shopContactList}"> 
 				<tr>
-				<td><b>Contact Type:</b> ${contact.type} </td>
-				<td><b>Contact Information:</b> ${contact.info}</td>
+					<td><b>Contact Type:</b> ${contact.type} </td>
 				</tr>
-				</c:forEach>
-				</td>
-			</tr>
-			<!--			<tr>
-				<td><a href="./merchantShopEdit.html" class="btn btn-default">Edit</a></td>
-			</tr>
-			-->
+				<tr>
+					<td><b>Contact Information:</b> ${contact.info}</td>
+				</tr>
+			</c:forEach>
 		</table>
 		
 		<div class="block-divider-index"></div>
 		<h4>Dishes in this shop</h4>
 		<table class="index-show-latest show-border">
+		
+		<tr>
 		<c:forEach var="dish" items="${dishes}">
-		<tr>
-			<td colspan="3"><h3>-${dish.name}-</h3></td>
+			<td>
+				<c:forEach var="dishImage" items="${dish.dishImages}">
+				<a href="ShowDish?shopId=${dish.sid}&dishId=${dish.did}">
+					<h5>-${dish.name}-</h5>
+					<img src="${dishImage.imgPath}"/>
+				</a>
+				</c:forEach>
+			</td>	
+		</c:forEach>
 		</tr>
-		<tr>
-			<c:forEach var="dishImage" items="${dish.dishImages}">
-				<td><a href="ShowDish?merchantId=${dish.sid}&dishId=${dish.did}"></a><img src="${dishImage.imgPath}"/></td>
-			</c:forEach>
-		</tr>
-	</c:forEach>
-		<!--
-			<tr>
-				<td><a href = "./merchantShowDish.html"><p>Dish 1</p><img width = "300px" src=  "http://sadia.com.hk/sites/sadiahk/files/styles/product/public/products/cheddar_pork_sausage_b.png?itok=SUjYxDvZ"/></a></td>
-				<td><a href = "./merchantShowDish.html"><p>Dish 1</p><img width = "300px" src=  "http://sadia.com.hk/sites/sadiahk/files/styles/product/public/products/cheddar_pork_sausage_b.png?itok=SUjYxDvZ"/></a></td>
-				<td><a href = "./merchantShowDish.html"><p>Dish 1</p><img width = "300px" src=  "http://sadia.com.hk/sites/sadiahk/files/styles/product/public/products/cheddar_pork_sausage_b.png?itok=SUjYxDvZ"/></a></td>
-			</tr>
-			<tr>
-				<td><a href = "./merchantShowDish.html"><p>Dish 1</p><img width = "300px" src=  "http://sadia.com.hk/sites/sadiahk/files/styles/product/public/products/cheddar_pork_sausage_b.png?itok=SUjYxDvZ"/></a></td>
-				<td><a href = "./merchantShowDish.html"><p>Dish 1</p><img width = "300px" src=  "http://sadia.com.hk/sites/sadiahk/files/styles/product/public/products/cheddar_pork_sausage_b.png?itok=SUjYxDvZ"/></a></td>
-				<td><a href = "./merchantShowDish.html"><p>Dish 1</p><img width = "300px" src=  "http://sadia.com.hk/sites/sadiahk/files/styles/product/public/products/cheddar_pork_sausage_b.png?itok=SUjYxDvZ"/></a></td>
-			</tr>
-			-->
+		
 		</table>
   </div>
 </div>

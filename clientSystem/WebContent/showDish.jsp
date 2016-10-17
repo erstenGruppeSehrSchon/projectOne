@@ -48,7 +48,7 @@
 				<a href = "showmerchant?MerchantId=${merchant.mid}"><img src= "http://www.icon2s.com/img256/256x256-black-white-android-user.png"/></a>
 			</td>
 			<td>
-				<p><b>Name:</b> ${merchant.name}</p>
+				<p><b>Name:</b> <a href = "showmerchant?MerchantId=${merchant.mid}">${merchant.name}</a></p>
 				<p><b>shop:</b> <a href="showshop?ShopId=${shop.sid}">${shop.name}</a></p>
 			</td>
 			</tr>

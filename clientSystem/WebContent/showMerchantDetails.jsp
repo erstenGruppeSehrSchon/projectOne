@@ -27,7 +27,7 @@
     </ul>
   </nav>
   <div id="main">
-	<table>
+	<table class="show-merchant-infor">
 		<tr>		
 			<th colspan = "3">-Merchant Information-</th>
 		</tr>

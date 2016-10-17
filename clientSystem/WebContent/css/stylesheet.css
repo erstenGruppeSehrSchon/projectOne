@@ -9,6 +9,7 @@ body {
 	width: 1000px;
 	margin: 30px auto 80px auto;
 	background: #F8FAE5;
+	padding-bottom: 30px;
 }
 
 header {
@@ -160,4 +161,12 @@ nav #nav > li > a {
 
 #show-dish-table{
 	width: 800px;	
+}
+
+#show-dish-table img{
+	width: 300px;
+}
+
+#show-merchant-infor{
+	width: 800px;
 }
