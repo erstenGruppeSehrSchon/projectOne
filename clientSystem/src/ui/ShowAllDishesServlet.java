@@ -20,6 +20,11 @@ public class ShowAllDishesServlet extends HttpServlet {
 		// Store to request attribute
 		ArrayList<Dish> dishList = cvmds.findAllDish();
 		request.setAttribute("dishes", dishList);
+		for (Dish dish : dishList){
+			System.out.print(dish.getName());
+			System.out.print(dish.getSid());
+			System.out.print(dish.getDid());
+		}
 		
 		// Forward to index page
   	    request.getRequestDispatcher("clientIndex.jsp").forward(request, response);

@@ -37,6 +37,8 @@
     <servlet-name>ShowDishServlet</servlet-name>
     <url-pattern>/ShowDish</url-pattern>
   </servlet-mapping>
+ 
+ 
   <servlet>
     <description></description>
     <display-name>ShowMerchantDetailsServlet</display-name>
@@ -45,18 +47,30 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>ShowMerchantDetailsServlet</servlet-name>
-    <url-pattern>/ShowMerchantDetails</url-pattern>
+    <url-pattern>/showmerchant</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <description></description>
-    <display-name>ViewMerchantInfoServlet</display-name>
-    <servlet-name>ViewMerchantInfoServlet</servlet-name>
-    <servlet-class>ui.ViewMerchantInfoServlet</servlet-class>
+    <display-name>ShowShopDetailsServlet</display-name>
+    <servlet-name>ShowShopDetailsServlet</servlet-name>
+    <servlet-class>ui.ShowShopDetailsServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ViewMerchantInfoServlet</servlet-name>
-    <url-pattern>/showmwerchant</url-pattern>
+    <servlet-name>ShowShopDetailsServlet</servlet-name>
+    <url-pattern>/showshop</url-pattern>
   </servlet-mapping>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
  
   <servlet>
     <description></description>

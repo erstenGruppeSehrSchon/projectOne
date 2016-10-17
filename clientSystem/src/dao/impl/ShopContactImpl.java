@@ -53,7 +53,7 @@ public class ShopContactImpl implements ShopContactDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 	
-		String sql = "SELECT CID, SIP, TYPE, INFO FROM M_SHOP_CONTACT WHERE SID = ?";
+		String sql = "SELECT CID, SID, TYPE, INFO FROM M_SHOP_CONTACT WHERE SID = ?";
 
 		try {
 			conn  = DBUtil.createConnection();
