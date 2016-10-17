@@ -13,5 +13,10 @@ public class MerchantShopServiceImpl implements MerchantShopService {
 		
 		return dao.addShop(s);
 	}
+	
+	@Override
+	public boolean updateShopImage(String s, int sid, int mid){
+		return dao.updateShopImage(s, sid, mid);
+	}
 
 }

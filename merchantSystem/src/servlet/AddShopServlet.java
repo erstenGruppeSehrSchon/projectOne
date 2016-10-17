@@ -18,6 +18,7 @@ import common.po.ShopContact;
 import consts.Consts;
 import service.MerchantShopService;
 import service.impl.MerchantShopServiceImpl;
+import util.FileUploader;
 import util.PasswordEncrypter;
 
 /**
@@ -84,11 +85,25 @@ public class AddShopServlet extends HttpServlet {
 		
 
 		// upload image
-		int n= 0;
+		int sid= 0;
 		
-		if((n = service.addMerchantShop(shop))!= 0){
-			request.setAttribute("mid", mid);
-			request.getRequestDispatcher("/showIndex").forward(request, response);
+		if((sid = service.addMerchantShop(shop))!= 0){
+			FileUploader upload = FileUploader.getFileUploader();
+			List<String> files = null;
+			
+			if((files =upload.upload(getServletContext(), request, "shop", sid)) != null){
+				for(String file : files){
+					service.updateShopImage(file, sid, mid);
+				}
+				
+				request.setAttribute("mid", mid);
+				request.getRequestDispatcher("/showIndex").forward(request, response);	
+			}
+			else {
+				request.setAttribute("mid", mid);
+				request.setAttribute("errorMsg", Consts.ADD_SHOP_FAIL);
+				request.getRequestDispatcher("merchantAddShop.jsp").forward(request, response);
+			}
 		}
 		else {
 			request.setAttribute("mid", mid);
