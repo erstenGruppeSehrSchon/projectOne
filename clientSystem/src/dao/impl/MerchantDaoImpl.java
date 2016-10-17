@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import dao.MerchantDao;
 import po.MeMerchant;
 import po.Merchant;
-import util.DBUtil;
+import common.util.DBUtil;
 
 public class MerchantDaoImpl implements MerchantDao {
 	
