@@ -1,9 +1,9 @@
 package service;
 
-import po.Shop;
+import common.po.Shop;
 
 public interface MerchantShopService {
 	
-	public boolean addMerchantShop(Shop s);
+	public int addMerchantShop(Shop s);
 
 }

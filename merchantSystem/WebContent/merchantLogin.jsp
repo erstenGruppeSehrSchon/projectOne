@@ -38,7 +38,7 @@
 			<br/>
 			<div class="input-group">
 				<span class="input-group-addon"><span class = "glyphicon glyphicon-menu-right"></span></span>
-				<input name="merchantLoginPassword" type="text" class="form-control" placeholder="Password"> 
+				<input name="merchantLoginPassword" type="password" class="form-control" placeholder="Password"> 
 			</div>
 			<br/>
 			<div id="merchant-logn-form-error">${errorMsg}</div>

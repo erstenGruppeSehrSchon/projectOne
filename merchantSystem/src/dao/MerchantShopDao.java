@@ -1,10 +1,10 @@
 package dao;
 
-import po.Shop;
+import common.po.Shop;
 
 public interface MerchantShopDao {
 	
-	public boolean addShop(Shop shop);
+	public int addShop(Shop shop);
 	
 
 }
