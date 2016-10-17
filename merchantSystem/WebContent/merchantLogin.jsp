@@ -22,8 +22,8 @@
   <nav>
     <ul id="nav">
       <li><a href="#">Search</a></li>
-      <li><a href="#">Manage My Shops</a></li>
-      <li><a href="#">Manage My Dishes</a></li>
+      <li><a href="merchantShowShop.jsp">Manage My Shops</a></li>
+      <li><a href="merchantShowDish.html">Manage My Dishes</a></li>
       <li><a href="#">My Profile</a></li>
       <li><a href="./merchantLogin.jsp">Logout</a></li>
     </ul>
