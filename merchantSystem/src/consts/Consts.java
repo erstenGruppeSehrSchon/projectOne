@@ -24,4 +24,7 @@ public class Consts {
 
 	// update merchant profile
 	public static final String UPDATE_FAIL = "Update profile failed. Please retry.";
+	
+	//add shop
+	public static final String ADD_SHOP_FAIL = "Add shop failed. Please retry.";
 }

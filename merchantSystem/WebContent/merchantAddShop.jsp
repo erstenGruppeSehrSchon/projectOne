@@ -13,22 +13,23 @@
 <body>
 <div class="container">
 <header>
-    <div id="logo"><a href="./merchantIndex.jsp"><img src="img/logo.png" alt=""></a></div>
+    <div id="logo"><a href="showIndex?mid=${mid }"><img src="img/logo.png" alt=""></a></div>
   </header>
   <nav>
    <ul id="nav">
       <li><a href="./merchantSearch.jsp">Search</a></li>
-      <li><a href="./merchantShowAllShop.jsp">Manage My Shops</a></li>
+      <li><a href="showAllShop?mid=${mid}">Manage My Shops</a></li>
       <li><a href="./merchantShowAllDishes.jsp">Manage My Dishes</a></li>
-      <li><a href="./merchantViewProfile.jsp">My Profile</a></li>
-      <li><a href="./adminLogin.jsp">Logout</a></li>
+      <li><a href="showProfile?mid=${mid}">My Profile</a></li>
+      <li><a href="./merchantLogin.jsp">Logout</a></li>
     </ul>
   </nav>
   <div id="main">
 	<h3>Add new Shop</h3>
 	<div class="merchant-form-control">
-	<form action = "" method = "post">
+	<form action = "addShop" method = "post">
 	<input type="hidden" value = "" id = "dishesRegShopId"/>
+	<input type="hidden" name="mid" value = "${mid}" />
 	<table>
 		<tr>
 			<td>Shop Name</td>
@@ -36,7 +37,7 @@
 		</tr>
 		<tr>
 			<td>Description</td>
-			<td><textarea id = "shopRegDescriptione" class="form-control" rows="6" cols="50"></textarea></td>
+			<td><textarea id = "shopRegDescription" class="form-control" rows="6" cols="50"></textarea></td>
 		</tr>
 		<tr>
 			<td>Contact Type</td>
@@ -64,15 +65,25 @@
 			</form>
 			</td>
 		</tr>
-		<tr>
+		
+		<!--<tr>
 			<td rowspan="2">
-			<!--<input type="submit" class ="btn"/>-->
-			<!--<button class ="btn">Submit</button>-->
-			<a href="./merchantIndex.html" class="btn btn-default">Submit</a>
+			<input type="submit" class ="btn"/>
+			<button class ="btn">Submit</button>
+			<input type="submit" value="Submit" class="btn btn-default">
 			</td>
-		</tr>
+		</tr>-->
 	</table>
+	<br/>
+	<br/>
+	${errorMsg}
+	<br/>
+	<br/>
+	<!--<input type="submit" class ="btn"/>-->
+	<!--<button class ="btn">Submit</button>-->
+	<input type="submit" value="Submit" class="btn btn-default">
 	</form>
+	
 	</div>
   </div>
 </div>

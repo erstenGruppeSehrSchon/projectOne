@@ -44,7 +44,7 @@
 	</table>
 	<div class="block-divider-index"></div>
 	<h3>My Latest Shops</h3>
-	<a href = "./merchantAddShop.html"><span class = "glyphicon glyphicon-plus"></span></a>
+	<a href = "./merchantAddShop.jsp?mid=${mid}"><span class = "glyphicon glyphicon-plus"></span></a>
 	<table class="index-show-latest">
 		<!--<td>
 			<a href = "./merchantShowShop.html"><p>name of shop 1</p>

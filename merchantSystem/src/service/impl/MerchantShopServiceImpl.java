@@ -1,14 +1,17 @@
 package service.impl;
 
-import po.Shop;
+import dao.MerchantShopDao;
+import dao.impl.MerchantShopDaoImpl;
+import common.po.Shop;
 import service.MerchantShopService;
 
 public class MerchantShopServiceImpl implements MerchantShopService {
-
+	public MerchantShopDao dao = new MerchantShopDaoImpl();
+	
 	@Override
-	public boolean addMerchantShop(Shop s) {
+	public int addMerchantShop(Shop s) {
 		
-		return true;
+		return dao.addShop(s);
 	}
 
 }
