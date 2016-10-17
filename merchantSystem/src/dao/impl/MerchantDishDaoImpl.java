@@ -6,10 +6,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import po.Dish;
-import po.DishImage;
+import common.po.Dish;
+import common.po.DishImage;
 import util.DBUtil;
-import dao.DishImageDao;
+import common.dao.DishImageDao;
+import common.dao.impl.DishImageDaoImpl;
 import dao.MerchantDishDao;
 
 public class MerchantDishDaoImpl implements MerchantDishDao{

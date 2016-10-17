@@ -5,10 +5,10 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
-import po.Dish;
-import po.Shop;
-import po.ShopContact;
-import po.MeMerchant;
+import common.po.Dish;
+import common.po.Shop;
+import common.po.ShopContact;
+import common.po.MeMerchant;
 import service.MerchantProfileService;
 import service.impl.MerchantProfileServiceImpl;
 

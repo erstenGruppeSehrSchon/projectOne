@@ -8,8 +8,8 @@ import org.junit.Test;
 
 import dao.MerchantRegisterDao;
 import dao.impl.MerchantRegisterDaoImpl;
-import po.MeMerchant;
-import po.Merchant;
+import common.po.MeMerchant;
+import common.po.Merchant;
 import service.MerchantLoginService;
 import service.MerchantRegisterService;
 import util.DBUtil;

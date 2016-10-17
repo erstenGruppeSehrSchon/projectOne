@@ -10,8 +10,8 @@ import org.junit.Test;
 import consts.Consts;
 import dao.MerchantLoginDao;
 import dao.MerchantRegisterDao;
-import po.Shop;
-import po.MeMerchant;
+import common.po.Shop;
+import common.po.MeMerchant;
 import util.DBUtil;
 
 public class MerchantLoginDaoImpl implements MerchantLoginDao{

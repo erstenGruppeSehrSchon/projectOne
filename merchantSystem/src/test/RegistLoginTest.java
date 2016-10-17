@@ -7,8 +7,8 @@ import org.junit.Test;
 import consts.Consts;
 import dao.impl.MerchantLoginDaoImpl;
 import dao.impl.MerchantRegisterDaoImpl;
-import po.Shop;
-import po.MeMerchant;
+import common.po.Shop;
+import common.po.MeMerchant;
 import util.PasswordEncrypter;
 
 public class RegistLoginTest {

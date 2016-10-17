@@ -1,7 +1,7 @@
 package dao;
 
-import po.MeMerchant;
-import po.Merchant;
+import common.po.MeMerchant;
+import common.po.Merchant;
 
 public interface MerchantLoginDao {
 	public int checkMerchantExist(String username, String password);

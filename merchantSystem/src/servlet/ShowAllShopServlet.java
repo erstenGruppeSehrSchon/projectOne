@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import po.MeMerchant;
-import po.Shop;
+import common.po.MeMerchant;
+import common.po.Shop;
 import service.MerchantProfileService;
 import service.impl.MerchantProfileServiceImpl;
 

@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import po.Dish;
-import po.DishImage;
-import po.MeMerchant;
-import po.Shop;
+import common.po.Dish;
+import common.po.DishImage;
+import common.po.MeMerchant;
+import common.po.Shop;
 import service.MerchantProfileService;
 import service.impl.MerchantProfileServiceImpl;
 
@@ -36,8 +36,14 @@ public class ShowIndexPageServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// for security reason, only post request can be received
 		
-		// get mid from login servlet
-		int mid= (Integer) request.getAttribute("mid");
+		// get mid from login servlet / other servlet
+		int mid = 0;
+		if(request.getAttribute("mid") != null)
+			mid = (Integer) request.getAttribute("mid");
+		else
+			mid = Integer.parseInt(request.getParameter("mid"));
+		
+		
 		MeMerchant merchant = service.retrieveMerchantOnly(mid);
 		
 		// get shop by mid

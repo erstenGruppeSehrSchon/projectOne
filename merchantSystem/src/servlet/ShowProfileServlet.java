@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import consts.Consts;
-import po.Dish;
-import po.MeMerchant;
+import common.po.Dish;
+import common.po.MeMerchant;
 import service.MerchantProfileService;
 import service.impl.MerchantProfileServiceImpl;
 
@@ -40,6 +40,7 @@ public class ShowProfileServlet extends HttpServlet {
 		
 		MeMerchant merchant = service.retrieveMerchantOnly(mid);
 		
+		request.setAttribute("mid", mid);
 		request.setAttribute("merchant", merchant);
 		request.getRequestDispatcher("merchantViewProfile.jsp").forward(request, response);
 	}

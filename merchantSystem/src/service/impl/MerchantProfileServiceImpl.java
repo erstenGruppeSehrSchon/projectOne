@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import dao.MerchantProfileDao;
 import dao.impl.MerchantProfileDaoImpl;
-import po.Dish;
-import po.DishImage;
-import po.Shop;
-import po.ShopContact;
-import po.MeMerchant;
+import common.po.Dish;
+import common.po.DishImage;
+import common.po.Shop;
+import common.po.ShopContact;
+import common.po.MeMerchant;
 import service.MerchantProfileService;
 
 public class MerchantProfileServiceImpl implements MerchantProfileService {
