@@ -34,10 +34,12 @@
 		<table class="index-show-merchant">
 			<tr>
 				<td><b>-Description-</b></td>
-				<td rowspan = "5" class="index-show-merchant-icon"><img src=  "https://buffaloeats.files.wordpress.com/2012/02/front-store.jpg"/></td>
+				<td rowspan = "5" class="index-show-merchant-icon"><img src="${shop.imagePath}"/></td>
+				
+				<!-- <td rowspan = "5" class="index-show-merchant-icon"><img src=  "https://buffaloeats.files.wordpress.com/2012/02/front-store.jpg"/></td>-->
 			</tr>
 			<tr>
-				<td>Hi here is description...Hi here is description...Hi here is description...Hi here is description...Hi here is description...Hi here is description...Hi here is description...Hi here is description...</td>
+				<td>${shop.descr }</td>
 			</tr>
 			<tr>
 				<td><b>Contact Type:</b> Contact Type here</td>
@@ -48,11 +50,44 @@
 			<tr>
 				<td><a href="./merchantShopEdit.html" class="btn btn-default">Edit</a></td>
 			</tr>
+			
+			
+			<!--<tr>
+				<td>Hi here is description...Hi here is description...Hi here is description...Hi here is description...Hi here is description...Hi here is description...Hi here is description...Hi here is description...</td>
+			</tr>
+			<tr>
+				<td><b>Contact Type:</b> Contact Type here</td>
+			</tr>
+			<tr>
+				<td><b>Contact Information:</b> Contact Information here</td>
+			</tr>
+			<tr>
+				<td><a href="./merchantShopEdit.html" class="btn btn-default">Edit</a></td>
+			</tr> -->
 		</table>
 		<div class="block-divider-index"></div>
 		<h4>Dishes in this shop</h4>
 		<table class="index-show-latest show-border">
-			<tr>
+		
+			<c:choose>
+				<c:when test="${fn:length(dishes) >0}">
+					<tr>
+					
+					<c:forEach items="${dishes }" var="dish">
+					<c:if test="${fn:length(dish.dishImages) >0}">
+						<a href = "./merchantShowDish.html"><p>${ dish.name}</p>
+						<img width = "300px" src="${dish.dishImages[0]}"/></a>
+					</c:if>
+					</c:forEach>
+					
+					</tr>
+				</c:when>
+				<c:otherwise>
+					<p>You have no dishes in this shop.</p>
+				</c:otherwise>
+			</c:choose>
+			
+			<!-- <tr>
 				<td><a href = "./merchantShowDish.html"><p>Dish 1</p><img width = "300px" src=  "http://sadia.com.hk/sites/sadiahk/files/styles/product/public/products/cheddar_pork_sausage_b.png?itok=SUjYxDvZ"/></a></td>
 				<td><a href = "./merchantShowDish.html"><p>Dish 1</p><img width = "300px" src=  "http://sadia.com.hk/sites/sadiahk/files/styles/product/public/products/cheddar_pork_sausage_b.png?itok=SUjYxDvZ"/></a></td>
 				<td><a href = "./merchantShowDish.html"><p>Dish 1</p><img width = "300px" src=  "http://sadia.com.hk/sites/sadiahk/files/styles/product/public/products/cheddar_pork_sausage_b.png?itok=SUjYxDvZ"/></a></td>
@@ -61,7 +96,7 @@
 				<td><a href = "./merchantShowDish.html"><p>Dish 1</p><img width = "300px" src=  "http://sadia.com.hk/sites/sadiahk/files/styles/product/public/products/cheddar_pork_sausage_b.png?itok=SUjYxDvZ"/></a></td>
 				<td><a href = "./merchantShowDish.html"><p>Dish 1</p><img width = "300px" src=  "http://sadia.com.hk/sites/sadiahk/files/styles/product/public/products/cheddar_pork_sausage_b.png?itok=SUjYxDvZ"/></a></td>
 				<td><a href = "./merchantShowDish.html"><p>Dish 1</p><img width = "300px" src=  "http://sadia.com.hk/sites/sadiahk/files/styles/product/public/products/cheddar_pork_sausage_b.png?itok=SUjYxDvZ"/></a></td>
-			</tr>
+			</tr> -->
 		</table>
   </div>
 </div>
