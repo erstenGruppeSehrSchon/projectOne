@@ -1,3 +1,5 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -11,23 +13,20 @@
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 <link rel="stylesheet" href="css/stylesheet.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
 </head>
 <body>
-<header>
-
+<div class="container">
+  <header>
     <div id="logo"><a href="ShowAllDishes"><img src="img/logo.png" alt=""></a></div>
   </header>
-  <nav>
+ <nav>
     <ul id="nav">
-     <!--<li><a href="#">Search</a></li>
+      <!--<li><a href="#">Search</a></li>
       <li><a href="#">My Profile</a></li>
       <li><a href="./adminLogin.jsp">Logout</a></li>-->
     </ul>
   </nav>
-  <div id="main">
-	<table class="show-merchant-infor">
+<table class="show-merchant-infor">
 		<tr>		
 			<th colspan = "3">-Merchant Information-</th>
 		</tr>

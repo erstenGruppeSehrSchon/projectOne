@@ -32,7 +32,17 @@
 				<!--<p>Like Dislike</p>-->
 				<p><b>Type:</b>  ${dish.type}</p>
 				<p><b>Price:</b>  ${dish.price}</p>
-				<p><b>Active:</b>  ${dish.active}</p>
+				
+				<p><b>Active:</b>
+				<c:choose>
+				    <c:when test="${dish.active == '1'}">
+				        Yes
+				    </c:when>    
+				    <c:otherwise>
+				    	No
+				    </c:otherwise>
+				</c:choose>
+				</p>
 			</td>
 			<td>
 				<c:forEach var="dishImage" items="${dish.dishImages}">
