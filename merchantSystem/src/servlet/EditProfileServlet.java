@@ -14,7 +14,7 @@ import consts.Consts;
 import common.po.MeMerchant;
 import service.MerchantProfileService;
 import service.impl.MerchantProfileServiceImpl;
-import util.PasswordEncrypter;
+import common.util.PasswordEncrypter;
 
 /**
  * Servlet implementation class EditProfileServlet

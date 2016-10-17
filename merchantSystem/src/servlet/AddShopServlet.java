@@ -18,7 +18,7 @@ import common.po.ShopContact;
 import consts.Consts;
 import service.MerchantShopService;
 import service.impl.MerchantShopServiceImpl;
-import util.PasswordEncrypter;
+import common.util.PasswordEncrypter;
 
 /**
  * Servlet implementation class NewShopServlet

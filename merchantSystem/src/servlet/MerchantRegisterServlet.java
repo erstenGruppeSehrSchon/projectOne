@@ -31,7 +31,7 @@ import common.po.MeMerchant;
 import common.po.Merchant;
 import service.MerchantRegisterService;
 import service.impl.MerchantRegisterServiceImpl;
-import util.PasswordEncrypter;
+import common.util.PasswordEncrypter;
 
 /**
  * Servlet implementation class MerchantRegisterServlet

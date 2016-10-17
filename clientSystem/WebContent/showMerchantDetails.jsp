@@ -15,8 +15,8 @@
 
 </head>
 <body>
-<div class="container">
 <header>
+
     <div id="logo"><a href="ShowAllDishes"><img src="img/logo.png" alt=""></a></div>
   </header>
   <nav>
@@ -41,7 +41,7 @@
 			<td>${merchant.name}</td>
 		</tr>
 		<tr>
-			<td><b>Brithday:</b></td>
+			<td><b>Birthday:</b></td>
 			<td>${merchant.birth}</td>
 		</tr>
 		<tr>
