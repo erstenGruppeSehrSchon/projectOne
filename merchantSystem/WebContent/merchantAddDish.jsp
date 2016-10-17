@@ -41,68 +41,66 @@
 				</select>
 			</td>
 		</tr>
-		<c:if test="${shop != null}">
-			<tr>
-				<td>Dishes Name</td>
-				<td><input id="dishesRegName" name="dishName" type="text" class="form-control"></td>
-			</tr>
-			<tr>
-				<td>Dishes Type</td>
-				<td>
-				<select name="dishType" class="form-control">
-						<option value="AU">Australia</option>
-						<option value="AT">Austria</option>
-						<option value="BE">Belgium</option>
-						<option value="BR">Brazil</option>
-						<option value="KH">Cambodia</option>
-						<option value="CA">Canada</option>
-						<option value="CN">China</option>
-						<option value="HR">Croatia</option>
-						<option value="CY">Cyprus</option>
-						<option value="CZ">Czech Republic</option>
-						<option value="DK">Denmark</option>
-						<option value="EG">Egypt</option>
-						<option value="EE">Estonia</option>
-						<option value="FI">Finland</option>
-						<option value="FR">France</option>
-						<option value="DE">Germany</option>
-						<option value="GR">Greece</option>
-						<option value="HK">Hong Kong</option>
-						<option value="IS">Iceland</option>
-						<option value="IN">India</option>
-						<option value="ID">Indonesia</option>
-						<option value="IT">Italy</option>
-						<option value="JP">Japan</option>
-						<option value="KP">Korea, Democratic People's Republic of</option>
-						<option value="LU">Luxembourg</option>
-						<option value="MO">Macao</option>
-						<option value="MX">Mexico</option>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<td>Prices</td>
-				<td><input id="dishesRegPrices" name="dishPrice" type="text" class="form-control"></td>
-			</tr>
-			<tr>
-				<td>Dishes image:</td>
-				<td>
-				<!--<form action="FileUpload" method="POST" enctype="multipart/form-data">-->
-				<!--  <label class="btn btn-default"> -->
-					 Choose<input type="file" name="dishImage" style="display: none;">
-				<!--  </label>-->
-				</form>
-				</td>
-			</tr>
-			<tr>
+		<tr>
+			<td>Dishes Name</td>
+			<td><input id="dishesRegName" name="dishName" type="text" class="form-control"></td>
+		</tr>
+		<tr>
+			<td>Dishes Type</td>
 			<td>
-				<!--<input type="submit" class ="btn"/>-->
-				<!--<button class ="btn">Submit</button>-->
-				<!--<a href="./merchantIndex.html" class="btn btn-default" rowspan="2">Submit</a>-->
-				<button type="submit" class ="btn">Submit</button>
+			<select name="dishType" class="form-control">
+					<option value="AU">Australia</option>
+					<option value="AT">Austria</option>
+					<option value="BE">Belgium</option>
+					<option value="BR">Brazil</option>
+					<option value="KH">Cambodia</option>
+					<option value="CA">Canada</option>
+					<option value="CN">China</option>
+					<option value="HR">Croatia</option>
+					<option value="CY">Cyprus</option>
+					<option value="CZ">Czech Republic</option>
+					<option value="DK">Denmark</option>
+					<option value="EG">Egypt</option>
+					<option value="EE">Estonia</option>
+					<option value="FI">Finland</option>
+					<option value="FR">France</option>
+					<option value="DE">Germany</option>
+					<option value="GR">Greece</option>
+					<option value="HK">Hong Kong</option>
+					<option value="IS">Iceland</option>
+					<option value="IN">India</option>
+					<option value="ID">Indonesia</option>
+					<option value="IT">Italy</option>
+					<option value="JP">Japan</option>
+					<option value="KP">Korea, Democratic People's Republic of</option>
+					<option value="LU">Luxembourg</option>
+					<option value="MO">Macao</option>
+					<option value="MX">Mexico</option>
+				</select>
 			</td>
-			</tr>
-		</c:if>
+		</tr>
+		<tr>
+			<td>Prices</td>
+			<td><input id="dishesRegPrices" name="dishPrice" type="text" class="form-control"></td>
+		</tr>
+		<tr>
+			<td>Dishes image:</td>
+			<td>
+			<!--<form action="FileUpload" method="POST" enctype="multipart/form-data">-->
+			<!--  <label class="btn btn-default"> -->
+				 <input type="file" name="dishImage">
+			<!--  </label>-->
+			<!-- </form> -->
+			</td>
+		</tr>
+		<tr>
+		<td>
+			<!--<input type="submit" class ="btn"/>-->
+			<!--<button class ="btn">Submit</button>-->
+			<!--<a href="./merchantIndex.html" class="btn btn-default" rowspan="2">Submit</a>-->
+			<button type="submit" class ="btn">Submit</button>
+		</td>
+		</tr>
 	</table>
 	
 	</form>

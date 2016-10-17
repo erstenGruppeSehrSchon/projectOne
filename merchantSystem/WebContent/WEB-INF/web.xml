@@ -125,4 +125,14 @@
     <servlet-name>AddShopServlet</servlet-name>
     <url-pattern>/addShop</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddDishPageServlet</display-name>
+    <servlet-name>AddDishPageServlet</servlet-name>
+    <servlet-class>servlet.AddDishPageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddDishPageServlet</servlet-name>
+    <url-pattern>/AddDishPage</url-pattern>
+  </servlet-mapping>
 </web-app>

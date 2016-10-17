@@ -28,7 +28,7 @@ public class FileUploader {
 	}
 	
 	// Return img URL
-	public ArrayList<String> upload(ServletContext servletContext, HttpServletRequest request, String type, int id) {
+	public ArrayList<String> upload(ServletContext servletContext, HttpServletRequest request, String type, int id, List<FileItem> fileItems) {
 		
 		ArrayList<String> imgUrls = new ArrayList<>();
 		
@@ -44,7 +44,6 @@ public class FileUploader {
 			upload.setFileItemFactory(factory);
 
 			try {
-				List<FileItem> fileItems = upload.parseRequest(request);
 				if (fileItems != null) {
 					// Create director if not exist
 					String dirPath = servletContext.getRealPath(File.separator + FOLDER + File.separator + type + id);
