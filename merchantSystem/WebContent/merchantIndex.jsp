@@ -56,10 +56,8 @@
 				<tr>
 				
 				<c:forEach items="${merchant.shopList }" var="shop">
-				<p>${ shop.name}</p>
-				<c:if test="${fn:length(shop.imagePath) >0}">
-					<img src="${shop.imagePath[0]}">
-				</c:if>
+					<p>${ shop.name}</p>
+					<img src="${shop.imagePath}">
 				</c:forEach>
 				</tr>
 			</c:when>
