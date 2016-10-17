@@ -9,9 +9,9 @@ import dao.impl.MerchantLoginDaoImpl;
 import dao.impl.MerchantRegisterDaoImpl;
 import common.po.Shop;
 import common.po.MeMerchant;
-import util.PasswordEncrypter;
+import common.util.PasswordEncrypter;
 
-public class RegistLoginTest {
+public class RegisterLoginTest {
 	@Test
 	public void testAddMerchant() throws ParseException{ // m_register_dao
 		MeMerchant m = new MeMerchant();
