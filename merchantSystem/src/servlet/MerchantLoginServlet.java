@@ -13,7 +13,7 @@ import consts.Consts;
 import exception.LoginEmptyException;
 import service.MerchantLoginService;
 import service.impl.MerchantLoginServiceImpl;
-import util.PasswordEncrypter;
+import common.util.PasswordEncrypter;
 
 /**
  * Servlet implementation class MerchantLoginServlet

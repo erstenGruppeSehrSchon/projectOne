@@ -19,7 +19,6 @@ import consts.Consts;
 import service.MerchantShopService;
 import service.impl.MerchantShopServiceImpl;
 import util.FileUploader;
-import util.PasswordEncrypter;
 
 /**
  * Servlet implementation class NewShopServlet
