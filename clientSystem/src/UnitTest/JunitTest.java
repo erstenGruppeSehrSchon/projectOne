@@ -14,7 +14,6 @@ import dao.ShopDao;
 import dao.impl.DishDaoImpl;
 import dao.impl.MerchantDaoImpl;
 import dao.impl.ShopDaoImpl;
-import util.PasswordEncrypter;
 
 
 
