@@ -1,5 +1,6 @@
 package test;
 
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Assert;
@@ -8,6 +9,7 @@ import org.junit.Test;
 import common.po.Dish;
 import common.po.Shop;
 import common.po.ShopContact;
+import common.util.PasswordEncrypter;
 import common.po.MeMerchant;
 import service.MerchantProfileService;
 import service.impl.MerchantProfileServiceImpl;
@@ -98,5 +100,26 @@ public class MerchantProfileServiceTest {
 			System.out.println("Dish is active: " + dish.getActive());
 			System.out.println();
 		}
+	}
+	
+	@Test
+	public void testAddShop(){
+	}
+	
+	@Test
+	public void testUpdateMerchantInfo(){
+		MeMerchant merchant = new MeMerchant();
+		
+		merchant.setMid(26);
+		merchant.setName("newName");
+		merchant.setPassword(PasswordEncrypter.getPasswordEncrypter().getEncryptedPassword("newPassword"));
+		merchant.setBirth(new Date(System.currentTimeMillis()));
+		merchant.setGender("F");
+	
+		// true if have rows update
+		System.out.println(service.updateMerchantInfo(merchant, PasswordEncrypter.getPasswordEncrypter().getEncryptedPassword("test")));
+		
+		// false
+//		System.out.println(service.updateMerchantInfo(merchant, "newPassword"));
 	}
 }

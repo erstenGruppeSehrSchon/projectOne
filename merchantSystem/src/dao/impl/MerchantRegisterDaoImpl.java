@@ -102,7 +102,7 @@ public class MerchantRegisterDaoImpl implements MerchantRegisterDao{
 	public int addMerchantWithoutShop(MeMerchant merchant){
 		// user_seq01.nextval
 		String sqlMerchant = "insert into M_MERCHANT(MID, USERNAME,PASSWORD,NAME,BRITH_DATE,GENDER,STATUS,REG_DATE)"
-				+ " values (M_MERCHANT_SEQ.nextval,?,?,?,TO_DATE(?, 'YYYY-MM-DD'),?,?,?)";
+				+ " values (M_MERCHANT_SEQ.nextval,?,?,?,(TRUNC(TO_DATE(?, 'YYYY-MM-DD'), 'DD')),?,?,(TRUNC(TO_DATE(?, 'YYYY-MM-DD'), 'DD')))";
 		String sqlQuery = "select mid from M_MERCHANT where rowid=(select max(rowid) from M_MERCHANT)";
 		Connection con = null;
 		PreparedStatement pstMerchant = null;
@@ -134,7 +134,7 @@ public class MerchantRegisterDaoImpl implements MerchantRegisterDao{
 //			System.out.println(new java.sql.Date(merchant.getBirth().getTime()));
 			pstMerchant.setString(5, merchant.getGender()); // gender
 			pstMerchant.setString(6, merchant.getStatus()); // status
-			pstMerchant.setDate(7, new java.sql.Date(merchant.getRegDate().getTime())); // reg_date
+			pstMerchant.setString(7, new java.sql.Date(merchant.getRegDate().getTime()).toString()); // reg_date
 			pstMerchant.executeUpdate();
 			        
 			rs = pstQuery.executeQuery();

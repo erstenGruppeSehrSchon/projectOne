@@ -38,14 +38,14 @@ public class RegistLoginTest {
 	@Test
 	public void testAddMerchantWithoutShop() throws ParseException{ // m_register_dao
 		MeMerchant m = new MeMerchant();
-		m.setUserName("test");
-		m.setPassword(PasswordEncrypter.getPasswordEncrypter().getEncryptedPassword("test"));
-		m.setName("test");
+		m.setUserName("demo");
+		m.setPassword(PasswordEncrypter.getPasswordEncrypter().getEncryptedPassword("demo"));
+		m.setName("demo");
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		java.util.Date birthDate = sdf.parse("2016-12-12 13:13:13");
 		m.setBirth(birthDate);
-		m.setGender("test");
+		m.setGender("M");
 		m.setStatus(Consts.PENDING);
 		m.setRegDate(new Date(System.currentTimeMillis()));
 		
