@@ -4,9 +4,9 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 import dao.impl.MerchantProfileDaoImpl;
-import po.Shop;
-import po.ShopContact;
-import po.MeMerchant;
+import common.po.Shop;
+import common.po.ShopContact;
+import common.po.MeMerchant;
 
 public class MerchantProfileDaoTest {
 

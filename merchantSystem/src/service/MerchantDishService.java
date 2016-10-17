@@ -2,7 +2,7 @@ package service;
 
 import java.util.ArrayList;
 
-import po.Dish;
+import common.po.Dish;
 
 public interface MerchantDishService {
 	

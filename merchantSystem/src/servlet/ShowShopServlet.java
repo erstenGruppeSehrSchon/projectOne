@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import po.Dish;
-import po.DishImage;
-import po.Shop;
+import common.po.Dish;
+import common.po.DishImage;
+import common.po.Shop;
 import service.MerchantProfileService;
 import service.impl.MerchantProfileServiceImpl;
 

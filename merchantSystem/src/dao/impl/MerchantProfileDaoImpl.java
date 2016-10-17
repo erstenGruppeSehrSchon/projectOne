@@ -7,11 +7,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import dao.MerchantProfileDao;
-import po.Dish;
-import po.DishImage;
-import po.Shop;
-import po.ShopContact;
-import po.MeMerchant;
+import common.po.Dish;
+import common.po.DishImage;
+import common.po.Shop;
+import common.po.ShopContact;
+import common.po.MeMerchant;
 import util.DBUtil;
 
 public class MerchantProfileDaoImpl implements MerchantProfileDao {

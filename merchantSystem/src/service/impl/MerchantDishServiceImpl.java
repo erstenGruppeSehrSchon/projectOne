@@ -2,7 +2,7 @@ package service.impl;
 
 import java.util.ArrayList;
 
-import po.Dish;
+import common.po.Dish;
 import dao.MerchantDishDao;
 import dao.impl.MerchantDishDaoImpl;
 import service.MerchantDishService;

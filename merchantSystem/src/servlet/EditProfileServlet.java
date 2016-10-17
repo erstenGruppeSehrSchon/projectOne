@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import consts.Consts;
-import po.MeMerchant;
+import common.po.MeMerchant;
 import service.MerchantProfileService;
 import service.impl.MerchantProfileServiceImpl;
 import util.PasswordEncrypter;
