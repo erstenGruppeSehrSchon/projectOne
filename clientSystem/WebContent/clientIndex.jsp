@@ -24,17 +24,16 @@
     </ul>
   </nav>
   <div id="main">
-	<table>
+	<table class="index-show-latest show-border">
+	<tr>
 	<c:forEach var="dish" items="${dishes}">
-		<tr>
-			<td colspan="3"><h3>-${dish.name}-</h3></td>
-		</tr>
-		<tr>
+		<td colspan="3"><p>-${dish.name}-</p>
 			<c:forEach var="dishImage" items="${dish.dishImages}">
-				<td><a href="ShowDish?shopId=${dish.sid}&dishId=${dish.did}"><img src="${dishImage.imgPath}"/></a></td>
+			<a href="ShowDish?shopId=${dish.sid}&dishId=${dish.did}"><img src="${dishImage.imgPath}"/></a>
 			</c:forEach>
-		</tr>
+		</td>
 	</c:forEach>
+	</tr>
 	</table>
   </div>
 </div>
