@@ -18,7 +18,7 @@
 <body>
 <div class="container">
 <header>
-    <div id="logo"><a href="showIndex?mid=${mid }"><img src="img/logo.png" alt=""></a></div>
+    <div id="logo"><a href="showIndex?mid=${mid}"><img src="img/logo.png" alt=""></a></div>
   </header>
   <nav>
     <ul id="nav">
@@ -68,7 +68,7 @@
 	</table>
 	<div class="block-divider-index"></div>
 	<h3>My Latest Dishes</h3>
-	<a href = "./merchantAddDish.html"><span class = "glyphicon glyphicon-plus"></span></a>
+	<a href = "AddDishPage?mid=${merchant.mid}"><span class = "glyphicon glyphicon-plus"></span></a>
 	<table class="index-show-latest">
 		<tr>
 			<td colspan = "2">

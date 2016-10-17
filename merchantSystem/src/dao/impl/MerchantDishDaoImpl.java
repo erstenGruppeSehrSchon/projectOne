@@ -43,12 +43,13 @@ public class MerchantDishDaoImpl implements MerchantDishDao{
 	
 
 	@Override
-	public void adddish(Dish dish) {
-		String sql = "Insert into M_DISH(DID,NAME,TYPE,PRICE,SID,IS_ACTIVE)values(M_DISH_SEQ,?,?,?,?,?)";
+	public int adddish(Dish dish) {
+		String sql = "Insert into M_DISH(DID,NAME,TYPE,PRICE,SID,IS_ACTIVE)values(M_DISH_SEQ.NEXTVAL,?,?,?,?,?)";
+		String seqSql = "SELECT M_DISH_SEQ.CURRVAL FROM DUAL";
 		Connection con = null;
 		PreparedStatement pst =null;
-		
-		
+		ResultSet rs = null;
+		int seq = -1;
 		try {
 			con = DBUtil.createConnection();
 			pst = con.prepareStatement(sql);
@@ -57,14 +58,21 @@ public class MerchantDishDaoImpl implements MerchantDishDao{
 			pst.setDouble(3, dish.getPrice());
 			pst.setInt(4, dish.getSid());
 			pst.setInt(5, dish.getActive());
+			pst.executeUpdate();
+			pst.close();
 			
-
+			pst = con.prepareStatement(seqSql);
+			rs = pst.executeQuery();
+			if (rs.next()) {
+				seq = rs.getInt(1);
+			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DBUtil.free(con, pst, null);
+			DBUtil.free(con, pst, rs);
 		}
-		
+		return seq;
 	}
 
 	@Override
