@@ -36,7 +36,12 @@ public class EditProfileServlet extends HttpServlet {
 		// retrieve data from user
 		MeMerchant merchant = new MeMerchant();
 		
-		int mid = Integer.parseInt(request.getParameter("mid"));
+		int mid = 0 ;
+		if(request.getParameter("mid") != null)
+			mid = Integer.parseInt(request.getParameter("mid"));
+		else 
+			mid = (Integer) request.getAttribute("mid");
+				
 		merchant.setMid(mid);
 		
 		// get password

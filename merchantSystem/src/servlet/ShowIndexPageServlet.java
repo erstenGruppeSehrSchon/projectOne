@@ -36,8 +36,14 @@ public class ShowIndexPageServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// for security reason, only post request can be received
 		
-		// get mid from login servlet
-		int mid= (Integer) request.getAttribute("mid");
+		// get mid from login servlet / other servlet
+		int mid = 0;
+		if(request.getAttribute("mid") != null)
+			mid = (Integer) request.getAttribute("mid");
+		else
+			mid = Integer.parseInt(request.getParameter("mid"));
+		
+		
 		MeMerchant merchant = service.retrieveMerchantOnly(mid);
 		
 		// get shop by mid

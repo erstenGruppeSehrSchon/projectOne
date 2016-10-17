@@ -32,7 +32,12 @@ public class ShowEditPageServlet extends HttpServlet {
 		// for security reason, only post request can be received
 		
 		// get mid from login servlet
-		int mid= Integer.parseInt(request.getParameter("mid"));
+		int mid = 0 ;
+		if(request.getParameter("mid") != null)
+			mid = Integer.parseInt(request.getParameter("mid"));
+		else 
+			mid = (Integer) request.getAttribute("mid");
+		
 		String password = request.getParameter("password");
 		String name = request.getParameter("name");
 		String birth = request.getParameter("birth");

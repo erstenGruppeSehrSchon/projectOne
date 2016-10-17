@@ -31,25 +31,25 @@
   </nav>
   <div id="main">
 	<h3>All my shops:</h3>
+		<br/>
 		<table class="index-show-latest show-border">
 			<c:choose>
-				<c:when test="${fn:lengthshops) >0}">
+				<c:when test="${fn:length(shops) >0}">
 					<tr>
 					
 					<c:forEach items="${shops }" var="shop">
 					<a href="showShop?sid=${sid}&mid=${mid}">
-					<p>${ shop.name}</p>
-					<c:if test="${fn:length(shop.imagePath) >0}">
-						<img src="${shop.imagePath[0]}">
-					</c:if>
+						<p>${ shop.name}</p>
+						<img src="${shop.imagePath}">
 					</a>
 					</c:forEach>
 					</tr>
 				</c:when>
 				<c:otherwise>
-					<p>You have no shops.</p>
+					<p>You have no shops now.</p>
 				</c:otherwise>
 			</c:choose>
+			
 			<!--<tr>
 				<td><a href = "./merchantShowShop.html"><p>Shop name 1</p><img width = "300px" src=  "https://buffaloeats.files.wordpress.com/2012/02/front-store.jpg"/></a></td>
 				<td><a href = "./merchantShowShop.html"><p>Shop name 2</p><img width = "300px" src=  "https://buffaloeats.files.wordpress.com/2012/02/front-store.jpg"/></a></td>

@@ -40,6 +40,7 @@ public class ShowProfileServlet extends HttpServlet {
 		
 		MeMerchant merchant = service.retrieveMerchantOnly(mid);
 		
+		request.setAttribute("mid", mid);
 		request.setAttribute("merchant", merchant);
 		request.getRequestDispatcher("merchantViewProfile.jsp").forward(request, response);
 	}
