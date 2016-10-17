@@ -111,4 +111,70 @@ public class MerchantShopDaoImpl implements MerchantShopDao {
 		}
 	}
 
+	@Override
+	public boolean updateShop(Shop shop) {
+		String sql = "update M_SHOP set MID = ?, NAME = ?, DESCRIPTION = ? where SID = ?";
+		String sql2 = "update M_SHOP_CONTACT set CID = ?, SID = ?, TYPE = ?, INFO = ? where sid = ?";
+//		String sqlQuery = "select sid from M_SHOP where rowid=(select max(rowid) from M_SHOP)";
+		Connection con = null;
+		PreparedStatement pstShop = null;
+		PreparedStatement pstQuery = null;
+		List<PreparedStatement> pst = new ArrayList<>();
+		ResultSet rs= null;
+		int sid = 0;
+		
+		con = DBUtil.createConnection();
+		
+		try {
+			con.setAutoCommit(false);
+					
+			pstShop = con.prepareStatement(sql);
+			pst.add(pstShop);
+//			pstQuery = con.prepareStatement(sqlQuery);
+//		    pst.add(pstQuery);
+		    
+			pstShop.setInt(1, shop.getMid());
+			pstShop.setString(2, shop.getName());
+			pstShop.setString(3, shop.getDescr());
+//			pstShop.setString(4, shop.getImagePath());
+			pstShop.setInt(4, shop.getSid());
+			sid = pstShop.executeUpdate();
+			
+			System.out.println(sid);
+			
+//			rs = pstQuery.executeQuery();
+//			if(rs.next()){
+//				sid = rs.getInt("sid");
+//			}
+			
+			// commit when both is executed
+            con.commit();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+	        System.err.println(e.getMessage());
+	        if (con != null) {
+	            try {
+	                System.err.print("Transaction is being rolled back");
+	                con.rollback();
+	            } catch(SQLException excep) {
+	            	System.err.println(e.getMessage());
+	            }
+	        }
+		} finally {
+			 try {
+				con.setAutoCommit(true);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	        
+	        // free all connection
+	        DBUtil.free(con, pst, rs);
+	        
+//	        return sid;
+		}
+		return true;
+	}
+
 }

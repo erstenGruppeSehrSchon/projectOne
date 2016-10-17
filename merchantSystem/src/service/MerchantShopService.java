@@ -8,4 +8,6 @@ public interface MerchantShopService {
 	
 	public boolean updateShopImage(String s, int sid, int mid);
 
+	public boolean updateShop(Shop shop);
+
 }
