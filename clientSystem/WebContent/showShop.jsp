@@ -16,7 +16,7 @@
 <body>
 <div class="container">
 <header>
-    <div id="logo"><a href="./merchantIndex.jsp"><img src="img/logo.png" alt=""></a></div>
+    <div id="logo"><a href="ShowAllDishes"><img src="img/logo.png" alt=""></a></div>
   </header>
   <nav>
     <ul id="nav">

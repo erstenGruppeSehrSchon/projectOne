@@ -14,9 +14,9 @@
 <body>
 <div class="container">
   <header>
-    <div id="logo"><a href="./clientIndex.jsp"><img src="img/logo.png" alt=""></a></div>
+    <div id="logo"><a href="ShowAllDishes"><img src="img/logo.png" alt=""></a></div>
   </header>
-  <nav>
+ <nav>
     <ul id="nav">
       <!--<li><a href="#">Search</a></li>
       <li><a href="#">My Profile</a></li>
