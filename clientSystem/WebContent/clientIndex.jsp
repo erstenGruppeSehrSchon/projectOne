@@ -1,4 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,17 +25,26 @@
     </ul>
   </nav>
   <div id="main">
-	<table>
+	<table class="index-show-latest show-border">
+	<%int itemNum = 0; %>
 	<c:forEach var="dish" items="${dishes}">
+	<%if(itemNum == 0){ %>
 		<tr>
-			<td colspan="3"><h3>-${dish.name}-</h3></td>
-		</tr>
-		<tr>
+	<%}
+	%>
+		<td><p>-${dish.name}-</p>
 			<c:forEach var="dishImage" items="${dish.dishImages}">
-				<td><a href="ShowDish?shopId=${dish.sid}&dishId=${dish.did}"><img src="${dishImage.imgPath}"/></a></td>
+			<a href="ShowDish?shopId=${dish.sid}&dishId=${dish.did}"><img src="${dishImage.imgPath}"/></a>
 			</c:forEach>
+		</td>
+	<%itemNum++;
+	if(itemNum == 3){%>
 		</tr>
+	<%
+		itemNum=0;
+	}%>
 	</c:forEach>
+	
 	</table>
   </div>
 </div>

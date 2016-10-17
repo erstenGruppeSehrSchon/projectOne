@@ -9,6 +9,7 @@ body {
 	width: 1000px;
 	margin: 30px auto 80px auto;
 	background: #F8FAE5;
+	padding-bottom: 30px;
 }
 
 header {
@@ -90,7 +91,6 @@ nav #nav > li > a {
 
 #main img{
 	max-width: 500px;
-	margin: 30px;
 }
 
 
@@ -126,7 +126,14 @@ nav #nav > li > a {
 }
 
 .index-show-merchant p{
-	padding-bottom: 5px;
+}
+
+.index-show-latest{
+	margin-top: 30px;
+}
+
+.index-show-latest td{
+	padding: 5px;
 }
 
 .index-show-latest p{
@@ -150,4 +157,16 @@ nav #nav > li > a {
 .show-border td{
 	border: 1px dotted #FFEB8A;
 	margin: 10px;
+}
+
+#show-dish-table{
+	width: 800px;	
+}
+
+#show-dish-table img{
+	width: 300px;
+}
+
+#show-merchant-infor{
+	width: 800px;
 }

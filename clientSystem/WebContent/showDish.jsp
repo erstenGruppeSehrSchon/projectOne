@@ -24,26 +24,34 @@
     </ul>
   </nav>
   <div id="main">
-	<table>
+  <br/>
+	<table id="show-dish-table">
 		<tr>
 			<td>
-				<p>Name: ${dish.name}</p>
+				<p><b>Name:</b> ${dish.name}</p>
 				<!--<p>Like Dislike</p>-->
-				<p>Type:  ${dish.type}</p>
-				<p>Price:  ${dish.price}</p>
-				<p>Active:  ${dish.active}</p>
+				<p><b>Type:</b>  ${dish.type}</p>
+				<p><b>Price:</b>  ${dish.price}</p>
+				<p><b>Active:</b>  ${dish.active}</p>
 			</td>
 			<td>
 				<c:forEach var="dishImage" items="${dish.dishImages}">
 					<img src="${dishImage.imgPath}" />
 				</c:forEach>
 			</td>
+			<tr>
+			<tr>
+				<td colspan="2"><div class="block-divider-index"></div></td>
+			</tr>
 			<td>
 				<p>-Merchant-</p>
 				<a href = "showmerchant?MerchantId=${merchant.mid}"><img src= "http://www.icon2s.com/img256/256x256-black-white-android-user.png"/></a>
-				<p><b>Name:</b> ${merchant.name}</p>
+			</td>
+			<td>
+				<p><b>Name:</b> <a href = "showmerchant?MerchantId=${merchant.mid}">${merchant.name}</a></p>
 				<p><b>shop:</b> <a href="showshop?ShopId=${shop.sid}">${shop.name}</a></p>
 			</td>
+			</tr>
 		</tr>
 	</table>
   </div>
