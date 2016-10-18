@@ -135,7 +135,7 @@
     <servlet-name>AddDishPageServlet</servlet-name>
     <url-pattern>/AddDishPage</url-pattern>
   </servlet-mapping>
-	<servlet>
+  <servlet>
     <description></description>
     <display-name>EditShopServlet</display-name>
     <servlet-name>EditShopServlet</servlet-name>
@@ -144,5 +144,15 @@
   <servlet-mapping>
     <servlet-name>EditShopServlet</servlet-name>
     <url-pattern>/editShop</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ShowAddShopServlet</display-name>
+    <servlet-name>ShowAddShopServlet</servlet-name>
+    <servlet-class>servlet.ShowAddShopServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowAddShopServlet</servlet-name>
+    <url-pattern>/showAddShop</url-pattern>
   </servlet-mapping>
 </web-app>

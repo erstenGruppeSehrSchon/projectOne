@@ -44,7 +44,7 @@
 	</table>
 	<div class="block-divider-index"></div>
 	<h3>My Latest Shops</h3>
-	<a href = "./merchantAddShop.jsp?mid=${mid}"><span class = "glyphicon glyphicon-plus"></span></a>
+	<a href = "showAddShop?mid=${mid}"><span class = "glyphicon glyphicon-plus"></span></a>
 	<table class="index-show-latest">
 		<!--<td>
 			<a href = "./merchantShowShop.html"><p>name of shop 1</p>
@@ -84,7 +84,7 @@
 					<c:forEach items="${dishes }" var="dish">
 					<p>${ dish.name}</p>
 					<c:if test="${fn:length(dish.dishImages) >0}">
-						<img src="${dish.dishImages[0]}">
+						<img src="http://${dish.dishImages[0]}">
 					</c:if>
 					</c:forEach>
 					

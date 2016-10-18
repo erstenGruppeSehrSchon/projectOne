@@ -27,17 +27,17 @@
   <div id="main">
 	<h3>Add new Shop</h3>
 	<div class="merchant-form-control">
-	<form action = "addShop" method = "post">
+	<form action = "addShop" method = "post" enctype="multipart/form-data">
 	<input type="hidden" value = "" id = "dishesRegShopId"/>
-	<input type="hidden" name="mid" value = "${mid}" />
 	<table>
+	<tr><input type="hidden" name="mid" class="form-control" value = "${mid}" /></tr>
 		<tr>
 			<td>Shop Name</td>
-			<td><input id="shopRegName" type="text" class="form-control"></td>
+			<td><input id="shopRegName" name="shopRegName" type="text" class="form-control"></td>
 		</tr>
 		<tr>
 			<td>Description</td>
-			<td><textarea id = "shopRegDescription" class="form-control" rows="6" cols="50"></textarea></td>
+			<td><textarea id = "shopRegDescription" name="shopRegDescription" class="form-control" rows="6" cols="50"></textarea></td>
 		</tr>
 		<tr>
 			<td>Contact Type</td>
@@ -52,17 +52,20 @@
 		<tr>
 			<td>Contact Information</td>
 			<td>
-				<input id="shopContactInformation" type="text" class="form-control">
+				<input id="shopContactInformation" name="shopContactInformation" type="text" class="form-control">
 			</td>
 		</tr>
 		<tr>
 			<td>Shop image:</td>
 			<td>
-			<form action="FileUpload" method="POST" enctype="multipart/form-data">
+			<!--<form action="FileUpload" method="POST" enctype="multipart/form-data">
 			<label class="btn btn-default">
-				 Choose<input type="file" name="shopPicFile" style="display: none;">
-			</label>
-			</form>
+				 Choose<input type="file" name="shopPicFile" style="display: none;">-->
+				 
+				  <input type="file" name="shopImage">
+				  
+			<!-- </label>
+			</form>-->
 			</td>
 		</tr>
 		

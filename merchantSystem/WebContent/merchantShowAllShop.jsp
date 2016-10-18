@@ -38,9 +38,9 @@
 					<tr>
 					
 					<c:forEach items="${shops }" var="shop">
-					<a href="showShop?sid=${sid}&mid=${mid}">
+					<a href="showShop?sid=${shop.sid}&mid=${mid}">
 						<p>${ shop.name}</p>
-						<img src="${shop.imagePath}">
+						<img src="http://${shop.imagePath}">
 					</a>
 					</c:forEach>
 					</tr>
