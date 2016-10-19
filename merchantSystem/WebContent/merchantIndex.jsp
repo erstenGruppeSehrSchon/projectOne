@@ -84,7 +84,7 @@
 					<c:forEach items="${dishes }" var="dish">
 					<p>${ dish.name}</p>
 					<c:if test="${fn:length(dish.dishImages) >0}">
-						<img src="http://${dish.dishImages[0]}">
+						<img src="${dish.dishImages[0]}">
 					</c:if>
 					</c:forEach>
 					

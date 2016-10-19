@@ -40,7 +40,7 @@
 					<c:forEach items="${shops }" var="shop">
 					<a href="showShop?sid=${shop.sid}&mid=${mid}">
 						<p>${ shop.name}</p>
-						<img src="http://${shop.imagePath}">
+						<img src="${shop.imagePath}">
 					</a>
 					</c:forEach>
 					</tr>
