@@ -62,7 +62,7 @@ public class FileUploader {
 							fileItem.write(storeFile);
 							
 							// Format image URL for return
-							String imgUrl = request.getServerName() + ":" + request.getServerPort() + servletContext.getContextPath() + "/" + FOLDER + "/" + type + id + "/" + fileName;
+							String imgUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + servletContext.getContextPath() + "/" + FOLDER + "/" + type + id + "/" + fileName;
 							imgUrls.add(imgUrl);
 							
 						}
