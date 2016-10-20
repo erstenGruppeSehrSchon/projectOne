@@ -16,7 +16,7 @@ import dao.MerchantDishDao;
 public class MerchantDishDaoImpl implements MerchantDishDao{
 
 	@Override
-	public void updatedish(Dish dish) {
+	public void updateDish(Dish dish) {
 		String sql = "Update M_DISH set DID = ?, NAME = ?, TYPE = ?, PRICE = ?, SID = ?, IS_ACTIVE = ? ";
 		Connection con = null;
 		PreparedStatement pst =null;
@@ -32,7 +32,7 @@ public class MerchantDishDaoImpl implements MerchantDishDao{
 			pst.setInt(5, dish.getSid());
 			pst.setInt(6, dish.getActive());
 			
-
+			pst.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -43,7 +43,7 @@ public class MerchantDishDaoImpl implements MerchantDishDao{
 	
 
 	@Override
-	public int adddish(Dish dish) {
+	public int addDish(Dish dish) {
 		String sql = "Insert into M_DISH(DID,NAME,TYPE,PRICE,SID,IS_ACTIVE)values(M_DISH_SEQ.NEXTVAL,?,?,?,?,?)";
 		String seqSql = "SELECT M_DISH_SEQ.CURRVAL FROM DUAL";
 		Connection con = null;
@@ -76,7 +76,7 @@ public class MerchantDishDaoImpl implements MerchantDishDao{
 	}
 
 	@Override
-	public void deletedish(int did) {
+	public void deleteDish(int did) {
 		
 		String sql = "DELETE FROM M_DISH WHERE DID = ? ";
 		Connection con = null;

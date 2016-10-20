@@ -155,4 +155,14 @@
     <servlet-name>ShowAddShopServlet</servlet-name>
     <url-pattern>/showAddShop</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EditDishServlet</display-name>
+    <servlet-name>EditDishServlet</servlet-name>
+    <servlet-class>servlet.EditDishServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditDishServlet</servlet-name>
+    <url-pattern>/EditDish</url-pattern>
+  </servlet-mapping>
 </web-app>

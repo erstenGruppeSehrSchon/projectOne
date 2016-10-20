@@ -13,19 +13,19 @@ public class MerchantDishServiceImpl implements  MerchantDishService{
 	
 	@Override
 	public void updatedish(Dish dish) {
-		dao.updatedish(dish);
+		dao.updateDish(dish);
 		
 	}
 
 	@Override
 	public void adddish(Dish dish) {
-		dao.adddish(dish);
+		dao.addDish(dish);
 		
 	}
 
 	@Override
 	public void deletedish(int did) {
-		dao.deletedish(did);
+		dao.deleteDish(did);
 		
 	}
 
