@@ -54,6 +54,8 @@ public class MerchantDaoImpl implements MerchantDao {
 		tx.begin();
 		em.persist(merchant);
 		tx.commit();
+		em.close();
+		factory.close();
 		return merchant;
 	}
 }

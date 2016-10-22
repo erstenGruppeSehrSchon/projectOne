@@ -17,6 +17,8 @@ public class DishImageDaoImpl implements DishImageDao {
 		tx.begin();
 		em.persist(dishImage);
 		tx.commit();
+		em.close();
+		factory.close();
 		return dishImage;
 	}
 

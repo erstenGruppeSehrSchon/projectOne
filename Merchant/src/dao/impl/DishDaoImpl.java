@@ -50,6 +50,8 @@ public class DishDaoImpl implements DishDao {
 		tx.begin();
 		em.persist(dish);
 		tx.commit();
+		em.close();
+		factory.close();
 		return dish;
 	}
 
