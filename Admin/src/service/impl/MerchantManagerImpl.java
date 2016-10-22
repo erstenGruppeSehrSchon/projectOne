@@ -14,8 +14,8 @@ public class MerchantManagerImpl implements MerchantManager {
 	private MerchantDao dao;
 	
 	@Override
-	public Merchant getMerchant(int id) {
-		return dao.getMerchant(id);
+	public Merchant getMerchant(int mid) {
+		return dao.getMerchant(mid);
 	}
 
 	@Override
@@ -24,8 +24,8 @@ public class MerchantManagerImpl implements MerchantManager {
 	}
 
 	@Override
-	public List<Merchant> getMerchantsByCriteria(Integer id, String name, String gender, Integer ageIndex, String regDate, String status) {
-		return dao.getMerchantsByCriteria(id, name, gender, ageIndex, regDate, status);
+	public List<Merchant> getMerchantsByCriteria(Integer mid, String name, String gender, Integer ageIndex, String regDate, String status) {
+		return dao.getMerchantsByCriteria(mid, name, gender, ageIndex, regDate, status);
 	}
 
 }

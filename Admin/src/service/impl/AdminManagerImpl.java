@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import dao.AdminDao;
 import po.Admin;
 import service.AdminManager;
-import util.PasswordEncrypter;
+import common.util.PasswordEncrypter;
 
 @Service
 public class AdminManagerImpl implements AdminManager {
@@ -27,7 +27,14 @@ public class AdminManagerImpl implements AdminManager {
 		Admin admin = dao.getAdmin(username);
 		PasswordEncrypter encrypter = PasswordEncrypter.getPasswordEncrypter();
 		String encryptedPassword = encrypter.encrypt(password);
-		return encryptedPassword.equals(admin.getPassword()) ? admin : null;
+		
+		if (encryptedPassword.equals(admin.getPassword())) {
+			// Remove password from object
+			admin.setPassword(null);
+			return admin;
+		} else {
+			return null;
+		}
 	}
 	
 }

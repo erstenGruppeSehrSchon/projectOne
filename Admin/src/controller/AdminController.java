@@ -26,13 +26,13 @@ public class AdminController {
 		return adminManager.login(username, password);
 	}
 	
-	@RequestMapping(value="getMerchant", method={RequestMethod.GET})
+	@RequestMapping(value="getMerchantByMid", method={RequestMethod.GET})
 	@ResponseBody
-	public Merchant getMerchant(int id) {
-		return merchantManager.getMerchant(id);
+	public Merchant getMerchant(int mid) {
+		return merchantManager.getMerchant(mid);
 	}
 	
-	@RequestMapping(value="getAllMerchant", method={RequestMethod.GET})
+	@RequestMapping(value="getAllMerchants", method={RequestMethod.GET})
 	@ResponseBody
 	public List<Merchant> getAllMerchants() {
 		return merchantManager.getAllMerchants();
@@ -40,7 +40,7 @@ public class AdminController {
 	
 	@RequestMapping(value="getMerchantsByCriteria", method={RequestMethod.GET})
 	@ResponseBody
-	public List<Merchant> getMerchantsByCriteria(Integer id, String name, String gender, Integer ageIndex, String regDate, String status) {
-		return merchantManager.getMerchantsByCriteria(id, name, gender, ageIndex, regDate, status);
+	public List<Merchant> getMerchantsByCriteria(Integer mid, String name, String gender, Integer ageIndex, String regDate, String status) {
+		return merchantManager.getMerchantsByCriteria(mid, name, gender, ageIndex, regDate, status);
 	}
 }

@@ -1,18 +1,31 @@
 package po;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="A_MERCHANT") // Change default table name
+@Table(name="M_MERCHANT") // Change default table name
 public class Merchant {
 	
 	@Id
+	@GeneratedValue
 	private Integer mid;
+	
+	@Column(length=30, nullable=false, unique=true)
+	private String username;
+	
+	@Column(length=64, nullable=false)
+	private String password;
 	
 	@Column(length=100, nullable=false)
 	private String name;
@@ -29,12 +42,36 @@ public class Merchant {
 	@Column(nullable=false)
 	private String status;
 
+	@OneToMany
+	@JoinTable(
+		name="M_SHOP",
+		joinColumns={@JoinColumn(name="mid", referencedColumnName="mid")},
+		inverseJoinColumns={@JoinColumn(name="shop_mid", referencedColumnName="mid")}
+	)
+	private Set<Shop> shops = new HashSet<>();
+	
 	public Integer getMid() {
 		return mid;
 	}
 
 	public void setMid(Integer mid) {
 		this.mid = mid;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getName() {
@@ -75,5 +112,13 @@ public class Merchant {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public Set<Shop> getShops() {
+		return shops;
+	}
+
+	public void setShops(Set<Shop> shops) {
+		this.shops = shops;
 	}
 }

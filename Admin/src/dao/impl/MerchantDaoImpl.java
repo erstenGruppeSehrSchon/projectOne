@@ -1,7 +1,5 @@
 package dao.impl;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -12,7 +10,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
-
+import common.util.DateFormatter;
 import po.Merchant;
 import dao.MerchantDao;
 
@@ -27,10 +25,10 @@ public class MerchantDaoImpl implements MerchantDao {
 	};
 	
 	@Override
-	public Merchant getMerchant(int id) {
+	public Merchant getMerchant(int mid) {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
 		EntityManager em = factory.createEntityManager();
-		Merchant merchant = em.find(Merchant.class, id);
+		Merchant merchant = em.find(Merchant.class, mid);
 		em.close();
 		factory.close();
 		return merchant;
@@ -43,14 +41,14 @@ public class MerchantDaoImpl implements MerchantDao {
 		EntityManager em = factory.createEntityManager();
 		Session session = (Session)em.getDelegate();
 		List<Merchant> merchants = session.createCriteria(Merchant.class).list();
-		session.close();
+		em.close();
 		factory.close();
 		return merchants;
 	}
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Merchant> getMerchantsByCriteria(Integer id, String name, String gender, Integer ageIndex, String regDate, String status) {
+	public List<Merchant> getMerchantsByCriteria(Integer mid, String name, String gender, Integer ageIndex, String regDate, String status) {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
 		EntityManager em = factory.createEntityManager();
 		Session session = (Session)em.getDelegate();
@@ -58,8 +56,8 @@ public class MerchantDaoImpl implements MerchantDao {
 		// Add criteria
 		Criteria criteria = session.createCriteria(Merchant.class);
 		
-		if (id != null) {
-			criteria.add(Restrictions.eq("id", id));
+		if (mid != null) {
+			criteria.add(Restrictions.eq("mid", mid));
 		}
 		
 		if (name != null) {
@@ -80,15 +78,11 @@ public class MerchantDaoImpl implements MerchantDao {
 		}
 		
 		if (regDate != null) {
-			SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
-			try {
-				Date fromDate = formatter.parse(regDate);
-				Date toDate = getNextDay(fromDate);
-				criteria.add(Restrictions.ge("regDate", fromDate));
-				criteria.add(Restrictions.lt("regDate", toDate));
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
+			DateFormatter formatter = DateFormatter.getDateFormatter();
+			Date fromDate = formatter.parse(regDate);
+			Date toDate = getNextDay(fromDate);
+			criteria.add(Restrictions.ge("regDate", fromDate));
+			criteria.add(Restrictions.lt("regDate", toDate));
 		}
 		
 		if (status != null) {
@@ -96,7 +90,7 @@ public class MerchantDaoImpl implements MerchantDao {
 		}
 		
 		List<Merchant> merchants = criteria.list();
-		session.close();
+		em.close();
 		factory.close();
 		return merchants;
 	}

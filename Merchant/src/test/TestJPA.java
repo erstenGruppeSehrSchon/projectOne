@@ -10,9 +10,7 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import po.Admin;
 import po.Merchant;
-import common.util.PasswordEncrypter;
 
 public class TestJPA {
 
@@ -41,28 +39,12 @@ public class TestJPA {
 	
 	
 	@Test
-	public void testPersist() {
-		// Create admin
-		Admin admin = new Admin();
-		admin.setUsername("admin");
-		admin.setPassword(PasswordEncrypter.getPasswordEncrypter().encrypt("123"));
-		
-		// Open transaction
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
-		
-		// Persist
-		em.persist(admin);
-		
-		// Commit;
-		tx.commit();
-	}
-	
-	@Test
 	public void testPersist2() {
 		// Create merchants
 		Merchant merchant1 = new Merchant();
 		merchant1.setMid(-1);
+		merchant1.setUsername("m1");
+		merchant1.setPassword("AAC11529ECCD0AA876CB2ECBF277476620F36E412E457D7B08B70324D57B1ECE");
 		merchant1.setBirthDate(new Date());
 		merchant1.setGender("M");
 		merchant1.setName("Merchant A");
@@ -71,6 +53,8 @@ public class TestJPA {
 		
 		Merchant merchant2 = new Merchant();
 		merchant2.setMid(-2);
+		merchant1.setUsername("m2");
+		merchant1.setPassword("AAC11529ECCD0AA876CB2ECBF277476620F36E412E457D7B08B70324D57B1ECE");
 		merchant2.setBirthDate(new Date());
 		merchant2.setGender("Unknown");
 		merchant2.setName("Merchant B");

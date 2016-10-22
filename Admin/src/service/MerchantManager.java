@@ -5,8 +5,8 @@ import po.Merchant;
 
 public interface MerchantManager {
 
-	public Merchant getMerchant(int id);
+	public Merchant getMerchant(int mid);
 	public List<Merchant> getAllMerchants();
-	public List<Merchant> getMerchantsByCriteria(Integer id, String name, String gender, Integer ageIndex, String regDate, String status);
+	public List<Merchant> getMerchantsByCriteria(Integer mid, String name, String gender, Integer ageIndex, String regDate, String status);
 
 }
