@@ -28,4 +28,9 @@ public class MerchantManagerImpl implements MerchantManager {
 		return dao.getMerchantsByCriteria(mid, name, gender, ageIndex, regDate, status);
 	}
 
+	@Override
+	public Merchant updateMerchantStatus(int mid, String status) {
+		return dao.updateMerchantStatus(mid, status);
+	}
+
 }

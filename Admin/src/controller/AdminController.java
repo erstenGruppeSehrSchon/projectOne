@@ -43,4 +43,10 @@ public class AdminController {
 	public List<Merchant> getMerchantsByCriteria(Integer mid, String name, String gender, Integer ageIndex, String regDate, String status) {
 		return merchantManager.getMerchantsByCriteria(mid, name, gender, ageIndex, regDate, status);
 	}
+	
+	@RequestMapping(value="updateMerchantStatus", method={RequestMethod.POST})
+	@ResponseBody
+	public Merchant updateMerchantStatus(int mid, String status) {
+		return merchantManager.updateMerchantStatus(mid, status);
+	}
 }

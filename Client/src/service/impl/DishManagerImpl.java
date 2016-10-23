@@ -1,0 +1,38 @@
+package service.impl;
+
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import po.Dish;
+import dao.DishDao;
+import service.DishManager;
+
+@Service
+public class DishManagerImpl implements DishManager {
+
+	@Autowired
+	private DishDao dao;
+
+	public DishDao getDao() {
+		return dao;
+	}
+
+	public void setDao(DishDao dao) {
+		this.dao = dao;
+	}
+	
+	@Override
+	public Dish getDishByDid(int did) {
+		return dao.getDishByDid(did);
+	}
+	
+	@Override
+	public List<Dish> getDishesBySid(int sid) {
+		return dao.getDishesBySid(sid);
+	}
+
+	@Override
+	public List<Dish> getDishesByCriteria(String name, String type, Float lowerPrice, Float higherPrice) {
+		return dao.getDishesByCriteria(name, type, lowerPrice, higherPrice);
+	}
+}

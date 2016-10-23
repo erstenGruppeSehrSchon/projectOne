@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -107,5 +108,26 @@ public class MerchantDaoImpl implements MerchantDao {
 		calendar.setTime(date);
 		calendar.add(Calendar.DATE, 1);
 		return calendar.getTime();
+	}
+
+	@Override
+	public Merchant updateMerchantStatus(int mid, String status) {
+		// Retrieve original merchant
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
+		EntityManager em = factory.createEntityManager();
+		Merchant merchant = em.find(Merchant.class, mid);
+		
+		// Update merchant
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		merchant.setStatus(status);
+		tx.commit();
+		
+		// Close object
+		em.close();
+		factory.close();
+		
+		// Return updated merchant
+		return merchant;
 	}
 }
