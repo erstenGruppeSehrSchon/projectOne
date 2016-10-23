@@ -11,8 +11,8 @@ public interface DishManager {
 
 	public Dish getDishByDid(int did);
 	public List<Dish> getDishesBySid(int sid);
-	public Dish addDish(int sid, String name, String type, Double price, int isActive, List<MultipartFile> files);
+	public Dish addDish(int sid, String name, String type, float price, int isActive, List<MultipartFile> files);
 	public boolean removeDish(int did);
-	public Dish updateDish(int did, int sid, String name, String type, double price, int isActive);
+	public Dish updateDish(int did, int sid, String name, String type, float price, int isActive);
 
 }

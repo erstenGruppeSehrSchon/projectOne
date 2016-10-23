@@ -14,8 +14,8 @@ public class MerchantManagerImpl implements MerchantManager {
 	private MerchantDao dao;
 	
 	@Override
-	public Merchant getMerchant(int mid) {
-		return dao.getMerchant(mid);
+	public Merchant getMerchantByMid(int mid) {
+		return dao.getMerchantByMid(mid);
 	}
 
 	@Override

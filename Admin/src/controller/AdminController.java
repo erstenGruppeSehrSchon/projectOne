@@ -29,7 +29,7 @@ public class AdminController {
 	@RequestMapping(value="getMerchantByMid", method={RequestMethod.GET})
 	@ResponseBody
 	public Merchant getMerchant(int mid) {
-		return merchantManager.getMerchant(mid);
+		return merchantManager.getMerchantByMid(mid);
 	}
 	
 	@RequestMapping(value="getAllMerchants", method={RequestMethod.GET})

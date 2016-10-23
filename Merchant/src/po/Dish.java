@@ -1,14 +1,12 @@
 package po;
 
-import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -30,19 +28,15 @@ public class Dish {
 	private String type;
 	
 	@Column(nullable=false)
-	private double price;
+	private float price;
 	
 	@Column(length=1, nullable=false)
 	private int isActive;
 	
-	@OneToMany
-	@JoinTable(
-		name="M_DISH_IMG",
-		joinColumns={@JoinColumn(name="did", referencedColumnName="did")},
-		inverseJoinColumns={@JoinColumn(name="dish_img_did", referencedColumnName="did")}
-	)
-	private Set<DishImage> dishImages = new HashSet<>();
-
+	@OneToMany(fetch=FetchType.EAGER)
+	@JoinColumn(name="sid", referencedColumnName="sid", insertable = false, updatable = false)	
+	private Set<DishImage> dishImages;
+	
 	public Integer getDid() {
 		return did;
 	}
@@ -75,11 +69,11 @@ public class Dish {
 		this.type = type;
 	}
 
-	public double getPrice() {
+	public float getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(float price) {
 		this.price = price;
 	}
 
@@ -97,6 +91,6 @@ public class Dish {
 
 	public void setDishImages(Set<DishImage> dishImages) {
 		this.dishImages = dishImages;
-	} 
-	
+	}
+
 }

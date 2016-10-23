@@ -54,4 +54,5 @@ public class ShopContact {
 	public void setInfo(String info) {
 		this.info = info;
 	}
+
 }

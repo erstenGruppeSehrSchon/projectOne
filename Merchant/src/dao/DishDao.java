@@ -9,6 +9,6 @@ public interface DishDao {
 	public List<Dish> getDishesBySid(int sid);
 	public Dish addDish(Dish dish);
 	public boolean removeDish(int did);
-	public Dish updateDish(int did, int sid, String name, String type, double price, int isActive);
+	public Dish updateDish(int did, int sid, String name, String type, float price, int isActive);
 
 }

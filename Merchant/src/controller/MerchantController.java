@@ -123,7 +123,7 @@ public class MerchantController {
 	
 	@RequestMapping(value="addDish", method={RequestMethod.GET})//Change later
 	@ResponseBody
-	public Dish addDish(int sid, String name, String type, Double price, int isActive, List<MultipartFile> files) {
+	public Dish addDish(int sid, String name, String type, float price, int isActive, List<MultipartFile> files) {
 		return dishManager.addDish(sid, name, type, price, isActive, files);
 	}
 	
@@ -135,7 +135,7 @@ public class MerchantController {
 	
 	@RequestMapping(value="updateDish", method={RequestMethod.GET})//Change later
 	@ResponseBody
-	public Dish updateDish(int did, int sid, String name, String type, Double price, int isActive, List<MultipartFile> files) {
+	public Dish updateDish(int did, int sid, String name, String type, float price, int isActive, List<MultipartFile> files) {
 		return dishManager.updateDish(did, sid, name, type, price, isActive);
 	}
 	// Dish End

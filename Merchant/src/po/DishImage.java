@@ -44,5 +44,5 @@ public class DishImage {
 	public void setImgPath(String imgPath) {
 		this.imgPath = imgPath;
 	}
-	
+
 }

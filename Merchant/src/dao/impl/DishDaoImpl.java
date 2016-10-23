@@ -67,7 +67,7 @@ public class DishDaoImpl implements DishDao {
 	}
 
 	@Override
-	public Dish updateDish(int did, int sid, String name, String type, double price, int isActive) {
+	public Dish updateDish(int did, int sid, String name, String type, float price, int isActive) {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
 		EntityManager em = factory.createEntityManager();
 		

@@ -25,7 +25,7 @@ public class MerchantDaoImpl implements MerchantDao {
 	};
 	
 	@Override
-	public Merchant getMerchant(int mid) {
+	public Merchant getMerchantByMid(int mid) {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
 		EntityManager em = factory.createEntityManager();
 		Merchant merchant = em.find(Merchant.class, mid);

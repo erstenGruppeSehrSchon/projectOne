@@ -1,14 +1,12 @@
 package po;
 
-import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -33,21 +31,13 @@ public class Shop {
 	@Column(name="IMG_PATH", length=500, nullable=false)
 	private String imgPath;
 
-	@OneToMany
-	@JoinTable(
-		name="M_DISH",
-		joinColumns={@JoinColumn(name="sid", referencedColumnName="sid")},
-		inverseJoinColumns={@JoinColumn(name="dish_sid", referencedColumnName="sid")}
-	)
-	private Set<Dish> dishes = new HashSet<>();
+	@OneToMany(fetch=FetchType.EAGER)
+	@JoinColumn(name="sid", referencedColumnName="sid",  insertable = false, updatable = false)	
+	private Set<Dish> dishes;
 
-	@OneToMany
-	@JoinTable(
-		name="M_SHOP_CONTACT",
-		joinColumns={@JoinColumn(name="sid", referencedColumnName="sid")},
-		inverseJoinColumns={@JoinColumn(name="shop_contact_sid", referencedColumnName="sid")}
-	)	
-	private Set<ShopContact> shopContacts = new HashSet<>();
+	@OneToMany(fetch=FetchType.EAGER)
+	@JoinColumn(name="sid", referencedColumnName="sid", insertable = false, updatable = false)
+	private Set<ShopContact> shopContacts;
 	
 	public Integer getSid() {
 		return sid;
@@ -104,4 +94,5 @@ public class Shop {
 	public void setShopContacts(Set<ShopContact> shopContacts) {
 		this.shopContacts = shopContacts;
 	}
+
 }

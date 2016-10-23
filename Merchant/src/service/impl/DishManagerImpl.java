@@ -41,7 +41,7 @@ public class DishManagerImpl implements DishManager {
 	}
 
 	@Override
-	public Dish addDish(int sid, String name, String type, Double price, int isActive, List<MultipartFile> files) {
+	public Dish addDish(int sid, String name, String type, float price, int isActive, List<MultipartFile> files) {
 		// Upload images
 		FileUploader uploader = FileUploader.getFileUploader();
 		ArrayList<String> imgPaths = uploader.upload(files);
@@ -72,7 +72,7 @@ public class DishManagerImpl implements DishManager {
 	}
 
 	@Override
-	public Dish updateDish(int did, int sid, String name, String type, double price, int isActive) {
+	public Dish updateDish(int did, int sid, String name, String type, float price, int isActive) {
 		return dao.updateDish(did, sid, name, type, price, isActive);
 	}
 

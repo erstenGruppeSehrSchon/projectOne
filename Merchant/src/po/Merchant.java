@@ -1,15 +1,13 @@
 package po;
 
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -42,13 +40,9 @@ public class Merchant {
 	@Column(nullable=false)
 	private String status;
 
-	@OneToMany
-	@JoinTable(
-		name="M_SHOP",
-		joinColumns={@JoinColumn(name="mid", referencedColumnName="mid")},
-		inverseJoinColumns={@JoinColumn(name="shop_mid", referencedColumnName="mid")}
-	)
-	private Set<Shop> shops = new HashSet<>();
+	@OneToMany(fetch=FetchType.EAGER)
+	@JoinColumn(name="mid", referencedColumnName="mid", insertable = false, updatable = false)	
+	private Set<Shop> shops;
 	
 	public Integer getMid() {
 		return mid;

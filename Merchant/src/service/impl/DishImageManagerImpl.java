@@ -3,12 +3,14 @@ package service.impl;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import common.util.FileUploader;
 import dao.DishImageDao;
 import po.DishImage;
 import service.DishImageManager;
 
+@Service
 public class DishImageManagerImpl implements DishImageManager {
 
 	@Autowired
