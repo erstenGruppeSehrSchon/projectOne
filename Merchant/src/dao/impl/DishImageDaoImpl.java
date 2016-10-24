@@ -26,8 +26,17 @@ public class DishImageDaoImpl implements DishImageDao {
 	public boolean removeDishImage(int imgId) {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
 		EntityManager em = factory.createEntityManager();
+		
+		// Get original dish image
 		DishImage dishImage = em.find(DishImage.class, imgId);
+		
+		// Remove dish image
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
 		em.remove(dishImage);
+		tx.commit();
+		
+		// Close object and return
 		em.close();
 		factory.close();
 		return true;

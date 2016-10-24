@@ -59,8 +59,17 @@ public class DishDaoImpl implements DishDao {
 	public boolean removeDish(int did) {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
 		EntityManager em = factory.createEntityManager();
+		
+		// Get original dish
 		Dish dish = em.find(Dish.class, did);
+		
+		// Remove dish
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
 		em.remove(dish);
+		tx.commit();
+		
+		// Close object and return
 		em.close();
 		factory.close();
 		return true;

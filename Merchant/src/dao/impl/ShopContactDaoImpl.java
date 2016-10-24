@@ -27,11 +27,9 @@ public class ShopContactDaoImpl implements ShopContactDao {
 		criteria.add(Restrictions.eq("sid", sid));
 		List<ShopContact> shopContacts = criteria.list();
 		
-		// Close object
+		// Close object and return
 		em.close();
 		factory.close();
-
-		// Return shop contacts
 		return shopContacts;
 	}
 
@@ -52,8 +50,17 @@ public class ShopContactDaoImpl implements ShopContactDao {
 	public boolean removeShopContact(int cid) {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
 		EntityManager em = factory.createEntityManager();
+		
+		// Get original shop contact
 		ShopContact shopContact = em.find(ShopContact.class, cid);
+		
+		// Remove shop contact
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
 		em.remove(shopContact);
+		tx.commit();
+		
+		// Close objects and return
 		em.close();
 		factory.close();
 		return true;

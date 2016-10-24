@@ -36,8 +36,17 @@ public class ShopDaoImpl implements ShopDao {
 	public boolean removeShop(int sid) {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
 		EntityManager em = factory.createEntityManager();
+		
+		// Get origin shop
 		Shop shop = em.find(Shop.class, sid);
+		
+		// Remove shop
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
 		em.remove(shop);
+		tx.commit();
+		
+		// Close objects and return 
 		em.close();
 		factory.close();
 		return true;
@@ -50,9 +59,9 @@ public class ShopDaoImpl implements ShopDao {
 		
 		// Get origin shop
 		Shop shop = em.find(Shop.class, sid);
-		EntityTransaction tx = em.getTransaction();
 		
 		// Update shop
+		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		shop.setMid(mid);
 		shop.setName(name);
