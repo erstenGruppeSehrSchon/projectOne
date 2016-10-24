@@ -25,7 +25,7 @@ public class DishImageManagerImpl implements DishImageManager {
 	}
 
 	@Override
-	public List<DishImage> addDishImages(int did, List<MultipartFile> files) {
+	public List<DishImage> addDishImages(String did, List<MultipartFile> files) {
 		// Upload images
 		FileUploader uploader = FileUploader.getFileUploader();
 		ArrayList<String> imgPaths = uploader.upload(files);
@@ -43,7 +43,7 @@ public class DishImageManagerImpl implements DishImageManager {
 	}
 
 	@Override
-	public boolean removeDishImage(int imgId) {
+	public boolean removeDishImage(String imgId) {
 		return dao.removeDishImage(imgId);
 	}
 

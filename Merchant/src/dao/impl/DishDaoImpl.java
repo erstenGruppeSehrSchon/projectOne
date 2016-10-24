@@ -14,7 +14,7 @@ import dao.DishDao;
 public class DishDaoImpl implements DishDao {
 
 	@Override
-	public Dish getDishByDid(int did) {
+	public Dish getDishByDid(String did) {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
 		EntityManager em = factory.createEntityManager();
 		Dish dish = em.find(Dish.class, did);
@@ -25,7 +25,7 @@ public class DishDaoImpl implements DishDao {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Dish> getDishesBySid(int sid) {
+	public List<Dish> getDishesBySid(String sid) {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
 		EntityManager em = factory.createEntityManager();
 		Session session = (Session)em.getDelegate();
@@ -56,7 +56,7 @@ public class DishDaoImpl implements DishDao {
 	}
 
 	@Override
-	public boolean removeDish(int did) {
+	public boolean removeDish(String did) {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
 		EntityManager em = factory.createEntityManager();
 		
@@ -76,7 +76,7 @@ public class DishDaoImpl implements DishDao {
 	}
 
 	@Override
-	public Dish updateDish(int did, int sid, String name, String type, float price, int isActive) {
+	public Dish updateDish(String did, String sid, String name, String type, float price, int isActive) {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
 		EntityManager em = factory.createEntityManager();
 		

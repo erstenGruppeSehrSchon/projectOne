@@ -31,7 +31,7 @@ public class ClientController {
 	// Merchant Start
 	@RequestMapping(value="getMerchantByMid", method={RequestMethod.GET})
 	@ResponseBody
-	public Merchant getMerchant(int mid) {
+	public Merchant getMerchant(String mid) {
 		return merchantManager.getMerchantByMid(mid);
 	}
 	
@@ -45,7 +45,7 @@ public class ClientController {
 	// Shop Start
 	@RequestMapping(value="getShopBySid", method={RequestMethod.GET})
 	@ResponseBody
-	public Shop getShopBySid(int sid) {
+	public Shop getShopBySid(String sid) {
 		return shopManager.getShopBySid(sid);
 	}
 	
@@ -59,13 +59,13 @@ public class ClientController {
 	// Dish Start
 	@RequestMapping(value="getDishByDid", method={RequestMethod.GET})
 	@ResponseBody
-	public Dish getDishByDid(int did) {
+	public Dish getDishByDid(String did) {
 		return dishManager.getDishByDid(did);
 	}
 	
 	@RequestMapping(value="getDishesBySid", method={RequestMethod.GET})
 	@ResponseBody
-	public List<Dish> getDishesBySid(int sid) {
+	public List<Dish> getDishesBySid(String sid) {
 		return dishManager.getDishesBySid(sid);
 	}
 	

@@ -10,17 +10,20 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 @Table(name="M_SHOP") // Change default table name
 public class Shop {
 
 	@Id
-	@GeneratedValue
-	private Integer sid;
+	@GenericGenerator(strategy="uuid", name="uuid")
+	@GeneratedValue(generator = "uuid")
+	private String sid;
 	
 	// Link to M_MERCHANT mid
 	@Column(nullable=false)
-	private Integer mid;
+	private String mid;
 	
 	@Column(length=100, nullable=false)
 	private String name;
@@ -39,19 +42,20 @@ public class Shop {
 	@JoinColumn(name="sid", referencedColumnName="sid", insertable = false, updatable = false)
 	private Set<ShopContact> shopContacts;
 	
-	public Integer getSid() {
+	public String getSid() {
 		return sid;
 	}
 
-	public void setSid(Integer sid) {
+	@SuppressWarnings("unused")
+	private void setSid(String sid) {
 		this.sid = sid;
 	}
 
-	public Integer getMid() {
+	public String getMid() {
 		return mid;
 	}
 
-	public void setMid(Integer mid) {
+	public void setMid(String mid) {
 		this.mid = mid;
 	}
 

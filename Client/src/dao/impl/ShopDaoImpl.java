@@ -14,7 +14,7 @@ import dao.ShopDao;
 public class ShopDaoImpl implements ShopDao {
 
 	@Override
-	public Shop getShopBySid(int sid) {
+	public Shop getShopBySid(String sid) {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
 		EntityManager em = factory.createEntityManager();
 		Shop shop = em.find(Shop.class, sid);

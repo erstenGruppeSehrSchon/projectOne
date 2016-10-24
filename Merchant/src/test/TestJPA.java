@@ -42,7 +42,7 @@ public class TestJPA {
 	public void testPersist2() {
 		// Create merchants
 		Merchant merchant1 = new Merchant();
-		merchant1.setMid(-1);
+		//merchant1.setMid(-1);
 		merchant1.setUsername("m1");
 		merchant1.setPassword("AAC11529ECCD0AA876CB2ECBF277476620F36E412E457D7B08B70324D57B1ECE");
 		merchant1.setBirthDate(new Date());
@@ -52,7 +52,7 @@ public class TestJPA {
 		merchant1.setStatus("Pending");
 		
 		Merchant merchant2 = new Merchant();
-		merchant2.setMid(-2);
+		//merchant2.setMid(-2);
 		merchant1.setUsername("m2");
 		merchant1.setPassword("AAC11529ECCD0AA876CB2ECBF277476620F36E412E457D7B08B70324D57B1ECE");
 		merchant2.setBirthDate(new Date());

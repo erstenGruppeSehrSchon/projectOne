@@ -5,7 +5,7 @@ import po.Shop;
 
 public interface ShopDao {
 
-	public Shop getShopBySid(int sid);
+	public Shop getShopBySid(String sid);
 	public List<Shop> getShopsByName(String name);
 	
 }

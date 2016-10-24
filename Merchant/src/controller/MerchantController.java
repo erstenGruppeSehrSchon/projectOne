@@ -45,7 +45,7 @@ public class MerchantController {
 	
 	@RequestMapping(value="getMerchantByMid", method={RequestMethod.GET})
 	@ResponseBody
-	public Merchant getMerchantByMid(int mid) {
+	public Merchant getMerchantByMid(String mid) {
 		return merchantManager.getMerchantByMid(mid);
 	}
 	
@@ -59,25 +59,25 @@ public class MerchantController {
 	// Shop Start
 	@RequestMapping(value="getShopBySid", method={RequestMethod.GET})
 	@ResponseBody
-	public Shop getShopBySid(int sid) {
+	public Shop getShopBySid(String sid) {
 		return shopManager.getShopBySid(sid);
 	}
 	
 	@RequestMapping(value="addShop", method={RequestMethod.GET})//Change later
 	@ResponseBody
-	public Shop addShop(int mid, String name, String description, List<MultipartFile> files) {
+	public Shop addShop(String mid, String name, String description, List<MultipartFile> files) {
 		return shopManager.addShop(mid, name, description, files);
 	}
 	
 	@RequestMapping(value="removeShop", method={RequestMethod.GET}) // Change later
 	@ResponseBody
-	public boolean removeShop(int sid) {
+	public boolean removeShop(String sid) {
 		return shopManager.removeShop(sid);
 	}
 	
 	@RequestMapping(value="updateShop", method={RequestMethod.GET}) // Change later
 	@ResponseBody
-	public Shop updateShop(int sid, int mid, String name, String description) {
+	public Shop updateShop(String sid, String mid, String name, String description) {
 		return shopManager.updateShop(sid, mid, name, description);
 	}	
 	// Shop End
@@ -85,25 +85,25 @@ public class MerchantController {
 	// Shop Contact Start
 	@RequestMapping(value="getShopContactsBySid", method={RequestMethod.GET})
 	@ResponseBody
-	public List<ShopContact> getShopContactsBySid(int sid) {
+	public List<ShopContact> getShopContactsBySid(String sid) {
 		return shopContactManager.getShopContactsBySid(sid);
 	}
 	
 	@RequestMapping(value="addShopContact", method={RequestMethod.GET})//Change later
 	@ResponseBody
-	public ShopContact addShopContact(int sid, String type, String info) {
+	public ShopContact addShopContact(String sid, String type, String info) {
 		return shopContactManager.addShopContact(sid, type, info);
 	}
 	
 	@RequestMapping(value="removeShopContact", method={RequestMethod.GET})//Change later
 	@ResponseBody
-	public boolean removeShopContact(int cid) {
+	public boolean removeShopContact(String cid) {
 		return shopContactManager.removeShopContact(cid);
 	}
 	
 	@RequestMapping(value="updateShopContact", method={RequestMethod.GET})//Change later
 	@ResponseBody
-	public ShopContact updateShopContact(int cid, int sid, String type, String info) {
+	public ShopContact updateShopContact(String cid, String sid, String type, String info) {
 		return shopContactManager.updateShopContact(cid, sid, type, info);
 	}
 	// Shop Contact End
@@ -111,31 +111,31 @@ public class MerchantController {
 	// Dish Start
 	@RequestMapping(value="getDishByDid", method={RequestMethod.GET})
 	@ResponseBody
-	public Dish getDishByDid(int did) {
+	public Dish getDishByDid(String did) {
 		return dishManager.getDishByDid(did);
 	}
 	
 	@RequestMapping(value="getDishesBySid", method={RequestMethod.GET})
 	@ResponseBody
-	public List<Dish> getDishesBySid(int sid) {
+	public List<Dish> getDishesBySid(String sid) {
 		return dishManager.getDishesBySid(sid);
 	}
 	
 	@RequestMapping(value="addDish", method={RequestMethod.GET})//Change later
 	@ResponseBody
-	public Dish addDish(int sid, String name, String type, float price, int isActive, List<MultipartFile> files) {
+	public Dish addDish(String sid, String name, String type, float price, int isActive, List<MultipartFile> files) {
 		return dishManager.addDish(sid, name, type, price, isActive, files);
 	}
 	
 	@RequestMapping(value="removeDish", method={RequestMethod.GET})//Change later
 	@ResponseBody
-	public boolean removeDish(int did) {
+	public boolean removeDish(String did) {
 		return dishManager.removeDish(did);
 	}
 	
 	@RequestMapping(value="updateDish", method={RequestMethod.GET})//Change later
 	@ResponseBody
-	public Dish updateDish(int did, int sid, String name, String type, float price, int isActive, List<MultipartFile> files) {
+	public Dish updateDish(String did, String sid, String name, String type, float price, int isActive, List<MultipartFile> files) {
 		return dishManager.updateDish(did, sid, name, type, price, isActive);
 	}
 	// Dish End
@@ -143,13 +143,13 @@ public class MerchantController {
 	// Dish Image Start
 	@RequestMapping(value="addDishImages", method={RequestMethod.GET})//Change later
 	@ResponseBody
-	public List<DishImage> addDishImages(int did, List<MultipartFile> files) {
+	public List<DishImage> addDishImages(String did, List<MultipartFile> files) {
 		return dishImageManager.addDishImages(did, files);
 	}
 	
 	@RequestMapping(value="removeDishImage", method={RequestMethod.GET})//Change later
 	@ResponseBody
-	public boolean removeDishImage(int imgId) {
+	public boolean removeDishImage(String imgId) {
 		return dishImageManager.removeDishImage(imgId);
 	}
 	// Dish Image End

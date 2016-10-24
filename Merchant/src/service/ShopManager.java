@@ -6,9 +6,9 @@ import po.Shop;
 
 public interface ShopManager {
 
-	public Shop getShopBySid(int sid);
-	public Shop addShop(int mid, String name, String description, List<MultipartFile> files);
-	public boolean removeShop(int sid);
-	public Shop updateShop(int sid, int mid, String name, String description);
+	public Shop getShopBySid(String sid);
+	public Shop addShop(String mid, String name, String description, List<MultipartFile> files);
+	public boolean removeShop(String sid);
+	public Shop updateShop(String sid, String mid, String name, String description);
 	
 }

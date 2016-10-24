@@ -5,7 +5,6 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -16,8 +15,7 @@ import javax.persistence.Table;
 public class Merchant {
 	
 	@Id
-	@GeneratedValue
-	private Integer mid;
+	private String mid;
 	
 	@Column(length=100, nullable=false)
 	private String name;
@@ -38,11 +36,12 @@ public class Merchant {
 	@JoinColumn(name="mid", referencedColumnName="mid", insertable = false, updatable = false)	
 	private Set<Shop> shops;
 	
-	public Integer getMid() {
+	public String getMid() {
 		return mid;
 	}
 
-	public void setMid(Integer mid) {
+	@SuppressWarnings("unused")
+	private void setMid(String mid) {
 		this.mid = mid;
 	}
 

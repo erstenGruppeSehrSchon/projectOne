@@ -11,13 +11,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 @Table(name="M_MERCHANT") // Change default table name
 public class Merchant {
 	
 	@Id
-	@GeneratedValue
-	private Integer mid;
+	@GenericGenerator(strategy="uuid", name="uuid")
+	@GeneratedValue(generator = "uuid")
+	private String mid;
 	
 	@Column(length=30, nullable=false, unique=true)
 	private String username;
@@ -44,11 +47,12 @@ public class Merchant {
 	@JoinColumn(name="mid", referencedColumnName="mid", insertable = false, updatable = false)	
 	private Set<Shop> shops;
 	
-	public Integer getMid() {
+	public String getMid() {
 		return mid;
 	}
 
-	public void setMid(Integer mid) {
+	@SuppressWarnings("unused")
+	private void setMid(String mid) {
 		this.mid = mid;
 	}
 

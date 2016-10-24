@@ -10,16 +10,19 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 @Table(name="M_DISH")
 public class Dish {
 
 	@Id
-	@GeneratedValue
-	private Integer did;
+	@GenericGenerator(strategy="uuid", name="uuid")
+	@GeneratedValue(generator = "uuid")
+	private String did;
 	
 	@Column(nullable=false)
-	private Integer sid;
+	private String sid;
 	
 	@Column(nullable=false)
 	private String name;
@@ -37,19 +40,20 @@ public class Dish {
 	@JoinColumn(name="sid", referencedColumnName="sid", insertable = false, updatable = false)	
 	private Set<DishImage> dishImages;
 	
-	public Integer getDid() {
+	public String getDid() {
 		return did;
 	}
 
-	public void setDid(Integer did) {
+	@SuppressWarnings("unused")
+	private void setDid(String did) {
 		this.did = did;
 	}
 
-	public Integer getSid() {
+	public String getSid() {
 		return sid;
 	}
 
-	public void setSid(Integer sid) {
+	public void setSid(String sid) {
 		this.sid = sid;
 	}
 

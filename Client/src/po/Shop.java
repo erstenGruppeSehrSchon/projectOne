@@ -4,7 +4,6 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -15,12 +14,11 @@ import javax.persistence.Table;
 public class Shop {
 
 	@Id
-	@GeneratedValue
-	private Integer sid;
+	private String sid;
 	
 	// Link to M_MERCHANT mid
 	@Column(nullable=false)
-	private Integer mid;
+	private String mid;
 	
 	@Column(length=100, nullable=false)
 	private String name;
@@ -39,19 +37,20 @@ public class Shop {
 	@JoinColumn(name="sid", referencedColumnName="sid", insertable = false, updatable = false)
 	private Set<ShopContact> shopContacts;
 	
-	public Integer getSid() {
+	public String getSid() {
 		return sid;
 	}
 
-	public void setSid(Integer sid) {
+	@SuppressWarnings("unused")
+	private void setSid(String sid) {
 		this.sid = sid;
 	}
 
-	public Integer getMid() {
+	public String getMid() {
 		return mid;
 	}
 
-	public void setMid(Integer mid) {
+	public void setMid(String mid) {
 		this.mid = mid;
 	}
 

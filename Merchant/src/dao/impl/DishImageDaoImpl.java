@@ -23,7 +23,7 @@ public class DishImageDaoImpl implements DishImageDao {
 	}
 
 	@Override
-	public boolean removeDishImage(int imgId) {
+	public boolean removeDishImage(String imgId) {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
 		EntityManager em = factory.createEntityManager();
 		

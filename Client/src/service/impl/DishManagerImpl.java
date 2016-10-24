@@ -22,12 +22,12 @@ public class DishManagerImpl implements DishManager {
 	}
 	
 	@Override
-	public Dish getDishByDid(int did) {
+	public Dish getDishByDid(String did) {
 		return dao.getDishByDid(did);
 	}
 	
 	@Override
-	public List<Dish> getDishesBySid(int sid) {
+	public List<Dish> getDishesBySid(String sid) {
 		return dao.getDishesBySid(sid);
 	}
 

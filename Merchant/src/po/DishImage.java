@@ -6,34 +6,38 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 @Table(name="M_DISH_IMG")
 public class DishImage {
 
 	@Id
-	@GeneratedValue
+	@GenericGenerator(strategy="uuid", name="uuid")
+	@GeneratedValue(generator = "uuid")
 	@Column(name="IMG_ID")
-	private Integer imgId;
+	private String imgId;
 	
 	@Column(nullable=false)
-	private Integer did;
+	private String did;
 	
 	@Column(name="IMG_PATH", length=500, nullable=false)
 	private String imgPath;
 
-	public Integer getImgId() {
+	public String getImgId() {
 		return imgId;
 	}
 
-	public void setImgId(Integer imgId) {
+	@SuppressWarnings("unused")
+	private void setImgId(String imgId) {
 		this.imgId = imgId;
 	}
 
-	public Integer getDid() {
+	public String getDid() {
 		return did;
 	}
 
-	public void setDid(Integer did) {
+	public void setDid(String did) {
 		this.did = did;
 	}
 

@@ -17,7 +17,7 @@ public class ShopContactDaoImpl implements ShopContactDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<ShopContact> getShopContactsBySid(int sid) {
+	public List<ShopContact> getShopContactsBySid(String sid) {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
 		EntityManager em = factory.createEntityManager();
 		Session session = (Session)em.getDelegate();
@@ -47,7 +47,7 @@ public class ShopContactDaoImpl implements ShopContactDao {
 	}
 
 	@Override
-	public boolean removeShopContact(int cid) {
+	public boolean removeShopContact(String cid) {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
 		EntityManager em = factory.createEntityManager();
 		
@@ -67,7 +67,7 @@ public class ShopContactDaoImpl implements ShopContactDao {
 	}
 
 	@Override
-	public ShopContact updateShopContact(int cid, int sid, String type, String info) {
+	public ShopContact updateShopContact(String cid, String sid, String type, String info) {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
 		EntityManager em = factory.createEntityManager();
 		
@@ -77,7 +77,6 @@ public class ShopContactDaoImpl implements ShopContactDao {
 		
 		// Update shop contact
 		tx.begin();
-		shopContact.setCid(cid);
 		shopContact.setSid(sid);
 		shopContact.setType(type);
 		shopContact.setInfo(info);

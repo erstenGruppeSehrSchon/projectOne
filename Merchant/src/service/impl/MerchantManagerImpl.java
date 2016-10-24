@@ -41,7 +41,7 @@ public class MerchantManagerImpl implements MerchantManager {
 	}
 
 	@Override
-	public Merchant getMerchantByMid(int mid) {
+	public Merchant getMerchantByMid(String mid) {
 		return dao.getMerchantByMid(mid);
 	}
 

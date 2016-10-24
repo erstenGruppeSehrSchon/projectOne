@@ -23,7 +23,7 @@ public class ShopManagerImpl implements ShopManager {
 	}
 
 	@Override
-	public Shop getShopBySid(int sid) {
+	public Shop getShopBySid(String sid) {
 		return dao.getShopBySid(sid);
 	}
 

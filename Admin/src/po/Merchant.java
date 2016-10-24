@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class Merchant {
 	
 	@Id
-	private Integer mid;
+	private String mid;
 	
 	@Column(length=100, nullable=false)
 	private String name;
@@ -29,11 +29,11 @@ public class Merchant {
 	@Column(nullable=false)
 	private String status;
 
-	public Integer getMid() {
+	public String getMid() {
 		return mid;
 	}
 
-	public void setMid(Integer mid) {
+	public void setMid(String mid) {
 		this.mid = mid;
 	}
 

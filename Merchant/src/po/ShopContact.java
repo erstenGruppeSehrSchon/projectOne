@@ -6,16 +6,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 @Table(name="M_SHOP_CONTACT")
 public class ShopContact {
 
 	@Id
-	@GeneratedValue
-	private Integer cid;
+	@GenericGenerator(strategy="uuid", name="uuid")
+	@GeneratedValue(generator = "uuid")
+	private String cid;
 	
 	@Column(nullable=false)
-	private Integer sid;
+	private String sid;
 	
 	@Column(nullable=false)
 	private String type;
@@ -23,19 +26,20 @@ public class ShopContact {
 	@Column(nullable=false)
 	private String info;
 
-	public Integer getCid() {
+	public String getCid() {
 		return cid;
 	}
 
-	public void setCid(Integer cid) {
+	@SuppressWarnings("unused")
+	private void setCid(String cid) {
 		this.cid = cid;
 	}
 
-	public Integer getSid() {
+	public String getSid() {
 		return sid;
 	}
 
-	public void setSid(Integer sid) {
+	public void setSid(String sid) {
 		this.sid = sid;
 	}
 

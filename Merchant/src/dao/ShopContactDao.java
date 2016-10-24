@@ -5,9 +5,9 @@ import po.ShopContact;
 
 public interface ShopContactDao {
 
-	public List<ShopContact> getShopContactsBySid(int sid);
+	public List<ShopContact> getShopContactsBySid(String sid);
 	public ShopContact addShopContact(ShopContact shopContact);
-	public boolean removeShopContact(int cid);
-	public ShopContact updateShopContact(int cid, int sid, String type, String info);
+	public boolean removeShopContact(String cid);
+	public ShopContact updateShopContact(String cid, String sid, String type, String info);
 	
 }

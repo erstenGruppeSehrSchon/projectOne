@@ -29,12 +29,12 @@ public class ShopManagerImpl implements ShopManager {
 	}
 
 	@Override
-	public Shop getShopBySid(int sid) {
+	public Shop getShopBySid(String sid) {
 		return dao.getShopBySid(sid);
 	}
 
 	@Override
-	public Shop addShop(int mid, String name, String description, List<MultipartFile> files) {
+	public Shop addShop(String mid, String name, String description, List<MultipartFile> files) {
 		// Upload images
 		FileUploader uploader = FileUploader.getFileUploader();
 		ArrayList<String> imgPaths = uploader.upload(files);
@@ -52,12 +52,12 @@ public class ShopManagerImpl implements ShopManager {
 	}
 
 	@Override
-	public boolean removeShop(int sid) {
+	public boolean removeShop(String sid) {
 		return dao.removeShop(sid);
 	}
 
 	@Override
-	public Shop updateShop(int sid, int mid, String name, String description) {
+	public Shop updateShop(String sid, String mid, String name, String description) {
 		return dao.updateShop(sid, mid, name, description);
 	}
 

@@ -24,12 +24,12 @@ public class ShopContactManagerImpl implements ShopContactManager {
 	}
 
 	@Override
-	public List<ShopContact> getShopContactsBySid(int sid) {
+	public List<ShopContact> getShopContactsBySid(String sid) {
 		return dao.getShopContactsBySid(sid);
 	}
 
 	@Override
-	public ShopContact addShopContact(int sid, String type, String info) {
+	public ShopContact addShopContact(String sid, String type, String info) {
 		// Create shop contact object
 		ShopContact shopContact = new ShopContact();
 		shopContact.setSid(sid);
@@ -41,12 +41,12 @@ public class ShopContactManagerImpl implements ShopContactManager {
 	}
 
 	@Override
-	public boolean removeShopContact(int cid) {
+	public boolean removeShopContact(String cid) {
 		return dao.removeShopContact(cid);
 	}
 
 	@Override
-	public ShopContact updateShopContact(int cid, int sid, String type, String info) {
+	public ShopContact updateShopContact(String cid, String sid, String type, String info) {
 		return dao.updateShopContact(cid, sid, type, info);
 	}
 

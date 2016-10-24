@@ -10,7 +10,7 @@ import dao.ShopDao;
 public class ShopDaoImpl implements ShopDao {
 
 	@Override
-	public Shop getShopBySid(int sid) {
+	public Shop getShopBySid(String sid) {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
 		EntityManager em = factory.createEntityManager();
 		Shop shop = em.find(Shop.class, sid);
@@ -33,7 +33,7 @@ public class ShopDaoImpl implements ShopDao {
 	}
 
 	@Override
-	public boolean removeShop(int sid) {
+	public boolean removeShop(String sid) {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
 		EntityManager em = factory.createEntityManager();
 		
@@ -53,7 +53,7 @@ public class ShopDaoImpl implements ShopDao {
 	}
 
 	@Override
-	public Shop updateShop(int sid, int mid, String name, String description) {
+	public Shop updateShop(String sid, String mid, String name, String description) {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
 		EntityManager em = factory.createEntityManager();
 		

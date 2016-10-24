@@ -6,7 +6,7 @@ import po.DishImage;
 
 public interface DishImageManager {
 
-	public List<DishImage> addDishImages(int did, List<MultipartFile> files);
-	public boolean removeDishImage(int imgId);
+	public List<DishImage> addDishImages(String did, List<MultipartFile> files);
+	public boolean removeDishImage(String imgId);
 	
 }
