@@ -1,44 +1,31 @@
 package dao.impl;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import po.DishImage;
 import dao.DishImageDao;
 
+@Repository
+@Transactional
 public class DishImageDaoImpl implements DishImageDao {
 
+	@PersistenceContext(name="em")
+	private EntityManager em;
+	
 	@Override
 	public DishImage addDishImage(DishImage dishImage) {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
-		EntityManager em = factory.createEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
 		em.persist(dishImage);
-		tx.commit();
-		em.close();
-		factory.close();
 		return dishImage;
 	}
 
 	@Override
 	public boolean removeDishImage(String imgId) {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
-		EntityManager em = factory.createEntityManager();
-		
-		// Get original dish image
 		DishImage dishImage = em.find(DishImage.class, imgId);
-		
-		// Remove dish image
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
 		em.remove(dishImage);
-		tx.commit();
-		
-		// Close object and return
-		em.close();
-		factory.close();
 		return true;
 	}
 

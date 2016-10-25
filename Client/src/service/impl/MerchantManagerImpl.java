@@ -16,15 +16,7 @@ public class MerchantManagerImpl implements MerchantManager {
 
 	@Autowired
 	private MerchantDao dao;
-
-	public MerchantDao getDao() {
-		return dao;
-	}
-
-	public void setDao(MerchantDao dao) {
-		this.dao = dao;
-	}
-
+	
 	@Override
 	public Merchant getMerchantByMid(String mid) {
 		return dao.getMerchantByMid(mid);

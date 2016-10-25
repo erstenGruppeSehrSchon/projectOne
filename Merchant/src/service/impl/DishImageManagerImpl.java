@@ -15,14 +15,6 @@ public class DishImageManagerImpl implements DishImageManager {
 
 	@Autowired
 	private DishImageDao dao;
-	
-	public DishImageDao getDao() {
-		return dao;
-	}
-
-	public void setDao(DishImageDao dao) {
-		this.dao = dao;
-	}
 
 	@Override
 	public List<DishImage> addDishImages(String did, List<MultipartFile> files) {

@@ -4,17 +4,21 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import common.util.DateFormatter;
 import po.Merchant;
 import dao.MerchantDao;
 
+@Repository
+@Transactional
 public class MerchantDaoImpl implements MerchantDao {
 
 	private static int[][] AGE_RANGE = new int[][]{
@@ -25,33 +29,25 @@ public class MerchantDaoImpl implements MerchantDao {
 		{80, 100}
 	};
 	
+	@PersistenceContext(name="em")
+	private EntityManager em;
+	
 	@Override
 	public Merchant getMerchantByMid(int mid) {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
-		EntityManager em = factory.createEntityManager();
-		Merchant merchant = em.find(Merchant.class, mid);
-		em.close();
-		factory.close();
-		return merchant;
+		return em.find(Merchant.class, mid);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Merchant> getAllMerchants() {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
-		EntityManager em = factory.createEntityManager();
 		Session session = (Session)em.getDelegate();
 		List<Merchant> merchants = session.createCriteria(Merchant.class).list();
-		em.close();
-		factory.close();
 		return merchants;
 	}
 	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Merchant> getMerchantsByCriteria(Integer mid, String name, String gender, Integer ageIndex, String regDate, String status) {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
-		EntityManager em = factory.createEntityManager();
 		Session session = (Session)em.getDelegate();
 		
 		// Add criteria
@@ -91,8 +87,6 @@ public class MerchantDaoImpl implements MerchantDao {
 		}
 		
 		List<Merchant> merchants = criteria.list();
-		em.close();
-		factory.close();
 		return merchants;
 	}
 	
@@ -112,22 +106,8 @@ public class MerchantDaoImpl implements MerchantDao {
 
 	@Override
 	public Merchant updateMerchantStatus(int mid, String status) {
-		// Retrieve original merchant
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
-		EntityManager em = factory.createEntityManager();
 		Merchant merchant = em.find(Merchant.class, mid);
-		
-		// Update merchant
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
 		merchant.setStatus(status);
-		tx.commit();
-		
-		// Close object
-		em.close();
-		factory.close();
-		
-		// Return updated merchant
 		return merchant;
 	}
 }

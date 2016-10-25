@@ -16,7 +16,13 @@
         
 	<context:component-scan base-package="controller"></context:component-scan>
 	
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<mvc:resources location="/" mapping="*.html"></mvc:resources>
+	<mvc:resources location="/css/" mapping="/css/**"></mvc:resources>
+	<mvc:resources location="/js/" mapping="/js/*.js"></mvc:resources>
+	<mvc:resources location="/imgs/" mapping="/images/*.jpg"></mvc:resources>
+	
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>

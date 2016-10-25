@@ -1,22 +1,24 @@
 package dao.impl;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import po.Admin;
 import dao.AdminDao;
 
+@Repository
+@Transactional
 public class AdminDaoImpl implements AdminDao {
+	
+	@PersistenceContext(name="em")
+	private EntityManager em;
 	
 	@Override
 	public Admin getAdmin(String username) {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
-		EntityManager em = factory.createEntityManager();
-		Admin admin = em.find(Admin.class, username);
-		em.close();
-		factory.close();
-		return admin;
+		return em.find(Admin.class, username);
 	}
 
 }

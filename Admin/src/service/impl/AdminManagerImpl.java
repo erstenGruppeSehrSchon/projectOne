@@ -14,14 +14,6 @@ public class AdminManagerImpl implements AdminManager {
 	@Autowired
 	private AdminDao dao;
 	
-	public AdminDao getDao() {
-		return dao;
-	}
-
-	public void setDao(AdminDao dao) {
-		this.dao = dao;
-	}
-	
 	@Override
 	public Admin login(String username, String password) {
 		Admin admin = dao.getAdmin(username);

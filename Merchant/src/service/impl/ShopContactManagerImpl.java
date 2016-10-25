@@ -15,14 +15,6 @@ public class ShopContactManagerImpl implements ShopContactManager {
 	@Autowired
 	private ShopContactDao dao;
 	
-	public ShopContactDao getDao() {
-		return dao;
-	}
-
-	public void setDao(ShopContactDao dao) {
-		this.dao = dao;
-	}
-
 	@Override
 	public List<ShopContact> getShopContactsBySid(String sid) {
 		return dao.getShopContactsBySid(sid);

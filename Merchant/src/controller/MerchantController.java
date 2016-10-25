@@ -49,7 +49,7 @@ public class MerchantController {
 		return merchantManager.getMerchantByMid(mid);
 	}
 	
-	@RequestMapping(value="register", method={RequestMethod.POST})
+	@RequestMapping(value="register", method={RequestMethod.GET})
 	@ResponseBody
 	public Merchant register(String username, String password, String name, String gender, String birthDate) {
 		return merchantManager.addMerchant(username, password, name, gender, birthDate);

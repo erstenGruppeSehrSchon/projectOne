@@ -13,16 +13,10 @@ import common.util.PasswordEncrypter;
 public class MerchantManagerImpl implements MerchantManager {
 
 	private static final String DEFAULT_STATUS = "Pending";
+	
 	@Autowired
 	private MerchantDao dao;
 
-	public MerchantDao getDao() {
-		return dao;
-	}
-
-	public void setDao(MerchantDao dao) {
-		this.dao = dao;
-	}
 
 	@Override
 	public Merchant login(String username, String password) {

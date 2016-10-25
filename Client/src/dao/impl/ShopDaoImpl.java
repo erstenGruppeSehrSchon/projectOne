@@ -2,32 +2,32 @@ package dao.impl;
 
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import po.Shop;
 import dao.ShopDao;
 
+@Repository
+@Transactional
 public class ShopDaoImpl implements ShopDao {
 
+	@PersistenceContext(name="em")
+	private EntityManager em;
+	
 	@Override
 	public Shop getShopBySid(String sid) {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
-		EntityManager em = factory.createEntityManager();
-		Shop shop = em.find(Shop.class, sid);
-		em.close();
-		factory.close();
-		return shop;
+		return em.find(Shop.class, sid);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Shop> getShopsByName(String name) {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
-		EntityManager em = factory.createEntityManager();
 		Session session = (Session)em.getDelegate();
 		
 		// Add criteria
@@ -36,10 +36,6 @@ public class ShopDaoImpl implements ShopDao {
 		
 		// Retrieve match shops
 		List<Shop> shops = criteria.list();
-		
-		// Close objects
-		em.close();
-		factory.close();
 		
 		// Return match shops
 		return shops;

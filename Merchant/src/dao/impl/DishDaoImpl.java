@@ -2,100 +2,63 @@ package dao.impl;
 
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import po.Dish;
 import dao.DishDao;
 
+@Repository
+@Transactional
 public class DishDaoImpl implements DishDao {
 
+	@PersistenceContext(name="em")
+	private EntityManager em;
+	
 	@Override
 	public Dish getDishByDid(String did) {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
-		EntityManager em = factory.createEntityManager();
-		Dish dish = em.find(Dish.class, did);
-		em.close();
-		factory.close();
-		return dish;
+		return em.find(Dish.class, did);
 	}
 	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Dish> getDishesBySid(String sid) {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
-		EntityManager em = factory.createEntityManager();
 		Session session = (Session)em.getDelegate();
-
-		// Retrieve dish records by sid
 		Criteria criteria = session.createCriteria(Dish.class);
 		criteria.add(Restrictions.eq("sid", sid));
 		List<Dish> dishes = criteria.list();
-		
-		// Close object
-		em.close();
-		factory.close();
-		
 		return dishes;
 	}
 
 	@Override
 	public Dish addDish(Dish dish) {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
-		EntityManager em = factory.createEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
 		em.persist(dish);
-		tx.commit();
-		em.close();
-		factory.close();
 		return dish;
 	}
 
 	@Override
 	public boolean removeDish(String did) {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
-		EntityManager em = factory.createEntityManager();
-		
-		// Get original dish
 		Dish dish = em.find(Dish.class, did);
-		
-		// Remove dish
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
 		em.remove(dish);
-		tx.commit();
-		
-		// Close object and return
-		em.close();
-		factory.close();
 		return true;
 	}
 
 	@Override
 	public Dish updateDish(String did, String sid, String name, String type, float price, int isActive) {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
-		EntityManager em = factory.createEntityManager();
-		
 		// Get origin dish
 		Dish dish = em.find(Dish.class, did);
-		EntityTransaction tx = em.getTransaction();
 		
 		// Update dish
-		tx.begin();
 		dish.setSid(sid);
 		dish.setName(name);
 		dish.setType(type);
 		dish.setPrice(price);
 		dish.setIsActive(isActive);
-		tx.commit();
-		
-		// close object
-		em.close();
-		factory.close();
 		
 		// Return updated dish
 		return dish;

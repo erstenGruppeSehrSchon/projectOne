@@ -12,14 +12,6 @@ public class DishManagerImpl implements DishManager {
 
 	@Autowired
 	private DishDao dao;
-
-	public DishDao getDao() {
-		return dao;
-	}
-
-	public void setDao(DishDao dao) {
-		this.dao = dao;
-	}
 	
 	@Override
 	public Dish getDishByDid(String did) {

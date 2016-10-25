@@ -19,14 +19,6 @@ public class ShopManagerImpl implements ShopManager {
 
 	@Autowired
 	private ShopDao dao;
-	
-	public ShopDao getDao() {
-		return dao;
-	}
-
-	public void setDao(ShopDao dao) {
-		this.dao = dao;
-	}
 
 	@Override
 	public Shop getShopBySid(String sid) {

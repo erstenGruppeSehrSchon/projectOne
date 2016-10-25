@@ -2,31 +2,31 @@ package dao.impl;
 
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import po.Dish;
 import dao.DishDao;
 
+@Repository
+@Transactional
 public class DishDaoImpl implements DishDao {
+	
+	@PersistenceContext(name="em")
+	private EntityManager em;
+	
 	@Override
 	public Dish getDishByDid(String did) {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
-		EntityManager em = factory.createEntityManager();
-		Dish dish = em.find(Dish.class, did);
-		em.close();
-		factory.close();
-		return dish;
+		return em.find(Dish.class, did);
 	}
 	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Dish> getDishesBySid(String sid) {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
-		EntityManager em = factory.createEntityManager();
 		Session session = (Session)em.getDelegate();
 
 		// Retrieve dish records by sid
@@ -34,18 +34,12 @@ public class DishDaoImpl implements DishDao {
 		criteria.add(Restrictions.eq("sid", sid));
 		List<Dish> dishes = criteria.list();
 		
-		// Close object
-		em.close();
-		factory.close();
-		
 		return dishes;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Dish> getDishesByCriteria(String name, String type, Float lowerPrice, Float higherPrice) {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
-		EntityManager em = factory.createEntityManager();
 		Session session = (Session)em.getDelegate();
 		
 		// Add criteria
@@ -68,10 +62,6 @@ public class DishDaoImpl implements DishDao {
 		}
 
 		List<Dish> dishes = criteria.list();
-		
-		// Close objects
-		em.close();
-		factory.close();
 		
 		// Return match dishes
 		return dishes;

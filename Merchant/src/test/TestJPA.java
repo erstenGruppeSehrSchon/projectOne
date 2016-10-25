@@ -53,8 +53,8 @@ public class TestJPA {
 		
 		Merchant merchant2 = new Merchant();
 		//merchant2.setMid(-2);
-		merchant1.setUsername("m2");
-		merchant1.setPassword("AAC11529ECCD0AA876CB2ECBF277476620F36E412E457D7B08B70324D57B1ECE");
+		merchant2.setUsername("m2");
+		merchant2.setPassword("AAC11529ECCD0AA876CB2ECBF277476620F36E412E457D7B08B70324D57B1ECE");
 		merchant2.setBirthDate(new Date());
 		merchant2.setGender("Unknown");
 		merchant2.setName("Merchant B");

@@ -62,7 +62,7 @@ public class TestJPA {
 	public void testPersist2() {
 		// Create merchants
 		Merchant merchant1 = new Merchant();
-		//merchant1.setMid(-1);
+		merchant1.setMid("-1");
 		merchant1.setBirthDate(new Date());
 		merchant1.setGender("M");
 		merchant1.setName("Merchant A");
@@ -70,7 +70,7 @@ public class TestJPA {
 		merchant1.setStatus("Pending");
 		
 		Merchant merchant2 = new Merchant();
-		//merchant2.setMid(-2);
+		merchant2.setMid("-2");
 		merchant2.setBirthDate(new Date());
 		merchant2.setGender("Unknown");
 		merchant2.setName("Merchant B");

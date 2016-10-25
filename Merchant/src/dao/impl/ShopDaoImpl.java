@@ -1,76 +1,46 @@
 package dao.impl;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import po.Shop;
 import dao.ShopDao;
 
+@Repository
+@Transactional
 public class ShopDaoImpl implements ShopDao {
 
+	@PersistenceContext(name="em")
+	private EntityManager em;
+	
 	@Override
 	public Shop getShopBySid(String sid) {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
-		EntityManager em = factory.createEntityManager();
-		Shop shop = em.find(Shop.class, sid);
-		em.close();
-		factory.close();
-		return shop;
+		return em.find(Shop.class, sid);
 	}
 
 	@Override
 	public Shop addShop(Shop shop) {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
-		EntityManager em = factory.createEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
 		em.persist(shop);
-		tx.commit();
-		em.close();
-		factory.close();
 		return shop;
 	}
 
 	@Override
 	public boolean removeShop(String sid) {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
-		EntityManager em = factory.createEntityManager();
-		
-		// Get origin shop
 		Shop shop = em.find(Shop.class, sid);
-		
-		// Remove shop
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
 		em.remove(shop);
-		tx.commit();
-		
-		// Close objects and return 
-		em.close();
-		factory.close();
 		return true;
 	}
 
 	@Override
 	public Shop updateShop(String sid, String mid, String name, String description) {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("project");
-		EntityManager em = factory.createEntityManager();
-		
 		// Get origin shop
 		Shop shop = em.find(Shop.class, sid);
 		
 		// Update shop
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
 		shop.setMid(mid);
 		shop.setName(name);
 		shop.setDescription(description);
-		tx.commit();
-		
-		// close object
-		em.close();
-		factory.close();
 		
 		// Return updated shop
 		return shop;
