@@ -46,7 +46,7 @@ public class AdminController {
 	
 	@RequestMapping(value="updateMerchantStatus", method={RequestMethod.POST})
 	@ResponseBody
-	public Merchant updateMerchantStatus(int mid, String status) {
+	public Merchant updateMerchantStatus(String mid, String status) {
 		return merchantManager.updateMerchantStatus(mid, status);
 	}
 }
