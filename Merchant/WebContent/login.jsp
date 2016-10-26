@@ -8,33 +8,11 @@
 <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body>
-<form id='loginForm'>
-    Username: <input id='uname' /><br/>
-    Password: <input id='pwd' /><br/>
-    <input type='button' id='loginBut' value='LOGIN'/>
+<form id='loginForm' action="login" method="post">
+    Username: <input id='uname' name="username" /><br/>
+    Password: <input id='pwd' name="password"/><br/>
+    <input type='submit' value='LOGIN'/>
 </form>
-<span id ='text'></span>
-
-<script>
-    $(function(){
-        $("#loginBut").on("click", function(e){
-            alert($("#uname").val() + " ... " +$("#pwd").val());
-            $.ajax({
-                type:'POST',
-                url:'login',
-                data:{username:$("#uname").val(),password:$("#pwd").val()}
-            }).done(function(msg){
-
-                // = accepted
-                if(msg.status === "Accepted"){
-                    $('#text').text(msg.mid + " ... " +msg.status);
-                }
-                else{
-                    $('#text').text(msg.mid + " ... " +msg.status);
-                }
-            });  
-        }); 
-    });
-</script>
+<span id ='error'>${error}</span>
 </body>
 </html>
