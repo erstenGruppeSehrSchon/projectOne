@@ -23,6 +23,7 @@ public class AdvertisementDaoImpl implements AdvertisementDao {
 		return getAdvertisementsByStatus(status).size();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Advertisement> getAdvertisementsByStatus(String status) {
 		String jqpl = "from Advertisement ad where ad.status = :status";
@@ -30,7 +31,7 @@ public class AdvertisementDaoImpl implements AdvertisementDao {
 	}
 
 	@Override
-	public void updateAdvertisementStatus(Integer advId, String status) {
+	public void updateAdvertisementStatus(String advId, String status) {
 		System.out.println(advId + "..." + status);
 		Advertisement adv = em.find(Advertisement.class, advId);
 		adv.setStatus(status);

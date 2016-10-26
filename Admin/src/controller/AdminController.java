@@ -46,7 +46,7 @@ public class AdminController {
 	
 	@RequestMapping(value="getMerchantByMid", method={RequestMethod.GET})
 	@ResponseBody
-	public Merchant getMerchant(int mid) {
+	public Merchant getMerchant(String mid) {
 		return merchantManager.getMerchantByMid(mid);
 	}
 	
@@ -58,7 +58,13 @@ public class AdminController {
 	
 	@RequestMapping(value="getMerchantsByCriteria", method={RequestMethod.GET})
 	@ResponseBody
-	public List<Merchant> getMerchantsByCriteria(Integer mid, String name, String gender, Integer ageIndex, String regDate, String status) {
+	public List<Merchant> getMerchantsByCriteria(String mid, String name, String gender, Integer ageIndex, String regDate, String status) {
+		return merchantManager.getMerchantsByCriteria(mid, name, gender, ageIndex, regDate, status);
+	}
+	
+	@RequestMapping(value="searchMerchants", method={RequestMethod.GET})
+	@ResponseBody
+	public List<Merchant> searchMerchants(String mid, String name, String gender, Integer ageIndex, String regDate, String status) {
 		return merchantManager.getMerchantsByCriteria(mid, name, gender, ageIndex, regDate, status);
 	}
 	
@@ -78,9 +84,11 @@ public class AdminController {
 	//http://localhost:8080/Admin/updateAdvertisementStatus?advId=-1&status=abc
 	@RequestMapping(value="updateAdvertisementStatus", method={RequestMethod.GET})
 	@ResponseBody
-	public void updateAdvertisementStatus(Integer advId, String status) {
+	public void updateAdvertisementStatus(String advId, String status) {
 		System.out.println("enter updateAdvertisementStatus " + status);
 		advertisementManager.updateAdvertisementStatus(advId, status);
 	}
+	
+	
 	
 }

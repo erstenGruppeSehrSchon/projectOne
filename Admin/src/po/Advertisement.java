@@ -21,7 +21,7 @@ public class Advertisement {
 	@Id
 	@GenericGenerator(strategy="uuid", name="uuid")
 	@GeneratedValue(generator = "uuid")
-	private Integer ADV_IMG_ID;
+	private String AdvImgId;
 	
 	@Column(nullable=false)
 	private String imgPath;
@@ -36,12 +36,12 @@ public class Advertisement {
 	@JoinColumn(name="shop_id")
 	private Shop shop;
 
-	public Integer getADV_IMG_ID() {
-		return ADV_IMG_ID;
+	public String getAdvImgId() {
+		return AdvImgId;
 	}
 
-	public void setADV_IMG_ID(Integer aDV_IMG_ID) {
-		ADV_IMG_ID = aDV_IMG_ID;
+	public void setAdvImgId(String advImgId) {
+		AdvImgId = advImgId;
 	}
 
 	public String getImgPath() {

@@ -26,7 +26,7 @@ public class AdvertisementManagerImpl implements AdvertisementManager {
 	}
 
 	@Override
-	public void updateAdvertisementStatus(Integer advId, String status) {
+	public void updateAdvertisementStatus(String advId, String status) {
 		dao.updateAdvertisementStatus(advId, status);
 	}
 

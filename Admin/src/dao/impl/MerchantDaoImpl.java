@@ -33,7 +33,7 @@ public class MerchantDaoImpl implements MerchantDao {
 	private EntityManager em;
 	
 	@Override
-	public Merchant getMerchantByMid(int mid) {
+	public Merchant getMerchantByMid(String mid) {
 		return em.find(Merchant.class, mid);
 	}
 
@@ -47,7 +47,7 @@ public class MerchantDaoImpl implements MerchantDao {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Merchant> getMerchantsByCriteria(Integer mid, String name, String gender, Integer ageIndex, String regDate, String status) {
+	public List<Merchant> getMerchantsByCriteria(String mid, String name, String gender, Integer ageIndex, String regDate, String status) {
 		Session session = (Session)em.getDelegate();
 		
 		// Add criteria
