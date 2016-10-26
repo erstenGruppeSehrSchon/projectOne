@@ -25,15 +25,19 @@
 				<td colspan="2"><h3 class="h3_title_index">-Add Advertisement-</h3></td>
 			</tr>
 			<tr>
-				<td>Advertisement image:</td>
-				<td><input type="file" name="file" class = "form-control"/></td>
+				<td><h4 class="form_title">Advertisement image:</h4></td>
+				<td><form action="FileUpload" enctype="multipart/form-data">
+				<label class="btn btn-default">
+					 Choose<input type="file" name="searchMerchantIconFile" style="display: none;">
+				</label>
+				</form></td>
 			</tr>
 			<tr>
-				<td>From time:</td>
+				<td><h4 class="form_title">From time:</h4></td>
 				<td><input type = "date" name="adsFromTime" class = "form-control" value=""/></td></td>
 			</tr>
 			<tr>
-				<td>To time:</td>
+				<td><h4 class="form_title">To time:</h4></td>
 				<td><input type = "date" name="adsToTime" class = "form-control" value=""/></td></td>
 			</tr>
               <tr>

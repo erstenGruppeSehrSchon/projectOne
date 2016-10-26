@@ -17,47 +17,39 @@
 <jsp:include page="./menu.jsp" />
 <!--*********container*********-->
 <div class="container">
-	<!--*********Edit profile form*********-->
+	<!--*********add ads form*********-->
 	<div class="merchantForm">
-		<form name="merchantSearchForm" method="post" action="">
-			<table class="searchTable">
+		<form name="merchanAddShopForm" method="post" action="">
+			<table>
 			<tr>
-				<td colspan="2"><h3 class="h3_title_index">-Edit Profile-</h3></td>
+				<td colspan="2"><h3 class="h3_title_index">-Add Shop-</h3></td>
 			</tr>
 			<tr>
-				<td><h4 class="form_title">Merchant Name:</h4></td>
-				<td><input type="text" name="merchantName" class = "form-control" value="${name }"/></td>
+				<td><h4 class="form_title">Shop Name:</h4></td>
+				<td><input type="text" name="addShopName" class = "form-control"/></td>
 			</tr>
 			<tr>
-				<td><h4 class="form_title">Old Password:</h4></td>
-				<td><input type = "text" name="merchantOldPassword" class = "form-control" /></td>
+				<td><h4 class="form_title">Description:</h4></td>
+				<td><input type="textarea" name="addShopDescription" class = "form-control"/></td>
 			</tr>
 			<tr>
-				<td><h4 class="form_title">New password:</h4></td>
-				<td><input type = "text" name="merchantNewPassword" class = "form-control"/></td>
+				<td><h4 class="form_title">Contact Information:</h4></td>
+				<td><input type = "text" name="addShopTel" class = "form-control" value="" placeholder="Tel"/>
+				<input type = "text" name="addShopEmail" class = "form-control" value="" placeholder="Email"/>
+				<input type = "text" name="addShopAddrs" class = "form-control" value="" placeholder="Address"/></td>
 			</tr>
 			<tr>
-				<td><h4 class="form_title">Birthday:</h4></td>
-				<td>
-				<input type = "date" name="merchantBirth" class = "form-control" value=""/></td>
-			</tr>
-			<tr>
-				<td><h4 class="form_title">Gender:</h4></td>
-				<td><input type = "text" name="merchantGender" class = "form-control" value=""/></td>
-			</tr>
-			<tr>
-				<td><h4 class="form_title">Icon:</h4></td>
+				<td><h4 class="form_title">Shop Image:</h4></td>
 				<td><form action="FileUpload" enctype="multipart/form-data">
 				<label class="btn btn-default">
 					 Choose<input type="file" name="searchMerchantIconFile" style="display: none;">
 				</label>
 				</form></td>
 			</tr>
-			
-                <tr>
-                    <td></td>
-                    <td><input type="submit" value="Submit" onclick=""  /></td>
-                </tr>
+              <tr>
+                  <td></td>
+                  <td><input type="submit" value="Submit" onclick=""  /></td>
+              </tr>
 			</table>
 		</form>		
 	</div>

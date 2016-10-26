@@ -20,7 +20,7 @@
 	<!--*********My Shop*********--><!-- 3 in one line -->
 	<div class="myShop">
 		<h3 class="h3_title_index">- My Shop -</h3>
-		<input type="submit" value="Add Shop" onclick="" />
+		<a href="./shopAdd.jsp"><input type="submit" value="Add Shop"></input></a>
 		<table class="largeThumb">
 			<tr>
 				<td>
