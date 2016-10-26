@@ -430,3 +430,9 @@ p{
 	font-family: "Century Gothic", "Helvetica", "Arial", sans-serif;
 	font-weight: bold;
 }
+
+/*merchant comment*/
+.commentBox{
+	border: 1px solid #eac1c6;
+	margin-bottom: 10px;
+}

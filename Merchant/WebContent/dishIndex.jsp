@@ -19,7 +19,7 @@
 <div class="container">
 	<!--*********My Shop*********--><!-- 3 in one line -->
 	<div class="myShop">
-		<h3 class="h3_title_index">- My Advertisement-</h3>
+		<h3 class="h3_title_index">- My Dish-</h3>
 		<table class="largeThumb">
 			<tr>
 				<td>

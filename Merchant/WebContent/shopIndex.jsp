@@ -24,7 +24,7 @@
 		<table class="largeThumb">
 			<tr>
 				<td>
-					<a href="#"><!-- Shop Link-->
+					<a href="./shopDetails.jsp"><!-- Shop Link-->
 					<img src="http://www.oushop.com/warp_sites/oushop.g6/files/Shop2.jpg" title=""/></br> <!-- Shop img and shop name -->
 					<p>Shops Name</p></a>
 				</td>
