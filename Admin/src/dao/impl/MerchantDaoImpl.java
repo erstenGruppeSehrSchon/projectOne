@@ -108,6 +108,7 @@ public class MerchantDaoImpl implements MerchantDao {
 	public Merchant updateMerchantStatus(String mid, String status) {
 		Merchant merchant = em.find(Merchant.class, mid);
 		merchant.setStatus(status);
+		em.persist(merchant);
 		return merchant;
 	}
 	

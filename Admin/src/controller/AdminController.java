@@ -1,14 +1,18 @@
 package controller;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import po.Admin;
+import po.Advertisement;
 import po.Merchant;
 import service.AdminManager;
+import service.AdvertisementManager;
 import service.MerchantManager;
 
 @Controller
@@ -19,6 +23,9 @@ public class AdminController {
 	
 	@Autowired
 	private MerchantManager merchantManager;
+	
+	@Autowired
+	private AdvertisementManager advertisementManager;
 	
 	@RequestMapping(value="login", method={RequestMethod.POST})
 	@ResponseBody
@@ -49,4 +56,20 @@ public class AdminController {
 	public Merchant updateMerchantStatus(String mid, String status) {
 		return merchantManager.updateMerchantStatus(mid, status);
 	}
+	
+	@RequestMapping(value="getAdvertisementsByStatus", method={RequestMethod.GET})
+	@ResponseBody
+	public List<Advertisement> getAdvertisementsByStatus(String status) {
+		System.out.println("enter getAdvertisementsByStatus " + status);
+		return advertisementManager.getAdvertisementsByStatus(status);
+	}
+	
+	//http://localhost:8080/Admin/updateAdvertisementStatus?advId=-1&status=abc
+	@RequestMapping(value="updateAdvertisementStatus", method={RequestMethod.GET})
+	@ResponseBody
+	public void updateAdvertisementStatus(Integer advId, String status) {
+		System.out.println("enter updateAdvertisementStatus " + status);
+		advertisementManager.updateAdvertisementStatus(advId, status);
+	}
+	
 }
