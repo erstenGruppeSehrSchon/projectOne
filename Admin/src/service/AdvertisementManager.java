@@ -8,6 +8,6 @@ public interface AdvertisementManager {
 
 	public int countAdvertisementByStatus(String status);
 	public List<Advertisement> getAdvertisementsByStatus(String status);
-	public void updateAdvertisementStatus(String advId, String status);
+	public Advertisement updateAdvertisementStatus(String advId, String status);
 	
 }

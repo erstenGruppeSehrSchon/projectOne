@@ -103,7 +103,8 @@ public class AdminController {
 	@ResponseBody
 	public void updateAdvertisementStatus(String advId, String status) {
 		System.out.println("enter updateAdvertisementStatus " + status);
-		advertisementManager.updateAdvertisementStatus(advId, status);
+		Advertisement adv = advertisementManager.updateAdvertisementStatus(advId, status);
+		sendUpdateAdvStatus(adv);
 	}
 	
 	private void sendUpdateStatus(Merchant merchant){
@@ -134,4 +135,31 @@ public class AdminController {
 		}
 	}
 	
+	private void sendUpdateAdvStatus(Advertisement adv){
+		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		ConnectionFactory factory = (ActiveMQConnectionFactory)context.getBean("mq");
+		
+//		Destination queue = new ActiveMQQueue("Test01Q");
+		Destination queue = (ActiveMQQueue)context.getBean("advUpdateQueue");
+		Connection con = null;
+		Session session = null;
+		MessageProducer producer = null;
+		try {
+			con = factory.createConnection();
+			con.start();
+			session = con.createSession(false, Session.CLIENT_ACKNOWLEDGE);
+			producer = session.createProducer(queue);
+			ObjectMapper mapper = new ObjectMapper();
+			Advertisement a = new Advertisement();
+			a.setAdvImgId(adv.getAdvImgId());
+			a.setStatus(adv.getAdvImgId());
+			TextMessage msg = session.createTextMessage(mapper.writeValueAsString(a));
+			producer.send(msg);
+		} catch (JMSException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonProcessingException e){
+			e.printStackTrace();
+		}
+	}
 }
