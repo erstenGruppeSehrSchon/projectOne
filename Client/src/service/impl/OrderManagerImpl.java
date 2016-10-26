@@ -42,8 +42,8 @@ public class OrderManagerImpl implements OrderManager {
 	}
 
 	@Override
-	public Order getOrder(String oid) {
-		Order order = orderDao.getOrder(oid);
+	public Order getOrderByOid(String oid) {
+		Order order = orderDao.getOrderByOid(oid);
 		return order;
 	}
 
@@ -57,5 +57,11 @@ public class OrderManagerImpl implements OrderManager {
 	public Order addRating(String oid, int rating) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<Order> getOrderBySid(String sid) {
+		List<Order> order = orderDao.getOrderBySid(sid);
+		return order;
 	}
 }

@@ -73,6 +73,12 @@ public class ClientController {
 	}
 	// Shop End
 	
+	
+	
+	
+	
+	
+	
 	// Dish Start
 	@RequestMapping(value="getDishByDid", method={RequestMethod.GET})
 	@ResponseBody
@@ -103,14 +109,13 @@ public class ClientController {
 	@RequestMapping(value="getAllOrder", method={RequestMethod.GET}) // Change later
 	@ResponseBody
 	public List<Order> getAllOrder() {
-		System.out.println("getallorder");
 		return orderManager.getAllOrder();
 	}
 	
-	@RequestMapping(value="getOrder", method={RequestMethod.GET}) // Change later
+	@RequestMapping(value="getOrderByOid", method={RequestMethod.GET}) // Change later
 	@ResponseBody
-	public Order getOrder(String oid) {
-		return orderManager.getOrder(oid);
+	public Order getOrderByOid(String oid) {
+		return orderManager.getOrderByOid(oid);
 	}
 	
 	@RequestMapping(value="addComment", method={RequestMethod.GET}) // Change later
@@ -118,6 +123,15 @@ public class ClientController {
 	public Order addComment(String oid, String comment) {
 		return null;
 	}
+	
+	@RequestMapping(value="getOrderBySid", method={RequestMethod.GET}) // Change later
+	@ResponseBody
+	public List<Order> getOrder(String Sid) {
+		return orderManager.getOrderBySid(Sid);
+	}
+	
+	
+	
 	// Order End
 	
 	//Client Start
@@ -145,4 +159,23 @@ public class ClientController {
 	
 	
 	//Advertisement End
+	
+	//Comment Start
+	
+	@RequestMapping(value="getOrderWithCommentBySid", method={RequestMethod.GET}) // Change later
+	@ResponseBody
+	public List<Order> getOrderWithCommentBySid(String Sid) {
+
+		List<Order> orderList = orderManager.getOrderBySid(Sid);
+		List<Order> orderListWithComment = orderManager.getOrderBySid(Sid);
+		
+		for(Order order :orderList){
+			if(!order.getComments().isEmpty()){
+				orderListWithComment.add(order);
+			}
+		}
+		return orderListWithComment;
+	}
+	
+	//Comment End
 }

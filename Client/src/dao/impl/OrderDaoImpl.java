@@ -41,7 +41,7 @@ public class OrderDaoImpl implements OrderDao {
 	}
 
 	@Override
-	public Order getOrder(String oid) {
+	public Order getOrderByOid(String oid) {
 		Session session = (Session)em.getDelegate();
 		Criteria criteria = session.createCriteria(Order.class);
 		criteria.add(Restrictions.eq("oid", oid));
@@ -63,6 +63,16 @@ public class OrderDaoImpl implements OrderDao {
 	public Order addRating(String oid, int rating) {
 		Order order = em.find(Order.class, oid);
 		order.setRating(rating);
+		return order;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Order> getOrderBySid(String sid) {
+		Session session = (Session)em.getDelegate();
+		Criteria criteria = session.createCriteria(Order.class);
+		criteria.add(Restrictions.eq("shop_id", sid));		
+		List<Order> order = (List<Order>) criteria.list();		
 		return order;
 	}
 
