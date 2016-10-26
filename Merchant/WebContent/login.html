@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+<form action='xxx' id='loginForm'>
+    Username: <input id='uname' /><br/>
+    Password: <input id='pwd' /><br/>
+    <input type='submit'/>
+</form>
+<span id ='text'></span>
+
+<script>
+    $('document').ready(function(){
+        // validation
+        $('#loginForm').validate({
+            rules:{
+                uname:{required: true},
+                pwd:{required: true}
+            },
+            messages:{
+                uname:"Please enter your username",
+                pwd:"Please enter your password"
+            },
+            submitHandler: submitForm
+        });
+        
+        // submit
+        var submitForm = function(){
+            $.ajax({
+                type:'POST',
+                url:'login',
+                data:{username:$("#uname").val(),password:$("#pwd").val()}
+            }).done(function(msg){
+                
+                // = accepted
+                if(msg.status === "Accepted"){
+                    $('#text').text(msg.id + " ... " +msg.status);
+                }
+                else{
+                    $('#text').text(msg.id + " ... " +msg.status);
+                }
+            });  
+        }
+    });
+</script>
+</body>
+</html>

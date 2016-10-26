@@ -1,15 +1,29 @@
 package controller;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+
+import javax.ws.rs.core.MediaType;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.WebResource;
+import com.sun.jersey.api.representation.Form;
+
 import po.Dish;
 import po.DishImage;
+import po.LoginResponse;
 import po.Merchant;
 import po.Shop;
 import service.DishImageManager;
@@ -19,6 +33,9 @@ import service.ShopManager;
 
 @Controller
 public class MerchantController {
+	
+	// web service path
+	private final static String register_path ="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/regist";
 
 	@Autowired
 	private MerchantManager merchantManager;
@@ -35,8 +52,31 @@ public class MerchantController {
 	// Merchant Start
 	@RequestMapping(value="login", method={RequestMethod.POST})
 	@ResponseBody
-	public Merchant login(String username, String password) {
+	public Merchant login(String username, String password) throws Exception {
 		return merchantManager.login(username, password);
+	
+//		Client client = Client.create();
+//		WebResource wr = client.resource(register_path);
+//		
+//		Form form= new Form();
+//		form.add("username", username);
+//		form.add("password", password);
+//		
+//		
+//		ClientResponse resp = wr
+//				.type(MediaType.APPLICATION_FORM_URLENCODED_TYPE)
+//				.accept(MediaType.APPLICATION_JSON_TYPE)
+//				.post(ClientResponse.class, form);
+//		String rs = resp.getEntity(String.class);
+//		
+//		System.out.println(rs);
+//		
+//		ObjectMapper mapper = new ObjectMapper();
+//		LoginResponse r = mapper.readValue(rs.getBytes(), LoginResponse.class);
+//		
+//		System.out.println(r.getId()+"...."+r.getStatus());
+//		
+//		return r;
 	}
 	
 	@RequestMapping(value="getMerchantByMid", method={RequestMethod.GET})
