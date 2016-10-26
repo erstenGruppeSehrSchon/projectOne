@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>-SAUSAGE HOUSE- | -Customer System-</title>
+	<title>-SAUSAGE HOUSE- | -Admin System-</title>
 	<link rel="stylesheet" type="text/css" href="./css/style.css" />
 	<link rel="stylesheet" type="text/css" href="./css/jquery.slider.css" />
 	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -16,83 +16,59 @@
 <jsp:include page="header.jsp" />
 <jsp:include page="menu.jsp" />
 
-
-	<!--*********banner*********-->
-	<div id="slider" class="carousel slide">
 	
-	<ol class="carousel-indicators">
-	<!-- count of li is equaled to number of ads -->
-		<li data-target="#slider" data-slide-to="0" class="active"></li>
-		<li data-target="#slider" data-slide-to="1"></li>
-		<li data-target="#slider" data-slide-to="2"></li>
-		<li data-target="#slider" data-slide-to="3"></li>
-	</ol>   
-	
-	<div class="carousel-inner">
-		<div class="item active">
-			<img src="./img/banner1.jpg" alt="ads 1"/>
-		</div>
-		<div class="item">
-			<img src="./img/banner2.jpg" alt="ads 2">
-		</div>
-		<div class="item">
-			<img src="./img/banner3.jpg" alt="ads 3">
-		</div>
-		<div class="item">
-			<img src="./img/banner4.jpg" alt="ads 4">
-		</div>
-	</div>
-	
-	<a class="carousel-control left" href="#slider" 
-	   data-slide="prev"><span class="glyphicon glyphicon-chevron-left"/></a>
-	<a class="carousel-control right" href="#slider" 
-	   data-slide="next"><span class="glyphicon glyphicon-chevron-right"/></a>
-</div> 
-	
-	
-	<!--*********new shop*********--> <!-- THREE IN ONE LINK -->
+	<!--*********outstanding List and sample search*********--> <!-- THREE IN ONE LINK -->
 	<div class=recommendShop>
-		<h3 class="h3_title_index">- Recommended Shop -</h3>
-		<table class="largeThumb">
-			<tr>
-				<td>
-					<a href="#"><!-- Shop Link-->
-					<img src="http://www.oushop.com/warp_sites/oushop.g6/files/Shop2.jpg" title=""/></br> <!-- Shop img and shop name -->
-					<p>New Shops</p></a>
-				</td>
-				
-				<td>
-					<a href="#"><!-- Shop Link-->
-					<img src="http://browzin.net/wp-content/uploads/2015/02/pictures-675-ESB_gift_shop.jpg" title=""/></br> <!-- Shop img and shop name -->
-					<p>New Shops</p></a>
-				</td>
-				
-				<td>
-					<a href="#"><!-- Shop Link-->
-					<img src="http://browzin.net/wp-content/uploads/2015/02/pictures-675-ESB_gift_shop.jpg" title=""/></br> <!-- Shop img and shop name -->
-					<p>New Shops</p></a>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<a href="#"><!-- Shop Link-->
-					<img src="http://browzin.net/wp-content/uploads/2015/02/pictures-675-ESB_gift_shop.jpg" title=""/></br> <!-- Shop img and shop name -->
-					<p>New Shops</p></a>
-				</td>
-				
-				<td>
-					<a href="#"><!-- Shop Link-->
-					<img src="http://browzin.net/wp-content/uploads/2015/02/pictures-675-ESB_gift_shop.jpg" title=""/></br> <!-- Shop img and shop name -->
-					<p>New Shops</p></a>
-				</td>
-				
-				<td>
-					<a href="#"><!-- Shop Link-->
-					<img src="http://browzin.net/wp-content/uploads/2015/02/pictures-675-ESB_gift_shop.jpg" title=""/></br> <!-- Shop img and shop name -->
-					<p>New Shops</p></a>
-				</td>
-			</tr>
-		</table>
+		<table border = "1" class = "largeThumb">
+		<tr>
+			<th><h3 class="h3_title_index"><span class = "glyphicon glyphicon-user"></span> Outstanding List</h3></th>
+			<th><h3 class="h3_title_index"><span class = "glyphicon glyphicon-search"></span> Merchant Search</h3></th>
+		</tr>
+		<tr>
+			<td>
+			<table class = "table">
+				<c:forEach var="merchant" items="${aMerchants}">
+					<tr>
+						<td><a href = "showMerchantDetails?id=${merchant.mid}">${merchant.name}</a></td>
+						<td><a href = "updateMerchantStatus?id=${merchant.mid}&status=Accepted"><button class="btn btn-default">Accept</button></a></td>
+						<td><a href = "updateMerchantStatus?id=${merchant.mid}&status=Rejected"><button class="btn btn-default">Reject</button></a></td>
+					</tr>
+				</c:forEach>
+			</table>
+			</td>
+			<td>
+				<form action="SearchMerchantByCriteria" method="get">
+					<table>
+						<tr><td>Merchant Id:</td><td><input type="text" name="id" id="searchMerchantId" class="form-control"/></td></tr>
+						<tr><td>Merchant Name:</td><td><input type="text" name="name" id="searchMerchantName" class="form-control"/></td></tr>
+						<tr><td>Age:</td>
+							<td>
+								<select name="ageIndex" class="form-control">
+								  <option value="0" selected></option>
+								  <option value="1">0-20</option>
+								  <option value="2">21-40</option>
+								  <option value="3">40-60</option>
+								  <option value="4">60-80</option>
+								  <option value="5">80-100</option>
+								</select>
+							</td></tr>
+						<tr><td>Gender:</td>
+							<td>
+								<select name="gender" class="form-control">
+								  <option value="%" selected></option>
+								  <option value="M">M</option>
+								  <option value="F">F</option>
+								  <option value="Unknown">Unknown</option>
+								</select>
+							</td>
+						</tr>
+						<tr><td>Registration Date:</td><td><input type="date" name="regDate" id="searchMerchantRegistrationDate" class="form-control"></td></tr>
+					</table>
+					<button class="btn btn-default">Search</button>
+				</form>
+			</td>
+		</tr>
+	</table>
 	</div>
 </body>
 </html>

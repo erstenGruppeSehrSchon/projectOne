@@ -8,27 +8,15 @@
 		<div class="menu">
 			<ul class="menu_ul">
 				<li>
-					<a href="#"><img src="img/menu_icon_appetizer.png" title="Appetizer"/></a><br/><br/>
-					<a href="#">Appetizer</a>
+					<a href="#"><img src="img/menu_icon_advertisement.png" title="Advertisement"/></a><br/><br/>
+					<a href="#">Advertisement</a>
 				</li>
 				<li>
-					<a href="#"><img src="img/menu_icon_soup.png" title="Soup"/></a><br/><br/>
-					<a href="#">Soup</a>
+					<a href="#"><img src="img/menu_icon_complaint.png" title="Complaint"/></a><br/><br/>
+					<a href="#">Complaint</a>
 				</li>
 				<li>
-					<a href="#"><img src="img/menu_icon_main.png" title="Main Dish"/></a><br/><br/>
-					<a href="#">Main Dish</a>
-				</li>
-				<li>
-					<a href="#"><img src="img/menu_icon_dessert.png" title="Dessert"/></a><br/><br/>
-					<a href="#">Dessert</a>
-				</li>
-				<li>
-					<a href="#"><img src="img/menu_icon_beverage.png" title="Beverage"/></a><br/><br/>
-					<a href="#">Beverage</a>
-				</li>
-				<li>
-					<a href="#"><img src="img/menu_icon_search.png" title="Search"/></a><br/><br/>
+					<a href="#"><img src="img/menu_icon_search.png" title="Merchant Serach"/></a><br/><br/>
 					<a href="#">Search</a>
 				</li>
 			</ul>
