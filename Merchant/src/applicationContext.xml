@@ -2,6 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jms="http://www.springframework.org/schema/jms"
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
@@ -13,7 +14,9 @@
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd
         http://www.springframework.org/schema/tx
-        http://www.springframework.org/schema/tx/spring-tx.xsd">
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/jms
+        http://www.springframework.org/schema/jms/spring-jms.xsd">
         
         
         
@@ -27,6 +30,22 @@
 		<property name="password" value="123"></property>
 		<property name="username" value="TRAINING"></property>
 	</bean>
+	
+	<bean id="mq" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="failover://tcp://fanch2-2-w7:61616"></property>
+		
+	</bean>
+	
+	<bean id="advJMSListener" class="util.AdvJMSListener">
+	</bean> 
+	 <bean id="destination" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg value="Test01Q" />
+		
+	</bean>
+	
+	<jms:listener-container connection-factory="mq">     
+    	<jms:listener destination="Test01Q" ref="advJMSListener" method="messageReceived" />
+	</jms:listener-container>
 
 		<!--
 		指定实现JPA的适配器，主要作用如下：
