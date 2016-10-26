@@ -9,5 +9,6 @@ public interface MerchantManager {
 	public List<Merchant> getAllMerchants();
 	public List<Merchant> getMerchantsByCriteria(Integer mid, String name, String gender, Integer ageIndex, String regDate, String status);
 	public Merchant updateMerchantStatus(String mid, String status);
+	public Merchant addMerchant(Merchant merchant);
 	
 }
