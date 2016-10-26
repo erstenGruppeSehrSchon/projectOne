@@ -110,4 +110,10 @@ public class MerchantDaoImpl implements MerchantDao {
 		merchant.setStatus(status);
 		return merchant;
 	}
+	
+	@Override
+	public Merchant addMerchant(Merchant merchant) {
+		em.persist(merchant);
+		return merchant;
+	}
 }
