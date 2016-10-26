@@ -112,7 +112,7 @@ public class MerchantController {
 		return shopManager.getShopBySid(sid);
 	}
 	
-	@RequestMapping(value="addShop", method={RequestMethod.GET})//Change later
+	@RequestMapping(value="addShop", method={RequestMethod.POST})//Change later
 	@ResponseBody
 	public Shop addShop(String mid, String name, String description, String type, String openTime, String closeTime, List<MultipartFile> files) {
 		return shopManager.addShop(mid, name, description, type, openTime, closeTime, files);

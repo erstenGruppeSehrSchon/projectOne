@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -20,30 +21,62 @@
 	<!--*********My Shop*********--><!-- 3 in one line -->
 	<div class="myShop">
 		<h3 class="h3_title_index">- My Shop -</h3>
-		<a href="./shopAdd.jsp"><input type="submit" value="Add Shop"></input></a>
-		<table class="largeThumb">
-			<tr>
-				<td>
-					<a href="./shopDetails.jsp"><!-- Shop Link-->
-					<img src="http://www.oushop.com/warp_sites/oushop.g6/files/Shop2.jpg" title=""/></br> <!-- Shop img and shop name -->
-					<p>Shops Name</p></a>
-				</td>
-				
-				<td>
-					<a href="#"><!-- Shop Link-->
-					<img src="http://browzin.net/wp-content/uploads/2015/02/pictures-675-ESB_gift_shop.jpg" title=""/></br> <!-- Shop img and shop name -->
-					<p>Shops Name</p></a>
-				</td>
-				
-				<td>
-					<a href="#"><!-- Shop Link-->
-					<img src="http://browzin.net/wp-content/uploads/2015/02/pictures-675-ESB_gift_shop.jpg" title=""/></br> <!-- Shop img and shop name -->
-					<p>Shops Name</p></a>
-				</td>
-			</tr>
-		</table>
+		<input type="button" value="Add Shop" onclick="location.href='./shopAdd.jsp';"/>
+		
+		<div id="shopList"></div>
+		
 	</div>
 </div>
 
+<script>
+
+    $(function(){
+	    window.onload = function(){
+            document.getElementById("shopList").innerHTML = '';
+        
+            if(!isEmpty('${merchant}')){
+
+                if(${fn:length(merchant.shops)} > 0){
+
+                    var tableOP = $('<table class="largeThumb">');
+                    $(tableOP).appendTo('#shopList');
+
+                    for(var i = 0; i< ${fn:length(merchant.shops)}; i++){
+                        if(i % 3 == 0){
+                            // open of new row
+                            var rowOP = $('<tr>');
+                            $(rowOP).appendTo('#shopList');   
+                        }
+
+                        var sid = '${merchant.shops[i].sid}';
+                        var ipath = '${ merchant.shops[i].imgPath}';
+                        var shopName = '${merchant.shops[i].name}';
+
+                        var shopInfo = $('<td><a href="getShopBySid?sid='+ sid+ '"><img src="'+ipath+'" title="'+shopName+'"/></br><p>'+shopName+'</p></a></td>');
+                        $(shopInfo).appendTo('#shopList');
+
+                        if(i % 3 == 0){
+                            // end of new row
+                            var rowEn = $('</tr>');
+                            $(rowEn).appendTo('#shopList');   
+                        }
+                    }
+
+                    var tableEn = $('</table>');
+                    $(tableEn).appendTo('#shopList');
+                }
+                else{
+                    var noShop = $('<p>You have no shops now.</p>');
+                    $(noShop).appendTo('#shopList');
+
+                }
+            }
+        };
+	});
+    
+    function isEmpty(value) {
+        return typeof value == 'string' && !value.trim() || typeof value == 'undefined' || value === null;
+    }
+</script>
 </body>
 </html>
