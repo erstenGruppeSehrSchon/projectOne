@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import po.Advertisement;
 import po.Dish;
@@ -46,8 +47,31 @@ public class MerchantController {
 	// Merchant Start
 	@RequestMapping(value="login", method={RequestMethod.POST})
 	@ResponseBody
-	public Merchant login(String username, String password) {
-		return merchantManager.login(username, password);
+	public ModelAndView login(String username, String password) {
+		
+		ModelAndView mv = new ModelAndView();
+		Merchant merchant = merchantManager.login(username, password);
+		
+		// stay on login page if user not exist
+		if(merchant != null){
+			
+			// merchant status
+			if(merchant.getStatus() != null && merchant.getStatus().equals("Accepted")){
+				mv.setViewName("index");
+				mv.addObject("merchant", merchant);
+			}
+			else{
+				mv.setViewName("login");
+				mv.addObject("error", "Invalid account");
+			}
+			
+		}
+		else{
+			mv.setViewName("login");
+			mv.addObject("error", "User not exist!");
+		}
+		
+		return mv;
 	}
 	
 	@RequestMapping(value="getMerchantByMid", method={RequestMethod.GET})

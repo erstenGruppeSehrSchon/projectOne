@@ -15,8 +15,8 @@ public class MerchantControllerTest {
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		MerchantManager m = (MerchantManager) context.getBean(MerchantManager.class);
 		
-		String username = "test1";
-		String password = "test1";
+		String username = "test";
+		String password = "test";
 		String name = "test";
 		String gender = "M";
 		String birthDate = "20161010";

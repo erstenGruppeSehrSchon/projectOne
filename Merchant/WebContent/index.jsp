@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -21,27 +23,9 @@
 	<!--*********My shop*********--> <!-- THREE IN ONE LINK -->
 	<div class="myShop">
 		<h3 class="h3_title_index">- My Shop -</h3>
-		<table class="largeThumb">
-			<tr>
-				<td>
-					<a href="./shopDetails.jsp"><!-- Shop Link-->
-					<img src="http://www.oushop.com/warp_sites/oushop.g6/files/Shop2.jpg" title=""/></br> <!-- Shop img and shop name -->
-					<p>Shops Name</p></a>
-				</td>
-				
-				<td>
-					<a href="./shopDetails.jsp"><!-- Shop Link-->
-					<img src="http://browzin.net/wp-content/uploads/2015/02/pictures-675-ESB_gift_shop.jpg" title=""/></br> <!-- Shop img and shop name -->
-					<p>Shops Name</p></a>
-				</td>
-				
-				<td>
-					<a href="./shopDetails.jsp"><!-- Shop Link-->
-					<img src="http://browzin.net/wp-content/uploads/2015/02/pictures-675-ESB_gift_shop.jpg" title=""/></br> <!-- Shop img and shop name -->
-					<p>Shops Name</p></a>
-				</td>
-			</tr>
-		</table>
+		
+        <div id="shopList"></div>
+
 	</div>
 	
 	<!--*********My Advertisement*********--> <!-- THREE IN ONE LINK -->
@@ -50,17 +34,17 @@
 		<table class="largeThumb">
 			<tr>
 				<td>
-					<img src="http://ralev.com/wp-content/uploads/2010/06/coke-tv-advertising.png" title=""/></br> <!-- Shop img and shop name -->
+					<img src="http://ralev.com/wp-content/uploads/2010/06/coke-tv-advertising.png" title=""/><br/> <!-- Shop img and shop name -->
 					<p>Time range</p>
 				</td>
 				
 				<td>
-					<img src="http://freedesignfile.com/upload/2014/07/Juice-advertisement-publicize-poster-creative-vector-04.jpg" title=""/></br> <!-- Shop img and shop name -->
+					<img src="http://freedesignfile.com/upload/2014/07/Juice-advertisement-publicize-poster-creative-vector-04.jpg" title=""/><br/> <!-- Shop img and shop name -->
 					<p>Time range</p>
 				</td>
 				
 				<td>
-					<img src="http://3.bp.blogspot.com/-c7wopKrneAk/UFLQX8DqN0I/AAAAAAAAAFQ/vk1pZeSAS6Y/s1600/advertisement-copy.gif" title=""/></br> <!-- Shop img and shop name -->
+					<img src="http://3.bp.blogspot.com/-c7wopKrneAk/UFLQX8DqN0I/AAAAAAAAAFQ/vk1pZeSAS6Y/s1600/advertisement-copy.gif" title=""/><br/> <!-- Shop img and shop name -->
 					<p>Time range</p>
 				</td>
 			</tr>
@@ -93,5 +77,68 @@
 		</table>
 	</div>
 </div>	
+
+<script>
+	$(function(){
+	    window.onload = function(){
+            loadShop();
+            //loadAdvert();
+            //loadOrder();
+        };
+	});
+    
+    function loadShop(){
+        if(!isEmpty('${merchant}')){
+            if('${fn:length(merchant.shops)}' > 0){
+                var shops = $('<p>'+'${fn:length(merchant.shops)}'+'</p>');
+                $(shops).appendTo('#shopList');
+            }
+            else{
+                var noShop = $('<p>You have no shops now.</p>');
+                $(noShop).appendTo('#shopList');
+               
+            }
+        }
+    }
+    
+    function loadAdvert(){
+        
+        $.ajax({
+            type:'POST',
+            url:'',
+            data:{username:$("#uname").val(),password:$("#pwd").val()}
+        }).done(function(msg){
+
+            // = accepted
+            if(msg.status === "Accepted"){
+                $('#text').text(msg.mid + " ... " +msg.status);
+            }
+            else{
+                $('#text').text(msg.mid + " ... " +msg.status);
+            }
+        }); 
+    }
+    
+    function loadOrder(){
+        $.ajax({
+            type:'POST',
+            url:'',
+            data:{username:$("#uname").val(),password:$("#pwd").val()}
+        }).done(function(msg){
+
+            // = accepted
+            if(msg.status === "Accepted"){
+                $('#text').text(msg.mid + " ... " +msg.status);
+            }
+            else{
+                $('#text').text(msg.mid + " ... " +msg.status);
+            }
+        }); 
+    }
+    
+    function isEmpty(value) {
+        return typeof value == 'string' && !value.trim() || typeof value == 'undefined' || value === null;
+    }
+</script>
 </body>
 </html>
