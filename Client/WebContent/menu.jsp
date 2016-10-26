@@ -8,8 +8,8 @@
 		<div class="menu">
 			<ul class="menu_ul">
 				<li>
-					<a href="#"><img src="img/menu_icon_order.png" title="Order"/></a><br/><br/>
-					<a href="#">Order</a>
+					<a href="#"><img src="img/menu_icon_cart.png" title="my Cart"/></a><br/><br/>
+					<a href="#">Cart</a>
 				</li>
 				<li>
 					<a href="./dishShowCatIndex.jsp"><img src="img/menu_icon_appetizer.png" title="Appetizer"/></a><br/><br/>

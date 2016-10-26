@@ -34,8 +34,10 @@
 				<td><img src=  "http://www.foodmanufacture.co.uk/var/plain_site/storage/images/publications/food-beverage-nutrition/foodmanufacture.co.uk/npd/top-10-functional-food-trends/11097085-1-eng-GB/Top-10-functional-food-trends_strict_xxl.jpg"/></td>
 			</tr>
 			<tr>
-				<td rowspan="2">
-					<input type="number" name="quantity" min="1" max="100"><a href=""><input type="submit" value="Add to Cart"></input></a>
+			    <td></td>
+				<td id="orderDishDiv">
+				<p>Quantity: <input type="number" name="quantity" min="1" max="100"></input></br>
+				<a href=""><input type="submit" value="Add to Cart"/></a></p>
 				</td>
 			</tr>
 		</table>
