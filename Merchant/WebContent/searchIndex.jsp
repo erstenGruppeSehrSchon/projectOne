@@ -25,11 +25,11 @@
                     <td colspan="2"><h3 class="h3_title_index">-Search-</h3></td>
                 </tr>
 				<tr>
-                    <td><label for="shopName">Shop Name:</label></td>
+                    <td>Shop Name:</td>
                     <td><input type="text" name="shopName" id="shopName"/></td>
                 </tr>
                 <tr>
-                    <td><label>Shop Type:</label></td>
+                    <td>Shop Type:</td>
                     <td><select type="select" class="form-control">
                     		<option value="1">convenience store</option>
 							<option value="2">cantonese restaurant</option>
@@ -42,7 +42,7 @@
                     </select></td>
                 </tr>
                 <tr>
-                    <td><label>Shop Area:</label></td>
+                    <td>Shop Area:</td>
                     <td><input type="text" name="shopArea" id="shopArea"/>
                     </td>
                 </tr>

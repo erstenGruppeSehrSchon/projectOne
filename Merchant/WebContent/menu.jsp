@@ -8,10 +8,6 @@
 		<div class="menu">
 			<ul class="menu_ul">
 				<li>
-					<a href="#"><img src="img/menu_icon_cart.png" title="My Cart"/></a><br/><br/>
-					<a href="#">My Cart</a>
-				</li>
-				<li>
 					<a href="./shopIndex.jsp"><img src="img/menu_icon_shop.png" title="My Shop"/></a><br/><br/>
 					<a href="./shopIndex.jsp">My Shop</a>
 				</li>
@@ -28,8 +24,8 @@
 					<a href="./orderIndex.jsp">My Order</a>
 				</li>
 				<li>
-					<a href="#"><img src="img/menu_icon_profile.png" title="My Profile"/></a><br/><br/>
-					<a href="#">My Profile</a>
+					<a href="./profileIndex.jsp"><img src="img/menu_icon_profile.png" title="My Profile"/></a><br/><br/>
+					<a href="./profileIndex.jsp">My Profile</a>
 				</li>
 				<li>
 					<a href="./searchIndex.jsp"><img src="img/menu_icon_search.png" title="Search"/></a><br/><br/>

@@ -17,31 +17,31 @@
 <jsp:include page="./menu.jsp" />
 <!--*********container*********-->
 <div class="container">
-	<!--*********My Advertisement*********--><!-- 3 in one line -->
-	<div class="myAdvertisement">
-		<h3 class="h3_title_index">- My Advertisement -</h3>
-		<a href="./adsAdd.jsp"><input type="submit" value="Add advertisement" /></a>
-		<table class="largeThumb">
+	<!--*********Edit profile form*********-->
+	<div class="merchantForm">
+		<form name="merchantAdsForm" method="post" action="">
+			<table class="AdsTable">
 			<tr>
-				<td>
-					<img src="http://ralev.com/wp-content/uploads/2010/06/coke-tv-advertising.png" title=""/></br>
-					<p>Time range</p>
-					<p class="text_delete"><a href="#">Delete</a></p>
-				</td>
-				
-				<td>
-					<img src="http://freedesignfile.com/upload/2014/07/Juice-advertisement-publicize-poster-creative-vector-04.jpg" title=""/></br>
-					<p>Time range</p>
-					<p class="text_delete"><a href="#">Delete</a></p>
-				</td>
-				
-				<td>
-					<img src="http://3.bp.blogspot.com/-c7wopKrneAk/UFLQX8DqN0I/AAAAAAAAAFQ/vk1pZeSAS6Y/s1600/advertisement-copy.gif" title=""/></br>
-					<p>Time range</p>
-					<p class="text_delete"><a href="#">Delete</a></p>
-				</td>
+				<td colspan="2"><h3 class="h3_title_index">-Add Advertisement-</h3></td>
 			</tr>
-		</table>
+			<tr>
+				<td>Advertisement image:</td>
+				<td><input type="file" name="file" class = "form-control"/></td>
+			</tr>
+			<tr>
+				<td>From time:</td>
+				<td><input type = "date" name="adsFromTime" class = "form-control" value=""/></td></td>
+			</tr>
+			<tr>
+				<td>To time:</td>
+				<td><input type = "date" name="adsToTime" class = "form-control" value=""/></td></td>
+			</tr>
+              <tr>
+                  <td></td>
+                  <td><input type="submit" value="Submit" onclick=""  /></td>
+              </tr>
+			</table>
+		</form>		
 	</div>
 </div>
 

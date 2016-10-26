@@ -17,28 +17,28 @@
 <jsp:include page="./menu.jsp" />
 <!--*********container*********-->
 <div class="container">
-	<!--*********My Advertisement*********--><!-- 3 in one line -->
-	<div class="myAdvertisement">
-		<h3 class="h3_title_index">- My Advertisement -</h3>
-		<a href="./adsAdd.jsp"><input type="submit" value="Add advertisement" /></a>
+	<!--*********My Shop*********--><!-- 3 in one line -->
+	<div class="myShop">
+		<h3 class="h3_title_index">- My Profile -</h3>
+		<a href="./profileEdit.jsp"><input type="submit" value="Edit Profile"/></a>
 		<table class="largeThumb">
 			<tr>
 				<td>
-					<img src="http://ralev.com/wp-content/uploads/2010/06/coke-tv-advertising.png" title=""/></br>
-					<p>Time range</p>
-					<p class="text_delete"><a href="#">Delete</a></p>
+					<p class = "showInfortitle">Merchant Name: </p>
+					<p class = "showInfortitle">Merchant Gender: </p>
+					<p class = "showInfortitle">Merchant Birthday: </p>
+					<p class = "showInfortitle">Number of Shops: </p>
+					<p class = "showInfortitle">Number of Dishes: </p>
 				</td>
-				
 				<td>
-					<img src="http://freedesignfile.com/upload/2014/07/Juice-advertisement-publicize-poster-creative-vector-04.jpg" title=""/></br>
-					<p>Time range</p>
-					<p class="text_delete"><a href="#">Delete</a></p>
+					<p>name</p>
+					<p>gender</p>
+					<p>birthday</p>
+					<p>shop</p>
+					<p>dish</p>
 				</td>
-				
 				<td>
-					<img src="http://3.bp.blogspot.com/-c7wopKrneAk/UFLQX8DqN0I/AAAAAAAAAFQ/vk1pZeSAS6Y/s1600/advertisement-copy.gif" title=""/></br>
-					<p>Time range</p>
-					<p class="text_delete"><a href="#">Delete</a></p>
+					<img src="http://www.icon2s.com/img256/256x256-black-white-android-user.png"></img>
 				</td>
 			</tr>
 		</table>

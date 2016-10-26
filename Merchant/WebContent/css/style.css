@@ -56,7 +56,9 @@ input {
 
 input[type=text],
 input[type=password],
-select[type=select] {
+select[type=select],
+input[type=date],
+input[type=file] {
 	color: #333;
 	padding-left: 10px;
 	margin: 10px;
@@ -414,4 +416,10 @@ p{
 	font-family: "Century Gothic", "Helvetica", "Arial", sans-serif;
 	font-size: 12px;
 	text-decoration: underline;
+}
+
+.showInfortitle{
+	font-size: 16px;
+	font-weight: bold;
+	
 }
