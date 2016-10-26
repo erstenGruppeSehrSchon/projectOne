@@ -44,4 +44,11 @@ public class MerchantDaoImpl implements MerchantDao {
 		em.persist(merchant);
 		return merchant;
 	}
+	
+	@Override
+	public Merchant updateMerchantStatus(int mid, String status) {
+		Merchant merchant = em.find(Merchant.class, mid);
+		merchant.setStatus(status);
+		return merchant;
+	}
 }
