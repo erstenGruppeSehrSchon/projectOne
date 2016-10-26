@@ -7,8 +7,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import po.Advertisement;
-import po.Merchant;
-import service.MerchantManager;
+import service.AdvertisementManager;
 
 public class AdvReqJMSListener {
 	public void messageReceived(String message) throws Exception
@@ -16,8 +15,10 @@ public class AdvReqJMSListener {
 		System.out.println(message);
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-		Advertisement p = mapper.readValue(message, Advertisement.class);
+		Advertisement adv = mapper.readValue(message, Advertisement.class);
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		AdvertisementManager manager = (AdvertisementManager)context.getBean(AdvertisementManager.class);
+		manager.addAdvertisement(adv);
     }
 
 }

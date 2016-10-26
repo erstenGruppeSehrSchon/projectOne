@@ -29,5 +29,10 @@ public class AdvertisementManagerImpl implements AdvertisementManager {
 	public Advertisement updateAdvertisementStatus(String advId, String status) {
 		return dao.updateAdvertisementStatus(advId, status);
 	}
+	
+	@Override
+	public void addAdvertisement(Advertisement adv){
+		dao.addAdvertisement(adv);
+	}
 
 }

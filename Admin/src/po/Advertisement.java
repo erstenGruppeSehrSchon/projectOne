@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name="M_ADVERTISEMENT")
+@Table(name="A_ADVERTISEMENT")
 public class Advertisement {
 
 	public static final String INIT_STATUS = "Pending";

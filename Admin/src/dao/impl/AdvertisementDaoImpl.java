@@ -39,6 +39,11 @@ public class AdvertisementDaoImpl implements AdvertisementDao {
 		return adv;
 	}
 	
+	@Override
+	public void addAdvertisement(Advertisement adv){
+		em.persist(adv);
+	}
+	
 	
 
 }
