@@ -1,0 +1,429 @@
+/*global setting*/
+
+body {
+	font-size:11pt;
+	font-family: "Century Gothic", "Helvetica", "Arial", sans-serif;
+	color: #000;
+	letter-spacing: 0.1px;
+	padding: 0px;
+	margin: 0px;
+}
+
+a:link, a:visited, a:active 	{
+	text-decoration: none;
+	color:#2f2f2f
+}
+
+a:hover {
+	text-decoration: none;
+	color: #666;
+}
+
+img {
+	border:0px;
+}
+
+h1{
+	color: #bf505d;
+	font-size: 14pt;
+}
+
+h2{
+	color: #444;
+	font-size: 10pt;
+}
+
+h6{
+	font-size: 8pt;
+	font-weight: none;
+}
+
+form {
+	margin: 0 auto;
+	margin-top: 20px;
+}
+
+label {
+	display: inline-block;
+	margin-left: 18px;
+	padding-top: 10px;
+}
+
+input {
+	outline: none;
+}
+
+input[type=text],
+input[type=password] {
+	color: #333;
+	padding-left: 10px;
+	margin: 10px;
+	margin-top: 12px;
+	margin-left: 18px;
+	width: 250px;
+	height: 35px;
+	border: 1px solid #eac1c6;
+	border-radius: 5px;
+	box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .4), 0 0 0 3px #f7ecee;
+	-webkit-transition: all .4s ease;
+	-moz-transition: all .4s ease;
+	transition: all .4s ease;
+}
+
+input[type=text]:hover,
+input[type=password]:hover {
+	border: 1px solid #eac1c6;
+	box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .7), 0 0 0 3px #f7ecee;
+}
+
+input[type=text]:focus,
+input[type=password]:focus {
+	border: 1px solid #eac1c6;
+	box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .4), 0 0 0 3px #f2e4e5;
+}
+
+input[type=checkbox] {
+	margin-left: 20px;
+	margin-top: 30px;
+}
+
+input[type=submit],
+input[type=button] {
+	float: right;
+	margin-top: 20px;
+	margin-right: 10px;
+	padding: 5px;
+	height: 35px;
+	font-size:11pt;
+	font-family: "Century Gothic", "Helvetica", "Arial", sans-serif;
+	color: #fff;
+	background-color: #dc8c95;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	border:1px #dc8c95 solid;
+	cursor: pointer;
+}
+
+input[type=submit]:hover,
+input[type=button]:hover {
+	background-color: #d3818b;
+	border:1px #d3818b solid;
+}
+
+.directPage{
+	padding-top: 200px;
+	width: 800px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.error{
+	color: red;
+	font-weight: bold;
+}
+
+/*header*/
+.header {
+	background-color: #2f2f2f;
+	color: #bf505d;
+	font-size: 11pt;
+	padding: 10px;
+	margin: 0px;
+}
+
+.header a:link, .header a:visited, .header a:active {
+	text-decoration: none;
+	color:#ccc;
+}
+
+.header a:hover {
+	text-decoration: none;
+	color: #fff;
+}
+
+.contact{
+	display: inline;
+}
+
+.login {
+	float: right;
+	display: inline;
+}
+
+.container{
+	width: 1000px;
+	margin: 0 auto;
+}
+
+/*menu*/
+.nav{
+	height: 150px;
+	padding:10px 0 70px 0;
+}
+
+.logo{
+	display: inline;
+}
+
+.menu{
+	display: inline;
+	height: 140px;
+	border: 1px;
+	border-bottom: 3px #2f2f2f solid;
+	float: right;
+}
+
+.menu_ul {
+    list-style:none;
+}    
+
+.menu_ul li {
+	float:left;
+	display:block;
+	width:100px;
+	position:relative;
+	z-index:500;
+	text-align: center;
+}
+
+/*parent menu*/
+.menu_ul li a {
+	text-decoration:none;
+	text-align:center;
+	color: #bf505d;
+}
+.menu_ul li a:hover {
+	color: #e2838e;
+}
+
+/* submenu*/
+.menu_ul ul {
+	position:absolute;
+	display:none;
+	margin:0 0 0 -1px;
+	padding: 0;
+	list-style:none;
+	background-color: #ecd8d8;
+	border-radius:10px;
+}
+
+.menu_ul ul li {
+	width:200px;
+	float:left;
+	padding: 5px 10px 2px 10px;
+	
+}
+
+.menu_ul ul a {
+	text-align: left;
+	display:block;
+}
+
+.menu_ul ul a:hover  {
+	color: #e2838e;
+}
+
+/*footer*/
+.footer {
+	clear: both;
+	background-color: #2f2f2f;
+	color: #bf505d;
+	font-size: 11pt;
+	padding: 10px;
+	margin: 0px;
+	min-height: 300px;
+}
+
+.footer a:link, .footer a:visited, .footer a:active{
+	color: #999;
+}
+
+
+.footer a:hover{
+	color: #fff;
+}
+
+
+
+.footer_table{
+	border: 0px;
+}
+
+.footer_table td{
+	padding: 5px;
+}
+
+/*index*/
+.banner{
+	height: 350px;
+	background: #fff url('../img/banner_shadow.png') center bottom no-repeat;
+	margin-bottom: 20px;
+}
+
+.recommendShop{
+	min-height: 30px;
+}
+
+.featuredItems{
+	min-height: 30px;
+	background: #fff url('../img/featured_items_title.png') center top no-repeat;
+}
+
+.ranItems{
+	min-height: 30px;
+	background: #fff url('../img/hr_title.png') center top no-repeat;
+}
+
+.largeThumb, .smallThumb{
+	padding: 100px 0;
+	width: 100%;
+	text-align: center;
+	font-size: 11pt;
+}
+
+.largeThumb td, .smallThumb td{
+	padding: 5px;
+}
+
+/*login*/
+.loginDiv{
+	padding-right: 10px;
+	float: left;
+	width: 45%;
+	padding-right: 10px;
+}
+
+.regDiv{
+	float: right;
+	width: 50%;
+	padding: 0 0 10px 20px;
+}
+
+.loginTable, .forgetTable, .regTable, .profileTable{
+	width: 100%;
+}
+
+
+.check {
+	margin-left: 3px;
+	font-size: 9pt;
+	color: #444;
+	text-shadow: 0 1px 0 #fff;
+}
+
+.forget{
+	font-size: 9pt;
+	color: #444;
+	text-align: left;
+	padding-left: 20px;
+}
+
+.forgetDiv{
+	margin-top: 50px;
+	padding: 20px;
+	border:1px #666 solid;
+	border-radius: 15px;
+	display: none;
+}
+
+/*user page*/
+.userMenu{
+	padding-right: 10px;
+	float: left;
+	width: 25%;
+	padding-right: 10px;
+}
+
+/*profile*/
+.profile{
+	float: right;
+	width: 70%;
+	padding: 0 0 10px 20px;
+	text-align: center;
+}
+
+.profile input[type=text], .profile input[type=password]{
+	width: 350px;
+}
+
+.userMenu{
+	height: 600px;
+	padding: 10px;
+}
+
+/*cart*/
+.cart{
+	float: right;
+	width: 70%;
+	padding: 0 0 10px 20px;
+}
+
+.cartItemTable, .historyItemTable{
+	width: 100%;
+}
+
+.cartItemTable td, .historyItemTable td{
+	border: 0px #000 solid;
+}
+
+.cartItemTable .item:hover, .historyItemTable .item:hover{
+	background-color: #e9e6cf;
+}
+
+/*histroy*/
+.history{
+	float: right;
+	width: 70%;
+	padding: 0 0 10px 20px;
+}
+
+
+/*store*/
+.listItem{
+	float: right;
+	width: 70%;
+	padding: 0 0 10px 20px;
+}
+
+.subMenu{
+	float: left;
+	height: 700px;
+	padding: 0 10px 10px 10px;
+	width: 25%;
+}
+
+.subMenu ul{
+	padding: 0px;
+    list-style:none;
+}
+
+.subMenu ul li{
+	padding-bottom: 5px;
+}
+
+.subMenu ul ul{
+	padding-left: 20px;
+	padding-top: 5px;
+}
+
+.item{
+	padding-bottom: 50px;
+	width: 100%;
+}
+
+.item td{
+	padding: 2px;
+}
+
+/*h3_title_index*/
+.h3_title_index{
+	color: #bd4f5c;
+	text-aligin: center;
+}
+
+.largeThumb img{
+	width: 350px;
+}
+.menu_ul img{
+	height: 65px;
+}
