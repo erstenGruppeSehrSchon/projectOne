@@ -20,8 +20,6 @@ import org.hibernate.annotations.GenericGenerator;
 public class Shop {
 
 	@Id
-	@GenericGenerator(strategy="uuid", name="uuid")
-	@GeneratedValue(generator = "uuid")
 	private String sid;
 	
 	@Column(length=100, nullable=false)

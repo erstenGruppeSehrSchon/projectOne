@@ -1,7 +1,6 @@
 package dao;
 
 import java.util.Date;
-
 import po.Shop;
 
 public interface ShopDao {

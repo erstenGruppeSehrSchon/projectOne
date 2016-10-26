@@ -6,28 +6,17 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="M_MERCHANT") // Change default table name
 public class Merchant {
 	
 	@Id
-	@GenericGenerator(strategy="uuid", name="uuid")
-	@GeneratedValue(generator = "uuid")
 	private String mid;
-	
-	@Column(length=30, nullable=false, unique=true)
-	private String username;
-	
-	@Column(length=64, nullable=false)
-	private String password;
 	
 	@Column(length=100, nullable=false)
 	private String name;
@@ -55,22 +44,6 @@ public class Merchant {
 	@SuppressWarnings("unused")
 	private void setMid(String mid) {
 		this.mid = mid;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	public String getName() {

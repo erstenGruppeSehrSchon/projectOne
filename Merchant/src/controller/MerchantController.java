@@ -1,6 +1,5 @@
 package controller;
 
-import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,13 +7,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+
+import po.Advertisement;
 import po.Dish;
 import po.DishImage;
 import po.Merchant;
+import po.Order;
+import po.OrderDetail;
 import po.Shop;
+import service.AdvertisementManager;
 import service.DishImageManager;
 import service.DishManager;
 import service.MerchantManager;
+import service.OrderManager;
 import service.ShopManager;
 
 @Controller
@@ -31,6 +36,12 @@ public class MerchantController {
 	
 	@Autowired
 	private DishImageManager dishImageManager;
+	
+	@Autowired
+	private OrderManager orderManager;
+	
+	@Autowired
+	private AdvertisementManager advertisementManager;
 	
 	// Merchant Start
 	@RequestMapping(value="login", method={RequestMethod.POST})
@@ -117,4 +128,38 @@ public class MerchantController {
 		return dishImageManager.removeDishImage(imgId);
 	}
 	// Dish Image End
+	
+	// Order Start
+	@RequestMapping(value="getOrdersBySid", method={RequestMethod.GET})
+	@ResponseBody
+	public List<Order> getOrdersBySid(String sid) {
+		return orderManager.getOrdersBySid(sid);
+	}
+	
+	@RequestMapping(value="updateOrderStatus", method={RequestMethod.GET}) // Change later
+	@ResponseBody
+	public Order updateOrderStatus(String oid, String status) {
+		return orderManager.updateOrderStatus(oid, status);
+	}
+	
+	@RequestMapping(value="replyOrderComment", method={RequestMethod.GET}) // Change later
+	@ResponseBody
+	public Order replyOrderComment(String oid, String reply) {
+		return orderManager.replyOrderComment(oid, reply);
+	}
+	// Order End
+	
+	// Advertisement Start
+	@RequestMapping(value="getAdvertisementBySid", method={RequestMethod.GET}) // Change later
+	@ResponseBody
+	public List<Advertisement> getAdvertisementBySid(String sid) {
+		return advertisementManager.getAdvertisementBySid(sid);
+	}
+	
+	@RequestMapping(value="addAdvertisement", method={RequestMethod.GET}) // Change later
+	@ResponseBody
+	public Advertisement addAdvertisement(String sid, List<MultipartFile> files) {
+		return advertisementManager.addAdvertisement(sid, files);
+	}
+	// Advertisement End
 }
