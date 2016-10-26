@@ -78,9 +78,31 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="searchMerchants", method={RequestMethod.GET})
-	@ResponseBody
-	public List<Merchant> searchMerchants(String mid, String name, String gender, Integer ageIndex, String regDate, String status) {
-		return merchantManager.getMerchantsByCriteria(mid, name, gender, ageIndex, regDate, status);
+	public ModelAndView searchMerchants(String mid, String name, String gender, Integer ageIndex, String regDate, String status) {
+        ModelAndView modelAndView = new ModelAndView();
+        
+        // Set view
+        modelAndView.setViewName("searchResult");
+        
+        // Set match merchant
+        List<Merchant> merchants = merchantManager.getMerchantsByCriteria(mid, name, gender, ageIndex, regDate, status);
+        modelAndView.addObject("merchants", merchants);
+        
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="showMerchantDetails", method={RequestMethod.GET})
+	public ModelAndView showMerchantDetails(String mid) {
+        ModelAndView modelAndView = new ModelAndView();
+        
+        // Set view
+        modelAndView.setViewName("merchantDetails");
+        
+        // Set match merchant
+        Merchant merchant = merchantManager.getMerchantByMid(mid);
+        modelAndView.addObject("merchant", merchant);
+        
+		return modelAndView;
 	}
 	
 	@RequestMapping(value="updateMerchantStatus", method={RequestMethod.POST})
@@ -151,8 +173,8 @@ public class AdminController {
 			producer = session.createProducer(queue);
 			ObjectMapper mapper = new ObjectMapper();
 			Advertisement a = new Advertisement();
-			a.setAdvImgId(adv.getAdvImgId());
-			a.setStatus(adv.getAdvImgId());
+			a.setAdvId(adv.getAdvId());
+			a.setStatus(adv.getAdvId());
 			TextMessage msg = session.createTextMessage(mapper.writeValueAsString(a));
 			producer.send(msg);
 		} catch (JMSException e) {

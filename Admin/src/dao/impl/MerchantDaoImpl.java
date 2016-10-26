@@ -54,18 +54,22 @@ public class MerchantDaoImpl implements MerchantDao {
 		Criteria criteria = session.createCriteria(Merchant.class);
 		
 		if (mid != null) {
+			System.out.println("A");
 			criteria.add(Restrictions.eq("mid", mid));
 		}
 		
-		if (name != null) {
+		if (name != null && name.length() > 0) {
+			System.out.println(name);
 			criteria.add(Restrictions.like("name", name, MatchMode.ANYWHERE));
 		}
 		
 		if (gender != null) {
+			System.out.println(gender);
 			criteria.add(Restrictions.eq("gender", gender));
 		}
 		
-		if (ageIndex != null) {
+		if (ageIndex != null && ageIndex > 0) {
+			System.out.println("D");
 			Date currentDate = new Date();
 			criteria.add(Restrictions.between(
 				"birthDate", 
@@ -73,8 +77,8 @@ public class MerchantDaoImpl implements MerchantDao {
 				getDateBeforeYear(currentDate, AGE_RANGE[ageIndex][0])
 			));
 		}
-		
-		if (regDate != null) {
+
+		if (regDate != null && regDate.length() > 0) {
 			DateFormatter formatter = DateFormatter.getDateFormatter();
 			Date fromDate = formatter.parse(regDate);
 			Date toDate = getNextDay(fromDate);

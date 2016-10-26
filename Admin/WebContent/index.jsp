@@ -31,7 +31,7 @@
 			</table>
 			</td>
 			<td>
-				<form action="SearchMerchantByCriteria" method="get">
+				<form action="searchMerchants" method="get">
 					<table>
 						<tr><td>Merchant Id:</td><td><input type="text" name="id" id="searchMerchantId" class="form-control"/></td></tr>
 						<tr><td>Merchant Name:</td><td><input type="text" name="name" id="searchMerchantName" class="form-control"/></td></tr>
@@ -49,7 +49,6 @@
 						<tr><td>Gender:</td>
 							<td>
 								<select name="gender" class="form-control">
-								  <option value="%" selected></option>
 								  <option value="M">M</option>
 								  <option value="F">F</option>
 								  <option value="Unknown">Unknown</option>

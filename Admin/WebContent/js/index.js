@@ -27,9 +27,7 @@ $(function() {
         		acceptButton.innerHTML = "Accept";
         		acceptButton.onclick = function(event) {
         			var source = event.target || event.srcElement;
-        			alert(source.parentNode.parentNode.childNodes[0].innerHTML);
         			var id = source.parentNode.parentNode.childNodes[0].lastChild.value;
-        			//alert(id);
         			updateMerchantStatus(id, "Accepted");
         		};
         		tdAccept.appendChild(acceptButton);
@@ -39,7 +37,7 @@ $(function() {
         		rejectButton.innerHTML = "Reject";
         		rejectButton.onclick = function(event) {
         			var source = event.target || event.srcElement;
-        			var id = source.parentNode.parentNode.firstNode.lastChild.value;
+        			var id = source.parentNode.parentNode.childNodes[0].lastChild.value;
         			updateMerchantStatus(id, "Rejected");
         		};
         		tdReject.appendChild(rejectButton);
@@ -62,8 +60,8 @@ $(function() {
 updateMerchantStatus = function(merchantId, merchantStatus) {
 	$.ajax({
     	url: "updateMerchantStatus",
-    	dataType: 'json',
-    	method: 'post',
+    	dataType: "json",
+    	method: "post",
     	data: {
     		mid: merchantId, 
     		status: merchantStatus
@@ -76,3 +74,5 @@ updateMerchantStatus = function(merchantId, merchantStatus) {
     	}
 	});
 }
+
+

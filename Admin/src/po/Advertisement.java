@@ -19,9 +19,7 @@ public class Advertisement {
 	public static final String INIT_STATUS = "Pending";
 
 	@Id
-	@GenericGenerator(strategy="uuid", name="uuid")
-	@GeneratedValue(generator = "uuid")
-	private String AdvImgId;
+	private String advId;
 	
 	@Column(nullable=false)
 	private String imgPath;
@@ -36,12 +34,12 @@ public class Advertisement {
 	@JoinColumn(name="shop_id")
 	private Shop shop;
 
-	public String getAdvImgId() {
-		return AdvImgId;
+	public String getAdvId() {
+		return advId;
 	}
 
-	public void setAdvImgId(String advImgId) {
-		AdvImgId = advImgId;
+	public void setAdvId(String advId) {
+		this.advId = advId;
 	}
 
 	public String getImgPath() {
