@@ -18,27 +18,81 @@
 <div class="container">
 	<!--*********Search form*********-->
 	<div class="clientForm">
-		<form name="clientSearchForm" method="post" action="">
+		<form name="clientSearchForm">
 			<table class="searchTable">
 				<tr>
                     <td colspan="2"><h3 class="h3_title_index">-Login-</h3></td>
                 </tr>
 				<tr>
                     <td><h4 class="form_title">Login Name:</h4></td>
-                    <td><input type="text" name="loginName" id="loginName"/></td>
+                    <td><input type="text" name="username" id="username"/></td>
                 </tr>
                 <tr>
                     <td><h4 class="form_title">Login Password:</h4></td>
-                    <td><input type="text" name="loginPassword" id="loginPassword"/></td>
+                    <td><input type="text" name="password" id="password"/></td>
                 </tr>
                 <tr>
                 	<td></td>
-                    <td><input type="submit" value="Login" />
-                    <a href="./clientAdd.jsp"><input type="submit" value="Join us!" /></a></td>
+                    <td><input id="loginButton" type="submit" value="Login"  /></td>
+                    <td><input type="submit" value="Join us!" id = "registerButton"/></td>
+                    <div id = "showLoginFail"></div>
+                </tr>
+                <tr>
+                <p id="validate-status" style="color:red;"></p>
                 </tr>
 			</table>
 		</form>		
+		
 	</div>
 </div>
+<script>
+
+      function isSet(val) { 
+	   return ((val != undefined) && (val != null));
+	   }
+
+   
+   
+   $(function(){
+        
+         $("#loginButton").on("click",function(event){
+        	event.preventDefault();
+             $.ajax({
+                 type:'GET',
+                 url:'clientLogin',
+                 data:{username:document.getElementById("username").value,password:document.getElementById("password").value},
+                 success:function(client){
+                     console.log(client.username);
+                	 if(client.username != undefined){
+                		 window.location.assign('index.jsp');
+                	 }else{
+                		 
+                		 $("#validate-status").text("Login Failed");
+                		 console.log("Login fail");
+                		 
+                	 }
+                	 
+                 },
+                 error:function(){
+                	 
+                 }
+                 
+                        
+                 
+             });
+             
+           
+              });
+         
+         
+         $("#registerButton").on('click',function(){
+        	 windown.location.assign('register.jsp');
+         })
+             
+  
+    });
+    
+    
+</script>
 </body>
 </html>
