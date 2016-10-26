@@ -21,6 +21,10 @@
 	<mvc:resources location="/js/" mapping="/js/*.js"></mvc:resources>
 	<mvc:resources location="/img/" mapping="/img/*"></mvc:resources>
 	
+	<!-- JSP controll -->
+	<mvc:resources location="/search/" mapping="/search/*.jsp"></mvc:resources>
+	<mvc:resources location="/img/" mapping="/search/img/*"></mvc:resources>
+	
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/"></property>

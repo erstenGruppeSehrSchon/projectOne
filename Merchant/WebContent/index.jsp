@@ -15,7 +15,8 @@
 <body>
 <jsp:include page="header.jsp" />
 <jsp:include page="menu.jsp" />
-
+<!--*********container*********-->
+<div class="container">
 
 	<!--*********My shop*********--> <!-- THREE IN ONE LINK -->
 	<div class="myShop">
@@ -49,21 +50,18 @@
 		<table class="largeThumb">
 			<tr>
 				<td>
-					<a href="#"><!-- Shop Link-->
 					<img src="http://ralev.com/wp-content/uploads/2010/06/coke-tv-advertising.png" title=""/></br> <!-- Shop img and shop name -->
-					<p>Shops Name</p></a>
+					<p>Time range</p>
 				</td>
 				
 				<td>
-					<a href="#"><!-- Shop Link-->
 					<img src="http://freedesignfile.com/upload/2014/07/Juice-advertisement-publicize-poster-creative-vector-04.jpg" title=""/></br> <!-- Shop img and shop name -->
-					<p>Shops Name</p></a>
+					<p>Time range</p>
 				</td>
 				
 				<td>
-					<a href="#"><!-- Shop Link-->
 					<img src="http://3.bp.blogspot.com/-c7wopKrneAk/UFLQX8DqN0I/AAAAAAAAAFQ/vk1pZeSAS6Y/s1600/advertisement-copy.gif" title=""/></br> <!-- Shop img and shop name -->
-					<p>Shops Name</p></a>
+					<p>Time range</p>
 				</td>
 			</tr>
 		</table>
@@ -97,6 +95,6 @@
 			</tr>
 		</table>
 	</div>
-	
+</div>	
 </body>
 </html>

@@ -5,5 +5,3 @@
 	<div class="contact"><a href="#">Home</a></div>
 	<div class="login"><a href="#">Logout</a></a></p></div>
 </div>
-<!--*********container*********-->
-<div class="container">
