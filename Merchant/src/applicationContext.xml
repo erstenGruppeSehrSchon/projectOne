@@ -22,7 +22,7 @@
         
     <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 	
-	<context:component-scan base-package="service,dao"></context:component-scan>
+	<context:component-scan base-package="service,dao,test"></context:component-scan>
 	
 	<bean id="ds" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver"></property>
@@ -36,15 +36,37 @@
 		
 	</bean>
 	
-	<bean id="advJMSListener" class="util.AdvJMSListener">
-	</bean> 
-	 <bean id="destination" class="org.apache.activemq.command.ActiveMQQueue">
-		<constructor-arg value="Test01Q" />
+	<!-- Submit new user request --> 
+	 <bean id="regQueue" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg value="RegisterQueue" />
+	</bean>
+	<!-- Listen to user status update from admin side -->
+	<bean id="statusQueue" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg value="StatusUpdateQueue" />
+	</bean>
+	<!-- Submit advertisement request -->
+	<bean id="advSubmitQueue" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg value="AdvQueue" />
+		
+	</bean>
+	<!-- Listen to advertisement update from admin side -->
+	<bean id="advUpdateQueue" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg value="AdvQueue" />
 		
 	</bean>
 	
+	<bean id="advJMSListener" class="util.AdvJMSListener">
+	</bean>
+	
 	<jms:listener-container connection-factory="mq">     
-    	<jms:listener destination="Test01Q" ref="advJMSListener" method="messageReceived" />
+    	<jms:listener destination="advUpdateQueue" ref="advJMSListener" method="messageReceived" />
+	</jms:listener-container>
+	
+	<bean id="userStatusJMSListener" class="util.UserStatusJMSListener">
+	</bean>
+	
+	<jms:listener-container connection-factory="mq">     
+    	<jms:listener destination="statusQueue" ref="userStatusJMSListener" method="messageReceived" />
 	</jms:listener-container>
 
 		<!--
@@ -71,7 +93,7 @@
 			<props>
 				<prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
 				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
 			</props>
 		</property>
 	</bean>
