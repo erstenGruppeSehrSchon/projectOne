@@ -61,6 +61,10 @@ public class MerchantController {
 				mv.setViewName("index");
 				mv.addObject("merchant", merchant);
 			}
+			else if(merchant.getStatus() != null && merchant.getStatus().equals("Pending")){
+				mv.setViewName("login");
+				mv.addObject("error", "Your registration is still pending...");
+			}
 			else{
 				mv.setViewName("login");
 				mv.addObject("error", "Invalid account");
@@ -81,10 +85,23 @@ public class MerchantController {
 		return merchantManager.getMerchantByMid(mid);
 	}
 	
-	@RequestMapping(value="register", method={RequestMethod.GET})
+	@RequestMapping(value="register", method={RequestMethod.POST})
 	@ResponseBody
-	public Merchant register(String username, String password, String name, String gender, String birthDate) {
-		return merchantManager.addMerchant(username, password, name, gender, birthDate);
+	public ModelAndView register(String username, String password, String name, String gender, String birthDate) {		
+		ModelAndView mv = new ModelAndView();
+		Merchant merchant = merchantManager.addMerchant(username, password, name, gender, birthDate);
+		
+		// add success
+		if(merchant != null){
+			mv.setViewName("login");
+			mv.addObject("merchant", merchant);
+		}
+		else{
+			mv.setViewName("merchantAdd");
+			mv.addObject("error", "Register Fail!");
+		}
+		
+		return mv;
 	}
 	// Merchant End
 	
