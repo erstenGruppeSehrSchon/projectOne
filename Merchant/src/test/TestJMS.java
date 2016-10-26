@@ -47,7 +47,7 @@ public class TestJMS {
 			session = con.createSession(false, Session.CLIENT_ACKNOWLEDGE);
 			producer = session.createProducer(queue);
 			ObjectMapper mapper = new ObjectMapper();
-			Merchant m = merchantManager.addMerchant("User12", "1234", "TestMerchantAA", "M", "20161021");
+			Merchant m = merchantManager.addMerchant("User14", "1234", "TestMerchantCC", "M", "20161021");
 			TextMessage msg = session.createTextMessage(mapper.writeValueAsString(m));
 			producer.send(msg);
 		} catch (JMSException e) {
