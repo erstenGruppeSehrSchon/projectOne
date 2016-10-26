@@ -30,10 +30,10 @@ public class Order {
 	
 	@Column(nullable=false)
 	private String status;
-
-	private Date orderTime;
 	
-	private String comment;
+	private Date orderTime;
+
+	private String comments;
 	
 	private Date commentTime;
 	
@@ -84,12 +84,12 @@ public class Order {
 		this.orderTime = orderTime;
 	}
 
-	public String getComment() {
-		return comment;
+	public String getComments() {
+		return comments;
 	}
 
-	public void setComment(String comment) {
-		this.comment = comment;
+	public void setComment(String comments) {
+		this.comments = comments;
 	}
 
 	public Date getCommentTime() {
