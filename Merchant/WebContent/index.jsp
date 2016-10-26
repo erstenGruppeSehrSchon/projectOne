@@ -24,19 +24,19 @@
 		<table class="largeThumb">
 			<tr>
 				<td>
-					<a href="#"><!-- Shop Link-->
+					<a href="./shopDetails.jsp"><!-- Shop Link-->
 					<img src="http://www.oushop.com/warp_sites/oushop.g6/files/Shop2.jpg" title=""/></br> <!-- Shop img and shop name -->
 					<p>Shops Name</p></a>
 				</td>
 				
 				<td>
-					<a href="#"><!-- Shop Link-->
+					<a href="./shopDetails.jsp"><!-- Shop Link-->
 					<img src="http://browzin.net/wp-content/uploads/2015/02/pictures-675-ESB_gift_shop.jpg" title=""/></br> <!-- Shop img and shop name -->
 					<p>Shops Name</p></a>
 				</td>
 				
 				<td>
-					<a href="#"><!-- Shop Link-->
+					<a href="./shopDetails.jsp"><!-- Shop Link-->
 					<img src="http://browzin.net/wp-content/uploads/2015/02/pictures-675-ESB_gift_shop.jpg" title=""/></br> <!-- Shop img and shop name -->
 					<p>Shops Name</p></a>
 				</td>
@@ -73,24 +73,21 @@
 		<table class="largeThumb">
 			<tr>
 				<td>
-					<a href="#">
-					<p>New Shops</p></a><!-- Shop Link-->
+					<p>New Shops</p>
 					<p>Order number</p>
-					<p>Order Time</p></a>
+					<p>Order Time</p>
 				</td>
 				
 				<td>
-					<a href="#"><!-- Shop Link-->
-					<p>New Shops</p></a><!-- Shop Link-->
+					<p>New Shops</p>
 					<p>Order number</p>
-					<p>Order Time</p></a>
+					<p>Order Time</p>
 				</td>
 				
 				<td>
-					<a href="#"><!-- Shop Link-->
-					<p>New Shops</p></a><!-- Shop Link-->
+					<p>New Shops</p>
 					<p>Order number</p>
-					<p>Order Time</p></a>
+					<p>Order Time</p>
 				</td>
 			</tr>
 		</table>
