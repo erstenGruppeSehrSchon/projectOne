@@ -34,14 +34,42 @@
 				<td><img src=  "http://www.foodmanufacture.co.uk/var/plain_site/storage/images/publications/food-beverage-nutrition/foodmanufacture.co.uk/npd/top-10-functional-food-trends/11097085-1-eng-GB/Top-10-functional-food-trends_strict_xxl.jpg"/></td>
 			</tr>
 			<tr>
-			    <td></td>
 				<td id="orderDishDiv">
 				<p>Quantity: <input type="number" name="quantity" min="1" max="100"></input></br>
 				<a href=""><input type="submit" value="Add to Cart"/></a></p>
 				</td>
+				<td></td>
 			</tr>
 		</table>
 	</div>
-</div>	
+</div>
+
+<div class="container">
+	<div class="block-divider-index"></div>
+</div>
+
+<div class="container">
+	<!--*********Dish*********--> <!-- THREE IN ONE LINK -->
+	<div class="mydish">
+		<h3 class="h3_title_index">- Shop information -</h3>
+		<table class="largeThumb">
+			<tr>
+				<td>
+					<p><a href="./shopDetails.jsp"><h4 class="form_title">Shop Name :</h4> Shop Name here</a></p>
+					</br>
+					<p><h4 class="form_title">Shop Address :</h4> Shop Address here</p>
+					</br>
+					<p><h4 class="form_title">Shop Tels :</h4> Shop Tels Status</p>
+					</br>
+					<p><h4 class="form_title">Merchant Name:</h4> Merchant Name</p>
+				</td>
+				<td><img src=  "http://www.icon2s.com/img256/256x256-black-white-android-user.png"/></td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+
+	
 </body>
 </html>

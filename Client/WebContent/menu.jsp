@@ -8,10 +8,6 @@
 		<div class="menu">
 			<ul class="menu_ul">
 				<li>
-					<a href="#"><img src="img/menu_icon_cart.png" title="my Cart"/></a><br/><br/>
-					<a href="#">Cart</a>
-				</li>
-				<li>
 					<a href="./dishShowCatIndex.jsp"><img src="img/menu_icon_appetizer.png" title="Appetizer"/></a><br/><br/>
 					<a href="./dishShowCatIndex.jsp">Appetizer</a>
 				</li>
@@ -30,6 +26,10 @@
 				<li>
 					<a href="./dishShowCatIndex.jsp"><img src="img/menu_icon_beverage.png" title="Beverage"/></a><br/><br/>
 					<a href="./dishShowCatIndex.jsp">Beverage</a>
+				</li>
+				<li>
+					<a href="./cartIndex.jsp"><img src="img/menu_icon_cart.png" title="my Cart"/></a><br/><br/>
+					<a href="./cartIndex.jsp">Cart</a>
 				</li>
 				<li>
 					<a href="./searchIndex.jsp"><img src="img/menu_icon_search.png" title="Search"/></a><br/><br/>
