@@ -53,8 +53,10 @@ input {
 	outline: none;
 }
 
+
 input[type=text],
-input[type=password] {
+input[type=password],
+select[type=select] {
 	color: #333;
 	padding-left: 10px;
 	margin: 10px;
@@ -299,7 +301,7 @@ input[type=button]:hover {
 	padding: 0 0 10px 20px;
 }
 
-.loginTable, .forgetTable, .regTable, .profileTable{
+.merchantForm, .forgetTable, .regTable, .profileTable{
 	width: 100%;
 }
 
@@ -335,7 +337,7 @@ input[type=button]:hover {
 }
 
 /*profile*/
-.profile{
+.merchantForm{
 	float: right;
 	width: 70%;
 	padding: 0 0 10px 20px;
@@ -407,7 +409,6 @@ input[type=button]:hover {
 }
 
 .item{
-	padding-bottom: 50px;
 	width: 100%;
 }
 
@@ -426,4 +427,11 @@ input[type=button]:hover {
 }
 .menu_ul img{
 	height: 65px;
+}
+
+.block-divider-index {
+	height: 50px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	background: url(../img/line.png) no-repeat center center;
 }

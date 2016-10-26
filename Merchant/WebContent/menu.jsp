@@ -32,8 +32,8 @@
 					<a href="#">My Profile</a>
 				</li>
 				<li>
-					<a href="#"><img src="img/menu_icon_search.png" title="Serach"/></a><br/><br/>
-					<a href="#">Search</a>
+					<a href="./searchIndex.jsp"><img src="img/menu_icon_search.png" title="Search"/></a><br/><br/>
+					<a href="./searchIndex.jsp">Search</a>
 				</li>
 				
 			</ul>

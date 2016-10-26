@@ -15,7 +15,8 @@
 <body>
 <jsp:include page="header.jsp" />
 <jsp:include page="menu.jsp" />
-
+<!--*********container*********-->
+<div class="container">
 
 	<!--*********My shop*********--> <!-- THREE IN ONE LINK -->
 	<div class="myShop">
@@ -97,6 +98,6 @@
 			</tr>
 		</table>
 	</div>
-	
+</div>	
 </body>
 </html>
