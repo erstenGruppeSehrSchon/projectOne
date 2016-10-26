@@ -31,50 +31,15 @@
 	<!--*********My Advertisement*********--> <!-- THREE IN ONE LINK -->
 	<div class="myAdvertisement">
 		<h3 class="h3_title_index">- My Advertisement -</h3>
-		<table class="largeThumb">
-			<tr>
-				<td>
-					<img src="http://ralev.com/wp-content/uploads/2010/06/coke-tv-advertising.png" title=""/><br/> <!-- Shop img and shop name -->
-					<p>Time range</p>
-				</td>
-				
-				<td>
-					<img src="http://freedesignfile.com/upload/2014/07/Juice-advertisement-publicize-poster-creative-vector-04.jpg" title=""/><br/> <!-- Shop img and shop name -->
-					<p>Time range</p>
-				</td>
-				
-				<td>
-					<img src="http://3.bp.blogspot.com/-c7wopKrneAk/UFLQX8DqN0I/AAAAAAAAAFQ/vk1pZeSAS6Y/s1600/advertisement-copy.gif" title=""/><br/> <!-- Shop img and shop name -->
-					<p>Time range</p>
-				</td>
-			</tr>
-		</table>
+		
+		<div id="advertList"></div>
 	</div>
 	
 	<!--*********My Order*********--> <!-- THREE IN ONE LINK -->
 	<div class=myOrder>
 		<h3 class="h3_title_index">- My Order -</h3>
-		<table class="largeThumb">
-			<tr>
-				<td>
-					<p>New Shops</p>
-					<p>Order number</p>
-					<p>Order Time</p>
-				</td>
-				
-				<td>
-					<p>New Shops</p>
-					<p>Order number</p>
-					<p>Order Time</p>
-				</td>
-				
-				<td>
-					<p>New Shops</p>
-					<p>Order number</p>
-					<p>Order Time</p>
-				</td>
-			</tr>
-		</table>
+		
+		<div id="orderList"></div>
 	</div>
 </div>	
 
@@ -82,16 +47,44 @@
 	$(function(){
 	    window.onload = function(){
             loadShop();
-            //loadAdvert();
-            //loadOrder();
+            loadAdvert();
+            loadOrder();
         };
 	});
     
     function loadShop(){
+        document.getElementById("shopList").innerHTML = '';
+        
         if(!isEmpty('${merchant}')){
-            if('${fn:length(merchant.shops)}' > 0){
-                var shops = $('<p>'+'${fn:length(merchant.shops)}'+'</p>');
-                $(shops).appendTo('#shopList');
+            
+            if(${fn:length(merchant.shops)} > 0){
+                
+                var tableOP = $('<table class="largeThumb">');
+                $(tableOP).appendTo('#shopList');
+                
+                for(var i = 0; i< ${fn:length(merchant.shops)}; i++){
+                    if(i % 3 == 0){
+                        // open of new row
+                        var rowOP = $('<tr>');
+                        $(rowOP).appendTo('#shopList');   
+                    }
+                    
+                    var sid = '${merchant.shops[i].sid}';
+                    var ipath = '${ merchant.shops[i].imgPath}';
+                    var shopName = '${merchant.shops[i].name}';
+                    
+                    var shopInfo = $('<td><a href="getShopBySid?sid='+ sid+ '"><img src="'+ipath+'" title="'+shopName+'"/></br><p>'+shopName+'</p></a></td>');
+                    $(shopInfo).appendTo('#shopList');
+                    
+                    if(i % 3 == 0){
+                        // end of new row
+                        var rowEn = $('</tr>');
+                        $(rowEn).appendTo('#shopList');   
+                    }
+                }
+                
+                var tableEn = $('</table>');
+                $(tableEn).appendTo('#shopList');
             }
             else{
                 var noShop = $('<p>You have no shops now.</p>');
@@ -102,38 +95,91 @@
     }
     
     function loadAdvert(){
+        document.getElementById("advertList").innerHTML = '';
+        var mid = '${merchant.mid}';
         
         $.ajax({
-            type:'POST',
-            url:'',
-            data:{username:$("#uname").val(),password:$("#pwd").val()}
-        }).done(function(msg){
+            type:'GET',
+            url:"getAdvertisementByMid?mid=" + mid,
+            success: function(msg){
+                var tableOp = $('<table class="largeThumb">');
+                $(tableOp).appendTo('#advertList');
 
-            // = accepted
-            if(msg.status === "Accepted"){
-                $('#text').text(msg.mid + " ... " +msg.status);
+                for(var i = 0; i< ${fn:length(msg)}; i++){
+                    if(i % 3 == 0){
+                        // open of new row
+                        var rowOP = $('<tr>');
+                        $(rowOP).appendTo('#advertList');   
+                    }
+                    
+                    var ipath= '${msg[i].imgPath}';
+                    var shopName = '${msg[i].shop.name}';
+                    
+                    var advertInfo = $('<td><img src="'+ipath+'" title="'+shopName+'"/></td>');
+                    $(advertInfo).appendTo('#advertList');
+                    
+                    if(i % 3 == 0){
+                        // end of new row
+                        var rowEn = $('</tr>');
+                        $(rowEn).appendTo('#advertList');   
+                    }
+                }
+                
+                var tableEn = $('</table>');
+                $(tableEn).appendTo('#advertList');
+              
+            },
+            error: function(){
+                var error = $('<p>Error in getting advertment.</p>');
+                $(error).appendTo('#advertList');
             }
-            else{
-                $('#text').text(msg.mid + " ... " +msg.status);
-            }
-        }); 
+        });
     }
     
     function loadOrder(){
-        $.ajax({
-            type:'POST',
-            url:'',
-            data:{username:$("#uname").val(),password:$("#pwd").val()}
-        }).done(function(msg){
+        document.getElementById("orderList").innerHTML = '';
+        var mid = '${merchant.mid}';
+        
+         $.ajax({
+            type:'GET',
+            url:"getOrderByMid?mid="+mid,
+            success: function(msg){
 
-            // = accepted
-            if(msg.status === "Accepted"){
-                $('#text').text(msg.mid + " ... " +msg.status);
+                var tableOp = $('<table class="largeThumb">');
+                $(tableOp).appendTo('#orderList');
+
+                for(var i = 0; i< ${fn:length(msg)}; i++){
+                    if(i % 3 == 0){
+                        // open of new row
+                        var rowOP = $('<tr>');
+                        $(rowOP).appendTo('#orderList');   
+                    }
+                    
+                    var shopName = '${msg[i].shop.name}';
+                    var orderId = '${msg[i].oid}';
+                    var orderTime = '${msg[i].orderTime}';
+                    
+                    var orderInfo= $("<td><p>"+shopName+"</p><p>"+orderId+"</p><p>"+orderTime+"</p></td>");
+                    $(orderInfo).appendTo('#orderList');
+
+                    if(i % 3 == 0){
+                        // end of new row
+                        var rowEn = $('</tr>');
+                        $(rowEn).appendTo('#orderList');   
+                    }
+                }
+
+                var tableEn = $('</table>');
+                $(tableEn).appendTo('#orderList');
+
+            },
+            error: function(){
+                var error = $('<p>Error in getting order.</p>');
+                $(error).appendTo('#orderList');
             }
-            else{
-                $('#text').text(msg.mid + " ... " +msg.status);
-            }
-        }); 
+        });
+        
+        
     }
     
     function isEmpty(value) {
