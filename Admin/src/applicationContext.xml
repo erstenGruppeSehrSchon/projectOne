@@ -47,17 +47,17 @@
 	</bean>
 	<!-- Listen advertisement request -->
 	<bean id="advSubmitQueue" class="org.apache.activemq.command.ActiveMQQueue">
-		<constructor-arg value="AdvQueue" />
+		<constructor-arg value="AdvSubmitQueue" />
 		
 	</bean>
 	<!-- advertisement update -->
 	<bean id="advUpdateQueue" class="org.apache.activemq.command.ActiveMQQueue">
-		<constructor-arg value="AdvQueue" />
+		<constructor-arg value="AdvUpdateQueue" />
 		
 	</bean>
 	<!-- Listen complain -->
 	<bean id="complainQueue" class="org.apache.activemq.command.ActiveMQQueue">
-		<constructor-arg value="complainQueue" />
+		<constructor-arg value="ComplainQueue" />
 		
 	</bean>
 	
@@ -65,21 +65,21 @@
 	</bean>
 	
 	<jms:listener-container connection-factory="mq">     
-    	<jms:listener destination="regQueue" ref="newUserJMSListener" method="messageReceived" />
+    	<jms:listener destination="RegisterQueue" ref="newUserJMSListener" method="messageReceived" />
 	</jms:listener-container>
 	
 	<bean id="complainJMSListener" class="util.ComplainJMSListener">
 	</bean>
 	
 	<jms:listener-container connection-factory="mq">     
-    	<jms:listener destination="complainQueue" ref="complainJMSListener" method="messageReceived" />
+    	<jms:listener destination="ComplainQueue" ref="complainJMSListener" method="messageReceived" />
 	</jms:listener-container>
 	
 	<bean id="advReqJMSListener" class="util.AdvReqJMSListener">
 	</bean>
 	
 	<jms:listener-container connection-factory="mq">     
-    	<jms:listener destination="advSubmitQueue" ref="advReqJMSListener" method="messageReceived" />
+    	<jms:listener destination="AdvSubmitQueue" ref="advReqJMSListener" method="messageReceived" />
 	</jms:listener-container>
 	
 		<!--
@@ -106,7 +106,7 @@
 			<props>
 				<prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
 				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
 			</props>
 		</property>
 	</bean>
