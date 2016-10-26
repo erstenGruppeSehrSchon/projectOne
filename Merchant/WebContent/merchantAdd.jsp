@@ -37,9 +37,13 @@
                     <td><input id="merchantrePassword" name="merchantPassword" type="text" class="form-control"></td>
                 </tr>
                 <tr>
+                    <td><h4 class="form_title">Name</h4></td>
+                    <td><input id="merchantName" name="name" type="text" class="form-control"></td>
+                </tr>
+                <tr>
                     <td><h4 class="form_title">Gender</h4></td>
                     <td>
-                        <select type = "select" id="merchantGender" name="merchantGender" class="form-control">
+                        <select type = "select" id="gender" name="merchantGender" class="form-control">
                           <option value="M">M</option>
                           <option value="F">F</option>
                           <option value="Unknown">Unknown</option>
@@ -49,7 +53,7 @@
                 <tr>
                     <td><h4 class="form_title">Birthday</h4></td>
                     <!--<td><input type="date" id="merchantBirthDate" name="merchantBirthDate" class="form-control"></td>-->
-                    <td><input type="text" id="merchantBirthDate" name="merchantBirthDate" class="form-control"></td>
+                    <td><input type="text" id="merchantBirthDate" name="birthDate" class="form-control"></td>
                 </tr>
                 <tr>
                     <td rowspan="2"><input type="submit" value="Register" class="btn btn-default"></td>
@@ -68,6 +72,7 @@
         if(isEmpty($('#merchantUsername').text() ||
             isEmpty($('#merchantPassword').text() ||
             isEmpty($('#merchantrePassword').text() ||
+            isEmpty($('#merchantName').text() ||
             isEmpty($('#merchantBirthDate').text()){
            $('#error').text("Field cannot be empty");
             return false;
