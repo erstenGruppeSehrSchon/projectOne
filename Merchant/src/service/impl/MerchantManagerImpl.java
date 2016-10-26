@@ -64,7 +64,7 @@ public class MerchantManagerImpl implements MerchantManager {
 	}
 	
 	@Override
-	public Merchant updateMerchantStatus(int mid, String status) {
+	public Merchant updateMerchantStatus(String mid, String status) {
 		return dao.updateMerchantStatus(mid, status);
 	}
 	

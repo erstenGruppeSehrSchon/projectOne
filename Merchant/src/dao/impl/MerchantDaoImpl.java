@@ -46,7 +46,7 @@ public class MerchantDaoImpl implements MerchantDao {
 	}
 	
 	@Override
-	public Merchant updateMerchantStatus(int mid, String status) {
+	public Merchant updateMerchantStatus(String mid, String status) {
 		Merchant merchant = em.find(Merchant.class, mid);
 		merchant.setStatus(status);
 		return merchant;
