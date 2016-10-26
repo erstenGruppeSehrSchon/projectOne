@@ -76,5 +76,16 @@
 	    	<artifactId>junit</artifactId>
 	    	<version>4.12</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-core</artifactId>
+			<version>5.7.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jms -->
+		<dependency>
+    		<groupId>org.springframework</groupId>
+    		<artifactId>spring-jms</artifactId>
+    		<version>4.3.3.RELEASE</version>
+		</dependency>
 	</dependencies>
 </project>

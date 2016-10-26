@@ -37,7 +37,7 @@
 	</bean>
 	<!-- Submit complain -->
 	<bean id="complainQueue" class="org.apache.activemq.command.ActiveMQQueue">
-		<constructor-arg value="complainQueue" />		
+		<constructor-arg value="ComplainQueue" />		
 	</bean>
 
 		<!--

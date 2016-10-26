@@ -2,6 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jms="http://www.springframework.org/schema/jms"
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
@@ -13,7 +14,10 @@
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd
         http://www.springframework.org/schema/tx
-        http://www.springframework.org/schema/tx/spring-tx.xsd">
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/jms
+        http://www.springframework.org/schema/jms/spring-jms.xsd">
+        
         
         
         
@@ -27,7 +31,57 @@
 		<property name="password" value="123"></property>
 		<property name="username" value="TRAINING"></property>
 	</bean>
-
+	
+	<bean id="mq" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="failover://tcp://fanch2-2-w7:61616"></property>
+		
+	</bean>
+	
+	<!-- Listen new user request --> 
+	 <bean id="regQueue" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg value="RegisterQueue" />
+	</bean>
+	<!-- user status update -->
+	<bean id="statusQueue" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg value="StatusUpdateQueue" />
+	</bean>
+	<!-- Listen advertisement request -->
+	<bean id="advSubmitQueue" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg value="AdvSubmitQueue" />
+		
+	</bean>
+	<!-- advertisement update -->
+	<bean id="advUpdateQueue" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg value="AdvUpdateQueue" />
+		
+	</bean>
+	<!-- Listen complain -->
+	<bean id="complainQueue" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg value="ComplainQueue" />
+		
+	</bean>
+	
+	<bean id="newUserJMSListener" class="util.NewUserJMSListener">
+	</bean>
+	
+	<jms:listener-container connection-factory="mq">     
+    	<jms:listener destination="RegisterQueue" ref="newUserJMSListener" method="messageReceived" />
+	</jms:listener-container>
+	
+	<bean id="complainJMSListener" class="util.ComplainJMSListener">
+	</bean>
+	
+	<jms:listener-container connection-factory="mq">     
+    	<jms:listener destination="ComplainQueue" ref="complainJMSListener" method="messageReceived" />
+	</jms:listener-container>
+	
+	<bean id="advReqJMSListener" class="util.AdvReqJMSListener">
+	</bean>
+	
+	<jms:listener-container connection-factory="mq">     
+    	<jms:listener destination="AdvSubmitQueue" ref="advReqJMSListener" method="messageReceived" />
+	</jms:listener-container>
+	
 		<!--
 		指定实现JPA的适配器，主要作用如下：
 		1、取代persistence.xml中的<provider>
@@ -52,7 +106,7 @@
 			<props>
 				<prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
 				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
 			</props>
 		</property>
 	</bean>

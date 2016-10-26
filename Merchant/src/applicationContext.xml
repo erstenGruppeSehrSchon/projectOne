@@ -51,7 +51,7 @@
 	</bean>
 	<!-- Listen to advertisement update from admin side -->
 	<bean id="advUpdateQueue" class="org.apache.activemq.command.ActiveMQQueue">
-		<constructor-arg value="AdvQueue" />
+		<constructor-arg value="AdvUpdateQueue" />
 		
 	</bean>
 	
@@ -59,14 +59,14 @@
 	</bean>
 	
 	<jms:listener-container connection-factory="mq">     
-    	<jms:listener destination="advUpdateQueue" ref="advJMSListener" method="messageReceived" />
+    	<jms:listener destination="AdvUpdateQueue" ref="advJMSListener" method="messageReceived" />
 	</jms:listener-container>
 	
 	<bean id="userStatusJMSListener" class="util.UserStatusJMSListener">
 	</bean>
 	
 	<jms:listener-container connection-factory="mq">     
-    	<jms:listener destination="statusQueue" ref="userStatusJMSListener" method="messageReceived" />
+    	<jms:listener destination="StatusUpdateQueue" ref="userStatusJMSListener" method="messageReceived" />
 	</jms:listener-container>
 
 		<!--
