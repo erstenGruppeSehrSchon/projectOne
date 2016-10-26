@@ -225,36 +225,6 @@ input[type=button]:hover {
 	color: #e2838e;
 }
 
-/*footer*/
-.footer {
-	clear: both;
-	background-color: #2f2f2f;
-	color: #bf505d;
-	font-size: 11pt;
-	padding: 10px;
-	margin: 0px;
-	min-height: 300px;
-}
-
-.footer a:link, .footer a:visited, .footer a:active{
-	color: #999;
-}
-
-
-.footer a:hover{
-	color: #fff;
-}
-
-
-
-.footer_table{
-	border: 0px;
-}
-
-.footer_table td{
-	padding: 5px;
-}
-
 /*index*/
 .banner{
 	height: 350px;
@@ -417,9 +387,13 @@ input[type=button]:hover {
 }
 
 /*h3_title_index*/
+p{
+	font-family: "Century Gothic", "Helvetica", "Arial", sans-serif;
+}
 .h3_title_index{
 	color: #bd4f5c;
 	text-aligin: center;
+	font-family: "Century Gothic", "Helvetica", "Arial", sans-serif;
 }
 
 .largeThumb img{
@@ -434,4 +408,10 @@ input[type=button]:hover {
 	margin-top: 10px;
 	margin-bottom: 10px;
 	background: url(../img/line.png) no-repeat center center;
+}
+
+.text_delete{
+	font-family: "Century Gothic", "Helvetica", "Arial", sans-serif;
+	font-size: 12px;
+	text-decoration: underline;
 }
