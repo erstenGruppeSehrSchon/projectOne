@@ -6,12 +6,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
+
 import po.Admin;
 import po.Merchant;
 import service.AdminManager;
 import service.MerchantManager;
 
 @Controller
+@SessionAttributes("admin")
 public class AdminController {
 	
 	@Autowired
@@ -21,9 +25,17 @@ public class AdminController {
 	private MerchantManager merchantManager;
 	
 	@RequestMapping(value="login", method={RequestMethod.POST})
-	@ResponseBody
-	public Admin login(String username, String password) {
-		return adminManager.login(username, password);
+	public ModelAndView login(String username, String password) {
+        ModelAndView modelAndView = new ModelAndView();
+        
+        // Set view
+        modelAndView.setViewName("index");
+
+        // Set admin object (null if fail)
+        Admin admin = adminManager.login(username, password);
+        modelAndView.addObject("admin", admin);
+        
+		return modelAndView;
 	}
 	
 	@RequestMapping(value="getMerchantByMid", method={RequestMethod.GET})

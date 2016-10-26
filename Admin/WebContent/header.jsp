@@ -3,7 +3,7 @@
 <!--*********header*********-->
 <div class="header">
 	<div class="contact"><a href="#">Home</a></div>
-	<div class="login"><a href="#">Login</a> | <a href="#">Registration</a></p></div>
+	<div class="login"><a href="login.jsp">Login</a> | <a href="#">Registration</a></p></div>
 </div>
 <!--*********container*********-->
 <div class="container">
