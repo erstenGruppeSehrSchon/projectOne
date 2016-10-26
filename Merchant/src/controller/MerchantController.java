@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -160,6 +161,18 @@ public class MerchantController {
 		return orderManager.getOrdersBySid(sid);
 	}
 	
+	@RequestMapping(value="getOrdersByMid", method={RequestMethod.GET})
+	@ResponseBody
+	public List<Order> getOrdersByMid(String mid) {
+		Merchant m = merchantManager.getMerchantByMid(mid);
+		List<Order> result = new ArrayList<Order>();
+		
+		for(Shop s: m.getShops()){
+			result.addAll(orderManager.getOrdersBySid(s.getSid()));
+		}
+		return result;
+	}
+	
 	@RequestMapping(value="updateOrderStatus", method={RequestMethod.GET}) // Change later
 	@ResponseBody
 	public Order updateOrderStatus(String oid, String status) {
@@ -178,6 +191,18 @@ public class MerchantController {
 	@ResponseBody
 	public List<Advertisement> getAdvertisementBySid(String sid) {
 		return advertisementManager.getAdvertisementBySid(sid);
+	}
+	
+	@RequestMapping(value="getAdvertisementByMid", method={RequestMethod.GET}) // Change later
+	@ResponseBody
+	public List<Advertisement> getAdvertisementByMid(String mid) {
+		Merchant m = merchantManager.getMerchantByMid(mid);
+		List<Advertisement> result = new ArrayList<Advertisement>();
+		
+		for(Shop s: m.getShops()){
+			result.addAll(advertisementManager.getAdvertisementBySid(s.getSid()));
+		}
+		return result;
 	}
 	
 	@RequestMapping(value="addAdvertisement", method={RequestMethod.GET}) // Change later
