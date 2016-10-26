@@ -26,9 +26,8 @@ public class DishImageManagerImpl implements DishImageManager {
 		List<DishImage> dishImages = new ArrayList<>();
 		for (String imgPath : imgPaths) {
 			DishImage dishImage = new DishImage();
-			dishImage.setDid(did);
 			dishImage.setImgPath(imgPath);
-			dishImages.add(dao.addDishImage(dishImage));
+			dishImages.add(dao.addDishImage(did, dishImage));
 		}
 		
 		return dishImages;

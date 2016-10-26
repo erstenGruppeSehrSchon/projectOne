@@ -3,14 +3,13 @@ package dao.impl;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 import po.Dish;
+import po.Shop;
 import dao.DishDao;
 
 @Repository
@@ -30,13 +29,15 @@ public class DishDaoImpl implements DishDao {
 	public List<Dish> getDishesBySid(String sid) {
 		Session session = (Session)em.getDelegate();
 		Criteria criteria = session.createCriteria(Dish.class);
-		criteria.add(Restrictions.eq("sid", sid));
+		criteria.add(Restrictions.eq("shop_id", sid));
 		List<Dish> dishes = criteria.list();
 		return dishes;
 	}
 
 	@Override
-	public Dish addDish(Dish dish) {
+	public Dish addDish(String sid, Dish dish) {
+		Shop shop = em.find(Shop.class, sid);
+		shop.getDishes().add(dish);
 		em.persist(dish);
 		return dish;
 	}
@@ -46,22 +47,6 @@ public class DishDaoImpl implements DishDao {
 		Dish dish = em.find(Dish.class, did);
 		em.remove(dish);
 		return true;
-	}
-
-	@Override
-	public Dish updateDish(String did, String sid, String name, String type, float price, int isActive) {
-		// Get origin dish
-		Dish dish = em.find(Dish.class, did);
-		
-		// Update dish
-		dish.setSid(sid);
-		dish.setName(name);
-		dish.setType(type);
-		dish.setPrice(price);
-		dish.setIsActive(isActive);
-		
-		// Return updated dish
-		return dish;
 	}
 
 

@@ -31,7 +31,7 @@ public class DishDaoImpl implements DishDao {
 
 		// Retrieve dish records by sid
 		Criteria criteria = session.createCriteria(Dish.class);
-		criteria.add(Restrictions.eq("sid", sid));
+		criteria.add(Restrictions.eq("shop_id", sid));
 		List<Dish> dishes = criteria.list();
 		
 		return dishes;

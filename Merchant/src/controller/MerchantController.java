@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,11 +12,9 @@ import po.Dish;
 import po.DishImage;
 import po.Merchant;
 import po.Shop;
-import po.ShopContact;
 import service.DishImageManager;
 import service.DishManager;
 import service.MerchantManager;
-import service.ShopContactManager;
 import service.ShopManager;
 
 @Controller
@@ -26,9 +25,6 @@ public class MerchantController {
 	
 	@Autowired
 	private ShopManager shopManager;
-	
-	@Autowired
-	private ShopContactManager shopContactManager;
 	
 	@Autowired
 	private DishManager dishManager;
@@ -65,8 +61,8 @@ public class MerchantController {
 	
 	@RequestMapping(value="addShop", method={RequestMethod.GET})//Change later
 	@ResponseBody
-	public Shop addShop(String mid, String name, String description, List<MultipartFile> files) {
-		return shopManager.addShop(mid, name, description, files);
+	public Shop addShop(String mid, String name, String description, String type, String openTime, String closeTime, List<MultipartFile> files) {
+		return shopManager.addShop(mid, name, description, type, openTime, closeTime, files);
 	}
 	
 	@RequestMapping(value="removeShop", method={RequestMethod.GET}) // Change later
@@ -77,36 +73,10 @@ public class MerchantController {
 	
 	@RequestMapping(value="updateShop", method={RequestMethod.GET}) // Change later
 	@ResponseBody
-	public Shop updateShop(String sid, String mid, String name, String description) {
-		return shopManager.updateShop(sid, mid, name, description);
+	public Shop updateShop(String sid, String name, String description, String type, String openTime, String closeTime, String address, String phone) {
+		return shopManager.updateShop(sid, name, description, type, openTime, closeTime, address, phone);
 	}	
 	// Shop End
-	
-	// Shop Contact Start
-	@RequestMapping(value="getShopContactsBySid", method={RequestMethod.GET})
-	@ResponseBody
-	public List<ShopContact> getShopContactsBySid(String sid) {
-		return shopContactManager.getShopContactsBySid(sid);
-	}
-	
-	@RequestMapping(value="addShopContact", method={RequestMethod.GET})//Change later
-	@ResponseBody
-	public ShopContact addShopContact(String sid, String type, String info) {
-		return shopContactManager.addShopContact(sid, type, info);
-	}
-	
-	@RequestMapping(value="removeShopContact", method={RequestMethod.GET})//Change later
-	@ResponseBody
-	public boolean removeShopContact(String cid) {
-		return shopContactManager.removeShopContact(cid);
-	}
-	
-	@RequestMapping(value="updateShopContact", method={RequestMethod.GET})//Change later
-	@ResponseBody
-	public ShopContact updateShopContact(String cid, String sid, String type, String info) {
-		return shopContactManager.updateShopContact(cid, sid, type, info);
-	}
-	// Shop Contact End
 	
 	// Dish Start
 	@RequestMapping(value="getDishByDid", method={RequestMethod.GET})
@@ -123,20 +93,14 @@ public class MerchantController {
 	
 	@RequestMapping(value="addDish", method={RequestMethod.GET})//Change later
 	@ResponseBody
-	public Dish addDish(String sid, String name, String type, float price, int isActive, List<MultipartFile> files) {
-		return dishManager.addDish(sid, name, type, price, isActive, files);
+	public Dish addDish(String sid, String name, String type, float price, String description, List<MultipartFile> files) {
+		return dishManager.addDish(sid, name, type, price, description, files);
 	}
 	
 	@RequestMapping(value="removeDish", method={RequestMethod.GET})//Change later
 	@ResponseBody
 	public boolean removeDish(String did) {
 		return dishManager.removeDish(did);
-	}
-	
-	@RequestMapping(value="updateDish", method={RequestMethod.GET})//Change later
-	@ResponseBody
-	public Dish updateDish(String did, String sid, String name, String type, float price, int isActive, List<MultipartFile> files) {
-		return dishManager.updateDish(did, sid, name, type, price, isActive);
 	}
 	// Dish End
 	
