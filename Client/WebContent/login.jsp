@@ -12,7 +12,7 @@
 	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<jsp:include page="./header.jsp" />
+<jsp:include page="./headerGuest.jsp" />
 <jsp:include page="./menu.jsp" />
 <!--*********container*********-->
 <div class="container">

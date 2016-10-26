@@ -10,10 +10,33 @@
 	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+	<script>
+	var countAddAddress = 1;
+	function addAddress() {
+		countAddAddress++;
+		
+		var p = "<p>Address "+countAddAddress+":</p>";
+		var country = "<input id=\"addressBoxCountry"+countAddAddress+"\" name=\"addressBoxCountry"+countAddAddress+"\" type=\"text\" class=\"form-control\" placeholder=\"Country\">";
+		var city = "<input id=\"addressBoxCity"+countAddAddress+"\" name=\"addressBoxCity"+countAddAddress+"\" type=\"text\" class=\"form-control\" placeholder=\"City\">";
+		var district = "<input id=\"addressBoxDistrict"+countAddAddress+"\" name=\"addressBoxDistrict"+countAddAddress+"\" type=\"text\" class=\"form-control\" placeholder=\"District\">";
+		var street = "<input id=\"addressBoxStreet"+countAddAddress+"\" name=\"addressBoxStreet"+countAddAddress+"\" type=\"text\" class=\"form-control\" placeholder=\"Street\">";
+		var building = "<input id=\"addressBoxBuilding"+countAddAddress+"\" name=\"addressBoxBuilding"+countAddAddress+"\" type=\"text\" class=\"form-control\" placeholder=\"Building\">";
+		var room = "<input id=\"addressBoxRoom"+countAddAddress+"\" name=\"addressBoxRoom"+countAddAddress+"\" type=\"text\" class=\"form-control\" placeholder=\"Room\">";
+		
+		var div = document.createElement("div");
+		div.setAttribute("id", "addressBox"+countAddAddress);
+		div.setAttribute("name", "addressBox");
+		
+		div.innerHTML = p + country + city + district + street + building + room;
+		
+		
+		document.getElementById("addressBox"+(countAddAddress-1)).appendChild(div);
+	
+	}
+	</script>
 </head>
 <body>
-<jsp:include page="./header.jsp" />
+<jsp:include page="./headerGuest.jsp" />
 <jsp:include page="./menu.jsp" />
 <!--*********container*********-->
 <div class="container">
@@ -37,19 +60,19 @@
 						<td><input id="clientrePassword" name="clientPassword" type="text" class="form-control"></td>
 					</tr>
 					<tr>
-						<td><h4 class="form_title">Gender</h4></td>
-						<td>
-							<select type = "select" id="clientGender" name="clientGender" class="form-control">
-							  <option value="M">M</option>
-							  <option value="F">F</option>
-							  <option value="Unknown">Unknown</option>
-							</select>
+						<td><h4 class="form_title">Address</h4>
+						<span class="glyphicon glyphicon-plus" onclick="addAddress()"></span></td>
+						<td id = "addressList">
+							<div name="addressBox" id="addressBox1">
+								<p>Address 1:</p>
+								<input id="addressBoxCountry1" name="addressBoxCountry1" type="text" class="form-control" placeholder="Country">
+								<input id="addressBoxCity1" name="addressBoxCity1" type="text" class="form-control" placeholder="City">
+								<input id="addressBoxDistrict1" name="addressBoxDistrict1" type="text" class="form-control" placeholder="District">
+								<input id="addressBoxStreet1" name="addressBoxStreet1" type="text" class="form-control" placeholder="Street">
+								<input id="addressBoxBuilding1" name="addressBoxBuilding1" type="text" class="form-control" placeholder="Building">
+								<input id="addressBoxRoom1" name="addressBoxRoom1" type="text" class="form-control" placeholder="Room">
+							</div>
 						</td>
-					</tr>
-					<tr>
-						<td><h4 class="form_title">Birthday</h4></td>
-						<!--<td><input type="date" id="clientBirthDate" name="clientBirthDate" class="form-control"></td>-->
-						<td><input type="text" id="clientBirthDate" name="clientBirthDate" class="form-control"></td>
 					</tr>
 					<tr>
 						<td rowspan="2"><input type="submit" value="Register" class="btn btn-default"></td>

@@ -8,28 +8,32 @@
 		<div class="menu">
 			<ul class="menu_ul">
 				<li>
-					<a href="#"><img src="img/menu_icon_appetizer.png" title="Appetizer"/></a><br/><br/>
-					<a href="#">Appetizer</a>
+					<a href="./dishShowCatIndex.jsp"><img src="img/menu_icon_appetizer.png" title="Appetizer"/></a><br/><br/>
+					<a href="./dishShowCatIndex.jsp">Appetizer</a>
 				</li>
 				<li>
-					<a href="#"><img src="img/menu_icon_soup.png" title="Soup"/></a><br/><br/>
-					<a href="#">Soup</a>
+					<a href="./dishShowCatIndex.jsp"><img src="img/menu_icon_soup.png" title="Soup"/></a><br/><br/>
+					<a href="./dishShowCatIndex.jsp">Soup</a>
 				</li>
 				<li>
-					<a href="#"><img src="img/menu_icon_main.png" title="Main Dish"/></a><br/><br/>
-					<a href="#">Main Dish</a>
+					<a href="./dishShowCatIndex.jsp"><img src="img/menu_icon_main.png" title="Main Dish"/></a><br/><br/>
+					<a href="./dishShowCatIndex.jsp">Main Dish</a>
 				</li>
 				<li>
-					<a href="#"><img src="img/menu_icon_dessert.png" title="Dessert"/></a><br/><br/>
-					<a href="#">Dessert</a>
+					<a href="./dishShowCatIndex.jsp"><img src="img/menu_icon_dessert.png" title="Dessert"/></a><br/><br/>
+					<a href="./dishShowCatIndex.jsp">Dessert</a>
 				</li>
 				<li>
-					<a href="#"><img src="img/menu_icon_beverage.png" title="Beverage"/></a><br/><br/>
-					<a href="#">Beverage</a>
+					<a href="./dishShowCatIndex.jsp"><img src="img/menu_icon_beverage.png" title="Beverage"/></a><br/><br/>
+					<a href="./dishShowCatIndex.jsp">Beverage</a>
 				</li>
 				<li>
-					<a href="#"><img src="img/menu_icon_search.png" title="Search"/></a><br/><br/>
-					<a href="#">Search</a>
+					<a href="./cartIndex.jsp"><img src="img/menu_icon_cart.png" title="my Cart"/></a><br/><br/>
+					<a href="./cartIndex.jsp">Cart</a>
+				</li>
+				<li>
+					<a href="./searchIndex.jsp"><img src="img/menu_icon_search.png" title="Search"/></a><br/><br/>
+					<a href="./searchIndex.jsp">Search</a>
 				</li>
 			</ul>
 		</div>
