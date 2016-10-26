@@ -21,7 +21,7 @@ public class Advertisement {
 	@Id
 	@GenericGenerator(strategy="uuid", name="uuid")
 	@GeneratedValue(generator = "uuid")
-	private Integer ADV_IMG_ID;
+	private Integer advImgId;
 	
 	@Column(nullable=false)
 	private String imgPath;
@@ -36,13 +36,7 @@ public class Advertisement {
 	@JoinColumn(name="shop_id")
 	private Shop shop;
 
-	public Integer getADV_IMG_ID() {
-		return ADV_IMG_ID;
-	}
 
-	public void setADV_IMG_ID(Integer aDV_IMG_ID) {
-		ADV_IMG_ID = aDV_IMG_ID;
-	}
 
 	public String getImgPath() {
 		return imgPath;
@@ -78,5 +72,13 @@ public class Advertisement {
 
 	public static String getInitStatus() {
 		return INIT_STATUS;
+	}
+
+	public Integer getAdvImgId() {
+		return advImgId;
+	}
+
+	public void setAdvImgId(Integer advImgId) {
+		this.advImgId = advImgId;
 	}
 }

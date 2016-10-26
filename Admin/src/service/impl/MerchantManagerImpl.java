@@ -33,4 +33,9 @@ public class MerchantManagerImpl implements MerchantManager {
 		return dao.updateMerchantStatus(mid, status);
 	}
 
+	@Override
+	public List<Merchant> getMerchantByStatus(String status) {
+		return dao.getMerchantByStatus(status);
+	}
+
 }
