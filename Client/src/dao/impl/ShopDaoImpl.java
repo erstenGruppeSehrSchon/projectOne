@@ -27,12 +27,23 @@ public class ShopDaoImpl implements ShopDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Shop> getShopsByName(String name) {
+	public List<Shop> getShopsByCriteria(String name, String type, String address) {
 		Session session = (Session)em.getDelegate();
 		
 		// Add criteria
 		Criteria criteria = session.createCriteria(Shop.class);
-		criteria.add(Restrictions.like("name", name, MatchMode.ANYWHERE));
+		
+		if (name != null) {
+			criteria.add(Restrictions.like("name", name, MatchMode.ANYWHERE));
+		}
+		
+		if (type != null) {
+			criteria.add(Restrictions.eq("type", type));
+		}
+		
+		if (address != null) {
+			criteria.add(Restrictions.like("address", name, MatchMode.ANYWHERE));
+		}
 		
 		// Retrieve match shops
 		List<Shop> shops = criteria.list();
