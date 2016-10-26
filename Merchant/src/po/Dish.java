@@ -1,5 +1,6 @@
 package po;
 
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,9 +23,6 @@ public class Dish {
 	private String did;
 	
 	@Column(nullable=false)
-	private String sid;
-	
-	@Column(nullable=false)
 	private String name;
 	
 	@Column(nullable=false)
@@ -33,12 +31,12 @@ public class Dish {
 	@Column(nullable=false)
 	private float price;
 	
-	@Column(length=1, nullable=false)
-	private int isActive;
+	@Column(nullable=false)
+	private String description;
 	
 	@OneToMany(fetch=FetchType.EAGER)
-	@JoinColumn(name="sid", referencedColumnName="sid", insertable = false, updatable = false)	
-	private Set<DishImage> dishImages;
+	@JoinColumn(name="dish_id")
+	private Set<DishImage> dishImages = new HashSet<>();
 	
 	public String getDid() {
 		return did;
@@ -47,14 +45,6 @@ public class Dish {
 	@SuppressWarnings("unused")
 	private void setDid(String did) {
 		this.did = did;
-	}
-
-	public String getSid() {
-		return sid;
-	}
-
-	public void setSid(String sid) {
-		this.sid = sid;
 	}
 
 	public String getName() {
@@ -81,12 +71,13 @@ public class Dish {
 		this.price = price;
 	}
 
-	public int getIsActive() {
-		return isActive;
+
+	public String getDescription() {
+		return description;
 	}
 
-	public void setIsActive(int isActive) {
-		this.isActive = isActive;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public Set<DishImage> getDishImages() {

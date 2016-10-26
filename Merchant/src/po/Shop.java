@@ -1,7 +1,10 @@
 package po;
 
+import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -21,26 +24,30 @@ public class Shop {
 	@GeneratedValue(generator = "uuid")
 	private String sid;
 	
-	// Link to M_MERCHANT mid
-	@Column(nullable=false)
-	private String mid;
-	
 	@Column(length=100, nullable=false)
 	private String name;
+	
+	@Column(nullable=false)
+	private String type;
+	
+	@Column(nullable=false)
+	private Date openTime;
+	
+	@Column(nullable=false)
+	private Date closeTime;
 	
 	@Column(length=255, nullable=false)
 	private String description;
 	
 	@Column(name="IMG_PATH", length=500, nullable=false)
 	private String imgPath;
-
+	
 	@OneToMany(fetch=FetchType.EAGER)
-	@JoinColumn(name="sid", referencedColumnName="sid",  insertable = false, updatable = false)	
-	private Set<Dish> dishes;
+	@JoinColumn(name="shop_id")	
+	private Set<Dish> dishes = new HashSet<>();
 
-	@OneToMany(fetch=FetchType.EAGER)
-	@JoinColumn(name="sid", referencedColumnName="sid", insertable = false, updatable = false)
-	private Set<ShopContact> shopContacts;
+	@Embedded
+	private ShopContact shopContact;
 	
 	public String getSid() {
 		return sid;
@@ -51,20 +58,36 @@ public class Shop {
 		this.sid = sid;
 	}
 
-	public String getMid() {
-		return mid;
-	}
-
-	public void setMid(String mid) {
-		this.mid = mid;
-	}
-
 	public String getName() {
 		return name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public Date getOpenTime() {
+		return openTime;
+	}
+
+	public void setOpenTime(Date openTime) {
+		this.openTime = openTime;
+	}
+
+	public Date getCloseTime() {
+		return closeTime;
+	}
+
+	public void setCloseTime(Date closeTime) {
+		this.closeTime = closeTime;
 	}
 
 	public String getDescription() {
@@ -91,12 +114,12 @@ public class Shop {
 		this.dishes = dishes;
 	}
 
-	public Set<ShopContact> getShopContacts() {
-		return shopContacts;
+	public ShopContact getShopContact() {
+		return shopContact;
 	}
 
-	public void setShopContacts(Set<ShopContact> shopContacts) {
-		this.shopContacts = shopContacts;
+	public void setShopContact(ShopContact shopContact) {
+		this.shopContact = shopContact;
 	}
 
 }

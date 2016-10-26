@@ -1,62 +1,27 @@
 package po;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.Embeddable;
 
-import org.hibernate.annotations.GenericGenerator;
-
-@Entity
-@Table(name="M_SHOP_CONTACT")
+@Embeddable
 public class ShopContact {
 
-	@Id
-	@GenericGenerator(strategy="uuid", name="uuid")
-	@GeneratedValue(generator = "uuid")
-	private String cid;
+	private String address;
+	private String phone;
 	
-	@Column(nullable=false)
-	private String sid;
+	public String getAddress() {
+		return address;
+	}
 	
-	@Column(nullable=false)
-	private String type;
+	public void setAddress(String address) {
+		this.address = address;
+	}
 	
-	@Column(nullable=false)
-	private String info;
-
-	public String getCid() {
-		return cid;
+	public String getPhone() {
+		return phone;
 	}
-
-	@SuppressWarnings("unused")
-	private void setCid(String cid) {
-		this.cid = cid;
+	
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
-
-	public String getSid() {
-		return sid;
-	}
-
-	public void setSid(String sid) {
-		this.sid = sid;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public String getInfo() {
-		return info;
-	}
-
-	public void setInfo(String info) {
-		this.info = info;
-	}
-
+		
 }

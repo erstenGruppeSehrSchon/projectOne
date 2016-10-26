@@ -6,6 +6,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import po.Dish;
 import po.DishImage;
 import dao.DishImageDao;
 
@@ -17,7 +18,9 @@ public class DishImageDaoImpl implements DishImageDao {
 	private EntityManager em;
 	
 	@Override
-	public DishImage addDishImage(DishImage dishImage) {
+	public DishImage addDishImage(String did, DishImage dishImage) {
+		Dish dish = em.find(Dish.class, did);
+		dish.getDishImages().add(dishImage);
 		em.persist(dishImage);
 		return dishImage;
 	}

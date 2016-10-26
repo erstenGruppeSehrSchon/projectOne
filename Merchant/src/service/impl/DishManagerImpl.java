@@ -33,7 +33,7 @@ public class DishManagerImpl implements DishManager {
 	}
 
 	@Override
-	public Dish addDish(String sid, String name, String type, float price, int isActive, List<MultipartFile> files) {
+	public Dish addDish(String sid, String name, String type, float price, String description, List<MultipartFile> files) {
 		// Upload images
 		FileUploader uploader = FileUploader.getFileUploader();
 		ArrayList<String> imgPaths = uploader.upload(files);
@@ -48,11 +48,9 @@ public class DishManagerImpl implements DishManager {
 		
 		// Create dish object
 		Dish dish = new Dish();
-		dish.setSid(sid);
 		dish.setName(name);
 		dish.setType(type);
 		dish.setPrice(price);
-		dish.setIsActive(isActive);
 		dish.setDishImages(dishImages);
 		
 		return dish;
@@ -61,11 +59,6 @@ public class DishManagerImpl implements DishManager {
 	@Override
 	public boolean removeDish(String did) {
 		return dao.removeDish(did);
-	}
-
-	@Override
-	public Dish updateDish(String did, String sid, String name, String type, float price, int isActive) {
-		return dao.updateDish(did, sid, name, type, price, isActive);
 	}
 
 }
