@@ -50,7 +50,7 @@
 	</tr>
 	<tr>
 		<td>Birthday:</td>
-		<td><input type = "text" name="merchantBirth" class = "form-control" value="<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" 
+		<td><input type = "date" name="merchantBirth" class = "form-control" value="<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" 
             value="${merchant.birth}"/>"/></td>
 	</tr>
 	<tr>
