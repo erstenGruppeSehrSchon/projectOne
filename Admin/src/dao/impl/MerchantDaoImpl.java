@@ -33,7 +33,7 @@ public class MerchantDaoImpl implements MerchantDao {
 	private EntityManager em;
 	
 	@Override
-	public Merchant getMerchantByMid(int mid) {
+	public Merchant getMerchantByMid(String mid) {
 		return em.find(Merchant.class, mid);
 	}
 
@@ -47,25 +47,29 @@ public class MerchantDaoImpl implements MerchantDao {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Merchant> getMerchantsByCriteria(Integer mid, String name, String gender, Integer ageIndex, String regDate, String status) {
+	public List<Merchant> getMerchantsByCriteria(String mid, String name, String gender, Integer ageIndex, String regDate, String status) {
 		Session session = (Session)em.getDelegate();
 		
 		// Add criteria
 		Criteria criteria = session.createCriteria(Merchant.class);
 		
 		if (mid != null) {
+			System.out.println("A");
 			criteria.add(Restrictions.eq("mid", mid));
 		}
 		
-		if (name != null) {
+		if (name != null && name.length() > 0) {
+			System.out.println(name);
 			criteria.add(Restrictions.like("name", name, MatchMode.ANYWHERE));
 		}
 		
 		if (gender != null) {
+			System.out.println(gender);
 			criteria.add(Restrictions.eq("gender", gender));
 		}
 		
-		if (ageIndex != null) {
+		if (ageIndex != null && ageIndex > 0) {
+			System.out.println("D");
 			Date currentDate = new Date();
 			criteria.add(Restrictions.between(
 				"birthDate", 
@@ -73,8 +77,8 @@ public class MerchantDaoImpl implements MerchantDao {
 				getDateBeforeYear(currentDate, AGE_RANGE[ageIndex][0])
 			));
 		}
-		
-		if (regDate != null) {
+
+		if (regDate != null && regDate.length() > 0) {
 			DateFormatter formatter = DateFormatter.getDateFormatter();
 			Date fromDate = formatter.parse(regDate);
 			Date toDate = getNextDay(fromDate);
@@ -105,9 +109,16 @@ public class MerchantDaoImpl implements MerchantDao {
 	}
 
 	@Override
-	public Merchant updateMerchantStatus(int mid, String status) {
+	public Merchant updateMerchantStatus(String mid, String status) {
 		Merchant merchant = em.find(Merchant.class, mid);
 		merchant.setStatus(status);
+		em.persist(merchant);
+		return merchant;
+	}
+	
+	@Override
+	public Merchant addMerchant(Merchant merchant) {
+		em.persist(merchant);
 		return merchant;
 	}
 }

@@ -40,5 +40,12 @@ public class AdvertisementDaoImpl implements AdvertisementDao {
 		em.persist(advertisement);
 		return advertisement;
 	}
+	
+	@Override
+	public void updateAdvertisementStatus(String sid,String status){
+		Advertisement adv = em.find(Advertisement.class, sid);
+		adv.setStatus(status);
+		em.persist(adv);
+	}
 
 }

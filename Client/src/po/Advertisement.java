@@ -17,7 +17,7 @@ public class Advertisement {
 	public static final String INIT_STATUS = "Pending";
 
 	@Id
-	private Integer ADV_IMG_ID;
+	private String advId;
 	
 	@Column(nullable=false)
 	private String imgPath;
@@ -32,12 +32,12 @@ public class Advertisement {
 	@JoinColumn(name="shop_id")
 	private Shop shop;
 
-	public Integer getADV_IMG_ID() {
-		return ADV_IMG_ID;
+	public String getAdvId() {
+		return advId;
 	}
 
-	public void setADV_IMG_ID(Integer aDV_IMG_ID) {
-		ADV_IMG_ID = aDV_IMG_ID;
+	public void setAdvId(String advId) {
+		this.advId = advId;
 	}
 
 	public String getImgPath() {

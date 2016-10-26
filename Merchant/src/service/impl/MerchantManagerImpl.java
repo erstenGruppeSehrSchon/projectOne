@@ -63,5 +63,9 @@ public class MerchantManagerImpl implements MerchantManager {
 		return dao.addMerchant(merchant);
 	}
 	
+	@Override
+	public Merchant updateMerchantStatus(String mid, String status) {
+		return dao.updateMerchantStatus(mid, status);
+	}
 	
 }

@@ -2,6 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jms="http://www.springframework.org/schema/jms"
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
@@ -13,13 +14,15 @@
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd
         http://www.springframework.org/schema/tx
-        http://www.springframework.org/schema/tx/spring-tx.xsd">
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/jms
+        http://www.springframework.org/schema/jms/spring-jms.xsd">
         
         
         
     <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 	
-	<context:component-scan base-package="service,dao"></context:component-scan>
+	<context:component-scan base-package="service,dao,test"></context:component-scan>
 	
 	<bean id="ds" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver"></property>
@@ -27,6 +30,44 @@
 		<property name="password" value="123"></property>
 		<property name="username" value="TRAINING"></property>
 	</bean>
+	
+	<bean id="mq" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="failover://tcp://fanch2-2-w7:61616"></property>
+		
+	</bean>
+	
+	<!-- Submit new user request --> 
+	 <bean id="regQueue" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg value="RegisterQueue" />
+	</bean>
+	<!-- Listen to user status update from admin side -->
+	<bean id="statusQueue" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg value="StatusUpdateQueue" />
+	</bean>
+	<!-- Submit advertisement request -->
+	<bean id="advSubmitQueue" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg value="AdvQueue" />
+		
+	</bean>
+	<!-- Listen to advertisement update from admin side -->
+	<bean id="advUpdateQueue" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg value="AdvUpdateQueue" />
+		
+	</bean>
+	
+	<bean id="advJMSListener" class="util.AdvJMSListener">
+	</bean>
+	
+	<jms:listener-container connection-factory="mq">     
+    	<jms:listener destination="AdvUpdateQueue" ref="advJMSListener" method="messageReceived" />
+	</jms:listener-container>
+	
+	<bean id="userStatusJMSListener" class="util.UserStatusJMSListener">
+	</bean>
+	
+	<jms:listener-container connection-factory="mq">     
+    	<jms:listener destination="StatusUpdateQueue" ref="userStatusJMSListener" method="messageReceived" />
+	</jms:listener-container>
 
 		<!--
 		指定实现JPA的适配器，主要作用如下：

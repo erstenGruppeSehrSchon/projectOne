@@ -10,5 +10,6 @@ public interface AdvertisementManager {
 
 	public List<Advertisement> getAdvertisementBySid(String sid);
 	public Advertisement addAdvertisement(String sid, List<MultipartFile> files);
+	public void updateAdvertisementStatus(String sid,String status);
 	
 }

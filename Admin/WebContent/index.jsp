@@ -10,11 +10,11 @@
 	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+	<script src="js/index.js"></script>
 </head>
 <body>
-<jsp:include page="header.jsp" />
-<jsp:include page="menu.jsp" />
+	<jsp:include page="header.jsp" />
+	<jsp:include page="menu.jsp" />
 
 	
 	<!--*********outstanding List and sample search*********--> <!-- THREE IN ONE LINK -->
@@ -26,18 +26,12 @@
 		</tr>
 		<tr>
 			<td>
-			<table class = "table">
-				<c:forEach var="merchant" items="${aMerchants}">
-					<tr>
-						<td><a href = "showMerchantDetails?id=${merchant.mid}">${merchant.name}</a></td>
-						<td><a href = "updateMerchantStatus?id=${merchant.mid}&status=Accepted"><button class="btn btn-default">Accept</button></a></td>
-						<td><a href = "updateMerchantStatus?id=${merchant.mid}&status=Rejected"><button class="btn btn-default">Reject</button></a></td>
-					</tr>
-				</c:forEach>
+			<table id="outstandingTable" class = "table">
+
 			</table>
 			</td>
 			<td>
-				<form action="SearchMerchantByCriteria" method="get">
+				<form action="searchMerchants" method="get">
 					<table>
 						<tr><td>Merchant Id:</td><td><input type="text" name="id" id="searchMerchantId" class="form-control"/></td></tr>
 						<tr><td>Merchant Name:</td><td><input type="text" name="name" id="searchMerchantName" class="form-control"/></td></tr>
@@ -55,7 +49,6 @@
 						<tr><td>Gender:</td>
 							<td>
 								<select name="gender" class="form-control">
-								  <option value="%" selected></option>
 								  <option value="M">M</option>
 								  <option value="F">F</option>
 								  <option value="Unknown">Unknown</option>

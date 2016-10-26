@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,12 +9,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import po.Address;
+import po.Advertisement;
+import po.Client;
 import po.Dish;
 import po.Merchant;
 import po.Order;
 import po.OrderDetail;
 import po.Shop;
-
+import service.AdvertisementManager;
+import service.ClientManager;
 import service.DishManager;
 import service.MerchantManager;
 import service.OrderManager;
@@ -33,6 +38,12 @@ public class ClientController {
 	
 	@Autowired
 	private OrderManager orderManager;
+	
+	@Autowired 
+	private ClientManager clientManager;
+	
+	@Autowired
+	private AdvertisementManager advertisementManager;
 	
 	// Merchant Start
 	@RequestMapping(value="getMerchantByMid", method={RequestMethod.GET})
@@ -57,10 +68,16 @@ public class ClientController {
 	
 	@RequestMapping(value="getShopsByName", method={RequestMethod.GET})
 	@ResponseBody
-	public List<Shop> getShopsByName(String name, String type, String address) {
-		return shopManager.getShopsByCriteria(name, type, address);
+	public List<Shop> getShopsByName(String name) {
+		return shopManager.getShopsByName(name);
 	}
 	// Shop End
+	
+	
+	
+	
+	
+	
 	
 	// Dish Start
 	@RequestMapping(value="getDishByDid", method={RequestMethod.GET})
@@ -88,5 +105,77 @@ public class ClientController {
 	public Order addOrder(String sid, String deliveryAddress, List<OrderDetail> orderDetails) {
 		return orderManager.addOrder(sid, deliveryAddress, orderDetails);
 	}
+	
+	@RequestMapping(value="getAllOrder", method={RequestMethod.GET}) // Change later
+	@ResponseBody
+	public List<Order> getAllOrder() {
+		return orderManager.getAllOrder();
+	}
+	
+	@RequestMapping(value="getOrderByOid", method={RequestMethod.GET}) // Change later
+	@ResponseBody
+	public Order getOrderByOid(String oid) {
+		return orderManager.getOrderByOid(oid);
+	}
+	
+	@RequestMapping(value="addComment", method={RequestMethod.GET}) // Change later
+	@ResponseBody
+	public Order addComment(String oid, String comment) {
+		return null;
+	}
+	
+	@RequestMapping(value="getOrderBySid", method={RequestMethod.GET}) // Change later
+	@ResponseBody
+	public List<Order> getOrder(String Sid) {
+		return orderManager.getOrderBySid(Sid);
+	}
+	
+	
+	
 	// Order End
+	
+	//Client Start
+	@RequestMapping(value="clientRegister", method={RequestMethod.GET})
+	@ResponseBody
+	public boolean clientRegister(String username, String password, Set<Address> addresses) {
+		return clientManager.register(username, password, addresses);
+	}
+	
+	@RequestMapping(value="clientLogin", method={RequestMethod.GET}) 
+	@ResponseBody
+	public Client clientLogin(String username, String password) {
+		return clientManager.login(username, password);
+	}
+	
+	//Client End
+	
+	//Advertisement Start
+	
+	@RequestMapping(value="getLatestAdv", method={RequestMethod.GET}) 
+	@ResponseBody
+	public List<Advertisement> getLatestAdv() {
+		return advertisementManager.getLatestAdvertisement();
+	}
+	
+	
+	//Advertisement End
+	
+	//Comment Start
+	
+	@RequestMapping(value="getOrderWithCommentBySid", method={RequestMethod.GET}) // Change later
+	@ResponseBody
+	public List<Order> getOrderWithCommentBySid(String Sid) {
+
+		List<Order> orderList = orderManager.getOrderBySid(Sid);
+		List<Order> orderListWithComment = orderManager.getOrderBySid(Sid);
+		
+		for(Order order :orderList){
+			if(!order.getComments().isEmpty()){
+				orderListWithComment.add(order);
+			}
+		}
+		return orderListWithComment;
+	}
+	
+	//Comment End
 }
