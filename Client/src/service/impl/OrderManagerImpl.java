@@ -2,8 +2,10 @@ package service.impl;
 
 import java.util.Date;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import dao.OrderDao;
 import dao.OrderDetailDao;
 import po.Order;
@@ -30,6 +32,36 @@ public class OrderManagerImpl implements OrderManager {
 			order.getOrderDetails().add(tempDetail);
 		}
 		orderDao.addOrder(sid, order);
+		return order;
+	}
+
+	@Override
+	public List<Order> getAllOrder() {
+		List<Order> orderList = orderDao.getAllOrder();
+		return orderList;
+	}
+
+	@Override
+	public Order getOrderByOid(String oid) {
+		Order order = orderDao.getOrderByOid(oid);
+		return order;
+	}
+
+	@Override
+	public Order addComment(String oid, String comment) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Order addRating(String oid, int rating) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Order> getOrderBySid(String sid) {
+		List<Order> order = orderDao.getOrderBySid(sid);
 		return order;
 	}
 }

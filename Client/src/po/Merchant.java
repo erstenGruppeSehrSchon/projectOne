@@ -34,7 +34,7 @@ public class Merchant {
 	private String status;
 
 	@OneToMany(fetch=FetchType.EAGER)
-	@JoinColumn(name="merchant_id")
+	@JoinColumn(name="sid")
 	private Set<Shop> shops = new HashSet<>();
 	
 	public String getMid() {
