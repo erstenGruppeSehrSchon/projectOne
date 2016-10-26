@@ -10,10 +10,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import po.Dish;
 import po.Merchant;
+import po.Order;
+import po.OrderDetail;
 import po.Shop;
 
 import service.DishManager;
 import service.MerchantManager;
+import service.OrderManager;
 import service.ShopManager;
 
 @Controller
@@ -27,6 +30,9 @@ public class ClientController {
 	
 	@Autowired
 	private DishManager dishManager;
+	
+	@Autowired
+	private OrderManager orderManager;
 	
 	// Merchant Start
 	@RequestMapping(value="getMerchantByMid", method={RequestMethod.GET})
@@ -51,8 +57,8 @@ public class ClientController {
 	
 	@RequestMapping(value="getShopsByName", method={RequestMethod.GET})
 	@ResponseBody
-	public List<Shop> getShopsByName(String name) {
-		return shopManager.getShopsByName(name);
+	public List<Shop> getShopsByName(String name, String type, String address) {
+		return shopManager.getShopsByCriteria(name, type, address);
 	}
 	// Shop End
 	
@@ -76,4 +82,11 @@ public class ClientController {
 	}
 	// Dish End
 	
+	// Order Start
+	@RequestMapping(value="addOrder", method={RequestMethod.GET}) // Change later
+	@ResponseBody
+	public Order addOrder(String sid, String deliveryAddress, List<OrderDetail> orderDetails) {
+		return orderManager.addOrder(sid, deliveryAddress, orderDetails);
+	}
+	// Order End
 }

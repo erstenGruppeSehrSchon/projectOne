@@ -5,27 +5,27 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.GenericGenerator;
-
 @Entity
 @Table(name="M_ORDER")
 public class Order {
 	
+	public static final String INIT_STATUS = "Pending";
+	
 	@Id
-	@GenericGenerator(strategy="uuid", name="uuid")
-	@GeneratedValue(generator = "uuid")
 	private String oid;
 	
 	@Column(nullable=false)
-	private String status;
+	private String deliveryAddress;
 	
+	@Column(nullable=false)
+	private String status;
+
 	private Date orderTime;
 	
 	private String comment;
@@ -46,14 +46,23 @@ public class Order {
 	@JoinColumn(name="order_id")
 	private Set<OrderDetail> orderDetails = new HashSet<>();
 
-	public String getOID() {
+	public String getOid() {
 		return oid;
 	}
 
-	public void setOID(String oid) {
+	@SuppressWarnings("unused")
+	private void setOid(String oid) {
 		this.oid = oid;
 	}
 
+	public String getDeliveryAddress() {
+		return deliveryAddress;
+	}
+
+	public void setDeliveryAddress(String deliveryAddress) {
+		this.deliveryAddress = deliveryAddress;
+	}
+	
 	public String getStatus() {
 		return status;
 	}

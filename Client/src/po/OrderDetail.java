@@ -1,11 +1,13 @@
 package po;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -19,10 +21,13 @@ public class OrderDetail {
 	private String odid;
 	
 	@OneToOne
-	@JoinColumn(name="did")
+	@JoinColumn(name="dish_id")
 	private Dish dish;
 	
 	private int quantity;
+	
+	@Transient
+	private String did;
 	
 	public String getOdid() {
 		return odid;
@@ -46,6 +51,14 @@ public class OrderDetail {
 
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+	}
+
+	public String getDid() {
+		return did;
+	}
+
+	public void setDid(String did) {
+		this.did = did;
 	}
 
 }
