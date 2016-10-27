@@ -1,8 +1,6 @@
 package dao;
 
 import java.util.List;
-import java.util.Set;
-
 import po.Address;
 import po.Client;
 

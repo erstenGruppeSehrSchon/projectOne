@@ -26,7 +26,6 @@ public class DishDaoImpl implements DishDao {
 		return em.find(Dish.class, did);
 	}
 	
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<Dish> getDishesBySid(String sid) {
 //		Session session = (Session)em.getDelegate();
