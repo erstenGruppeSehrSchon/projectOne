@@ -52,7 +52,7 @@ public class MerchantDaoImpl implements MerchantDao {
 	@Override
 	public List<Merchant> getMerchantsByCriteria(String mid, String name, String gender, Integer ageIndex, String regDate, String status) {
 		
-		System.out.println("getMerchantsByCriteria");
+		System.out.println(mid + "..." + name + "..." + gender + "..." + ageIndex + "..." + regDate + "..." + status);
 		
 		Session session = (Session)em.getDelegate();
 		
@@ -61,21 +61,25 @@ public class MerchantDaoImpl implements MerchantDao {
 		
 		if (mid != null && mid.length() > 0) {
 			System.out.println("A");
+			System.out.println(mid);
 			criteria.add(Restrictions.eq("mid", mid));
 		}
 		
 		if (name != null && name.length() > 0) {
+			System.out.println("B");
 			System.out.println(name);
 			criteria.add(Restrictions.like("name", name, MatchMode.ANYWHERE));
 		}
 		
-		if (gender != null && !"%".equals(gender)) {
+		if (gender != null && !"0".equals(gender)) {
+			System.out.println("C");
 			System.out.println(gender);
 			criteria.add(Restrictions.eq("gender", gender));
 		}
 		
 		if (ageIndex != null && ageIndex > 0) {
 			System.out.println("D");
+			System.out.println(ageIndex);
 			Date currentDate = new Date();
 			criteria.add(Restrictions.between(
 				"birthDate", 
@@ -85,19 +89,20 @@ public class MerchantDaoImpl implements MerchantDao {
 		}
 
 		if (regDate != null && regDate.length() > 0) {
+			System.out.println("E");
+			System.out.println(regDate);
 			DateFormatter formatter = DateFormatter.getDateFormatter();
-			Date fromDate = formatter.parse(regDate.replace("-", "")); // input format is 2016-10-28
+			Date fromDate = formatter.parse(regDate.replace("-", "")); // not planned to update DateFormatter, not sure somewhere else will use this
 			Date toDate = getNextDay(fromDate);
 			criteria.add(Restrictions.ge("regDate", fromDate));
 			criteria.add(Restrictions.lt("regDate", toDate));
 		}
 		
-		if (status != null && status.length() > 0) {
+		if (status != null) {
 			criteria.add(Restrictions.eq("status", status));
 		}
 		
 		List<Merchant> merchants = criteria.list();
-		System.out.println("merchants: " + merchants);
 		return merchants;
 	}
 	

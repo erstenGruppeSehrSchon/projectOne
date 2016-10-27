@@ -59,6 +59,7 @@ public class AdminController {
         if (admin == null) {
         	System.out.println("admin is null");
         	modelAndView.setViewName("login");
+        	modelAndView.addObject("error", "Invalid username/password!");
         } else {
         	// Set view
             modelAndView.setViewName("index");
@@ -90,8 +91,6 @@ public class AdminController {
 	@RequestMapping(value="searchMerchants", method={RequestMethod.GET})
 	public ModelAndView searchMerchants(String id, String name, String gender, Integer ageIndex, String regDate, String status) {
 		
-		System.out.println(id + "..." + name + "..." + gender + "..." + ageIndex + "..." + regDate + "..." + status);
-		
         ModelAndView modelAndView = new ModelAndView();
         
         // Set view
@@ -99,7 +98,6 @@ public class AdminController {
         
         // Set match merchant
         List<Merchant> merchants = merchantManager.getMerchantsByCriteria(id, name, gender, ageIndex, regDate, status);
-        System.out.println("controller : merchants " + merchants);
         modelAndView.addObject("merchants", merchants);
         
 		return modelAndView;
@@ -122,21 +120,12 @@ public class AdminController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="updateMerchantStatus", method={RequestMethod.GET})
+	@RequestMapping(value="updateMerchantStatus", method={RequestMethod.POST})
 	@ResponseBody
-	public ModelAndView updateMerchantStatus(String mid, String status) {
-		
-		System.out.println(mid + "..." + status);
+	public Merchant updateMerchantStatus(String mid, String status) {
 		Merchant merchant = merchantManager.updateMerchantStatus(mid, status);
 		sendUpdateStatus(merchant);
-		
-        ModelAndView modelAndView = new ModelAndView();
-
-        modelAndView.setViewName("index");
-        modelAndView.addObject("aMerchants", merchantManager.getMerchantsByCriteria(null, null, null, null, null, "Pending"));
-        
-		return modelAndView;
-		
+		return merchant;
 	}
 	
 	//http://localhost:8080/Admin/getAdvertisementsByStatus?status=Pending
@@ -150,10 +139,23 @@ public class AdminController {
 	//http://localhost:8080/Admin/updateAdvertisementStatus?advId=-1&status=abc
 	@RequestMapping(value="updateAdvertisementStatus", method={RequestMethod.GET})
 	@ResponseBody
-	public void updateAdvertisementStatus(String advId, String status) {
-		System.out.println("enter updateAdvertisementStatus " + status);
-		Advertisement adv = advertisementManager.updateAdvertisementStatus(advId, status);
-		sendUpdateAdvStatus(adv);
+	public ModelAndView updateAdvertisementStatus(String advId, String status) {
+//		System.out.println("enter updateAdvertisementStatus " + status);
+//		
+//		System.out.println("Accepted adv count = " + advertisementManager.countAdvertisementByStatus("Accepted"));
+		
+		ModelAndView modelAndView = new ModelAndView();
+
+        modelAndView.setViewName("adsIndex");
+		
+		if ("Rejected".equals(status) || advertisementManager.countAdvertisementByStatus("Accepted") < 3) {
+			Advertisement adv = advertisementManager.updateAdvertisementStatus(advId, status);
+			sendUpdateAdvStatus(adv);
+		} else {
+			modelAndView.addObject("error", "Maximum accepted advertisement count is 3!");
+		}
+        
+		return modelAndView;
 	}
 	
 	@RequestMapping(value="showAcceptedAdvertisement", method={RequestMethod.GET})
@@ -170,7 +172,7 @@ public class AdminController {
 	@RequestMapping(value="showRejectedAdvertisement", method={RequestMethod.GET})
 	@ResponseBody
 	public List<Advertisement> showRejectedAdvertisement() {    		
-		return advertisementManager.getAdvertisementsByStatus("Rejected");
+		return advertisementManager.getAdvertisementsByStatus("Pending");
 	}
 	
 	private void sendUpdateStatus(Merchant merchant){
@@ -229,9 +231,4 @@ public class AdminController {
 		}
 	}
 
-	@RequestMapping(value="showPendingMerchant", method={RequestMethod.GET})
-	@ResponseBody
-	public List<Merchant> showPendingMerchant() {   
-		return merchantManager.getMerchantsByCriteria(null, null, null, null, null, "Pending");
-	}
 }

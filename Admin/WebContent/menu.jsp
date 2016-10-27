@@ -11,10 +11,10 @@
 					<a href="adsIndex.jsp"><img src="img/menu_icon_advertisement.png" title="Advertisement"/></a><br/><br/>
 					<a href="adsIndex.jsp">Advertisement</a>
 				</li>
-				<li>
-					<a href="complaintIndex.jsp"><img src="img/menu_icon_complaint.png" title="Complaint"/></a><br/><br/>
-					<a href="complaintIndex.jsp"">Complaint</a>
-				</li>
+<!-- 				<li> -->
+<!-- 					<a href="complaintIndex.jsp"><img src="img/menu_icon_complaint.png" title="Complaint"/></a><br/><br/> -->
+<!-- 					<a href="complaintIndex.jsp"">Complaint</a> -->
+<!-- 				</li> -->
 				<li>
 					<a href="index.jsp"><img src="img/menu_icon_search.png" title="Merchant Serach"/></a><br/><br/>
 					<a href="index.jsp">Search</a>

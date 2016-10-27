@@ -26,6 +26,9 @@
                 <tr>
                     <td colspan="2"><button type="submit">Login</button></td>
                 </tr>
+                <tr>
+                    <td><span id ="error">${error}</span></td>
+                </tr>
             </table>
         </form>
     </div>

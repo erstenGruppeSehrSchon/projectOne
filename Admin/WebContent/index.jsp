@@ -10,31 +10,11 @@
 	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
-</style>
-        <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
-    
-    <script>
-        $(function(){
-            $.ajax({
-                type: 'GET',
-                url: 'showPendingMerchant',
-                success: function(data) {
-                	$.each(data, function(i, ad){
-                		$(".merList").append("<div class='pendingMer'><td><a href = '/Admin/showMerchantDetails?mid=" + data[i].mid + "'>" + data[i].name + "</a></td><td><a href = '/Admin/updateMerchantStatus?mid=" + data[i].mid + "&status=Accepted'>Accept</a></td><td><a href = '/Admin/updateMerchantStatus?mid=" + data[i].mid + "&status=Rejected'>Reject</a></td>");
-                    }); 
-                },
-                error:function(){
-                    alert('Fail to show pending merchant!');
-                }  
-            });
-        });
-    </script>
+	<script src="js/index.js"></script>
 </head>
 <body>
-<jsp:include page="header.jsp" />
-<jsp:include page="menu.jsp" />
+	<jsp:include page="header.jsp" />
+	<jsp:include page="menu.jsp" />
 
 	
 	<!--*********outstanding List and sample search*********--> <!-- THREE IN ONE LINK -->
@@ -46,7 +26,9 @@
 		</tr>
 		<tr>
 			<td>
-			<div class="merList"></div>
+			<table id="outstandingTable" class = "table">
+
+			</table>
 			</td>
 			<td>
 				<form action="searchMerchants" method="get">
@@ -67,7 +49,7 @@
 						<tr><td>Gender:</td>
 							<td>
 								<select name="gender" class="form-control">
-								  <option value="%" selected></option>
+								  <option value="0" selected></option>
 								  <option value="M">M</option>
 								  <option value="F">F</option>
 								  <option value="Unknown">Unknown</option>
