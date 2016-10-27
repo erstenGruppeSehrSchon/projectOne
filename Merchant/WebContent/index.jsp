@@ -25,156 +25,189 @@
 	<div class="myShop">
 		<h3 class="h3_title_index">- My Shop -</h3>
 		
-        <div id="shopList"></div>
+        <div id="shopList"><span>Loading......</span></div>
 
 	</div>
+	
+	<br/>
 	
 	<!--*********My Advertisement*********--> <!-- THREE IN ONE LINK -->
 	<div class="myAdvertisement">
 		<h3 class="h3_title_index">- My Advertisement -</h3>
 		
-		<div id="advertList"></div>
+		<div id="advertList"><span>Loading......</span></div>
 	</div>
+	
+	<br/>
 	
 	<!--*********My Order*********--> <!-- THREE IN ONE LINK -->
 	<div class=myOrder>
 		<h3 class="h3_title_index">- My Order -</h3>
 		
-		<div id="orderList"></div>
+		<div id="orderList"><span>Loading......</span></div>
 	</div>
 </div>	
 
 <script>
 	$(function(){
-	    window.onload = function(){
-            loadShop();
-            loadAdvert();
-            loadOrder();
-        };
+        loadShop();
+        loadAdvert();
+        loadOrder();
 	});
     
+
     function loadShop(){
-        document.getElementById("shopList").innerHTML = '';
-        
-        if(!isEmpty('${merchant}')){
+        $.ajax({
+            type: 'GET',
+            url: 'getMerchantByMid?mid=${merchant.mid}',
+            success: function(data) {
+                document.getElementById("shopList").innerHTML = '';
+                
+                var userName = data.username;
             
-            if(${fn:length(merchant.shops)} > 0){
-                
-                var tableOP = $('<table class="largeThumb">');
-                $(tableOP).appendTo('#shopList');
-                
-                for(var i = 0; i< ${fn:length(merchant.shops)}; i++){
-                    if(i % 3 == 0){
-                        // open of new row
-                        var rowOP = $('<tr>');
-                        $(rowOP).appendTo('#shopList');   
+                if(!isEmpty(userName)){
+                    
+                    if(data.shops.length > 0){
+                        var tableOP = $('<table class="largeThumb">');
+                        $(tableOP).appendTo('#shopList');
+
+                        $.each(data.shops, function(i, ad){
+                            
+                            // open of new row
+                            if(i % 3 == 0){
+                                var rowOP = $('<tr>');
+                                $(rowOP).appendTo('#shopList'); 
+                            }
+
+                            var sid = data.shops[i].sid;
+                            var ipath = data.shops[i].imgPath;
+                            var shopName = data.shops[i].name;
+
+                            var shopInfo = $('<td><a href="getShopBySid?sid='+ sid+ '"><img src="'+ipath+'" title="'+shopName+'"/></br><p>'+shopName+'</p></a></td>');
+                            $(shopInfo).appendTo('#shopList');
+
+                            // end of new row
+                            if(i % 3 == 0){
+                                var rowEn = $('</tr>');
+                                $(rowEn).appendTo('#shopList');
+                            }
+                        });
+
+                        var tableEn = $('</table>');
+                        $(tableEn).appendTo('#shopList');
                     }
-                    
-                    var sid = '${merchant.shops[i].sid}';
-                    var ipath = '${ merchant.shops[i].imgPath}';
-                    var shopName = '${merchant.shops[i].name}';
-                    
-                    var shopInfo = $('<td><a href="getShopBySid?sid='+ sid+ '"><img src="'+ipath+'" title="'+shopName+'"/></br><p>'+shopName+'</p></a></td>');
-                    $(shopInfo).appendTo('#shopList');
-                    
-                    if(i % 3 == 0){
-                        // end of new row
-                        var rowEn = $('</tr>');
-                        $(rowEn).appendTo('#shopList');   
+                    else{
+                        var noShop = $('<p>You have no shops now.</p>');
+                        $(noShop).appendTo('#shopList');
                     }
                 }
-                
-                var tableEn = $('</table>');
-                $(tableEn).appendTo('#shopList');
-            }
-            else{
-                var noShop = $('<p>You have no shops now.</p>');
-                $(noShop).appendTo('#shopList');
-               
-            }
-        }
+            },
+            error:function(){
+                alert('Fail to show shops!');
+            }  
+        });    
     }
     
-    function loadAdvert(){
-        document.getElementById("advertList").innerHTML = '';
-        var mid = '${merchant.mid}';
-        
+    function loadAdvert(){   
         $.ajax({
             type:'GET',
-            url:"getAdvertisementByMid?mid=" + mid,
-            success: function(msg){
-                var tableOp = $('<table class="largeThumb">');
-                $(tableOp).appendTo('#advertList');
+            url:'getAdvertisementByMid?mid=${merchant.mid}',
+            success: function(data){
+                document.getElementById("advertList").innerHTML = '';
+                            
+                if(!isEmpty(data)){
+                    
+                    if(data.length > 0){
+                        var tableOP = $('<table class="largeThumb">');
+                        $(tableOP).appendTo('#advertList');
 
-                for(var i = 0; i< ${fn:length(msg)}; i++){
-                    if(i % 3 == 0){
-                        // open of new row
-                        var rowOP = $('<tr>');
-                        $(rowOP).appendTo('#advertList');   
+                        $.each(data, function(i, ad){
+                            
+                            // open of new row
+                            if(i % 3 == 0){
+                                var rowOP = $('<tr>');
+                                $(rowOP).appendTo('#advertList'); 
+                            }
+
+                            var ipath = data[i].imgPath;
+                            var shopName = data[i].shop.name;
+
+                            var advertInfo = $('<td><img src="'+ipath+'" title="'+shopName+'"/></td>');
+                            $(advertInfo).appendTo('#advertList');
+
+                            // end of new row
+                            if(i % 3 == 0){
+                                var rowEn = $('</tr>');
+                                $(rowEn).appendTo('#advertList');
+                            }
+                        });
+
+                        var tableEn = $('</table>');
+                        $(tableEn).appendTo('#advertList');
                     }
-                    
-                    var ipath= '${msg[i].imgPath}';
-                    var shopName = '${msg[i].shop.name}';
-                    
-                    var advertInfo = $('<td><img src="'+ipath+'" title="'+shopName+'"/></td>');
-                    $(advertInfo).appendTo('#advertList');
-                    
-                    if(i % 3 == 0){
-                        // end of new row
-                        var rowEn = $('</tr>');
-                        $(rowEn).appendTo('#advertList');   
+                    else{
+                        var noShop = $('<p>You have no advertisement now.</p>');
+                        $(noShop).appendTo('#advertList');
                     }
                 }
-                
-                var tableEn = $('</table>');
-                $(tableEn).appendTo('#advertList');
-              
             },
             error: function(){
-                var error = $('<p>Error in getting advertment.</p>');
+                document.getElementById("advertList").innerHTML = '';
+                
+                var error = $('<p>Error in getting advertisement.</p>');
                 $(error).appendTo('#advertList');
             }
         });
     }
     
-    function loadOrder(){
-        document.getElementById("orderList").innerHTML = '';
-        var mid = '${merchant.mid}';
-        
+    function loadOrder(){        
          $.ajax({
             type:'GET',
-            url:"getOrderByMid?mid="+mid,
-            success: function(msg){
+            url:'getOrderByMid?mid=${merchant.mid}',
+            success: function(data){
+                document.getElementById("orderList").innerHTML = '';
+                            
+                if(!isEmpty(data)){
+                    
+                    if(data.length > 0){
+                        var tableOP = $('<table class="largeThumb">');
+                        $(tableOP).appendTo('#orderList');
 
-                var tableOp = $('<table class="largeThumb">');
-                $(tableOp).appendTo('#orderList');
+                        $.each(data, function(i, ad){
+                            
+                            // open of new row
+                            if(i % 3 == 0){
+                                var rowOP = $('<tr>');
+                                $(rowOP).appendTo('#orderList'); 
+                            }
 
-                for(var i = 0; i< ${fn:length(msg)}; i++){
-                    if(i % 3 == 0){
-                        // open of new row
-                        var rowOP = $('<tr>');
-                        $(rowOP).appendTo('#orderList');   
+                            var shopName = data[i].shop.name;
+                            var orderId = data[i].oid;
+                            var orderTime = data[i].orderTime;
+
+                            var orderInfo= $("<td><p>"+shopName+"</p><p>"+orderId+"</p><p>"+orderTime+"</p></td>");
+                            $(orderInfo).appendTo('#orderList');
+
+                            // end of new row
+                            if(i % 3 == 0){
+                                var rowEn = $('</tr>');
+                                $(rowEn).appendTo('#orderList');
+                            }
+                        });
+
+                        var tableEn = $('</table>');
+                        $(tableEn).appendTo('#orderList');
                     }
-                    
-                    var shopName = '${msg[i].shop.name}';
-                    var orderId = '${msg[i].oid}';
-                    var orderTime = '${msg[i].orderTime}';
-                    
-                    var orderInfo= $("<td><p>"+shopName+"</p><p>"+orderId+"</p><p>"+orderTime+"</p></td>");
-                    $(orderInfo).appendTo('#orderList');
-
-                    if(i % 3 == 0){
-                        // end of new row
-                        var rowEn = $('</tr>');
-                        $(rowEn).appendTo('#orderList');   
+                    else{
+                        var noShop = $('<p>You have no orders now.</p>');
+                        $(noShop).appendTo('#orderList');
                     }
                 }
 
-                var tableEn = $('</table>');
-                $(tableEn).appendTo('#orderList');
-
             },
             error: function(){
+                document.getElementById("orderList").innerHTML = '';
+                
                 var error = $('<p>Error in getting order.</p>');
                 $(error).appendTo('#orderList');
             }

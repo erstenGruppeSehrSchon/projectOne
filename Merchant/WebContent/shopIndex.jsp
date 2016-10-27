@@ -25,7 +25,7 @@
 		<h3 class="h3_title_index">- My Shop -</h3>
 		<input type="button" value="Add Shop" onclick="location.href='./shopAdd.jsp';"/>
 		
-		<div id="shopList"></div>
+        <div id="shopList"><span>Loading......</span></div>
 		
 	</div>
 </div>
