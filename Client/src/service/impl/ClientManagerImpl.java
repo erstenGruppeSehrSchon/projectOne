@@ -40,26 +40,29 @@ public class ClientManagerImpl implements ClientManager{
 	}
 
 	@Override
-	public boolean register(String username, String password, Set<Address> addresses) {
+	public Client register(String username, String password, List<Address> addresses) {
 		
 		if(!username.isEmpty()&&!password.isEmpty()&&!addresses.isEmpty()){
 
 			List<Client> clientList = clientDao.getClientByName(username);
 
 			if(clientList.size()>0){
-				System.out.println("Client Name registered");
-				return false;
+				
+				Client client = new Client();
+				client.setPassword("Registered");
+				return client;
 			}else{
 				PasswordEncrypter encrypter = PasswordEncrypter.getPasswordEncrypter();
 				String encryptedPassword = encrypter.encrypt(password);
 				System.out.println("encryptedPassword" + encryptedPassword + username + addresses);
-				clientDao.addClient(username, encryptedPassword, addresses);
-				return true;
+				Client client = clientDao.addClient(username, encryptedPassword, addresses);
+				return client;
 			}
 
 		}else{
-			System.out.println("You empty something");
-			return false;
+			Client client = new Client();
+			client.setPassword("Empty");
+			return client;
 		}
 
 

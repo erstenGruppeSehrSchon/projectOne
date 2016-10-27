@@ -1,7 +1,9 @@
 package controller;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +25,10 @@ import service.DishManager;
 import service.MerchantManager;
 import service.OrderManager;
 import service.ShopManager;
+
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 public class ClientController {
@@ -60,19 +66,18 @@ public class ClientController {
 	// Merchant End
 	
 	// Shop Start
-	@RequestMapping(value="getShopBySid", method={RequestMethod.GET})
-	@ResponseBody
-	public Shop getShopBySid(String sid) {
-		return shopManager.getShopBySid(sid);
-	}
-	
-	@RequestMapping(value="getShopsByCriteria", method={RequestMethod.GET})
-	@ResponseBody
-	public List<Shop> getShopsByName(String name, String type, String address) {
-		return shopManager.getShopsByCriteria(name, type, address);
-	}
-	// Shop End
-	
+		@RequestMapping(value="getShopBySid", method={RequestMethod.GET})
+		@ResponseBody
+		public Shop getShopBySid(String sid) {
+			return shopManager.getShopBySid(sid);
+		}
+		
+		@RequestMapping(value="getShopsByCriteria", method={RequestMethod.GET})
+		@ResponseBody
+		public List<Shop> getShopsByName(String name, String type, String address) {
+			return shopManager.getShopsByCriteria(name, type, address);
+		}
+		// Shop End
 	
 	
 	
@@ -135,15 +140,53 @@ public class ClientController {
 	// Order End
 	
 	//Client Start
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@RequestMapping(value="clientRegister", method={RequestMethod.GET})
 	@ResponseBody
-	public boolean clientRegister(String username, String password, Set<Address> addresses) {
-		return clientManager.register(username, password, addresses);
+	public Client clientRegister(String username, String password, String addresses){
+		System.out.println(addresses);
+		List<Address> addressList = new ArrayList<Address>();
+		ObjectMapper mapper = new ObjectMapper();
+		List<Map> listMap;
+		try {
+			listMap = mapper.readValue(addresses, ArrayList.class);
+			
+		} catch (JsonParseException e) {
+			
+			e.printStackTrace();
+			return null;
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		
+		for (Map address: listMap){
+			Address addressObj = new Address();
+			addressObj.setCity(address.get("city").toString());
+			addressObj.setRoom(address.get("room").toString());
+			addressObj.setStreet(address.get("street").toString());
+			addressObj.setBuilding(address.get("building").toString());
+			addressObj.setDistrict(address.get("district").toString());
+			addressObj.setCountry(address.get("country").toString());
+			
+			addressList.add(addressObj);
+		}
+		
+		System.out.println(addressList.size());
+				
+		
+		return clientManager.register(username, password, addressList);
 	}
 	
 	@RequestMapping(value="clientLogin", method={RequestMethod.GET}) 
 	@ResponseBody
 	public Client clientLogin(String username, String password) {
+		System.out.println("login:" + username + password);
 		return clientManager.login(username, password);
 	}
 	
