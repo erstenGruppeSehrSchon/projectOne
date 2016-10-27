@@ -22,6 +22,11 @@ public class MerchantManagerImpl implements MerchantManager {
 	public Merchant login(String username, String password) {
 		// Encrypt password input by user
 		Merchant merchant = dao.getMerchantByUsername(username);
+		
+		// prevent exception
+		if(merchant == null)
+			return null;
+				
 		PasswordEncrypter encrypter = PasswordEncrypter.getPasswordEncrypter();
 		String encryptedPassword = encrypter.encrypt(password);
 		System.out.println(merchant == null);

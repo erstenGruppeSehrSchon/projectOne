@@ -27,40 +27,46 @@
                 </tr>
                 <tr>
                     <td><h4 class="form_title">Username</h4></td>
-                    <td><input id="merchantUsername" name="username" type="text" class="form-control"></td>
+                    <td><input id="merchantUsername" name="username" type="text" class="form-control"/></td>
                 </tr>
                 <tr>
                     <td><h4 class="form_title">Password</h4></td>
-                    <td><input id="merchantPassword" name="password" type="text" class="form-control"></td>
+                    <td><input id="merchantPassword" name="password" type="text" class="form-control"/></td>
                 </tr>
                 <tr>
                     <td><h4 class="form_title">Re-enter Password</h4></td>
-                    <td><input id="merchantrePassword" name="merchantPassword" type="text" class="form-control"></td>
+                    <td><input id="merchantrePassword" name="merchantPassword" type="text" class="form-control"/></td>
                 </tr>
                 <tr>
                     <td><h4 class="form_title">Name</h4></td>
-                    <td><input id="merchantName" name="name" type="text" class="form-control"></td>
+                    <td><input id="merchantName" name="name" type="text" class="form-control"/></td>
                 </tr>
+<!--
                 <tr>
                     <td><h4 class="form_title">Gender</h4></td>
                     <td>
                         <select type = "select" id="gender" name="gender" class="form-control">
-                          <option value="M">M</option>
-                          <option value="F">F</option>
-                          <option value="Unknown">Unknown</option>
-                        </select>
+                          <form:option value="M">M</form:option>
+                          <form:option value="F">F</form:option>
+                          <form:option value="Unknown">Unknown</form:option>
+                        </form:select>
                     </td>
+                </tr>
+-->
+                <tr>
+                    <td><h4 class="form_title">Gender</h4></td>
+                    <td><input id="merchantGender" name="gender" type="text" class="form-control"/></td>
                 </tr>
                 <tr>
                     <td><h4 class="form_title">Birthday</h4></td>
                     <!--<td><input type="date" id="merchantBirthDate" name="merchantBirthDate" class="form-control"></td>-->
-                    <td><input type="text" id="merchantBirthDate" name="birthDate" class="form-control"></td>
-                </tr>
-                <tr>
-                    <td rowspan="2"><input type="submit" value="Register" class="btn btn-default"></td>
+                    <td><input type="text" id="merchantBirthDate" name="birthDate" class="form-control"/></td>
                 </tr>
                 <tr>
                     <span id="error"></span>
+                </tr>
+                <tr>
+                    <td rowspan="2"><input type="submit" value="Register" class="btn btn-default"></td>
                 </tr>
 			</table>
 		</form>		
@@ -70,15 +76,16 @@
 <script>
     // validate registration form
     function validateForm(){
-        if(isEmpty($('#merchantUsername').text() ||
-            isEmpty($('#merchantPassword').text() ||
-            isEmpty($('#merchantrePassword').text() ||
-            isEmpty($('#merchantName').text() ||
-            isEmpty($('#merchantBirthDate').text()){
+        if(isEmpty($('#merchantUsername').val()) ||
+            isEmpty($('#merchantPassword').val()) ||
+            isEmpty($('#merchantrePassword').val()) ||
+            isEmpty($('#merchantName').val()) ||
+            isEmpty($('#merchantGender').val()) ||
+            isEmpty($('#merchantBirthDate').val())){
            $('#error').text("Field cannot be empty");
             return false;
         }
-        else if ($('#merchantPassword').text() != $('#merchantrePassword').text()){
+        if ($('#merchantPassword').val() != $('#merchantrePassword').val()){
            $('#error').text("Invalid password");
             return false;
         }
