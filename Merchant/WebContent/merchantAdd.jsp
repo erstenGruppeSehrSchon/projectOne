@@ -41,21 +41,15 @@
                     <td><h4 class="form_title">Name</h4></td>
                     <td><input id="merchantName" name="name" type="text" class="form-control"/></td>
                 </tr>
-<!--
                 <tr>
                     <td><h4 class="form_title">Gender</h4></td>
                     <td>
-                        <select type = "select" id="gender" name="gender" class="form-control">
-                          <form:option value="M">M</form:option>
-                          <form:option value="F">F</form:option>
-                          <form:option value="Unknown">Unknown</form:option>
-                        </form:select>
+                        <select type = "select" id="merchantGender" name="gender" class="form-control">
+                            <option value="M">M</option>
+                            <option value="F">F</option>
+                            <option value="Unknown">Unknown</option>
+                        </select>
                     </td>
-                </tr>
--->
-                <tr>
-                    <td><h4 class="form_title">Gender</h4></td>
-                    <td><input id="merchantGender" name="gender" type="text" class="form-control"/></td>
                 </tr>
                 <tr>
                     <td><h4 class="form_title">Birthday</h4></td>
