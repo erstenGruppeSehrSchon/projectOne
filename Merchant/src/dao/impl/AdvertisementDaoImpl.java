@@ -27,8 +27,9 @@ public class AdvertisementDaoImpl implements AdvertisementDao {
 	@Override
 	public List<Advertisement> getAdvertisementBySid(String sid) {
 		Session session = (Session)em.getDelegate();
-		Criteria criteria = session.createCriteria(Dish.class);
-		criteria.add(Restrictions.eq("shop_id", sid));
+		Criteria criteria = session.createCriteria(Advertisement.class);
+		criteria.createCriteria("shop", "s");
+		criteria.add(Restrictions.eq("s.sid", sid));
 		List<Advertisement> advertisements = criteria.list();
 		return advertisements;
 	}

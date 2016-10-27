@@ -10,7 +10,61 @@
 	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+$(function(){
+	alert('${merchant.mid}');
+	$.ajax({
+        type:'GET',
+        url:'getAdvertisementByMid?mid=${merchant.mid}',
+        success: function(data){
+            document.getElementById("advertList").innerHTML = '';  
+            alert(data);
+            if(!isEmpty(data)){
+                if(data.length > 0){
+                    var tableOP = $('<table class="largeThumb">');
+                    $(tableOP).appendTo('#advertList');
+                    $.each(data, function(i, ad){
+                        
+                        // open of new row
+                        if(i % 3 == 0){
+                            var rowOP = $('<tr>');
+                            $(rowOP).appendTo('#advertList'); 
+                        }
 
+                        var ipath = data[i].imgPath;
+                        var shopName = data[i].shop.name;
+
+                        var advertInfo = $('<td><img src="'+ipath+'" title="'+shopName+'"/></td>');
+                        $(advertInfo).appendTo('#advertList');
+
+                        // end of new row
+                        if(i % 3 == 0){
+                            var rowEn = $('</tr>');
+                            $(rowEn).appendTo('#advertList');
+                        }
+                    });
+
+                    var tableEn = $('</table>');
+                    $(tableEn).appendTo('#advertList');
+                }
+                else{
+                    var noShop = $('<p>You have no advertisement now.</p>');
+                    $(noShop).appendTo('#advertList');
+                }
+            }
+        },
+        error: function(){
+            document.getElementById("advertList").innerHTML = '';
+            
+            var error = $('<p>Error in getting advertisement.</p>');
+            $(error).appendTo('#advertList');
+        }
+    }); 
+    });
+function isEmpty(value) {
+    return typeof value == 'string' && !value.trim() || typeof value == 'undefined' || value === null;
+}	
+</script>
 </head>
 <body>
 <jsp:include page="./header.jsp" />
@@ -20,9 +74,11 @@
 
 	<!--*********My Advertisement*********--><!-- 3 in one line -->
 	<div class="myAdvertisement">
-		<h3 class="h3_title_index">- My Advertisement -</h3>
 		<a href="./adsAdd.jsp"><input type="submit" value="Add advertisement" /></a>
-		<table class="largeThumb">
+		<h3 class="h3_title_index">- My Advertisement -</h3>
+		
+		<div id="advertList"></div>
+		<!-- <table class="largeThumb">
 			<tr>
 				<td>
 					<img src="http://ralev.com/wp-content/uploads/2010/06/coke-tv-advertising.png" title=""/></br>
@@ -42,7 +98,7 @@
 					<p class="text_delete"><a href="#">Delete</a></p>
 				</td>
 			</tr>
-		</table>
+		</table> -->
 	</div>
 </div>
 

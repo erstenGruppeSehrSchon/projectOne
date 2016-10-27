@@ -52,7 +52,7 @@ function isEmpty(value) {
 
 	<!--*********Edit profile form*********-->
 	<div class="merchantForm">
-		<form name="merchantAdsForm" method="post" action="addAdvertisement">
+		<form name="merchantAdsForm" method="post" action="addAdvertisement" enctype="multipart/form-data">
 			<table class="AdsTable">
 			<tr>
 				<td colspan="2"><h3 class="h3_title_index">-Add Advertisement-</h3></td>
