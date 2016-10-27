@@ -51,4 +51,11 @@ public class MerchantDaoImpl implements MerchantDao {
 		merchant.setStatus(status);
 		return merchant;
 	}
+
+	@Override
+	public Merchant editMerchant(String mid, String password) {
+		Merchant merchant = em.find(Merchant.class, mid);
+		merchant.setPassword(password);
+		return merchant;
+	}
 }

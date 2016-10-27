@@ -109,6 +109,22 @@ public class MerchantController {
 		
 		return mv;
 	}
+	@RequestMapping(value="editMerchant", method={RequestMethod.POST})
+	@ResponseBody
+	public ModelAndView editMerchant(String mid, String password) {	
+		ModelAndView mv = new ModelAndView();
+		Merchant merchant = merchantManager.editMerchant(mid, password);
+		// add success
+		if(merchant != null){
+			System.out.println("ye");
+			mv.setViewName("login");
+			mv.addObject("merchant", merchant);
+		}
+		
+		
+		return mv;
+	}
+	
 	// Merchant End
 	
 	// Shop Start
