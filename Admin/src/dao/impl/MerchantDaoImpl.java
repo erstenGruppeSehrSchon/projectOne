@@ -121,4 +121,10 @@ public class MerchantDaoImpl implements MerchantDao {
 		em.persist(merchant);
 		return merchant;
 	}
+
+	@Override
+	public List<Merchant> getMerchantByStatus(String status) {
+		String jqpl = "from Merchant m where m.status = :status";
+		return em.createQuery(jqpl).setParameter("status", status).getResultList();
+	}
 }

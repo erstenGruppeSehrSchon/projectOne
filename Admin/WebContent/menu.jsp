@@ -8,8 +8,8 @@
 		<div class="menu">
 			<ul class="menu_ul">
 				<li>
-					<a href="#"><img src="img/menu_icon_advertisement.png" title="Advertisement"/></a><br/><br/>
-					<a href="#">Advertisement</a>
+					<a href="/Admin/showAdv"><img src="img/menu_icon_advertisement.png" title="Advertisement"/></a><br/><br/>
+					<a href="/Admin/showAdv">Advertisement</a>
 				</li>
 				<li>
 					<a href="#"><img src="img/menu_icon_complaint.png" title="Complaint"/></a><br/><br/>

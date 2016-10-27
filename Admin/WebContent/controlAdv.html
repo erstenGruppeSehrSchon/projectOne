@@ -9,66 +9,29 @@
             float: left;
         }
     </style>
+        <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    
+    <script>
+        $(function(){
+            $.ajax({
+                type: 'GET',
+                url: 'showRejectedAdvertisement',
+                success: function(data) {
+                	$.each(data, function(i, ad){
+                		$(".advList").append("<div class='pendingAdv'><img src='" + data[i].imgPath + "' /><a href='/Admin/updateAdvertisementStatus?advId=" + data[i].advImgId + "&status=Accepted'>Accepted</a><a href='/Admin/updateAdvertisementStatus?advId=" + data[i].advImgId + "&status=Rejected'>Rejected</a></div>");
+                    }); 
+                },
+                error:function(){
+                    alert('Fail to update advertisement!');
+                }  
+            });
+        });
+    </script>
 </head>
 <body>
     <div>
         <h1>Pending Advertisements</h1>
-        <div>
-            <div class="pendingAdv">
-                <div>
-                    <img src="" />
-                </div>
-                <div>
-                   <button>Accept</button>
-                   <button>Delete</button>
-                </div>
-            </div>
-            <div class="pendingAdv">
-                <div>
-                    <img src="" />
-                </div>
-                <div>
-                   <button>Accept</button>
-                   <button>Delete</button>
-                </div>
-            </div>
-            <div class="pendingAdv">
-                <div>
-                    <img src="" />
-                </div>
-                <div>
-                   <button>Accept</button>
-                   <button>Delete</button>
-                </div>
-            </div>
-            <div class="pendingAdv">
-                <div>
-                    <img src="" />
-                </div>
-                <div>
-                   <button>Accept</button>
-                   <button>Delete</button>
-                </div>
-            </div>
-            <div class="pendingAdv">
-                <div>
-                    <img src="" />
-                </div>
-                <div>
-                   <button>Accept</button>
-                   <button>Delete</button>
-                </div>
-            </div>
-            <div class="pendingAdv">
-                <div>
-                    <img src="" />
-                </div>
-                <div>
-                   <button>Accept</button>
-                   <button>Delete</button>
-                </div>
-            </div>
-        </div>
+        <div class="advList"></div>
     </div>
 </body>
 </html>

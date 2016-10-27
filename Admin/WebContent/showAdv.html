@@ -9,6 +9,39 @@
             float: left;
         }
     </style>
+    
+    <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    
+    <script>
+        $(function(){
+//         	$(":button").on("click", function(e) {
+//             	alert('Hi');
+//             	alert('clicked: ' + this.id);
+//     			$.ajax({
+//     				type : 'GET',
+//     				url : 'updateAdvertisementStatus',
+//     				data : {
+//     					advId : this.id,
+//     					status : 'Rejected'
+//     				}
+//     			}).done(function(msg) {
+//                     alert(msg);
+//     			})
+//     		});
+            $.ajax({
+                type: 'GET',
+                url: 'showAcceptedAdvertisement',
+                success: function(data) {
+                	$.each(data, function(i, ad){
+                		$(".advList").append("<div class='curAdv'><img src='" + data[i].imgPath + "' /><a href='/Admin/updateAdvertisementStatus?advId=" + data[i].advImgId + "&status=Rejected'>Rejected</a></div>");
+                    }); 
+                },
+                error:function(){
+                    alert('Fail to show advertisement!');
+                }  
+            });
+        });
+    </script>
 </head>
 <body>
     <div>
@@ -17,20 +50,7 @@
         </div>
         <div>
             <h1>Current Advertisement</h1>
-            <div>
-                <div class="curAdv">
-                    <img src="" />
-                    <button>Delete</button>
-                </div>
-                <div class="curAdv">
-                    <img src="" />
-                    <button>Delete</button>
-                </div>
-                <div class="curAdv">
-                    <img src="" />
-                    <button>Delete</button>
-                </div>
-            </div>
+            <div class="advList"></div>
         </div>
     </div>
 </body>

@@ -20,6 +20,8 @@ public class AdminManagerImpl implements AdminManager {
 		PasswordEncrypter encrypter = PasswordEncrypter.getPasswordEncrypter();
 		String encryptedPassword = encrypter.encrypt(password);
 		
+		System.out.println(encryptedPassword);
+		
 		if (encryptedPassword.equals(admin.getPassword())) {
 			// Remove password from object
 			admin.setPassword(null);

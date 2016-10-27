@@ -36,7 +36,6 @@ public class Advertisement {
 
 	public String getAdvId() {
 		return advId;
-	}
 
 	public void setAdvId(String advId) {
 		this.advId = advId;
@@ -76,5 +75,13 @@ public class Advertisement {
 
 	public static String getInitStatus() {
 		return INIT_STATUS;
+	}
+
+	public Integer getAdvImgId() {
+		return advImgId;
+	}
+
+	public void setAdvImgId(Integer advImgId) {
+		this.advImgId = advImgId;
 	}
 }
