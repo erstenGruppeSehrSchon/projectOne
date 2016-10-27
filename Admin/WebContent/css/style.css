@@ -53,8 +53,13 @@ input {
 	outline: none;
 }
 
+
 input[type=text],
-input[type=password] {
+input[type=password],
+select[type=select],
+input[type=date],
+input[type=file],
+input[type=textarea] {
 	color: #333;
 	padding-left: 10px;
 	margin: 10px;
@@ -223,36 +228,6 @@ input[type=button]:hover {
 	color: #e2838e;
 }
 
-/*footer*/
-.footer {
-	clear: both;
-	background-color: #2f2f2f;
-	color: #bf505d;
-	font-size: 11pt;
-	padding: 10px;
-	margin: 0px;
-	min-height: 300px;
-}
-
-.footer a:link, .footer a:visited, .footer a:active{
-	color: #999;
-}
-
-
-.footer a:hover{
-	color: #fff;
-}
-
-
-
-.footer_table{
-	border: 0px;
-}
-
-.footer_table td{
-	padding: 5px;
-}
-
 /*index*/
 .banner{
 	height: 350px;
@@ -299,7 +274,7 @@ input[type=button]:hover {
 	padding: 0 0 10px 20px;
 }
 
-.loginTable, .forgetTable, .regTable, .profileTable{
+.complaintBox, .forgetTable, .regTable, .profileTable{
 	width: 100%;
 }
 
@@ -335,7 +310,7 @@ input[type=button]:hover {
 }
 
 /*profile*/
-.profile{
+.clientForm{
 	float: right;
 	width: 70%;
 	padding: 0 0 10px 20px;
@@ -407,7 +382,6 @@ input[type=button]:hover {
 }
 
 .item{
-	padding-bottom: 50px;
 	width: 100%;
 }
 
@@ -416,9 +390,13 @@ input[type=button]:hover {
 }
 
 /*h3_title_index*/
+p{
+	font-family: "Century Gothic", "Helvetica", "Arial", sans-serif;
+}
 .h3_title_index{
 	color: #bd4f5c;
 	text-aligin: center;
+	font-family: "Century Gothic", "Helvetica", "Arial", sans-serif;
 }
 
 .largeThumb img{
@@ -426,4 +404,41 @@ input[type=button]:hover {
 }
 .menu_ul img{
 	height: 65px;
+}
+
+.block-divider-index {
+	height: 50px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	background: url(../img/line.png) no-repeat center center;
+}
+
+.text_delete{
+	font-family: "Century Gothic", "Helvetica", "Arial", sans-serif;
+	font-size: 12px;
+	text-decoration: underline;
+}
+
+.showInfortitle{
+	font-family: "Century Gothic", "Helvetica", "Arial", sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	
+}
+
+.form_title {
+	font-weight: bold;
+	color: #bd4f5c;
+	text-aligin: center;
+	font-family: "Century Gothic", "Helvetica", "Arial", sans-serif;
+}
+
+/*client comment*/
+.commentBox{
+	border: 1px solid #eac1c6;
+	margin-bottom: 10px;
+}
+
+#orderDishDiv{
+	float: left;
 }

@@ -14,9 +14,11 @@
 </head>
 <body>
 <jsp:include page="./header.jsp" />
-<jsp:include page="./menu.jsp" />
+
 <!--*********container*********-->
 <div class="container">
+<jsp:include page="./menu.jsp" />
+
 	<!--*********My Shop details*********--><!-- 3 in one line -->
 	<div class="myShop">
 	<a href="./cartIndex.jsp"><input type="submit" value="My Cart in this shop"/></a>

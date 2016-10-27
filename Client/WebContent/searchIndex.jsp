@@ -14,9 +14,11 @@
 </head>
 <body>
 <jsp:include page="./header.jsp" />
-<jsp:include page="./menu.jsp" />
+
 <!--*********container*********-->
 <div class="container">
+<jsp:include page="./menu.jsp" />
+
 	<!--*********Search form*********-->
 	<div class="clientForm">
 			<table class="searchTable">
