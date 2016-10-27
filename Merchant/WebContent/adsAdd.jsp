@@ -26,6 +26,15 @@
 				<td colspan="2"><h3 class="h3_title_index">-Add Advertisement-</h3></td>
 			</tr>
 			<tr>
+				<td><h4 class="form_title">Shop name: </h4></td>
+				<td><select type="select">
+					  <option value="shop1id">shop1</option>
+					  <option value="shop2id">shop2</option>
+					  <option value="shop3id">shop3</option>
+					  <option value="shop4id">shop4</option>
+					</select></td>
+			</tr>
+			<tr>
 				<td><h4 class="form_title">Advertisement image:</h4></td>
 				<td><form action="FileUpload" enctype="multipart/form-data">
 				<label class="btn btn-default">
