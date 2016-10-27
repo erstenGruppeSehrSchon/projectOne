@@ -5,12 +5,14 @@ import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
 
 import po.Advertisement;
 import po.Dish;
@@ -166,6 +168,20 @@ public class MerchantController {
 	// Shop End
 	
 	// Dish Start
+	@RequestMapping(value="showDishDetailPage", method={RequestMethod.GET}) 
+	public ModelAndView showDishDetailPage(String did) {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		// Set page
+		modelAndView.setViewName("dishDetails");
+		
+		// Store dish object
+		Dish dish = dishManager.getDishByDid(did);
+		modelAndView.addObject("dish", dish);
+		
+		return modelAndView;
+	}
+	
 	@RequestMapping(value="getDishByDid", method={RequestMethod.GET})
 	@ResponseBody
 	public Dish getDishByDid(String did) {
@@ -192,23 +208,30 @@ public class MerchantController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="addDish", method={RequestMethod.POST})
-	public ModelAndView addDish(String sid, String name, String type, float price, String description, List<MultipartFile> files) {
+	@RequestMapping(value="showDishIndex", method={RequestMethod.GET})
+	public ModelAndView showDishIndex(String mid) {
 		ModelAndView modelAndView = new ModelAndView();
 		
 		// Set page
 		modelAndView.setViewName("dishIndex");
 		
-		// Add dish
-		dishManager.addDish(sid, name, type, price, description, files, context);
+		// Update merchant
+		Merchant merchant = merchantManager.getMerchantByMid(mid);
+		modelAndView.addObject("merchant", merchant);
 		
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="removeDish", method={RequestMethod.GET})//Change later
-	@ResponseBody
-	public boolean removeDish(String did) {
-		return dishManager.removeDish(did);
+	@RequestMapping(value="addDish", method={RequestMethod.POST})
+	public ModelAndView addDish(String sid, String name, String type, float price, String description, List<MultipartFile> files, @ModelAttribute("merchant") Merchant merchant) {
+		dishManager.addDish(sid, name, type, price, description, files, context);
+		return showDishIndex(merchant.getMid());
+	}
+	
+	@RequestMapping(value="removeDish", method={RequestMethod.POST})//Change later
+	public ModelAndView removeDish(String did, @ModelAttribute("merchant") Merchant merchant) {
+		dishManager.removeDish(did);
+		return showDishIndex(merchant.getMid());
 	}
 	// Dish End
 	

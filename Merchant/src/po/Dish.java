@@ -2,6 +2,8 @@ package po;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -34,7 +36,7 @@ public class Dish {
 	@Column(nullable=false)
 	private String description;
 	
-	@OneToMany(fetch=FetchType.EAGER)
+	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.REMOVE)
 	@JoinColumn(name="dish_id")
 	private Set<DishImage> dishImages = new HashSet<>();
 	
