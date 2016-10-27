@@ -23,24 +23,7 @@
 	<div class="myShop">
 	<a href="./cartIndex.jsp"><input type="submit" value="My Cart in this shop"/></a>
 		<h3 class="h3_title_index">- Shop details-</h3>
-		<table class="largeThumb">
-			<tr>
-				<td>
-					<p><h4 class="form_title">Shop Name :</h4> Shop Name here</p>
-					</br>
-					<p><h4 class="form_title">Shop Address :</h4> Shop Address here</p>
-					</br>
-					<p><h4 class="form_title">Shop available time :</h4> Shop available time</p>
-					</br>
-					<p><h4 class="form_title">Shop Marks :</h4> Shop Marks</p>
-					</br>
-					<p><h4 class="form_title">Shop Description:</h4> Shop Description</p>
-				</td>
-				<td>
-					<img src="http://browzin.net/wp-content/uploads/2015/02/pictures-675-ESB_gift_shop.jpg"/>
-				</td>
-			</tr>
-		</table>
+		<div id ="shopInfo"></div>
 	</div>
 </div>
 
@@ -126,6 +109,44 @@
 			</tr>
 		</table>
 </div>
+<script>
+	$(function(){
+    	window.onload = function(){
+        	loadShop();
+        	//loadAdvert();
+        	//loadOrder();
+    	};
+	});
 
+	function loadShop(){
+        document.getElementById("shopInfo").innerHTML = '';
+        
+        if(!isEmpty('${shop}')){
+        	var tableOP = '<table class="largeThumb"><tr>';
+            //$(tableOP).appendTo('#shopInfo');
+            var shopName = '<td><p><h4 class="form_title">Shop Name :</h4> ${shop.name}</p></br>';
+            tableOP+=shopName;
+            
+            var shopAddr = '<p><h4 class="form_title">Shop Address :</h4> ${shop.shopContact.address}</p></br>';
+            tableOP+=shopAddr;
+            var shopHour = '<p><h4 class="form_title">Shop Available Time :</h4> ${opening}</p></br>'
+            tableOP+=shopHour;
+            var shopScore = '<p><h4 class="form_title">Shop Marks :</h4> ${score}</p></br>';
+            tableOP+=shopScore;
+            var shopDescr = '<p><h4 class="form_title">Shop Description :</h4> ${shop.description}</p></td>';
+            tableOP+=shopDescr;
+            var shopImg = '<td><img src="${shop.imgPath}"/></td>';
+            tableOP+=shopImg;
+            var tableEn = '</tr></table>';
+            tableOP+=tableEn;
+            $(tableOP).appendTo('#shopInfo');
+        }
+	}
+
+	function isEmpty(value) {
+        return typeof value == 'string' && !value.trim() || typeof value == 'undefined' || value === null;
+    }
+
+</script>
 </body>
 </html>
