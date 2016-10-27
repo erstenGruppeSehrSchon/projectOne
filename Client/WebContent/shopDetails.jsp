@@ -48,46 +48,7 @@
 	<h3 class="h3_title_index">- All Comments in this shop-</h3>
 	<!-- one comment one table -->
 	<div id ="commentList"></div>
-		<table class="largeThumb commentBox">
-		<tr>
-			<td colspan="2"><h4 class="form_title">-Customer comment-</h4></td>
-		</tr>
-			<tr>
-				<td>
-					<p><b>Customer name:</b> name here</p>
-					<p><b>Date:</b> date here</p>
-				</td>
-				<td><p><b>Content:</b></p><p>Content here</p></td>
-			</tr>
-			<tr>
-			<td colspan="2"><h4 class="form_title">-Merchant comment-</h4></td>
-		</tr>
-			<tr>
-				<td><p><b>Date:</b> date here</p></td>
-				<td><p><b>Content:</b> Content here</p></td>
-			</tr>
-		</table>
 		
-		<!-- other comment -->
-		<table class="largeThumb commentBox">
-		<tr>
-			<td colspan="2"><h4 class="form_title">-Customer comment-</h4></td>
-		</tr>
-			<tr>
-				<td>
-					<p><b>Customer name:</b> name here</p>
-					<p><b>Date:</b> date here</p>
-				</td>
-				<td><p><b>Content:</b></p><p>Content here</p></td>
-			</tr>
-			<tr>
-			<td colspan="2"><h4 class="form_title">-Merchant comment-</h4></td>
-		</tr>
-			<tr>
-				<td><p><b>Date:</b> date here</p></td>
-				<td><p><b>Content:</b> Content here</p></td>
-			</tr>
-		</table>
 </div>
 <script>
 	$(function(){
@@ -195,6 +156,9 @@
                     	
                     	$(tableOp).appendTo('#commentList');
                 	});
+                } else {
+					var noCm = '<p>No comment on this shop yet</p>';
+					$(noCm).appendTo('#commentList');
                 }
             	
             },
