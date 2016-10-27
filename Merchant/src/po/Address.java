@@ -1,14 +1,19 @@
 package po;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="M_ADDRESS")
 public class Address {
 
 	@Id   //primary key
+	@GenericGenerator(strategy="uuid", name="uuid")
+	@GeneratedValue(generator = "uuid")
 	private String addId;
 
 	private String city;
