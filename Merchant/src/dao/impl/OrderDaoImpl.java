@@ -26,8 +26,11 @@ public class OrderDaoImpl implements OrderDao {
 		Criteria criteria = session.createCriteria(Order.class); System.out.println(criteria.list().size());
 		criteria.createCriteria("shop", "s");
 		criteria.add(Restrictions.eq("s.sid", sid));
-		List<Order> orders = criteria.list();
-		return orders;
+
+		criteria.createCriteria("shop","s");
+		criteria.add(Restrictions.eq("s.sid", sid).ignoreCase());		
+		List<Order> order = (List<Order>) criteria.list();		
+		return order;
 	}
 
 	@Override

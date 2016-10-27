@@ -140,7 +140,6 @@ public class MerchantController {
 			mv.addObject("merchant", merchant);
 		}
 		
-		
 		return mv;
 	}
 	
@@ -175,8 +174,16 @@ public class MerchantController {
 	// Shop Start
 	@RequestMapping(value="getShopBySid", method={RequestMethod.GET})
 	@ResponseBody
-	public Shop getShopBySid(String sid) {
-		return shopManager.getShopBySid(sid);
+	public ModelAndView getShopBySid(String sid) {
+		ModelAndView mv = new ModelAndView();
+		Shop s = shopManager.getShopBySid(sid);
+		
+		if(s != null){
+			mv.setViewName("shopDetails");
+			mv.addObject("shop", s);
+		}
+		
+		return mv;
 	}
 	
 	@RequestMapping(value="addShop", method={RequestMethod.POST})

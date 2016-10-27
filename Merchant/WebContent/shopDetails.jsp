@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -53,7 +54,7 @@
 	<h3 class="h3_title_index">- All Dishes in this shop-</h3>
 	<input type="button" value="Add Dish" onclick="location.href='./dishAdd.jsp';"/>
 	
-	<div id="dishList"></div>
+	<div id="dishList"><span>Loading......</span></div>
 </div>
 
 <div class="container">
@@ -65,124 +66,157 @@
 	<h3 class="h3_title_index">- All Comments in this shop-</h3>
 	<!-- one comment one table -->
     
-    <div id="commentList"></div>
+    <div id="commentList"><span>Loading......</span></div>
 </div>
+<br/>
+<br/>
 
 <script>
 
     $(function(){
-	    window.onload = function(){
-            
-            // load shop name
-            if(isEmpty(${shop.name}))
-                $('#shopName').text(" --- ");
-            else
-                $('#shopName').text(${shop.name});
-            
-            // load shop phone
-            if(isEmpty(${shop.shopContact.phone}))
-                $('#shopPhone').text(" --- ");
-            else
-                $('#shopPhone').text(${shop.shopContact.phone});
-            
-            // load shop address
-            if(isEmpty(${shop.shopContact.address}))
-                $('#shopAddress').text(" --- ");
-            else
-                $('#shopAddress').text(${shop.shopContact.address});
-            
-            // load shop available time
-            if(isEmpty(${shop.openTime}) || isEmpty(${shop.closeTime}))
-                $('#shopTime').text(" --- ");
-            else
-                $('#shopTime').text(${shop.openTime}+" - "+${shop.closeTime});
-            
-            // load shop description
-            if(isEmpty(${shop.description}))
-                $('#shopDescr').text(" --- ");
-            else
-                $('#shopDescr').text(${shop.description});
-            
-            // load shop pic
-            if(isEmpty(${shop.imgPath}))
-                $('#shopPic').attr("src", "http://www.icon2s.com/img256/256x256-black-white-android-user.png");
-            else
-                $('#shopPic').attr("src", ${shop.imgPath});
-            
-            // load shop dishes
-            loadDish();
-            
-            // load comments
-            loadComment();
-        };
+        
+        // load shop name
+        if(isEmpty('${shop.name}'))
+            $('#shopName').text(" --- ");
+        else
+            $('#shopName').text('${shop.name}');
+
+        // load shop phone
+        if(isEmpty('${shop.shopContact.phone}'))
+            $('#shopPhone').text(" --- ");
+        else
+            $('#shopPhone').text('${shop.shopContact.phone}');
+
+        // load shop address
+        if(isEmpty('${shop.shopContact.address}'))
+            $('#shopAddress').text(" --- ");
+        else
+            $('#shopAddress').text('${shop.shopContact.address}');
+
+        // load shop available time
+        if(isEmpty('${shop.openTime}') || isEmpty('${shop.closeTime}'))
+            $('#shopTime').text(" --- ");
+        else{
+            var oTime = '<fmt:formatDate pattern="HH:mm:ss" value="${shop.openTime}" />';
+            var eTime = '<fmt:formatDate pattern="HH:mm:ss" value="${shop.closeTime}" />';
+            $('#shopTime').text(oTime+" - "+eTime);
+
+        }
+        
+        // load shop description
+        if(isEmpty('${shop.description}'))
+            $('#shopDescr').text(" --- ");
+        else
+            $('#shopDescr').text('${shop.description}');
+
+        // load shop pic
+        if(isEmpty('${shop.imgPath}'))
+            $('#shopPic').text("src", "http://www.icon2s.com/img256/256x256-black-white-android-user.png");
+        else
+            $('#shopPic').attr("src", '${shop.imgPath}');
+
+        // load shop dishes
+        loadDish();
+
+        // load comments
+        loadComment();
 	});
     
     function loadDish(){
-        document.getElementById("dishList").innerHTML = '';
-        
-        if(!isEmpty('${shop.dishes}')){
-            
-            if(${fn:length(shop.dishes)} > 0){
-                
-                var tableOP = $('<table class="largeThumb">');
-                $(tableOP).appendTo('#dishList');
-                
-                for(var i = 0; i< ${fn:length(shop.dishes)}; i++){
-                    if(i % 3 == 0){
-                        // open of new row
-                        var rowOP = $('<tr>');
-                        $(rowOP).appendTo('#dishList');   
+        $.ajax({
+            type: 'GET',
+            url: 'getDishesBySid?sid=${shop.sid}',
+            success: function(data) {
+                document.getElementById("dishList").innerHTML = '';
+                            
+                if(!isEmpty(data)){
+                    
+                    if(data.length > 0){
+                        var tableOP = $('<table class="largeThumb">');
+                        $(tableOP).appendTo('#dishList');
+
+                        $.each(data, function(i, ad){
+                            
+                            // open of new row
+                            if(i % 3 == 0){
+                                var rowOP = $('<tr>');
+                                $(rowOP).appendTo('#dishList'); 
+                            }
+
+                            var did = data[i].did;
+                            var ipath = data[i].dishImages[0];
+                            var dishName = data[i].name;
+                            var shopName = '${shop.name}';
+
+                            var dishInfo = $('<td><a href="getDishByDid?did="'+ did+'><img src="'+ipath+'" title="'+dishName+'"/><br/><p>'+shopName+'</p><p>'+dishName+'</p></a></td>');
+                            $(dishInfo).appendTo('#dishList');
+
+                            // end of new row
+                            if(i % 3 == 0){
+                                var rowEn = $('</tr>');
+                                $(rowEn).appendTo('#dishList');
+                            }
+                        });
+
+                        var tableEn = $('</table>');
+                        $(tableEn).appendTo('#dishList');
                     }
-                    
-                    var did = '${shop.dishes[i].did}';
-                    var ipath = '${shop.dishes[i].dishImages[0]}';
-                    var dishName = '${shop.dishes[i].name}';
-                    var shopName = '${shop.name}';
-                    
-                    var dishInfo = $('<td><a href="getDishByDid?did="'+ did+'><img src="'+ipath+'" title="'+dishName+'"/><br/><p>'+shopName+'</p><p>'+dishName+'</p></a></td>');
-                    $(dishInfo).appendTo('#dishList');
-                    
-                    if(i % 3 == 0){
-                        // end of new row
-                        var rowEn = $('</tr>');
-                        $(rowEn).appendTo('#dishList');   
+                    else{
+                        document.getElementById("dishList").innerHTML = '';
+                        
+                        var noDish = $('<p>You have no dishes now.</p>');
+                        $(noDish).appendTo('#dishList');
                     }
                 }
+            },
+            error:function(){
+                alert('Fail to show dishes!');
                 
-                var tableEn = $('</table>');
-                $(tableEn).appendTo('#dishList');
-            }
-            else{
-                var noDish = $('<p>You have no dishes now.</p>');
+                document.getElementById("dishList").innerHTML = '';
+                var noDish = $('<p>Fail to show dishes!</p>');
                 $(noDish).appendTo('#dishList');
-               
-            }
-        }
+            }  
+        });
+        
     }
     
     function loadComment(){
         document.getElementById("commentList").innerHTML = '';
-        var sid = '${shop.sid}';
         
         $.ajax({
             type:'GET',
-            url:"getOrdersBySid?sid=" + sid,
-            success: function(msg){
-                for(var i = 0; i< ${fn:length(msg)}; i++){
-                    var custName = "xxxxxxxxxxxx";
-                    var commentTime = '${msg[i].commentTime}';
-                    var comments = '${msg[i].comments}';
-                    var replyTime = '${msg[i].replyTime}';
-                    var reply = '${msg[i].reply}';
-                    
-                    var table = $('<table class="largeThumb commentBox"><tr><td colspan="2"><h4 class="form_title">-Customer comment-</h4></td></tr><tr><td><p><b>Customer name:</b>'+custName+'</p><p><b>Date:</b>'+ commentTime+'</p></td><td><p><b>Content:</b></p><p>'+comments+'</p></td></tr><tr><td colspan="2"><h4 class="form_title">-Merchant comment-</h4></td></tr><tr><td><p><b>Date:</b>'+replyTime+'</p></td><td><p><b>Content:</b>'+reply+'</p></td></tr></table>');
-                    $(table).appendTo('#commentList');
+            url:'getOrdersBySid?sid=${shop.sid}',
+            success: function(data){
+                document.getElementById("commentList").innerHTML = '';
+                            
+                if(!isEmpty(data)){                    
+                    if(data.length > 0){
+
+                        $.each(data, function(i, ad){
+                            
+                            var commentTime = data[i].commentTime;
+                            var comments = data[i].comments;
+                            var replyTime = data[i].replyTime;
+                            var reply = data[i].reply;
+                            
+                            var table = $('<table class="largeThumb commentBox"><tr><td colspan="2"><h4 class="form_title">-Customer comment-</h4></td></tr><tr><td><p><b>Date:</b>'+ commentTime+'</p></td><td><p><b>Content:</b></p><p>'+comments+'</p></td></tr><tr><td colspan="2"><h4 class="form_title">-Merchant comment-</h4></td></tr><tr><td><p><b>Date:</b>'+replyTime+'</p></td><td><p><b>Content:</b>'+reply+'</p></td></tr></table>');
+                            $(table).appendTo('#commentList');
+                        });
+                    }
+                    else{
+                        document.getElementById("commentList").innerHTML = '';
+                        
+                        var noComm = $('<p>You have no comments now.</p>');
+                        $(noComm).appendTo('#commentList');
+                    }
                 }
-              
             },
             error: function(){
-                var error = $('<p>Error in getting comment.</p>');
-                $(error).appendTo('#commentList');
+                alert('Fail to show comments!');
+                
+                document.getElementById("commentList").innerHTML = '';
+                var noComm = $('<p>Fail to show comments!</p>');
+                $(noComm).appendTo('#commentList');
             }
         });
         
