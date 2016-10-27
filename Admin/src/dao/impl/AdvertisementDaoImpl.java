@@ -38,6 +38,7 @@ public class AdvertisementDaoImpl implements AdvertisementDao {
 			adv.setStatus(status);
 			em.persist(adv);
 		}		
+		return adv;
 	}
 	
 	@Override

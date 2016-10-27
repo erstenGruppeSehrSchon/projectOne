@@ -140,6 +140,23 @@ public class AdminController {
 		sendUpdateAdvStatus(adv);
 	}
 	
+	@RequestMapping(value="showAcceptedAdvertisement", method={RequestMethod.GET})
+	@ResponseBody
+	public List<Advertisement> showAcceptedAdvertisement() {    		
+		return advertisementManager.getAdvertisementsByStatus("Accepted");
+	}
+	
+	@RequestMapping(value="controlAdvertisement", method={RequestMethod.GET})
+	public void controlAdv(String advId, String status) {  
+		advertisementManager.updateAdvertisementStatus(advId, status);
+	}
+	
+	@RequestMapping(value="showRejectedAdvertisement", method={RequestMethod.GET})
+	@ResponseBody
+	public List<Advertisement> showRejectedAdvertisement() {    		
+		return advertisementManager.getAdvertisementsByStatus("Rejected");
+	}
+	
 	private void sendUpdateStatus(Merchant merchant){
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		ConnectionFactory factory = (ActiveMQConnectionFactory)context.getBean("mq");
