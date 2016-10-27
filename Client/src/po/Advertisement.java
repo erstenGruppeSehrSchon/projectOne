@@ -4,10 +4,13 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
 
 
 @Entity
@@ -17,6 +20,8 @@ public class Advertisement {
 	public static final String INIT_STATUS = "Pending";
 
 	@Id
+	@GenericGenerator(strategy="uuid", name="uuid")
+	@GeneratedValue(generator = "uuid")
 	private String advId;
 	
 	@Column(nullable=false)
