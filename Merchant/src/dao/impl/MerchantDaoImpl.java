@@ -36,7 +36,7 @@ public class MerchantDaoImpl implements MerchantDao {
 		List<Merchant> merchants = criteria.list();
 		
 		// Return merchant if record exists
-		return (merchants.size() == 1 ? merchants.get(0) : null);
+		return (merchants.size() > 0  ? merchants.get(0) : null);
 	}
 
 	@Override
@@ -49,6 +49,13 @@ public class MerchantDaoImpl implements MerchantDao {
 	public Merchant updateMerchantStatus(String mid, String status) {
 		Merchant merchant = em.find(Merchant.class, mid);
 		merchant.setStatus(status);
+		return merchant;
+	}
+
+	@Override
+	public Merchant editMerchant(String mid, String password) {
+		Merchant merchant = em.find(Merchant.class, mid);
+		merchant.setPassword(password);
 		return merchant;
 	}
 }
