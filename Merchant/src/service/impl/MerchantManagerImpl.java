@@ -72,5 +72,14 @@ public class MerchantManagerImpl implements MerchantManager {
 	public Merchant updateMerchantStatus(String mid, String status) {
 		return dao.updateMerchantStatus(mid, status);
 	}
+
+	@Override
+	public Merchant editMerchant(String mid, String password) {
+		// TODO Auto-generated method stub
+		// Encrypt password
+		PasswordEncrypter encrypter = PasswordEncrypter.getPasswordEncrypter();
+		String encryptedPassword = encrypter.encrypt(password);
+		return dao.editMerchant(mid, encryptedPassword);
+	}
 	
 }
