@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -33,10 +35,10 @@ public class DishManagerImpl implements DishManager {
 	}
 
 	@Override
-	public Dish addDish(String sid, String name, String type, float price, String description, List<MultipartFile> files) {
+	public Dish addDish(String sid, String name, String type, float price, String description, List<MultipartFile> files, ServletContext context) {
 		// Upload images
 		FileUploader uploader = FileUploader.getFileUploader();
-		ArrayList<String> imgPaths = uploader.upload(files);
+		ArrayList<String> imgPaths = uploader.upload(files, context);
 		
 		// Create dish image objects
 		Set<DishImage> dishImages = new HashSet<>();

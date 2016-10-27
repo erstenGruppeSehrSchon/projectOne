@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
-
+import javax.servlet.ServletContext;
 import org.springframework.web.multipart.MultipartFile;
 
 public class FileUploader {
 
-	private static final String UPLOAD_DIR = "img";
+	private static final String UPLOAD_DIR = "/uploadImg/";
 	private static FileUploader fileUploader;
 	
 	private FileUploader() {
@@ -25,7 +25,7 @@ public class FileUploader {
 	}
 	
 	// Return file paths
-	public ArrayList<String> upload(List<MultipartFile> files) {
+	public ArrayList<String> upload(List<MultipartFile> files, ServletContext context) {
 		ArrayList<String> imgPaths = new ArrayList<>();
 			
 		for (MultipartFile file : files) {
@@ -33,15 +33,15 @@ public class FileUploader {
 			String fileName = file.getOriginalFilename();
 			String fileType = fileName.substring(fileName.lastIndexOf("."));
 			String resultFileName = new Date().getTime() + UUID.randomUUID().toString() + fileType;
-			String filePath = UPLOAD_DIR + resultFileName;
-			
+			String filePath = context.getRealPath(UPLOAD_DIR + resultFileName);
+						
 			// Store file
 			File resultFile = new File(filePath);
 			try {
 				file.transferTo(resultFile);
 				
 				// Add to list
-				imgPaths.add(filePath);
+				imgPaths.add("http://localhost:8081" + context.getContextPath() + UPLOAD_DIR + resultFileName);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
