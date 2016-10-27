@@ -128,7 +128,6 @@ public class AdminController {
 		return merchant;
 	}
 	
-	//http://localhost:8080/Admin/getAdvertisementsByStatus?status=Pending
 	@RequestMapping(value="getAdvertisementsByStatus", method={RequestMethod.GET})
 	@ResponseBody
 	public List<Advertisement> getAdvertisementsByStatus(String status) {
@@ -136,43 +135,12 @@ public class AdminController {
 		return advertisementManager.getAdvertisementsByStatus(status);
 	}
 	
-	//http://localhost:8080/Admin/updateAdvertisementStatus?advId=-1&status=abc
-	@RequestMapping(value="updateAdvertisementStatus", method={RequestMethod.GET})
+	@RequestMapping(value="updateAdvertisementStatus", method={RequestMethod.POST})
 	@ResponseBody
-	public ModelAndView updateAdvertisementStatus(String advId, String status) {
-//		System.out.println("enter updateAdvertisementStatus " + status);
-//		
-//		System.out.println("Accepted adv count = " + advertisementManager.countAdvertisementByStatus("Accepted"));
-		
-		ModelAndView modelAndView = new ModelAndView();
-
-        modelAndView.setViewName("adsIndex");
-		
-		if ("Rejected".equals(status) || advertisementManager.countAdvertisementByStatus("Accepted") < 3) {
-			Advertisement adv = advertisementManager.updateAdvertisementStatus(advId, status);
-			sendUpdateAdvStatus(adv);
-		} else {
-			modelAndView.addObject("error", "Maximum accepted advertisement count is 3!");
-		}
-        
-		return modelAndView;
-	}
-	
-	@RequestMapping(value="showAcceptedAdvertisement", method={RequestMethod.GET})
-	@ResponseBody
-	public List<Advertisement> showAcceptedAdvertisement() {    		
-		return advertisementManager.getAdvertisementsByStatus("Accepted");
-	}
-	
-	@RequestMapping(value="controlAdvertisement", method={RequestMethod.GET})
-	public void controlAdv(String advId, String status) {  
-		advertisementManager.updateAdvertisementStatus(advId, status);
-	}
-	
-	@RequestMapping(value="showRejectedAdvertisement", method={RequestMethod.GET})
-	@ResponseBody
-	public List<Advertisement> showRejectedAdvertisement() {    		
-		return advertisementManager.getAdvertisementsByStatus("Pending");
+	public Advertisement updateAdvertisementStatus(String advId, String status) {
+		Advertisement adv = advertisementManager.updateAdvertisementStatus(advId, status);
+		sendUpdateAdvStatus(adv);
+		return adv;
 	}
 	
 	private void sendUpdateStatus(Merchant merchant){

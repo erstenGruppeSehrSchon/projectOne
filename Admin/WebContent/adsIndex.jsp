@@ -11,35 +11,7 @@
 	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script>
-        $(function(){
-            $.ajax({
-                type: 'GET',
-                url: 'showAcceptedAdvertisement',
-                success: function(data) {
-                	$.each(data, function(i, ad){
-                		$(".currentAdvList").append("<div class='curAdv'><img src='" + data[i].imgPath + "' /><a href='/Admin/updateAdvertisementStatus?advId=" + data[i].advId + "&status=Rejected'>Rejected</a></div>");
-                    }); 
-                },
-                error:function(){
-                    alert('Fail to show accepted advertisement!');
-                }  
-            });
-            $.ajax({
-                type: 'GET',
-                url: 'showRejectedAdvertisement',
-                success: function(data) {
-                	$.each(data, function(i, ad){
-                		$(".pendingAdvList").append("<div class='pendingAdv'><img src='" + data[i].imgPath + "' /><a href='/Admin/updateAdvertisementStatus?advId=" + data[i].advId + "&status=Accepted'>Accepted</a><a href='/Admin/updateAdvertisementStatus?advId=" + data[i].advId + "&status=Rejected'>Rejected</a></div>");
-                    }); 
-                },
-                error:function(){
-                    alert('Fail to show rejected advertisement!');
-                }  
-            });
-        });
-        
-    </script>
+	<script src="js/advertisementDetails.js"></script>
 </head>
 <body>
 <jsp:include page="./header.jsp" />
@@ -47,11 +19,11 @@
 <!--*********container*********-->
 <!-- <div class="container"> -->
 <!-- 	<h3 class="h3_title_index">- Client Side Advertisement View -</h3> -->
-<!-- 	<!--*********banner*********--> -->
+<!-- 	<!--*********banner*********--> 
 <!-- 	<div id="slider" class="carousel slide"> -->
 	
 <!-- 	<ol class="carousel-indicators"> -->
-<!-- 	<!-- count of li is equaled to number of ads --> -->
+<!-- 	<!-- count of li is equaled to number of ads --> 
 <!-- 		<li data-target="#slider" data-slide-to="0" class="active"></li> -->
 <!-- 		<li data-target="#slider" data-slide-to="1"></li> -->
 <!-- 		<li data-target="#slider" data-slide-to="2"></li> -->
@@ -88,7 +60,7 @@
 	<!--********Current ads**********--><!-- 3 in one line -->
 	<div class="myShop">
 		<h3 class="h3_title_index">- Current Advertisements -</h3>
-		<div class="currentAdvList"></div>
+		<table id="acceptedAdvertisementTable" class = "table"></table>
 	</div>
 </div>
 
@@ -99,8 +71,8 @@
 <div class="container">
 	<!--********Pending ads**********--><!-- 3 in one line -->
 	<div class="myShop">
-		<h3 class="h3_title_index">- Pending Advertisements -</h3><span id ='error'>${error}</span>
-		<div class="pendingAdvList"></div>
+		<h3 class="h3_title_index">- Pending Advertisements -</h3>
+		<table id="pendingAdvertisementTable" class = "table"></table>
 	</div>
 </div>
 </body>
