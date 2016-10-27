@@ -36,7 +36,7 @@ public class MerchantDaoImpl implements MerchantDao {
 		List<Merchant> merchants = criteria.list();
 		
 		// Return merchant if record exists
-		return (merchants.size() == 1 ? merchants.get(0) : null);
+		return (merchants.size() > 0  ? merchants.get(0) : null);
 	}
 
 	@Override

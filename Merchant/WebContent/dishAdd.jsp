@@ -20,40 +20,45 @@
 
 	<!--*********add ads form*********-->
 	<div class="merchantForm">
-		<form name="merchanAddShopForm" method="post" action="">
+		<form method="post" action="addDish" enctype="multipart/form-data">
 			<table>
 			<tr>
 				<td colspan="2"><h3 class="h3_title_index">-Add Dish-</h3></td>
 			</tr>
 			<tr>
-				<td><h4 class="form_title">Dishes Type: </h4></td>
-				<td><input type="text" name="editDishType" class = "form-control"/></td>
+				<td><h4 class="form_title">Dish Name: </h4></td>
+				<td><input type="text" name="name" class = "form-control" /></td>
 			</tr>
 			<tr>
-				<td><h4 class="form_title">Dishes Prices:</h4></td>
-				<td><input type="text" name="editDishPrices" class = "form-control"/></td>
-			</tr>
-			<tr>
-				<td><h4 class="form_title">Dishes Status:</h4></td>
-				<td><input type = "text" name="editDishStatus" class = "form-control" value=""/>
+				<td><h4 class="form_title">Dish Type: </h4></td>
+				<td>
+					<select name="type" class="form-control">
+						<option value="appetizer">appetizer</option>
+						<option value="soup">soup</option>
+						<option value="main dish">main dish</option>
+						<option value="dessert">dessert</option>
+						<option value="beverage">beverage</option>
+					</select>
 				</td>
 			</tr>
 			<tr>
-				<td><h4 class="form_title">Dishes Description:</h4></td>
-				<td><input type = "text" name="editDishesDescription" class = "form-control" value=""/>
+				<td><h4 class="form_title">Dish Price:</h4></td>
+				<td><input type="number" step="0.1" min="0" name="price" class = "form-control" /></td>
+			</tr>
+			<tr>
+				<td><h4 class="form_title">Dish Description:</h4></td>
+				<td><input type = "text" name="description" class = "form-control" value=""/>
 				</td>
 			</tr>
 			<tr>
-				<td><h4 class="form_title">Dishes Image:</h4></td>
-				<td><form action="FileUpload" enctype="multipart/form-data">
-				<label class="btn btn-default">
-					 Choose<input type="file" name="addDishImg" style="display: none;">
-				</label>
-				</form></td>
+				<td><h4 class="form_title">Dish Image:</h4></td>
+				<td>
+					 <input type="file" name="files" multiple="multiple" />
+				</td>
 			</tr>
               <tr>
-                  <td></td>
-                  <td><input type="submit" value="Submit" onclick=""  /></td>
+                  <td><input type="hidden" name="sid" value="${shop.sid}" /></td>
+                  <td><input type="submit" value="Submit"/></td>
               </tr>
 			</table>
 		</form>		

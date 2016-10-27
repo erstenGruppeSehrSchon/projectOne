@@ -3,6 +3,8 @@ package po;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -44,7 +46,7 @@ public class Merchant {
 	@Column(nullable=false)
 	private String status;
 
-	@OneToMany(fetch=FetchType.EAGER)
+	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.REMOVE)
 	@JoinColumn(name="merchant_id")
 	private Set<Shop> shops = new HashSet<>();
 	

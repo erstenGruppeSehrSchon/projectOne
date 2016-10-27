@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -20,23 +21,28 @@
 
 	<!--*********Dish*********--> <!-- THREE IN ONE LINK -->
 	<div class="mydish">
-		<h3 class="h3_title_index">- Dish Name here -</h3>
+		<h3 class="h3_title_index">${dish.name}</h3>
 		<table class="largeThumb">
 			<tr>
 				<td>
-					<p><h4 class="form_title">Dishes Type :</h4> Dishes Type here</p>
+					<p><h4 class="form_title">Dish Type :</h4>${dish.type}</p>
 					</br>
-					<p><h4 class="form_title">Dishes Prices :</h4> Dishes Prices here</p>
+					<p><h4 class="form_title">Dish Price :</h4>${dish.price}</p>
 					</br>
-					<p><h4 class="form_title">Dishes Status :</h4> Dishes Status</p>
-					</br>
-					<p><h4 class="form_title">Dishes Description:</h4> Dishes Description</p>
+					<p><h4 class="form_title">Dish Description:</h4>${dish.description}</p>
 				</td>
-				<td><img src=  "http://www.foodmanufacture.co.uk/var/plain_site/storage/images/publications/food-beverage-nutrition/foodmanufacture.co.uk/npd/top-10-functional-food-trends/11097085-1-eng-GB/Top-10-functional-food-trends_strict_xxl.jpg"/></td>
+				<td>
+					<c:forEach var="dishImage" items="${dish.dishImages}">
+						<img src="${dishImage.imgPath}" />
+					</c:forEach>
+				</td>
 			</tr>
 			<tr>
 				<td rowspan="2">
-					<a href=""><input type="submit" value="Delete"></input></a>
+					<form action="removeDish" method="post">
+						<input type="hidden" name="did" value="${dish.did}" />
+						<input type="submit" value="Delete" />
+					</form>
 				</td>
 			</tr>
 		</table>

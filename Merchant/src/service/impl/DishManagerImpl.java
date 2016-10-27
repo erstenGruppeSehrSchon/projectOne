@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import common.util.FileUploader;
 
 import dao.DishDao;
+import dao.DishImageDao;
 import po.Dish;
 import po.DishImage;
 import service.DishManager;
@@ -22,16 +23,19 @@ import service.DishManager;
 public class DishManagerImpl implements DishManager {
 
 	@Autowired
-	private DishDao dao;
+	private DishDao dishDao;
+	
+	@Autowired
+	private DishImageDao dishImageDao;
 	
 	@Override
 	public Dish getDishByDid(String did) {
-		return dao.getDishByDid(did);
+		return dishDao.getDishByDid(did);
 	}
 	
 	@Override
 	public List<Dish> getDishesBySid(String sid) {
-		return dao.getDishesBySid(sid);
+		return dishDao.getDishesBySid(sid);
 	}
 
 	@Override
@@ -40,27 +44,33 @@ public class DishManagerImpl implements DishManager {
 		FileUploader uploader = FileUploader.getFileUploader();
 		ArrayList<String> imgPaths = uploader.upload(files, context);
 		
+		// Create dish object
+		Dish dish = new Dish();
+		dish.setName(name);
+		dish.setDescription(description);
+		dish.setType(type);
+		dish.setPrice(price);
+		
+		Dish returnedDish = dishDao.addDish(sid, dish);
+		
 		// Create dish image objects
 		Set<DishImage> dishImages = new HashSet<>();
 		for (String imgPath : imgPaths) {
 			DishImage dishImage = new DishImage();
 			dishImage.setImgPath(imgPath);
-			dishImages.add(dishImage);
+			dishImages.add(dishImageDao.addDishImage(returnedDish.getDid(), dishImage));
 		}
 		
-		// Create dish object
-		Dish dish = new Dish();
-		dish.setName(name);
-		dish.setType(type);
-		dish.setPrice(price);
+		// Store dish images to dish
 		dish.setDishImages(dishImages);
 		
-		return dish;
+		// Add dish and return
+		return returnedDish;
 	}
 
 	@Override
 	public boolean removeDish(String did) {
-		return dao.removeDish(did);
+		return dishDao.removeDish(did);
 	}
 
 }
