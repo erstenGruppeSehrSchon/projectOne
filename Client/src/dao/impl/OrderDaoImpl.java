@@ -71,7 +71,8 @@ public class OrderDaoImpl implements OrderDao {
 	public List<Order> getOrderBySid(String sid) {
 		Session session = (Session)em.getDelegate();
 		Criteria criteria = session.createCriteria(Order.class);
-		criteria.add(Restrictions.eq("shop_id", sid));		
+		criteria.createCriteria("shop","s");
+		criteria.add(Restrictions.eq("s.sid", sid));		
 		List<Order> order = (List<Order>) criteria.list();		
 		return order;
 	}
