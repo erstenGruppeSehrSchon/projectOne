@@ -378,6 +378,7 @@ public class MerchantController {
 	@RequestMapping(value="addAdvertisement", method={RequestMethod.POST}) // Change later
 	@ResponseBody
 	public ModelAndView addAdvertisement(String sid, List<MultipartFile> files) {
+		advertisementManager.addAdvertisement(sid, files, context);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("adsIndex");
 		return mv;
