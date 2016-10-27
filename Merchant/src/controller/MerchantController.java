@@ -118,13 +118,16 @@ public class MerchantController {
 		return shopManager.getShopBySid(sid);
 	}
 	
-	@RequestMapping(value="addShop", method={RequestMethod.POST})//Change later
+	@RequestMapping(value="addShop", method={RequestMethod.POST})
 	public ModelAndView addShop(String mid, String name, String description, String type, String openTime, String closeTime, String address, String phone, List<MultipartFile> files) {
 		ModelAndView modelAndView = new ModelAndView();
 
 		modelAndView.setViewName("shopIndex");
 		
 		shopManager.addShop(mid, name, description, type, openTime, closeTime, address, phone, files, context);
+		
+		// Need to update merchant object if to index page
+		
 		return modelAndView;
 	}
 	
@@ -134,10 +137,31 @@ public class MerchantController {
 		return shopManager.removeShop(sid);
 	}
 	
-	@RequestMapping(value="updateShop", method={RequestMethod.GET}) // Change later
-	@ResponseBody
-	public Shop updateShop(String sid, String name, String description, String type, String openTime, String closeTime, String address, String phone) {
-		return shopManager.updateShop(sid, name, description, type, openTime, closeTime, address, phone);
+	@RequestMapping(value="showShopUpdatePage", method={RequestMethod.GET})
+	public ModelAndView showShopUpdatePage(String sid) {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		// Store shop information
+		Shop shop = shopManager.getShopBySid(sid);
+		modelAndView.addObject("shop", shop);
+		
+		// Set page
+		modelAndView.setViewName("shopEdit");
+		
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="updateShop", method={RequestMethod.POST})
+	public ModelAndView updateShop(String sid, String name, String description, String type, String openTime, String closeTime, String address, String phone) {
+		ModelAndView modelAndView = new ModelAndView();
+
+		modelAndView.setViewName("shopIndex");
+		
+		shopManager.updateShop(sid, name, description, type, openTime, closeTime, address, phone);
+		
+		// Need to update merchant object if to index page
+		
+		return modelAndView;
 	}	
 	// Shop End
 	
