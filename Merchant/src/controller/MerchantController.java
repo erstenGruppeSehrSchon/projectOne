@@ -178,10 +178,31 @@ public class MerchantController {
 		return dishManager.getDishesBySid(sid);
 	}
 	
-	@RequestMapping(value="addDish", method={RequestMethod.GET})//Change later
-	@ResponseBody
-	public Dish addDish(String sid, String name, String type, float price, String description, List<MultipartFile> files) {
-		return dishManager.addDish(sid, name, type, price, description, files, context);
+	@RequestMapping(value="showAddDishPage", method={RequestMethod.GET})
+	public ModelAndView showAddDishPage(String sid) {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		// Set page
+		modelAndView.setViewName("dishAdd");
+		
+		// Store shop object
+		Shop shop = shopManager.getShopBySid(sid);
+		modelAndView.addObject("shop", shop);
+		
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="addDish", method={RequestMethod.POST})
+	public ModelAndView addDish(String sid, String name, String type, float price, String description, List<MultipartFile> files) {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		// Set page
+		modelAndView.setViewName("dishIndex");
+		
+		// Add dish
+		dishManager.addDish(sid, name, type, price, description, files, context);
+		
+		return modelAndView;
 	}
 	
 	@RequestMapping(value="removeDish", method={RequestMethod.GET})//Change later
