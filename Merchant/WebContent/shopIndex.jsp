@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -31,49 +32,59 @@
 
 <script>
 
-    $(function(){
-	    window.onload = function(){
-            document.getElementById("shopList").innerHTML = '';
-        
-            if(!isEmpty('${merchant}')){
+    $(function(){  
+        $.ajax({
+            type: 'GET',
+            url: 'getMerchantByMid?mid=${merchant.mid}',
+            success: function(data) {
+                document.getElementById("shopList").innerHTML = '';
+                
+                var userName = data.username;
+            
+                if(!isEmpty(userName)){
+                    
+                    if(data.shops.length > 0){
+                        var tableOP = $('<table class="largeThumb">');
+                        $(tableOP).appendTo('#shopList');
 
-                if(${fn:length(merchant.shops)} > 0){
-
-                    var tableOP = $('<table class="largeThumb">');
-                    $(tableOP).appendTo('#shopList');
-
-                    for(var i = 0; i< ${fn:length(merchant.shops)}; i++){
-                        if(i % 3 == 0){
+                        $.each(data.shops, function(i, ad){
+                            
                             // open of new row
-                            var rowOP = $('<tr>');
-                            $(rowOP).appendTo('#shopList');   
-                        }
+                            if(i % 3 == 0){
+                                var rowOP = $('<tr>');
+                                $(rowOP).appendTo('#shopList'); 
+                            }
 
-                        var sid = '${merchant.shops[i].sid}';
-                        var ipath = '${ merchant.shops[i].imgPath}';
-                        var shopName = '${merchant.shops[i].name}';
+                            var sid = data.shops[i].sid;
+                            var ipath = data.shops[i].imgPath;
+                            var shopName = data.shops[i].name;
 
-                        var shopInfo = $('<td><a href="getShopBySid?sid='+ sid+ '"><img src="'+ipath+'" title="'+shopName+'"/></br><p>'+shopName+'</p></a></td>');
-                        $(shopInfo).appendTo('#shopList');
+                            var shopInfo = $('<td><a href="getShopBySid?sid='+ sid+ '"><img src="'+ipath+'" title="'+shopName+'"/></br><p>'+shopName+'</p></a></td>');
+                            $(shopInfo).appendTo('#shopList');
 
-                        if(i % 3 == 0){
                             // end of new row
-                            var rowEn = $('</tr>');
-                            $(rowEn).appendTo('#shopList');   
-                        }
+                            if(i % 3 == 0){
+                                var rowEn = $('</tr>');
+                                $(rowEn).appendTo('#shopList');
+                            }
+                        });
+
+                        var tableEn = $('</table>');
+                        $(tableEn).appendTo('#shopList');
                     }
-
-                    var tableEn = $('</table>');
-                    $(tableEn).appendTo('#shopList');
+                    else{
+                        var noShop = $('<p>You have no shops now.</p>');
+                        $(noShop).appendTo('#shopList');
+                    }
                 }
-                else{
-                    var noShop = $('<p>You have no shops now.</p>');
-                    $(noShop).appendTo('#shopList');
-
-                }
-            }
-        };
+            },
+            error:function(){
+                alert('Fail to show shops!');
+            }  
+        });
+        
 	});
+    
     
     function isEmpty(value) {
         return typeof value == 'string' && !value.trim() || typeof value == 'undefined' || value === null;
