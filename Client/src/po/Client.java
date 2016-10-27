@@ -1,9 +1,7 @@
 package po;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.GenericGenerator;
 
 
@@ -34,7 +34,8 @@ public class Client {
 	
 
 	@OneToMany(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
-	private Set<Address> address = new HashSet<Address>();
+	@Fetch(value = FetchMode.SUBSELECT)
+	private List<Address> address = new ArrayList<Address>();
 	
 	
 	@OneToMany(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
@@ -54,13 +55,13 @@ public class Client {
 
 	
 
-	public Set<Address> getAddress() {
+	public List<Address> getAddress() {
 		return address;
 	}
 
 
 
-	public void setAddress(Set<Address> address) {
+	public void setAddress(List<Address> address) {
 		this.address = address;
 	}
 

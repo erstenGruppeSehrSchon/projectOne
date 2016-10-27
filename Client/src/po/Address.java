@@ -20,20 +20,40 @@ public class Address {
 	private Integer addId;
 	
 	
+
 	private String city;
-	private String zipcode;
 	private String room;
-	private String floor;
-	private String buliding;
-	private String block;
+	private String street;
+	private String building;
+	private String district;
+	private String country;
 	
 	
-	
-	public Integer getAddId() {
-		return addId;
+	public String getCountry() {
+		return country;
 	}
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	public String getStreet() {
+		return street;
+	}
+	public void setStreet(String street) {
+		this.street = street;
+	}
+	public String getDistrict() {
+		return district;
+	}
+	public void setDistrict(String district) {
+		this.district = district;
+	}
+	
+	
 	public void setAddId(Integer addId) {
 		this.addId = addId;
+	}
+	public Integer getAddId() {
+		return addId;
 	}
 	public String getRoom() {
 		return room;
@@ -41,23 +61,14 @@ public class Address {
 	public void setRoom(String room) {
 		this.room = room;
 	}
-	public String getFloor() {
-		return floor;
+
+
+
+	public String getBuilding() {
+		return building;
 	}
-	public void setFloor(String floor) {
-		this.floor = floor;
-	}
-	public String getBuliding() {
-		return buliding;
-	}
-	public void setBuliding(String buliding) {
-		this.buliding = buliding;
-	}
-	public String getBlock() {
-		return block;
-	}
-	public void setBlock(String block) {
-		this.block = block;
+	public void setBuilding(String building) {
+		this.building = building;
 	}
 	public Integer getId() {
 		return addId;
@@ -73,11 +84,6 @@ public class Address {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	public String getZipcode() {
-		return zipcode;
-	}
-	public void setZipcode(String zipcode) {
-		this.zipcode = zipcode;
-	}
+
 	
 }
