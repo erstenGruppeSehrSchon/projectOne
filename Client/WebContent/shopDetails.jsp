@@ -174,10 +174,26 @@
 		$.ajax({
 			type:'GET',
             url:"getOrderWithCommentBySid?sid=" + sid,
-            success:function(msg){
-                if (msg.length>0){
-                	$.each(msg,function(i,ad){
+            success:function(order){
+                if (order.length>0){
+                	$.each(order,function(i,ad){
+                    	var tableOp = '<table class="largeThumb commentBox"><tr><td colspan="2"><h4 class="form_title">-Customer comment-</h4></td></tr>';
+
+						var cm = order[i].comments;
+						var cmTime = order[i].commentTime;
+						var replyContent = order[i].reply;
+						var replyTime = order[i].replyTime;
                     	
+                    	var custCm ='<tr><td><p><b>Customer name:</b> name here</p><p><b>Date:</b>'+ cmTime+'</p></td><td><p><b>Content:</b></p><p>'+cm+'</p></td></tr>';
+						tableOp +=custCm;
+
+						var replyOp ='<tr><td colspan="2"><h4 class="form_title">-Merchant comment-</h4></td></tr>';
+                    	tableOp += replyOp;
+
+                    	var reply = '<tr><td><p><b>Date:</b>'+replyTime+'</p></td><td><p><b>Content:</b>'+replyContent+'</p></td></tr></table>';
+						tableOp +=reply;
+                    	
+                    	$(tableOp).appendTo('#commentList');
                 	});
                 }
             	
