@@ -89,6 +89,11 @@ public class ClientController {
 		return shopInfoManager.getShopInfoBySid(sid);
 	}
 	
+	@RequestMapping(value="getAllShop", method={RequestMethod.GET})
+	@ResponseBody
+	public List<Shop> getAllShop() {
+		return shopManager.getAllShops();
+	}
 		// Shop End
 	
 	
@@ -113,6 +118,12 @@ public class ClientController {
 	@ResponseBody
 	public List<Dish> getDishesBySid(String name, String type, Float lowerPrice, Float higherPrice) {
 		return dishManager.getDishesByCriteria(name, type, lowerPrice, higherPrice);
+	}
+	
+	@RequestMapping(value="getDishInfoByDid", method={RequestMethod.GET})
+	@ResponseBody
+	public ModelAndView getDishInfoByDid(String did,String sid) {
+		return shopInfoManager.getDishInfoByDid(did,sid);
 	}
 	// Dish End
 	

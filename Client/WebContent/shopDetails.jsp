@@ -105,7 +105,7 @@
                         var dishName = msg[i].name;
                         var did = msg[i].did;
 
-                        var dishInfo = '<td><a href="./dishDetails.jsp?did='+ did+'"><img src="'+ipath+'" title="'+shopName+'"/><p>'+shopName+'</p><p>'+dishName+'</p></a></td>';
+                        var dishInfo = '<td><a href="getDishInfoByDid?did='+ did+'&sid='+sid+'"><img src="'+ipath+'" title="'+shopName+'"/><p>'+shopName+'</p><p>'+dishName+'</p></a></td>';
                         tableOp+=dishInfo;
 
                         if(i % 3 == 0){
