@@ -1,5 +1,6 @@
 package dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -10,6 +11,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import po.Dish;
+import po.Shop;
 import dao.DishDao;
 
 @Repository
@@ -27,13 +29,15 @@ public class DishDaoImpl implements DishDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Dish> getDishesBySid(String sid) {
-		Session session = (Session)em.getDelegate();
-
-		// Retrieve dish records by sid
-		Criteria criteria = session.createCriteria(Dish.class);
-		criteria.add(Restrictions.eq("shop_id", sid));
-		List<Dish> dishes = criteria.list();
-		
+//		Session session = (Session)em.getDelegate();
+//
+//		// Retrieve dish records by sid
+//		Criteria criteria = session.createCriteria(Dish.class);
+//		criteria.createCriteria("Shop","s");
+//		criteria.add(Restrictions.eq("s.SID", sid));
+//		List<Dish> dishes = criteria.list();
+		Shop s = em.find(Shop.class,sid);
+		List<Dish> dishes = new ArrayList<Dish>(s.getDishes());
 		return dishes;
 	}
 
