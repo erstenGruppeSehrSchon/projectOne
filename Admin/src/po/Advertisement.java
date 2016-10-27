@@ -77,4 +77,5 @@ public class Advertisement {
 	public static String getInitStatus() {
 		return INIT_STATUS;
 	}
+
 }

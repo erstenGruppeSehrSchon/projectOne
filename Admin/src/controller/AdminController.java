@@ -47,14 +47,24 @@ public class AdminController {
 	
 	@RequestMapping(value="login", method={RequestMethod.POST})
 	public ModelAndView login(String username, String password) {
+		
+		System.out.println(username + "..." + password);
+		
         ModelAndView modelAndView = new ModelAndView();
         
-        // Set view
-        modelAndView.setViewName("index");
-
-        // Set admin object (null if fail)
+        // Check admin existence
         Admin admin = adminManager.login(username, password);
-        modelAndView.addObject("admin", admin);
+        
+        // Set admin object (null if fail)
+        if (admin == null) {
+        	System.out.println("admin is null");
+        	modelAndView.setViewName("login");
+        } else {
+        	// Set view
+            modelAndView.setViewName("index");
+            modelAndView.addObject("admin", admin);
+            modelAndView.addObject("aMerchants", merchantManager.getMerchantByStatus("Pending"));
+        }
         
 		return modelAndView;
 	}
@@ -113,6 +123,7 @@ public class AdminController {
 		return merchant;
 	}
 	
+	//http://localhost:8080/Admin/getAdvertisementsByStatus?status=Pending
 	@RequestMapping(value="getAdvertisementsByStatus", method={RequestMethod.GET})
 	@ResponseBody
 	public List<Advertisement> getAdvertisementsByStatus(String status) {
@@ -127,6 +138,23 @@ public class AdminController {
 		System.out.println("enter updateAdvertisementStatus " + status);
 		Advertisement adv = advertisementManager.updateAdvertisementStatus(advId, status);
 		sendUpdateAdvStatus(adv);
+	}
+	
+	@RequestMapping(value="showAcceptedAdvertisement", method={RequestMethod.GET})
+	@ResponseBody
+	public List<Advertisement> showAcceptedAdvertisement() {    		
+		return advertisementManager.getAdvertisementsByStatus("Accepted");
+	}
+	
+	@RequestMapping(value="controlAdvertisement", method={RequestMethod.GET})
+	public void controlAdv(String advId, String status) {  
+		advertisementManager.updateAdvertisementStatus(advId, status);
+	}
+	
+	@RequestMapping(value="showRejectedAdvertisement", method={RequestMethod.GET})
+	@ResponseBody
+	public List<Advertisement> showRejectedAdvertisement() {    		
+		return advertisementManager.getAdvertisementsByStatus("Rejected");
 	}
 	
 	private void sendUpdateStatus(Merchant merchant){

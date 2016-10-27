@@ -66,10 +66,10 @@ public class ClientController {
 		return shopManager.getShopBySid(sid);
 	}
 	
-	@RequestMapping(value="getShopsByName", method={RequestMethod.GET})
+	@RequestMapping(value="getShopsByCriteria", method={RequestMethod.GET})
 	@ResponseBody
-	public List<Shop> getShopsByName(String name) {
-		return shopManager.getShopsByName(name);
+	public List<Shop> getShopsByName(String name, String type, String address) {
+		return shopManager.getShopsByCriteria(name, type, address);
 	}
 	// Shop End
 	

@@ -19,45 +19,75 @@
 <div class="container">
 	<!--*********Edit profile form*********-->
 	<div class="merchantForm">
-		<form method="post" action="">
+		<form method="post" action="register" onsubmit="return validateForm()">
 			<table>
-					<tr>
-						<td colspan="2"><h3 class="h3_title_index">-Registration-</h3></td>
-					</tr>
-					<tr>
-						<td><h4 class="form_title">Username</h4></td>
-						<td><input id="merchantUsername" name="merchantUsername" type="text" class="form-control"></td>
-					</tr>
-					<tr>
-						<td><h4 class="form_title">Password</h4></td>
-						<td><input id="merchantPassword" name="merchantPassword" type="text" class="form-control"></td>
-					</tr>
-					<tr>
-						<td><h4 class="form_title">Re-enter Password</h4></td>
-						<td><input id="merchantrePassword" name="merchantPassword" type="text" class="form-control"></td>
-					</tr>
-					<tr>
-						<td><h4 class="form_title">Gender</h4></td>
-						<td>
-							<select type = "select" id="merchantGender" name="merchantGender" class="form-control">
-							  <option value="M">M</option>
-							  <option value="F">F</option>
-							  <option value="Unknown">Unknown</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td><h4 class="form_title">Birthday</h4></td>
-						<!--<td><input type="date" id="merchantBirthDate" name="merchantBirthDate" class="form-control"></td>-->
-						<td><input type="text" id="merchantBirthDate" name="merchantBirthDate" class="form-control"></td>
-					</tr>
-					<tr>
-						<td rowspan="2"><input type="submit" value="Register" class="btn btn-default"></td>
-					</tr>
+                <tr>
+                    <td colspan="2"><h3 class="h3_title_index">-Registration-</h3></td>
+                </tr>
+                <tr>
+                    <td><h4 class="form_title">Username</h4></td>
+                    <td><input id="merchantUsername" name="username" type="text" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td><h4 class="form_title">Password</h4></td>
+                    <td><input id="merchantPassword" name="password" type="text" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td><h4 class="form_title">Re-enter Password</h4></td>
+                    <td><input id="merchantrePassword" name="merchantPassword" type="text" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td><h4 class="form_title">Name</h4></td>
+                    <td><input id="merchantName" name="name" type="text" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td><h4 class="form_title">Gender</h4></td>
+                    <td>
+                        <select type = "select" id="gender" name="merchantGender" class="form-control">
+                          <option value="M">M</option>
+                          <option value="F">F</option>
+                          <option value="Unknown">Unknown</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><h4 class="form_title">Birthday</h4></td>
+                    <!--<td><input type="date" id="merchantBirthDate" name="merchantBirthDate" class="form-control"></td>-->
+                    <td><input type="text" id="merchantBirthDate" name="birthDate" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2"><input type="submit" value="Register" class="btn btn-default"></td>
+                </tr>
+                <tr>
+                    <span id="error"></span>
+                </tr>
 			</table>
 		</form>		
 	</div>
 </div>
+
+<script>
+    // validate registration form
+    function validateForm(){
+        if(isEmpty($('#merchantUsername').text() ||
+            isEmpty($('#merchantPassword').text() ||
+            isEmpty($('#merchantrePassword').text() ||
+            isEmpty($('#merchantName').text() ||
+            isEmpty($('#merchantBirthDate').text()){
+           $('#error').text("Field cannot be empty");
+            return false;
+        }
+        else if ($('#merchantPassword').text() != $('#merchantrePassword').text()){
+           $('#error').text("Invalid password");
+            return false;
+        }
+        return true;
+    }
+    
+    function isEmpty(value) {
+        return typeof value == 'string' && !value.trim() || typeof value == 'undefined' || value === null;
+    }
+</script>
 
 </body>
 </html>

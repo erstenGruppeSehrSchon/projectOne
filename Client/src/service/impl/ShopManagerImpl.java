@@ -20,8 +20,8 @@ public class ShopManagerImpl implements ShopManager {
 	}
 
 	@Override
-	public List<Shop> getShopsByName(String name) {
-		return dao.getShopsByName(name);
+	public List<Shop> getShopsByCriteria(String name, String type, String address) {
+		return dao.getShopsByCriteria(name, type, address);
 	}
 
 	@Override

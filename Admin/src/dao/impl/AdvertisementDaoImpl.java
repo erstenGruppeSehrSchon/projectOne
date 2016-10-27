@@ -34,8 +34,10 @@ public class AdvertisementDaoImpl implements AdvertisementDao {
 	public Advertisement updateAdvertisementStatus(String advId, String status) {
 		System.out.println(advId + "..." + status);
 		Advertisement adv = em.find(Advertisement.class, advId);
-		adv.setStatus(status);
-		em.persist(adv);
+		if (adv != null) {
+			adv.setStatus(status);
+			em.persist(adv);
+		}		
 		return adv;
 	}
 	

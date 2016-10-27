@@ -14,6 +14,7 @@ import common.util.FileUploader;
 import dao.ShopDao;
 
 import po.Shop;
+import po.ShopContact;
 import service.ShopManager;
 
 @Service
@@ -28,7 +29,7 @@ public class ShopManagerImpl implements ShopManager {
 	}
 
 	@Override
-	public Shop addShop(String mid, String name, String description, String type, String openTime, String closeTime, List<MultipartFile> files) {
+	public Shop addShop(String mid, String name, String description, String type, String openTime, String closeTime, String address, String phone, List<MultipartFile> files) {
 		// Upload images
 		ArrayList<String> imgPaths = new ArrayList<>();
 		imgPaths.add("test.jpg");
@@ -50,6 +51,11 @@ public class ShopManagerImpl implements ShopManager {
 		shop.setOpenTime(formattedOpenTime);
 		shop.setCloseTime(formattedCloseTime);
 		shop.setImgPath(imgPaths.get(0));
+		
+		ShopContact shopContact = new ShopContact();
+		shopContact.setAddress(address);
+		shopContact.setPhone(phone);
+		shop.setShopContact(shopContact);
 		
 		return dao.addShop(mid, shop);
 	}
