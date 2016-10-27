@@ -97,6 +97,8 @@
                         $(tableEn).appendTo('#shopList');
                     }
                     else{
+                        document.getElementById("shopList").innerHTML = '';
+                        
                         var noShop = $('<p>You have no shops now.</p>');
                         $(noShop).appendTo('#shopList');
                     }
@@ -104,6 +106,10 @@
             },
             error:function(){
                 alert('Fail to show shops!');
+                
+                document.getElementById("shopList").innerHTML = '';
+                var noShop = $('<p>Fail to show shops!</p>');
+                $(noShop).appendTo('#shopList');
             }  
         });    
     }
@@ -146,6 +152,8 @@
                         $(tableEn).appendTo('#advertList');
                     }
                     else{
+                        document.getElementById("advertList").innerHTML = '';
+                        
                         var noShop = $('<p>You have no advertisement now.</p>');
                         $(noShop).appendTo('#advertList');
                     }
@@ -163,7 +171,7 @@
     function loadOrder(){        
          $.ajax({
             type:'GET',
-            url:'getOrderByMid?mid=${merchant.mid}',
+            url:'getOrdersByMid?mid=${merchant.mid}',
             success: function(data){
                 document.getElementById("orderList").innerHTML = '';
                             
@@ -199,6 +207,8 @@
                         $(tableEn).appendTo('#orderList');
                     }
                     else{
+                        document.getElementById("orderList").innerHTML = '';
+                        
                         var noShop = $('<p>You have no orders now.</p>');
                         $(noShop).appendTo('#orderList');
                     }
@@ -208,7 +218,7 @@
             error: function(){
                 document.getElementById("orderList").innerHTML = '';
                 
-                var error = $('<p>Error in getting order.</p>');
+                var error = $('<p>Fail in getting orders!</p>');
                 $(error).appendTo('#orderList');
             }
         });
