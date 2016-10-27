@@ -10,14 +10,7 @@
 	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script>
-$(function(){
-    window.onload = function(){
-    	alert('${merchant}');
-    	};
-    });
-    
-</script>
+
 </head>
 <body>
 <jsp:include page="./header.jsp" />

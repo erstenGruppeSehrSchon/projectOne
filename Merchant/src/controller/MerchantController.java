@@ -116,7 +116,6 @@ public class MerchantController {
 		Merchant merchant = merchantManager.editMerchant(mid, password);
 		// add success
 		if(merchant != null){
-			System.out.println("ye");
 			mv.setViewName("login");
 			mv.addObject("merchant", merchant);
 		}
@@ -272,9 +271,10 @@ public class MerchantController {
 		return result;
 	}
 	
-	@RequestMapping(value="addAdvertisement", method={RequestMethod.GET}) // Change later
+	@RequestMapping(value="addAdvertisement", method={RequestMethod.POST}) // Change later
 	@ResponseBody
 	public Advertisement addAdvertisement(String sid, List<MultipartFile> files) {
+		System.out.println("******Controller + "+sid);
 		return advertisementManager.addAdvertisement(sid, files, context);
 	}
 	// Advertisement End
