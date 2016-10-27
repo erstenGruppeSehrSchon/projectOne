@@ -27,10 +27,6 @@
 					<a href="./profileIndex.jsp"><img src="img/menu_icon_profile.png" title="My Profile"/></a><br/><br/>
 					<a href="./profileIndex.jsp">My Profile</a>
 				</li>
-				<li>
-					<a href="./searchIndex.jsp"><img src="img/menu_icon_search.png" title="Search"/></a><br/><br/>
-					<a href="./searchIndex.jsp">Search</a>
-				</li>
 				
 			</ul>
 		</div>
