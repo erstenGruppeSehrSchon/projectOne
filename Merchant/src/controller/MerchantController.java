@@ -114,8 +114,8 @@ public class MerchantController {
 	
 	@RequestMapping(value="addShop", method={RequestMethod.POST})//Change later
 	@ResponseBody
-	public Shop addShop(String mid, String name, String description, String type, String openTime, String closeTime, List<MultipartFile> files) {
-		return shopManager.addShop(mid, name, description, type, openTime, closeTime, files);
+	public Shop addShop(String mid, String name, String description, String type, String openTime, String closeTime, String address, String phone, List<MultipartFile> files) {
+		return shopManager.addShop(mid, name, description, type, openTime, closeTime, address, phone, files);
 	}
 	
 	@RequestMapping(value="removeShop", method={RequestMethod.GET}) // Change later
