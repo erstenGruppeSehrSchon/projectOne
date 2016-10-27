@@ -16,7 +16,7 @@
 <jsp:include page="./headerGuest.jsp" />
 <!--*********container*********-->
 <div class="container">
-<jsp:include page="./menu.jsp" />
+<jsp:include page="./menuGuest.jsp" />
 
 	<!--*********Edit profile form*********-->
 	<div class="merchantForm">
