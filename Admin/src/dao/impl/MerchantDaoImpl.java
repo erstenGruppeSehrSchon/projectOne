@@ -3,6 +3,7 @@ package dao.impl;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -13,8 +14,10 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import common.util.DateFormatter;
 import po.Merchant;
+
+import common.util.DateFormatter;
+
 import dao.MerchantDao;
 
 @Repository
@@ -48,12 +51,15 @@ public class MerchantDaoImpl implements MerchantDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Merchant> getMerchantsByCriteria(String mid, String name, String gender, Integer ageIndex, String regDate, String status) {
+		
+		System.out.println("getMerchantsByCriteria");
+		
 		Session session = (Session)em.getDelegate();
 		
 		// Add criteria
 		Criteria criteria = session.createCriteria(Merchant.class);
 		
-		if (mid != null) {
+		if (mid != null && mid.length() > 0) {
 			System.out.println("A");
 			criteria.add(Restrictions.eq("mid", mid));
 		}
@@ -63,7 +69,7 @@ public class MerchantDaoImpl implements MerchantDao {
 			criteria.add(Restrictions.like("name", name, MatchMode.ANYWHERE));
 		}
 		
-		if (gender != null) {
+		if (gender != null && !"%".equals(gender)) {
 			System.out.println(gender);
 			criteria.add(Restrictions.eq("gender", gender));
 		}
@@ -80,17 +86,18 @@ public class MerchantDaoImpl implements MerchantDao {
 
 		if (regDate != null && regDate.length() > 0) {
 			DateFormatter formatter = DateFormatter.getDateFormatter();
-			Date fromDate = formatter.parse(regDate);
+			Date fromDate = formatter.parse(regDate.replace("-", "")); // input format is 2016-10-28
 			Date toDate = getNextDay(fromDate);
 			criteria.add(Restrictions.ge("regDate", fromDate));
 			criteria.add(Restrictions.lt("regDate", toDate));
 		}
 		
-		if (status != null) {
+		if (status != null && status.length() > 0) {
 			criteria.add(Restrictions.eq("status", status));
 		}
 		
 		List<Merchant> merchants = criteria.list();
+		System.out.println("merchants: " + merchants);
 		return merchants;
 	}
 	
@@ -122,9 +129,4 @@ public class MerchantDaoImpl implements MerchantDao {
 		return merchant;
 	}
 
-	@Override
-	public List<Merchant> getMerchantByStatus(String status) {
-		String jqpl = "from Merchant m where m.status = :status";
-		return em.createQuery(jqpl).setParameter("status", status).getResultList();
-	}
 }

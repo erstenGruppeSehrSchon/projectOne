@@ -22,15 +22,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import po.Admin;
 import po.Advertisement;
 import po.Merchant;
 import service.AdminManager;
 import service.AdvertisementManager;
 import service.MerchantManager;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 @SessionAttributes("admin")
@@ -63,7 +63,7 @@ public class AdminController {
         	// Set view
             modelAndView.setViewName("index");
             modelAndView.addObject("admin", admin);
-            modelAndView.addObject("aMerchants", merchantManager.getMerchantByStatus("Pending"));
+            modelAndView.addObject("aMerchants", merchantManager.getMerchantsByCriteria(null, null, null, null, null, "Pending"));
         }
         
 		return modelAndView;
@@ -88,14 +88,18 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="searchMerchants", method={RequestMethod.GET})
-	public ModelAndView searchMerchants(String mid, String name, String gender, Integer ageIndex, String regDate, String status) {
+	public ModelAndView searchMerchants(String id, String name, String gender, Integer ageIndex, String regDate, String status) {
+		
+		System.out.println(id + "..." + name + "..." + gender + "..." + ageIndex + "..." + regDate + "..." + status);
+		
         ModelAndView modelAndView = new ModelAndView();
         
         // Set view
         modelAndView.setViewName("searchResult");
         
         // Set match merchant
-        List<Merchant> merchants = merchantManager.getMerchantsByCriteria(mid, name, gender, ageIndex, regDate, status);
+        List<Merchant> merchants = merchantManager.getMerchantsByCriteria(id, name, gender, ageIndex, regDate, status);
+        System.out.println("controller : merchants " + merchants);
         modelAndView.addObject("merchants", merchants);
         
 		return modelAndView;
@@ -103,6 +107,9 @@ public class AdminController {
 	
 	@RequestMapping(value="showMerchantDetails", method={RequestMethod.GET})
 	public ModelAndView showMerchantDetails(String mid) {
+		
+		System.out.println("show merchant details");
+		
         ModelAndView modelAndView = new ModelAndView();
         
         // Set view
@@ -115,12 +122,21 @@ public class AdminController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="updateMerchantStatus", method={RequestMethod.POST})
+	@RequestMapping(value="updateMerchantStatus", method={RequestMethod.GET})
 	@ResponseBody
-	public Merchant updateMerchantStatus(String mid, String status) {
+	public ModelAndView updateMerchantStatus(String mid, String status) {
+		
+		System.out.println(mid + "..." + status);
 		Merchant merchant = merchantManager.updateMerchantStatus(mid, status);
 		sendUpdateStatus(merchant);
-		return merchant;
+		
+        ModelAndView modelAndView = new ModelAndView();
+
+        modelAndView.setViewName("index");
+        modelAndView.addObject("aMerchants", merchantManager.getMerchantsByCriteria(null, null, null, null, null, "Pending"));
+        
+		return modelAndView;
+		
 	}
 	
 	//http://localhost:8080/Admin/getAdvertisementsByStatus?status=Pending
@@ -211,5 +227,11 @@ public class AdminController {
 		} catch (JsonProcessingException e){
 			e.printStackTrace();
 		}
+	}
+
+	@RequestMapping(value="showPendingMerchant", method={RequestMethod.GET})
+	@ResponseBody
+	public List<Merchant> showPendingMerchant() {   
+		return merchantManager.getMerchantsByCriteria(null, null, null, null, null, "Pending");
 	}
 }
