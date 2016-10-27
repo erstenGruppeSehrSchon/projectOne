@@ -244,8 +244,8 @@ public class MerchantController {
 	
 	@RequestMapping(value="getDishByDid", method={RequestMethod.GET})
 	@ResponseBody
-	public Dish getDishByDid(String did) {
-		return dishManager.getDishByDid(did);
+	public ModelAndView getDishByDid(String did) {
+		return showDishDetailPage(did);
 	}
 	
 	@RequestMapping(value="getDishesBySid", method={RequestMethod.GET})
