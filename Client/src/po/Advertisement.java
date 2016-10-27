@@ -72,7 +72,4 @@ public class Advertisement {
 		this.createdTime = createdTime;
 	}
 
-	public static String getInitStatus() {
-		return INIT_STATUS;
-	}
 }
