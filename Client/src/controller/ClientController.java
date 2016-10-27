@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import po.Address;
 import po.Advertisement;
@@ -24,6 +25,7 @@ import service.ClientManager;
 import service.DishManager;
 import service.MerchantManager;
 import service.OrderManager;
+import service.ShopInfoManager;
 import service.ShopManager;
 
 import com.fasterxml.jackson.core.JsonParseException;
@@ -51,6 +53,9 @@ public class ClientController {
 	@Autowired
 	private AdvertisementManager advertisementManager;
 	
+	@Autowired
+	private ShopInfoManager shopInfoManager;
+	
 	// Merchant Start
 	@RequestMapping(value="getMerchantByMid", method={RequestMethod.GET})
 	@ResponseBody
@@ -77,6 +82,13 @@ public class ClientController {
 		public List<Shop> getShopsByName(String name, String type, String address) {
 			return shopManager.getShopsByCriteria(name, type, address);
 		}
+	
+	@RequestMapping(value="getShopInfoBySid", method={RequestMethod.GET})
+	@ResponseBody
+	public ModelAndView getShopInfoBySid(String sid) {
+		return shopInfoManager.getShopInfoBySid(sid);
+	}
+	
 		// Shop End
 	
 	
