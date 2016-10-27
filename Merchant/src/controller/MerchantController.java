@@ -250,6 +250,21 @@ public class MerchantController {
 	// Dish Image End
 	
 	// Order Start
+	@RequestMapping(value="showOrderIndexPage", method={RequestMethod.GET})
+	public ModelAndView showIndexPage(String sid) {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		// Set shop id
+		Shop shop = shopManager.getShopBySid(sid);
+		modelAndView.addObject("shopId", shop.getSid());
+		modelAndView.addObject("shopName", shop.getName());
+		
+		// Set page
+		modelAndView.setViewName("orderIndex");
+		
+		return modelAndView;
+	}
+	
 	@RequestMapping(value="getOrdersBySid", method={RequestMethod.GET})
 	@ResponseBody
 	public List<Order> getOrdersBySid(String sid) {

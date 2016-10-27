@@ -10,7 +10,12 @@
 	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+	<script src="js/orderIndex.js"></script>
+	<script>
+		$(function() {
+			getOrders("${shopId}", "${shopName}");
+		});
+	</script>
 </head>
 <body>
 <jsp:include page="./header.jsp" />
@@ -23,64 +28,9 @@
 		<h3 class="h3_title_index">- My Order -</h3>
 		
 		<!-- one table for one order -->
-		<table class="largeThumb">
-			<tr>
-				<td>
-					<p>Order number: </p><p></p>
-					<p>Order Time: </p><p></p>
-					<p>Customer Name: </p><p></p>
-					<p>Customer Address: </p><p></p>
-					<p>Total Prices: </p><p></p>
-				</td>
-				<td>
-					<b><p>Shop name: </p><p></p></b>
-					<p>Dish: </p><p></p>
-					<p>Dish: </p><p></p>
-					<p>Dish: </p><p></p>
-					<p>Dish: </p><p></p>
-					<p>Dish: </p><p></p>
-					<p>Dish: </p><p></p>
-				</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>
-				<input type="submit" value="Delivered" onclick="" />
-				<input type="submit" value="Reject" onclick="" />
-				<input type="submit" value="Accept" onclick="" /></td>
-			</tr>
+		<table class="largeThumb" id="orderTable">
 		</table>
-		
-		<div class="block-divider-index"></div>
-		
-		<!-- Order 2 -->
-		<table class="largeThumb">
-			<tr>
-				<td>
-					<p>Order number: </p><p></p>
-					<p>Order Time: </p><p></p>
-					<p>Customer Name: </p><p></p>
-					<p>Customer Address: </p><p></p>
-					<p>Total Prices: </p><p></p>
-				</td>
-				<td>
-					<b><p>Shop name: </p><p></p></b>
-					<p>Dish: </p><p></p>
-					<p>Dish: </p><p></p>
-					<p>Dish: </p><p></p>
-					<p>Dish: </p><p></p>
-					<p>Dish: </p><p></p>
-					<p>Dish: </p><p></p>
-				</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>
-				<input type="submit" value="Delivered" onclick="" />
-				<input type="submit" value="Reject" onclick="" />
-				<input type="submit" value="Accept" onclick="" /></td>
-			</tr>
-		</table>
+
 	</div>
 </div>
 

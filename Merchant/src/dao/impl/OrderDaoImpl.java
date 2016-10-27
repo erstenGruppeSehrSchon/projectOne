@@ -23,8 +23,9 @@ public class OrderDaoImpl implements OrderDao {
 	@Override
 	public List<Order> getOrdersBySid(String sid) {
 		Session session = (Session)em.getDelegate();
-		Criteria criteria = session.createCriteria(Order.class);
-		criteria.add(Restrictions.eq("shop_id", sid));
+		Criteria criteria = session.createCriteria(Order.class); System.out.println(criteria.list().size());
+		criteria.createCriteria("shop", "s");
+		criteria.add(Restrictions.eq("s.sid", sid));
 		List<Order> orders = criteria.list();
 		return orders;
 	}

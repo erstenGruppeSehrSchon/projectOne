@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -36,13 +37,13 @@ public class Order {
 	
 	private Date replyTime;
 	
-	private int rating;
+	private Integer rating;
 	
-	@ManyToOne(targetEntity=Shop.class)
+	@ManyToOne(targetEntity=Shop.class, fetch=FetchType.EAGER)
 	@JoinColumn(name="shop_id")
 	private Shop shop;
 	
-	@OneToMany
+	@OneToMany(fetch=FetchType.EAGER)
 	@JoinColumn(name="order_id")
 	private Set<OrderDetail> orderDetails = new HashSet<>();
 
@@ -111,11 +112,11 @@ public class Order {
 		this.replyTime = replyTime;
 	}
 
-	public int getRating() {
+	public Integer getRating() {
 		return rating;
 	}
 
-	public void setRating(int rating) {
+	public void setRating(Integer rating) {
 		this.rating = rating;
 	}
 
