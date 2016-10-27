@@ -10,25 +10,7 @@
 	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script>
-function commentBoxShow(boxId) {
-    var div = document.getElementById("commentBox"+boxId);
-    var p = "</br><p>Comment:</p>";
-    var textarea = "<textarea rows=\"4\" cols=\"50\"></textarea>";
-    var button = "</br><input type=\"submit\" value=\"Submit\"/>";
-    div.innerHTML = p + textarea + button;
-}
 
-function ratingBoxShow(boxId) {
-	var div = document.getElementById("ratingBox"+boxId);
-    var p = "</br><p>Rating:</p>";
-    var rating = "<input type=\"number\" name=\"rating\" min=\"1\" max=\"5\">";
-    var button = "</br><input type=\"submit\" value=\"Submit\"/>";
-    div.innerHTML = p + rating + button;
-}
-
-
-</script>
 </head>
 <body>
 <jsp:include page="./header.jsp" />
@@ -39,7 +21,10 @@ function ratingBoxShow(boxId) {
 
 	<!--*********My Order*********--><!-- 1 in one line -->
 	<div class=myOrder>
+	
 		<h3 class="h3_title_index">- My Order -</h3>
+		
+		
 		
 		<!-- one table for one order -->
 		<table class="largeThumb">
@@ -119,8 +104,123 @@ function ratingBoxShow(boxId) {
 			    <td></td>
 			    <td><div id = "commentBox2"></div></td>
 			</tr>
+			
+		
+			
 		</table>
+		
+		<div id = "orderList"></div>
+		
 	</div>
 </div>
+<script>
+function commentBoxShow(boxId) {
+    var div = document.getElementById("commentBox"+boxId);
+    var p = "</br><p>Comment:</p>";
+    var textarea = "<textarea rows=\"4\" cols=\"50\"></textarea>";
+    var button = "</br><input type=\"submit\" value=\"Submit\"/>";
+    div.innerHTML = p + textarea + button;
+}
+
+function ratingBoxShow(boxId) {
+	var div = document.getElementById("ratingBox"+boxId);
+    var p = "</br><p>Rating:</p>";
+    var rating = "<input type=\"number\" name=\"rating\" min=\"1\" max=\"5\">";
+    var button = "</br><input type=\"submit\" value=\"Submit\"/>";
+    div.innerHTML = p + rating + button;
+}
+
+
+function getAllChart (){
+	
+	   document.getElementById("orderList").innerHTML = '';
+		
+
+    $.ajax({
+ 	   type:'GET',
+ 	   url:'getAllOrder',
+ 	   success: function(orderList){
+ 		      
+ 		   	  if(!(orderList[0].name)){
+ 			  
+ 				  var tableOP = $('<table>');
+                   $(tableOP).appendTo('#orderList');
+                   
+                   $.each(orderList, function(index, value){
+                 	  
+                 	                   
+                       // open of new row
+                       if(index % 3 == 0){
+                           var rowOP = $('<tr>');
+                           $(rowOP).appendTo('#orderList'); 
+                       }
+                       
+                       <td>
+   					<p>Order number: </p><p></p>
+   					<p>Order Time: </p><p></p>
+   					<p>Merchant Name: </p><p></p>
+   					<p>Receiver Name: </p><p></p>
+   					<p>Delivery Address: </p><p></p>
+   					<p>Total Prices: </p><p></p>
+   				</td>
+   				<td>
+   					<b><p>Shop name: </p><p></p></b>
+   					<p>Dish: </p><p></p>
+   					<p>Dish: </p><p></p>
+   					<p>Dish: </p><p></p>
+   					<p>Dish: </p><p></p>
+   					<p>Dish: </p><p></p>
+   					<p>Dish: </p><p></p>
+   				</td>
+                       
+                    var oid = orderList[i].oid;
+       				var status = orderList[i].status;
+       				var orderTime = orderList[i].orderTime;
+       				var comments = orderList[i].comments;
+       				var commentTime = orderList[i].commentTime;
+       				var reply = orderList[i].reply;
+       				var replyTime = orderList[i].replyTime;
+       				var rating = orderList[i].rating;
+       				var orderDetails = orderList[i].orderDetails;
+       				
+       			  $.each(orderDetails, function(index, value){
+       				  
+       				  var dish = orderDetails[index].dish;
+       				  var quantity = orderDetails[index].quantity;
+       				  
+       			  });
+       				
+       				var Detail = '<p>Order number: </p><p>'+orderDetails.length()+'</p>'+'<p>Order time: </p><p>'+orderTime+'</p>'+'<p>Receiver Name: </p><p>'+localStorage.getItem("username") + '</p>';
+       			
+
+                       var shopInfo = $('<td><a href="getOrderByOid?oid='+ oid+ '"></br><p>'+name+'</p></a></td>');
+                       $(shopInfo).appendTo('#orderList');
+
+                       // end of new row
+                       if(i % 3 == 0){
+                           var rowEn = $('</tr>');
+                           $(rowEn).appendTo('#orderList');
+                       }
+                   });
+                   
+                   var tableEn = $('</table>');
+                   $(tableEn).appendTo('#orderList');
+                   
+ 		   	  }else{
+                   var noShop = $('<p>No Dishes Show</p>');
+                   $(noShop).appendTo('#orderList');
+               }
+		   
+ 	   },
+ 	   error:function(){
+ 		   console.log("Error");
+ 	   }
+    });
+    
+};
+
+
+
+</script>
 </body>
 </html>

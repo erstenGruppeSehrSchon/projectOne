@@ -3,5 +3,5 @@
 <!--*********header*********-->
 <div class="header">
 	<div class="contact"><a href="#">Home</a></div>
-	<div class="login"><a href="#">Login</a> | <a href="./clientAdd.jsp">Registration</a></p></div>
+	<div class="login"><a href="#">Login</a> | <a href="./clientAdd.jsp">Registration</a></div>
 </div>

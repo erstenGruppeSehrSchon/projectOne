@@ -13,10 +13,9 @@
 </head>
 <body>
 <jsp:include page="./headerGuest.jsp" />
+<jsp:include page="./menu.jsp" />
 <!--*********container*********-->
 <div class="container">
-<jsp:include page="./menu.jsp" />
-
 	<!--*********Search form*********-->
 	<div class="clientForm">
 		<form name="clientSearchForm">
@@ -30,16 +29,13 @@
                 </tr>
                 <tr>
                     <td><h4 class="form_title">Login Password:</h4></td>
-                    <td><input type="text" name="password" id="password"/></td>
+                    <td><input type="password" name="password" id="password"/></td>
                 </tr>
                 <tr>
-                	<td></td>
+                	<td><p id="validate-status" style="color:red;"></p></td>
                     <td><input id="loginButton" type="submit" value="Login"  /></td>
                     <td><input type="submit" value="Join us!" id = "registerButton"/></td>
-                    <div id = "showLoginFail"></div>
-                </tr>
-                <tr>
-                <p id="validate-status" style="color:red;"></p>
+
                 </tr>
 			</table>
 		</form>		
@@ -65,6 +61,7 @@
                  success:function(client){
                      console.log(client.username);
                 	 if(client.username != undefined){
+                		 localStorage.setItem("username", client.username);
                 		 window.location.assign('index.jsp');
                 	 }else{
                 		 
@@ -86,9 +83,10 @@
               });
          
          
-         $("#registerButton").on('click',function(){
-        	 windown.location.assign('register.jsp');
-         })
+         $("#registerButton").on('click',function(event){
+        	 event.preventDefault();
+        	 window.location.assign('clientAdd.jsp');
+         });
              
   
     });
