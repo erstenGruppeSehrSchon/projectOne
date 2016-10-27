@@ -1,20 +1,15 @@
 package dao.impl;
 
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Projections;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 import po.Advertisement;
 import dao.AdvertisementDao;
-
 
 @Repository
 @Transactional
@@ -33,6 +28,7 @@ public class AdvertisementDaoImpl implements AdvertisementDao {
 		return AdvAllList;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Advertisement> getLatestAdvertisement() {
 		Session session = (Session)em.getDelegate();

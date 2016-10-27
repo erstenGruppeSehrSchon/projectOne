@@ -11,8 +11,6 @@ import org.hibernate.annotations.GenericGenerator;
 public class Address {
 
 	@Id   //primary key
-	@GenericGenerator(strategy="uuid", name="uuid")
-	@GeneratedValue(generator = "uuid")
 	private String addId;
 
 	private String city;
