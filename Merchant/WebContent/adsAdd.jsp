@@ -13,7 +13,7 @@
 <script>
 $(function(){
     window.onload = function(){
-    	alert('${merchant}');
+    	
     	if(!isEmpty('${merchant}')){
     		$.ajax({
     			type : 'GET',
