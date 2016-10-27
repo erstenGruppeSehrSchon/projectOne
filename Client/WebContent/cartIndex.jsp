@@ -32,9 +32,11 @@ function ratingBoxShow(boxId) {
 </head>
 <body>
 <jsp:include page="./header.jsp" />
-<jsp:include page="./menu.jsp" />
+
 <!--*********container*********-->
 <div class="container">
+<jsp:include page="./menu.jsp" />
+
 	<!--*********My Order*********--><!-- 1 in one line -->
 	<div class=myOrder>
 		<h3 class="h3_title_index">- My Order -</h3>
