@@ -436,3 +436,7 @@ p{
 	border: 1px solid #eac1c6;
 	margin-bottom: 10px;
 }
+
+#orderDishDiv{
+	float: left;
+}

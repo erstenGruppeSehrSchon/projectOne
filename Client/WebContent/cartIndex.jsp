@@ -18,6 +18,16 @@ function commentBoxShow(boxId) {
     var button = "</br><input type=\"submit\" value=\"Submit\"/>";
     div.innerHTML = p + textarea + button;
 }
+
+function ratingBoxShow(boxId) {
+	var div = document.getElementById("ratingBox"+boxId);
+    var p = "</br><p>Rating:</p>";
+    var rating = "<input type=\"number\" name=\"rating\" min=\"1\" max=\"5\">";
+    var button = "</br><input type=\"submit\" value=\"Submit\"/>";
+    div.innerHTML = p + rating + button;
+}
+
+
 </script>
 </head>
 <body>
@@ -53,10 +63,14 @@ function commentBoxShow(boxId) {
 			<tr>
 				<td><p><b>Status: </b></p>z.b: waiting for order<p></p></td>
 				<td>
-				<input type="submit" value="Order Confirm" onclick="" />
+				<input type="submit" value="Order Confirm" onclick="ratingBoxShow(1)" />
 				<input type="submit" value="Delete Order" onclick="" />
 				<input type="submit" value="Give Comment" onclick="commentBoxShow(1)" />
 				</td>
+			</tr>
+			<tr>
+			    <td></td>
+			    <td><div id = "ratingBox1"></div></td>
 			</tr>
 			<tr>
 			    <td></td>
@@ -90,10 +104,14 @@ function commentBoxShow(boxId) {
 			<tr>
 				<td><p><b>Status: </b></p>z.b: waiting for order<p></p></td>
 				<td>
-				<input type="submit" value="Order Confirm" onclick="" />
+				<input type="submit" value="Order Confirm" onclick="ratingBoxShow(2)" />
 				<input type="submit" value="Delete Order" onclick="" />
 				<input type="submit" value="Give Comment" onclick="commentBoxShow(2)" />
 				</td>
+			</tr>
+			<tr>
+			    <td></td>
+			    <td><div id = "ratingBox2"></div></td>
 			</tr>
 			<tr>
 			    <td></td>
