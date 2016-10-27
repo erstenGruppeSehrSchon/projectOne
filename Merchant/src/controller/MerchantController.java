@@ -1,12 +1,14 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -15,7 +17,6 @@ import po.Dish;
 import po.DishImage;
 import po.Merchant;
 import po.Order;
-import po.OrderDetail;
 import po.Shop;
 import service.AdvertisementManager;
 import service.DishImageManager;
@@ -23,10 +24,15 @@ import service.DishManager;
 import service.MerchantManager;
 import service.OrderManager;
 import service.ShopManager;
+import javax.servlet.ServletContext;
 
 @Controller
+@SessionAttributes("merchant")
 public class MerchantController {
 
+	@Autowired
+	ServletContext context;
+	
 	@Autowired
 	private MerchantManager merchantManager;
 	
@@ -113,9 +119,13 @@ public class MerchantController {
 	}
 	
 	@RequestMapping(value="addShop", method={RequestMethod.POST})//Change later
-	@ResponseBody
-	public Shop addShop(String mid, String name, String description, String type, String openTime, String closeTime, String address, String phone, List<MultipartFile> files) {
-		return shopManager.addShop(mid, name, description, type, openTime, closeTime, address, phone, files);
+	public ModelAndView addShop(String mid, String name, String description, String type, String openTime, String closeTime, String address, String phone, List<MultipartFile> files) {
+		ModelAndView modelAndView = new ModelAndView();
+
+		modelAndView.setViewName("shopIndex");
+		
+		shopManager.addShop(mid, name, description, type, openTime, closeTime, address, phone, files, context);
+		return modelAndView;
 	}
 	
 	@RequestMapping(value="removeShop", method={RequestMethod.GET}) // Change later
@@ -147,7 +157,7 @@ public class MerchantController {
 	@RequestMapping(value="addDish", method={RequestMethod.GET})//Change later
 	@ResponseBody
 	public Dish addDish(String sid, String name, String type, float price, String description, List<MultipartFile> files) {
-		return dishManager.addDish(sid, name, type, price, description, files);
+		return dishManager.addDish(sid, name, type, price, description, files, context);
 	}
 	
 	@RequestMapping(value="removeDish", method={RequestMethod.GET})//Change later
@@ -161,7 +171,7 @@ public class MerchantController {
 	@RequestMapping(value="addDishImages", method={RequestMethod.GET})//Change later
 	@ResponseBody
 	public List<DishImage> addDishImages(String did, List<MultipartFile> files) {
-		return dishImageManager.addDishImages(did, files);
+		return dishImageManager.addDishImages(did, files, context);
 	}
 	
 	@RequestMapping(value="removeDishImage", method={RequestMethod.GET})//Change later
@@ -225,7 +235,7 @@ public class MerchantController {
 	@RequestMapping(value="addAdvertisement", method={RequestMethod.GET}) // Change later
 	@ResponseBody
 	public Advertisement addAdvertisement(String sid, List<MultipartFile> files) {
-		return advertisementManager.addAdvertisement(sid, files);
+		return advertisementManager.addAdvertisement(sid, files, context);
 	}
 	// Advertisement End
 }

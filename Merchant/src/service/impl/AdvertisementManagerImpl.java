@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -24,12 +26,12 @@ public class AdvertisementManagerImpl implements AdvertisementManager {
 	}
 	
 	@Override
-	public Advertisement addAdvertisement(String sid, List<MultipartFile> files) {
+	public Advertisement addAdvertisement(String sid, List<MultipartFile> files, ServletContext context) {
 		ArrayList<String> imgPaths = new ArrayList<>();
 		imgPaths.add("test.jpg");
 		if (files != null) {
 			FileUploader uploader = FileUploader.getFileUploader();
-			imgPaths = uploader.upload(files);
+			imgPaths = uploader.upload(files, context);
 		}
 		
 		// Create advertisement

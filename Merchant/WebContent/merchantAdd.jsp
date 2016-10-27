@@ -44,7 +44,7 @@
                 <tr>
                     <td><h4 class="form_title">Gender</h4></td>
                     <td>
-                        <select type = "select" id="gender" name="merchantGender" class="form-control">
+                        <select type = "select" id="gender" name="gender" class="form-control">
                           <option value="M">M</option>
                           <option value="F">F</option>
                           <option value="Unknown">Unknown</option>

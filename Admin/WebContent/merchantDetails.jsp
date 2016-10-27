@@ -53,10 +53,7 @@
 	<tr>
 		<td><p class="form_title">Action:</p></td>
 		<td id="actionCol">
-			<a href="showMerchantDetails?mid=${merchant.mid}" class="btn btn-default">Accept</a>
-			<a href="showMerchantDetails?mid=${merchant.mid}" class="btn btn-default">Reject</a>
-			<a href="showMerchantDetails?mid=${merchant.mid}" class="btn btn-default">Frozen</a>
-			<a href="showMerchantDetails?mid=${merchant.mid}" class="btn btn-default">Pending</a>
+			
 		</td>
 	</tr>
 	</table>
