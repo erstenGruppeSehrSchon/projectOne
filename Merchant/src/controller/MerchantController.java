@@ -378,10 +378,38 @@ public class MerchantController {
 	@RequestMapping(value="addAdvertisement", method={RequestMethod.POST}) // Change later
 	@ResponseBody
 	public ModelAndView addAdvertisement(String sid, List<MultipartFile> files) {
-		advertisementManager.addAdvertisement(sid, files, context);
+		Advertisement adv = advertisementManager.addAdvertisement(sid, files, context);
+		sendAdvertisementRequest(adv);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("adsIndex");
 		return mv;
 	}
+	
+	private void sendAdvertisementRequest(Advertisement adv){
+		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		ConnectionFactory factory = (ActiveMQConnectionFactory)context.getBean("mq");
+		
+//		Destination queue = new ActiveMQQueue("Test01Q");
+		Destination queue = (ActiveMQQueue)context.getBean("advSubmitQueue");
+		Connection con = null;
+		Session session = null;
+		MessageProducer producer = null;
+		try {
+			con = factory.createConnection();
+			con.start();
+			session = con.createSession(false, Session.CLIENT_ACKNOWLEDGE);
+			producer = session.createProducer(queue);
+			ObjectMapper mapper = new ObjectMapper();
+			
+			TextMessage msg = session.createTextMessage(mapper.writeValueAsString(adv));
+			producer.send(msg);
+		} catch (JMSException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonProcessingException e){
+			e.printStackTrace();
+		}
+	}
+	
 	// Advertisement End
 }
