@@ -255,6 +255,7 @@ public class MerchantController {
 	}
 	
 	@RequestMapping(value="showAddDishPage", method={RequestMethod.GET})
+	@ResponseBody
 	public ModelAndView showAddDishPage(String sid) {
 		ModelAndView modelAndView = new ModelAndView();
 		

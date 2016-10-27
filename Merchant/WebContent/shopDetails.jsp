@@ -52,7 +52,10 @@
 
 <div class="container">
 	<h3 class="h3_title_index">- All Dishes in this shop-</h3>
-	<input type="button" value="Add Dish" onclick="location.href='./dishAdd.jsp';"/>
+	<form method="get" action="showAddDishPage">
+        <input type="hidden" name="sid" value="${shop.sid}" />
+	    <input type="submit" value="Add Dish"/>
+	</form>
 	
 	<div id="dishList"><span>Loading......</span></div>
 </div>
@@ -144,11 +147,11 @@
                             }
 
                             var did = data[i].did;
-                            var ipath = data[i].dishImages[0];
+                            var ipath = data[i].dishImages[0].imgPath;
                             var dishName = data[i].name;
                             var shopName = '${shop.name}';
 
-                            var dishInfo = $('<td><a href="getDishByDid?did="'+ did+'><img src="'+ipath+'" title="'+dishName+'"/><br/><p>'+shopName+'</p><p>'+dishName+'</p></a></td>');
+                            var dishInfo = $('<td><a href="getDishByDid?did='+ did+'"><img src="'+ipath+'" title="'+dishName+'"/><br/><p>'+shopName+'</p><p>'+dishName+'</p></a></td>');
                             $(dishInfo).appendTo('#dishList');
 
                             // end of new row
