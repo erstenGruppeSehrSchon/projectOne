@@ -71,7 +71,12 @@
 	</div>
 </div>
 
+<script>
+var did ="${param.did}";
+$(function)
 
+
+</script>
 	
 </body>
 </html>

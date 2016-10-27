@@ -97,7 +97,66 @@
 				</td>
 			</tr>
 		</table>
+		<div id="shopList"></div>
 	</div>
 </div>
+<script>
+$(function(){
+	
+	$.ajax({
+		type:'GET',
+		url:'getAllShop',
+		success:function(shopList){
+			
+			 if(!(Dishlist[0].name)){
+   			  
+				  var tableOP = $('<table>');
+                 $(tableOP).appendTo('#shopList');
+                 
+                 $.each(shopList, function(index, value){
+               	  
+               	                   
+                     // open of new row
+                     if(index % 3 == 0){
+                         var rowOP = $('<tr>');
+                         $(rowOP).appendTo('#shopList'); 
+                     }
+                     
+					  var sid =  shopList[index].sid;
+                     var name = shopList[index].name;
+                     var type = shopList[index].type;
+                     var description = shopList[index].description;
+                     var img = Dishlist[index].imgPath;
+
+                     var shopInfo = $('<td><a href="getDishByDid?did='+ sid+ '"><img src="'+ img +'" title="'+name+'"/></br><p>'+name+'</p></a></td>');
+                     $(shopInfo).appendTo('#shopList');
+
+                     // end of new row
+                     if(i % 3 == 0){
+                         var rowEn = $('</tr>');
+                         $(rowEn).appendTo('#shopList');
+                     }
+                 });
+                 
+                 var tableEn = $('</table>');
+                 $(tableEn).appendTo('#shopList');
+                 
+		   	  }else{
+                 var noShop = $('<p>No Shop Show</p>');
+                 $(noShop).appendTo('#shopList');
+             }
+			
+		},
+		error:function(){
+			
+		}
+		
+	});
+	
+	
+});
+
+
+</script>
 </body>
 </html>

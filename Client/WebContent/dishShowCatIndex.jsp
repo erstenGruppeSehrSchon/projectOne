@@ -47,7 +47,93 @@
 				</td>
 			</tr>
 		</table>
+			
+        <div id="dishList"></div>
+		
+		
 	</div>
 </div>
+
+
+
+
+<script>
+$(function(){
+    window.onload = function(){
+        loadShop();
+    };
+});
+
+function loadShop (){
+	
+	   document.getElementById("dishList").innerHTML = '';
+	
+	
+       var criteria = ${param.criteria};
+       console.log(criteria.id);
+       $.ajax({
+    	   type:'GET',
+    	   url:'getDishesByCriteria',
+    	   data:{type:criteria.id},
+    	   success: function(Dishlist){
+    		      console.log(Dishlist);
+    		      console.log(Dishlist[0].name);
+    		   	  if(Dishlist){
+    			  
+    				  var tableOP = $('<table>');
+                      $(tableOP).appendTo('#dishList');
+                      
+                      $.each(Dishlist, function(index, value){
+                    	  
+                    	                   
+                          // open of new row
+                          if(index % 3 == 0){
+                              var rowOP = $('<tr>');
+                              $(rowOP).appendTo('#dishList'); 
+                          }
+                          
+                          
+						  var did =  Dishlist[index].did;
+                          var name = Dishlist[index].name;
+                          var type = Dishlist[index].type;
+                          var price = Dishlist[index].price;
+                          var description = Dishlist[index].description;
+                          var img = Dishlist[index].dishImages[0].imgPath;
+                          
+                          console.log(img);
+
+                          var shopInfo = $('<td><a href="./dishDetails.jsp?did='+ did+ '"><img src="'+ img +'" title= "'+ name +'" id= "' + did + '"   /></br><p>'+name+'</p></a></td>');
+                          $(shopInfo).appendTo('#dishList');
+
+                          // end of new row
+                          if(index % 3 == 0){
+                              var rowEn = $('</tr>');
+                              $(rowEn).appendTo('#dishList');
+                          }
+                      });
+                      
+                      var tableEn = $('</table>');
+                      $(tableEn).appendTo('#dishList');
+                      
+    		   	  }else{
+                      var noShop = $('<p>No Dishes Show</p>');
+                      $(noShop).appendTo('#dishList');
+                  }
+ 		   
+    	   },
+    	   error:function(){
+    		   console.log("Error");
+    	   }
+       });
+       
+};
+
+</script>
 </body>
+
+
+
+
+
+
 </html>

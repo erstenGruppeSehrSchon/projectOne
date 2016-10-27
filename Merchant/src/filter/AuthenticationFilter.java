@@ -1,7 +1,6 @@
 package filter;
 
 import java.io.IOException;
-
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -34,7 +33,7 @@ public class AuthenticationFilter implements Filter {
 
 		HttpSession session = request.getSession();
 
-		if (!(path.startsWith("/Admin/login.jsp") || path.startsWith("/Admin/login")) && session.getAttribute("admin") == null) {
+		if (!(path.startsWith("/Merchant/login.jsp") || path.startsWith("/Merchant/login")) && session.getAttribute("merchant") == null) {
 			response.sendRedirect("login.jsp");
 		} else {
 			chain.doFilter(request, response);
