@@ -14,6 +14,8 @@
 </head>
 <body>
 <jsp:include page="header.jsp" />
+<!--*********container*********-->
+<div class="container">
 <jsp:include page="menu.jsp" />
 
 	
@@ -46,5 +48,6 @@
 			</tr>
 		</table>
 	</div>
+</div>
 </body>
 </html>

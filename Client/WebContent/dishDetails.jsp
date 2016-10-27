@@ -14,9 +14,11 @@
 </head>
 <body>
 <jsp:include page="header.jsp" />
-<jsp:include page="menu.jsp" />
+
 <!--*********container*********-->
 <div class="container">
+<jsp:include page="menu.jsp" />
+
 	<!--*********Dish*********--> <!-- THREE IN ONE LINK -->
 	<div class="mydish">
 		<h3 class="h3_title_index">- Dish Name here -</h3>
