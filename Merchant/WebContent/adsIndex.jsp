@@ -12,13 +12,12 @@
 	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
 $(function(){
-	alert('${merchant.mid}');
 	$.ajax({
         type:'GET',
         url:'getAdvertisementByMid?mid=${merchant.mid}',
         success: function(data){
             document.getElementById("advertList").innerHTML = '';  
-            alert(data);
+            
             if(!isEmpty(data)){
                 if(data.length > 0){
                     var tableOP = $('<table class="largeThumb">');
@@ -33,8 +32,8 @@ $(function(){
 
                         var ipath = data[i].imgPath;
                         var shopName = data[i].shop.name;
-
-                        var advertInfo = $('<td><img src="'+ipath+'" title="'+shopName+'"/></td>');
+						//alert(data[i].advId);
+                        var advertInfo = $('<td><img src="'+ipath+'" title="'+shopName+'"/></br></td>');
                         $(advertInfo).appendTo('#advertList');
 
                         // end of new row
@@ -64,6 +63,7 @@ $(function(){
 function isEmpty(value) {
     return typeof value == 'string' && !value.trim() || typeof value == 'undefined' || value === null;
 }	
+
 </script>
 </head>
 <body>
