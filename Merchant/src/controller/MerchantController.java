@@ -3,7 +3,12 @@ package controller;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import org.apache.activemq.ActiveMQConnectionFactory;
+import org.apache.activemq.command.ActiveMQQueue;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +18,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import po.Advertisement;
 import po.Dish;
@@ -26,6 +34,14 @@ import service.DishManager;
 import service.MerchantManager;
 import service.OrderManager;
 import service.ShopManager;
+
+import javax.jms.Connection;
+import javax.jms.ConnectionFactory;
+import javax.jms.Destination;
+import javax.jms.JMSException;
+import javax.jms.MessageProducer;
+import javax.jms.Session;
+import javax.jms.TextMessage;
 import javax.servlet.ServletContext;
 
 @Controller
@@ -103,6 +119,7 @@ public class MerchantController {
 		if(merchant != null){
 			mv.setViewName("login");
 			mv.addObject("merchant", merchant);
+			sendRegisterRequest(merchant);
 		}
 		else{
 			mv.setViewName("merchantAdd");
@@ -125,6 +142,32 @@ public class MerchantController {
 		
 		
 		return mv;
+	}
+	
+	private void sendRegisterRequest(Merchant merchant){
+		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		ConnectionFactory factory = (ActiveMQConnectionFactory)context.getBean("mq");
+		
+//		Destination queue = new ActiveMQQueue("Test01Q");
+		Destination queue = (ActiveMQQueue)context.getBean("regQueue");
+		Connection con = null;
+		Session session = null;
+		MessageProducer producer = null;
+		try {
+			con = factory.createConnection();
+			con.start();
+			session = con.createSession(false, Session.CLIENT_ACKNOWLEDGE);
+			producer = session.createProducer(queue);
+			ObjectMapper mapper = new ObjectMapper();
+			
+			TextMessage msg = session.createTextMessage(mapper.writeValueAsString(merchant));
+			producer.send(msg);
+		} catch (JMSException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonProcessingException e){
+			e.printStackTrace();
+		}
 	}
 	
 	// Merchant End
