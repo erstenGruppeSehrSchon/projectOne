@@ -62,9 +62,9 @@ getOrders = function(shopId, shopName) {
 	    		var buttonRow = document.createElement("tr");
 	    		var tdDum = document.createElement("td");
 	    		var buttonCol = document.createElement("td");
-	    		buttonCol.appendChild(createRejectButton(orders[i].oid));
-	    		buttonCol.appendChild(createAcceptButton(orders[i].oid));
-	    		buttonCol.appendChild(createDeliverButton(orders[i].oid));
+	    		buttonCol.appendChild(createRejectButton(shopId, orders[i].oid, orders[i].status == "Rejected"));
+	    		buttonCol.appendChild(createAcceptButton(shopId, orders[i].oid), orders[i].status == "Accepted");
+	    		buttonCol.appendChild(createDeliverButton(shopId, orders[i].oid), orders[i].status == "Delivered");
 	    		buttonRow.appendChild(tdDum);
 	    		buttonRow.appendChild(buttonCol);
 	    		
@@ -72,45 +72,49 @@ getOrders = function(shopId, shopName) {
 	    		tr.appendChild(orderInfoCol);
 	    		tr.appendChild(dishDetailCol);
 	    		orderTable.appendChild(tr);
-	    		orderTable.appendChild(buttonRow);
+	    		orderTable.appendChild(buttonRow);	    		
     		}
     	}
 	});
 }
 
-createRejectButton = function(orderId) {
+createRejectButton = function(shopId, orderId, isDisabled) {
 	var rejectButton = document.createElement("button");
 	rejectButton.onclick = function() {
-		updateOrderStatus(orderId, "Rejected");
+		updateOrderStatus(shopId, orderId, "Rejected");
 	};
 	rejectButton.innerHTML = "Rejected";
+	rejectButton.disabled = isDisabled;
 	return rejectButton;
 }
 
-createAcceptButton = function(orderId) {
+createAcceptButton = function(shopId, orderId, isDisabled) {
 	var acceptButton = document.createElement("button");
 	acceptButton.onclick = function() {
-		updateOrderStatus(orderId, "Accepted");
+		updateOrderStatus(shopId, orderId, "Accepted");
 	};
 	acceptButton.innerHTML = "Accepted";
+	acceptButton.disabled = isDisabled;
 	return acceptButton;
 }
 
-createDeliverButton = function(orderId) {
+createDeliverButton = function(shopId, orderId, isDisabled) {
 	var deliverButton = document.createElement("button");
 	deliverButton.onclick = function() {
-		updateOrderStatus(orderId, "Delivered");
+		updateOrderStatus(shopId, orderId, "Delivered");
 	};
 	deliverButton.innerHTML = "Deliver";
+	deliverButton.disabled = isDisabled;
 	return deliverButton;
 }
 
-updateOrderStatus = function(orderId, updateStatus) {
+updateOrderStatus = function(shopId, orderId, updateStatus) {
 	$.ajax({
 	   	url: "updateOrderStatus",
     	dataType: "json",
     	method: "post",
     	data: {
+    		sid: shopId,
     		oid: orderId,
     		status: updateStatus
     	},

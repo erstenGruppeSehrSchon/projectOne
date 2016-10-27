@@ -344,10 +344,10 @@ public class MerchantController {
 		return result;
 	}
 	
-	@RequestMapping(value="updateOrderStatus", method={RequestMethod.GET}) // Change later
-	@ResponseBody
-	public Order updateOrderStatus(String oid, String status) {
-		return orderManager.updateOrderStatus(oid, status);
+	@RequestMapping(value="updateOrderStatus", method={RequestMethod.POST})
+	public ModelAndView updateOrderStatus(String sid, String oid, String status) {
+		orderManager.updateOrderStatus(oid, status);
+		return showIndexPage(sid);
 	}
 	
 	@RequestMapping(value="replyOrderComment", method={RequestMethod.GET}) // Change later
