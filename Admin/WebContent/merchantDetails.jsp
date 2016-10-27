@@ -1,16 +1,16 @@
-<!--<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>!-->
-<!DOCTYPE html>
-<html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="BIG5">
-<title>-SAUSAGE HOUSE-</title>
-<meta name="viewport" content="width=device-width">
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="js/merchantDetails.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>-SAUSAGE HOUSE- | -Admin System-</title>
+	<link rel="stylesheet" type="text/css" href="./css/style.css" />
+	<link rel="stylesheet" type="text/css" href="./css/jquery.slider.css" />
+	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="js/index.js"></script>
 <script>
 	$(function() {
 		createButtons("${merchant.mid}", "${merchant.status}")
@@ -18,46 +18,49 @@
 </script>
 </head>
 <body>
+	<jsp:include page="header.jsp" />
+	<jsp:include page="menu.jsp" />
 <div class="container">
-
-  <div>
-	<table>
+	<table class= "largeThumb">
 	<tr>		
-		<th colspan = "3">-Merchant Information-</th>
+		<td colspan = "3"><h3 class="h3_title_index">-Merchant Information-</h3></td>
 	</tr>
 	<tr>
 		<td rowspan="7" class = "adminEditDetailsTableIcon"><img src= "http://www.icon2s.com/img256/256x256-black-white-android-user.png"/></td>
-		<td class = "adminEditDetailsTableColName">Merchant ID:</td>
-		<td class = "adminEditDetailsTableInput">${merchant.mid}</td>
+		<td class = "adminEditDetailsTableColName"><p class="form_title">Merchant ID:</p></td>
+		<td class = "adminEditDetailsTableInput"><p>${merchant.mid}</p></td>
 	</tr>
 	<tr>
-		<td>Merchant Name:</td>
-		<td>${merchant.name}</td>
+		<td><p class="form_title">Merchant Name:</p></td>
+		<td><p>${merchant.name}</p></td>
 	</tr>
 	<tr>
-		<td>Birth Date:</td>
-		<td>${merchant.birthDate}</td>
+		<td><p class="form_title">Birth Date:</p></td>
+		<td><p>${merchant.birthDate}</p></td>
 	</tr>
 	<tr>
-		<td>Gender:</td>
-		<td>${merchant.gender}</td>
+		<td><p class="form_title">Gender:</p></td>
+		<td><p>${merchant.gender}</p></td>
 	</tr>
 	<tr>
-		<td>Registration Date:</td>
-		<td>${merchant.regDate}</td>
+		<td><p class="form_title">Registration Date:</p></td>
+		<td><p>${merchant.regDate}</p></td>
 	</tr>
 	<tr>
-		<td>Status:</td>
-		<td id="statusCol">${merchant.status}</td>
+		<td><p class="form_title">Status:</p></td>
+		<td id="statusCol"><p>${merchant.status}</p></td>
 	</tr>
 	<tr>
-		<td>Action:</td>
+		<td><p class="form_title">Action:</p></td>
 		<td id="actionCol">
-		
+			<a href="showMerchantDetails?mid=${merchant.mid}" class="btn btn-default">Accept</a>
+			<a href="showMerchantDetails?mid=${merchant.mid}" class="btn btn-default">Reject</a>
+			<a href="showMerchantDetails?mid=${merchant.mid}" class="btn btn-default">Frozen</a>
+			<a href="showMerchantDetails?mid=${merchant.mid}" class="btn btn-default">Pending</a>
 		</td>
 	</tr>
 	</table>
-  </div>
+ 
 </div>
 </body>
 </html>
