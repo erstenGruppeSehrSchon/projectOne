@@ -14,9 +14,10 @@
 </head>
 <body>
 <jsp:include page="./header.jsp" />
-<jsp:include page="./menu.jsp" />
 <!--*********container*********-->
 <div class="container">
+<jsp:include page="./menu.jsp" />
+
 	<!--*********Edit profile form*********-->
 	<div class="merchantForm">
 		<form name="merchantSearchForm" method="post" action="">

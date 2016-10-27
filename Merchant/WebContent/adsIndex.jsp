@@ -14,9 +14,10 @@
 </head>
 <body>
 <jsp:include page="./header.jsp" />
-<jsp:include page="./menu.jsp" />
 <!--*********container*********-->
 <div class="container">
+<jsp:include page="./menu.jsp" />
+
 	<!--*********My Advertisement*********--><!-- 3 in one line -->
 	<div class="myAdvertisement">
 		<h3 class="h3_title_index">- My Advertisement -</h3>
