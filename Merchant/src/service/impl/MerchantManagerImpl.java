@@ -24,7 +24,7 @@ public class MerchantManagerImpl implements MerchantManager {
 		Merchant merchant = dao.getMerchantByUsername(username);
 		PasswordEncrypter encrypter = PasswordEncrypter.getPasswordEncrypter();
 		String encryptedPassword = encrypter.encrypt(password);
-		
+		System.out.println(merchant == null);
 		if (encryptedPassword.equals(merchant.getPassword())) {
 			// Remove password from object
 			merchant.setPassword(null);
@@ -47,7 +47,7 @@ public class MerchantManagerImpl implements MerchantManager {
 		
 		// Convert String to Date
 		DateFormatter formatter = DateFormatter.getDateFormatter();
-		Date formattedBirthDate = formatter.parse(birthDate);
+		Date formattedBirthDate = formatter.parseDate(birthDate);
 		
 		// Create merchant object
 		Merchant merchant = new Merchant();

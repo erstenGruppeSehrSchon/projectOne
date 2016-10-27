@@ -2,6 +2,9 @@ package service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,10 +20,10 @@ public class DishImageManagerImpl implements DishImageManager {
 	private DishImageDao dao;
 
 	@Override
-	public List<DishImage> addDishImages(String did, List<MultipartFile> files) {
+	public List<DishImage> addDishImages(String did, List<MultipartFile> files, ServletContext context) {
 		// Upload images
 		FileUploader uploader = FileUploader.getFileUploader();
-		ArrayList<String> imgPaths = uploader.upload(files);
+		ArrayList<String> imgPaths = uploader.upload(files, context);
 		
 		// Create dish image objects and persist
 		List<DishImage> dishImages = new ArrayList<>();

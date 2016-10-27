@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -29,19 +31,19 @@ public class ShopManagerImpl implements ShopManager {
 	}
 
 	@Override
-	public Shop addShop(String mid, String name, String description, String type, String openTime, String closeTime, String address, String phone, List<MultipartFile> files) {
+	public Shop addShop(String mid, String name, String description, String type, String openTime, String closeTime, String address, String phone, List<MultipartFile> files, ServletContext context) {
 		// Upload images
 		ArrayList<String> imgPaths = new ArrayList<>();
 		imgPaths.add("test.jpg");
 		if (files != null) {
 			FileUploader uploader = FileUploader.getFileUploader();
-			imgPaths = uploader.upload(files);
+			imgPaths = uploader.upload(files, context);
 		}
 		
 		// Format open and close time
 		DateFormatter formatter = DateFormatter.getDateFormatter();
-		Date formattedOpenTime = formatter.parse(openTime);
-		Date formattedCloseTime = formatter.parse(closeTime);
+		Date formattedOpenTime = formatter.parseTime(openTime);
+		Date formattedCloseTime = formatter.parseTime(closeTime);
 		
 		// Create shop object
 		Shop shop = new Shop();
@@ -69,8 +71,8 @@ public class ShopManagerImpl implements ShopManager {
 	public Shop updateShop(String sid, String name, String description, String type, String openTime, String closeTime, String address, String phone) {
 		// Format open and close time
 		DateFormatter formatter = DateFormatter.getDateFormatter();
-		Date formattedOpenTime = formatter.parse(openTime);
-		Date formattedCloseTime = formatter.parse(closeTime);
+		Date formattedOpenTime = formatter.parseTime(openTime);
+		Date formattedCloseTime = formatter.parseTime(closeTime);
 		
 		return dao.updateShop(sid, name, description, type, formattedOpenTime, formattedCloseTime, address, phone);
 	}
