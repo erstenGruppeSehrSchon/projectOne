@@ -37,30 +37,6 @@
 <div class="container">
 	<h3 class="h3_title_index">- All Dishes in this shop-</h3>
 	<div id = "dishList"></div>
-		<table class="largeThumb">
-			<tr>
-				<td>
-					<a href="./dishDetails.jsp"><!-- Advertisement Link-->
-					<img src="http://www.foodmanufacture.co.uk/var/plain_site/storage/images/publications/food-beverage-nutrition/foodmanufacture.co.uk/npd/top-10-functional-food-trends/11097085-1-eng-GB/Top-10-functional-food-trends_strict_xxl.jpg" title=""/></br> <!-- Shop img and shop name -->
-					<p>Shops Name</p>
-					<p>Dish Name</p></a>
-				</td>
-				
-				<td>
-					<a href="./dishDetails.jsp"><!-- Advertisement Link-->
-					<img src="http://www.gordonconwell.edu/hamilton/current/images/01.jpg" title=""/></br> <!-- Dish img and shop name -->
-					<p>Shops Name</p>
-					<p>Dish Name</p></a>
-				</td>
-				
-				<td>
-					<a href="./dishDetails.jsp"><!-- Advertisement Link-->
-					<img src="http://www.noblecatering.co.uk/upload/food-066.jpg" title=""/></br> <!-- Dish img and shop name -->
-					<p>Shops Name</p>
-					<p>Dish Name</p></a>
-				</td>
-			</tr>
-		</table>
 </div>
 
 <div class="container">
@@ -71,6 +47,7 @@
 <div class="container">
 	<h3 class="h3_title_index">- All Comments in this shop-</h3>
 	<!-- one comment one table -->
+	<div id ="commentList"></div>
 		<table class="largeThumb commentBox">
 		<tr>
 			<td colspan="2"><h4 class="form_title">-Customer comment-</h4></td>
@@ -117,7 +94,7 @@
     	window.onload = function(){
         	loadShop();
         	loadDish();
-        	//loadOrder();
+        	loadComment();
     	};
 	});
 
@@ -185,9 +162,30 @@
             	
                 },
                 error: function(){
-                    var error = $('<p>Error in getting advertment.</p>');
-                    $(error).appendTo('#advertList');
+                    var error = $('<p>Error in getting dish.</p>');
+                    $(error).appendTo('#dishList');
                 }
+		});
+	}
+
+	function loadComment(){
+		document.getElementById("commentList").innerHTML = '';
+		var sid = '${shop.sid}';
+		$.ajax({
+			type:'GET',
+            url:"getOrderWithCommentBySid?sid=" + sid,
+            success:function(msg){
+                if (msg.length>0){
+                	$.each(msg,function(i,ad){
+                    	
+                	});
+                }
+            	
+            },
+            error: function(){
+                var error = $('<p>Error in getting comment.</p>');
+                $(error).appendTo('#commentList');
+            }
 		});
 	}
 
