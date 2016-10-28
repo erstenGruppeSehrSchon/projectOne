@@ -21,24 +21,24 @@
 
 	<!--*********Dish*********--> <!-- THREE IN ONE LINK -->
 	<div class="mydish">
-		<h3 class="h3_title_index">- Dish Name here -</h3>
+		<h3 class="h3_title_index" id = "dishname"></h3>
 		<table class="largeThumb">
 			<tr>
 				<td>
-					<p><h4 class="form_title">Dishes Type :</h4> Dishes Type here</p>
+					<p><h4 class="form_title">Dishes Type :</h4><p id = "dishtype"></p></p>
 					</br>
-					<p><h4 class="form_title">Dishes Prices :</h4> Dishes Prices here</p>
+					<p><h4 class="form_title">Dishes Prices :</h4><p id = "dishprice"></p></p>
 					</br>
-					<p><h4 class="form_title">Dishes Status :</h4> Dishes Status</p>
+					<p><h4 class="form_title">Dishes Status :</h4><p id = "dishstatus"></p></p>
 					</br>
-					<p><h4 class="form_title">Dishes Description:</h4> Dishes Description</p>
+					<p><h4 class="form_title">Dishes Description:</h4><p id = "dishdes"></p></p>
 				</td>
 				<td><img src=  "http://www.foodmanufacture.co.uk/var/plain_site/storage/images/publications/food-beverage-nutrition/foodmanufacture.co.uk/npd/top-10-functional-food-trends/11097085-1-eng-GB/Top-10-functional-food-trends_strict_xxl.jpg"/></td>
 			</tr>
 			<tr>
 				<td id="orderDishDiv">
-				<p>Quantity: <input type="number" name="quantity" min="1" max="100"></input></br>
-				<a href=""><input type="submit" value="Add to Cart"/></a></p>
+				<p>Quantity: <input type="number" name="quantity" min="1" max="100" id = "quantity"></input></br>
+				<input type="submit" value="Add to Cart" id = "order"/></p>
 				</td>
 				<td></td>
 			</tr>
@@ -57,13 +57,13 @@
 		<table class="largeThumb">
 			<tr>
 				<td>
-					<p><a href="./shopDetails.jsp"><h4 class="form_title">Shop Name :</h4> Shop Name here</a></p>
+					<p><a href="./shopDetails.jsp"><h4 class="form_title">Shop Name :</h4><p id = "shopname"></p></a></p>
 					</br>
-					<p><h4 class="form_title">Shop Address :</h4> Shop Address here</p>
+					<p><h4 class="form_title">Shop Address :</h4> <p id = "shopaddress"></p></p>
 					</br>
-					<p><h4 class="form_title">Shop Tels :</h4> Shop Tels Status</p>
+					<p><h4 class="form_title">Shop Tels:</h4> <p id = "shoptel"></p></p>
 					</br>
-					<p><h4 class="form_title">Merchant Name:</h4> Merchant Name</p>
+					<p><h4 class="form_title">Shop type:</h4> <p id = "shoptype"></p></p>
 				</td>
 				<td><img src=  "http://www.icon2s.com/img256/256x256-black-white-android-user.png"/></td>
 			</tr>
@@ -73,7 +73,63 @@
 
 <script>
 var did ="${param.did}";
-$(function)
+$(function(){
+	$.ajax({
+		type:'GET',
+		url:'getDishByDid',
+		data:{did:did},
+		success:function(dish){
+			$("#dishname").text(dish.name);
+			$("#dishtype").text(dish.type);
+			$("#dishprice").text(dish.price);
+			$("#dishstatus").text(dish.status);
+			$("#dishdes").text(dish.description);
+			
+		   
+		    $.ajax({
+		    	type:'GET',
+		    	url:'getShopByDid',
+		    	data:{did:did},
+		    	success:function(shop){
+		    		console.log(shop.merchant_id);
+		    		$("#shopname").text(shop.name);
+					$("#shoptype").text(shop.type);
+					$("#shoptel").text(shop.shopContact.phone);
+					$("#shopaddress").text(shop.shopContact.address);
+					var sid = shop.sid;
+					
+		    		
+		    	},error:function(){
+		    		
+		    	}
+		    	
+		    });
+	
+		},error:function(){
+			
+		}
+		
+	});
+	
+	
+		$('#order').on('click',function(){
+			
+			$.ajax({
+				type:'GET',
+				url:'addOrder',
+				data:{sid:sid}
+				
+			});
+			
+		});
+		
+	
+
+
+
+
+
+});	
 
 
 </script>

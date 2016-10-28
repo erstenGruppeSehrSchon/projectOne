@@ -155,23 +155,7 @@ function getAllChart (){
                            $(rowOP).appendTo('#orderList'); 
                        }
                        
-                       <td>
-   					<p>Order number: </p><p></p>
-   					<p>Order Time: </p><p></p>
-   					<p>Merchant Name: </p><p></p>
-   					<p>Receiver Name: </p><p></p>
-   					<p>Delivery Address: </p><p></p>
-   					<p>Total Prices: </p><p></p>
-   				</td>
-   				<td>
-   					<b><p>Shop name: </p><p></p></b>
-   					<p>Dish: </p><p></p>
-   					<p>Dish: </p><p></p>
-   					<p>Dish: </p><p></p>
-   					<p>Dish: </p><p></p>
-   					<p>Dish: </p><p></p>
-   					<p>Dish: </p><p></p>
-   				</td>
+
                        
                     var oid = orderList[i].oid;
        				var status = orderList[i].status;

@@ -26,6 +26,15 @@ public class ShopDaoImpl implements ShopDao {
 	public Shop getShopBySid(String sid) {
 		return em.find(Shop.class, sid);
 	}
+	
+	@Override
+	public Shop getShopByDid(String did) {
+		Session session = (Session)em.getDelegate();
+		Criteria criteria = session.createCriteria(Shop.class);
+		criteria.createCriteria("dishes", "d");
+		criteria.add(Restrictions.eq("d.did", did));
+		return (Shop)criteria.list().get(0);
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override
