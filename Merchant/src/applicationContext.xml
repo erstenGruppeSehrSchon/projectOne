@@ -27,9 +27,10 @@
 	
 	<bean id="ds" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver"></property>
-		<property name="url" value="jdbc:oracle:thin:@CHEUNAN-W7.corp.oocl.com:1521:xe"></property>
-		<property name="password" value="123"></property>
-		<property name="username" value="TRAINING"></property>
+		<!--<property name="url" value="jdbc:oracle:thin:@CHEUNAN-W7.corp.oocl.com:1521:xe"></property>-->
+		<property name="url" value="jdbc:oracle:thin:@ITA-031-W7.corp.oocl.com:1521:xe"></property>
+		<property name="password" value="001"></property>
+		<property name="username" value="patrick001"></property>
 	</bean>
 	
 	<bean id="mq" class="org.apache.activemq.ActiveMQConnectionFactory">
@@ -47,7 +48,7 @@
 	</bean>
 	<!-- Submit advertisement request -->
 	<bean id="advSubmitQueue" class="org.apache.activemq.command.ActiveMQQueue">
-		<constructor-arg value="AdvQueue" />
+		<constructor-arg value="AdvSubmitQueue" />
 		
 	</bean>
 	<!-- Listen to advertisement update from admin side -->
