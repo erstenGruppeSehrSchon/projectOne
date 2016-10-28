@@ -13,7 +13,23 @@
 	<script src="js/orderIndex.js"></script>
 	<script>
 		$(function() {
-			getOrders("${shopId}", "${shopName}");
+			//getOrders("${shopId}", "${shopName}");
+	    	if(!isEmpty('${merchant}')){
+	    		$.ajax({
+	    			type : 'GET',
+	    			url : 'getMerchantByMid?mid='+'${merchant.mid}',
+	    			success:function(Merchant){
+	    				var shopList = document.getElementById("shopList");
+	    				for(var x = 0; x < Merchant.shops.length ; x++){
+	    					var shopName = Merchant.shops[x]["name"];
+	    					var option = document.createElement("option");
+	    					option.text = shopName;
+	    					option.setAttribute("value", Merchant.shops[x]["sid"]);
+	    					shopList.add(option);
+	    				}
+	    			}
+	    		});
+	    	}
 		});
 	</script>
 </head>
@@ -25,6 +41,9 @@
 
 	<!--*********My Order*********--><!-- 1 in one line -->
 	<div class=myOrder>
+		<h3 class="h3_title_index">- Shop -</h3>
+		<select id="shopList" onchange="getOrders(this.value);"></select>
+		
 		<h3 class="h3_title_index">- My Order -</h3>
 		
 		<!-- one table for one order -->

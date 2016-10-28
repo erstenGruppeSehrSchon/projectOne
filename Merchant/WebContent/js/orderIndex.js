@@ -1,5 +1,4 @@
-getOrders = function(shopId, shopName) {
-	
+getOrders = function(shopId) {
 	$.ajax({
 	   	url: "getOrdersBySid",
     	dataType: "json",
@@ -31,13 +30,14 @@ getOrders = function(shopId, shopName) {
 	    		
 	    		// Dish detail
 	    		var dishDetailCol = document.createElement("td");
+	    		/*
 	    		var shopNameLabelPar = document.createElement("p");
 	    		shopNameLabelPar.innerHTML = "<b>Shop Name:</b>";
 	    		var shopNamePar = document.createElement("p");
 	    		shopNamePar.innerHTML = shopName;
 	    		dishDetailCol.appendChild(shopNameLabelPar);
 	    		dishDetailCol.appendChild(shopNamePar);
-	    	
+	    		*/
 	    		// Dishes
 	    		var totalPrice = 0;
 	    		for (var j=0; j<orders[i].orderDetails.length; j++) {
@@ -125,4 +125,8 @@ updateOrderStatus = function(shopId, orderId, updateStatus) {
     		alert("fail");
     	}
 	});
+}
+
+function isEmpty(value) {
+    return typeof value == 'string' && !value.trim() || typeof value == 'undefined' || value === null;
 }

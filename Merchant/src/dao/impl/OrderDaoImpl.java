@@ -23,10 +23,10 @@ public class OrderDaoImpl implements OrderDao {
 	@Override
 	public List<Order> getOrdersBySid(String sid) {
 		Session session = (Session)em.getDelegate();
-		Criteria criteria = session.createCriteria(Order.class); System.out.println(criteria.list().size());
-
+		Criteria criteria = session.createCriteria(Order.class);
 		criteria.createCriteria("shop","s");
-		criteria.add(Restrictions.eq("s.sid", sid).ignoreCase());		
+		criteria.add(Restrictions.eq("s.sid", sid).ignoreCase());
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 		List<Order> order = (List<Order>) criteria.list();		
 		return order;
 	}
