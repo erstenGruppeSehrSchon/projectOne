@@ -10,24 +10,33 @@
 	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<jsp:include page="header.jsp" />
+	<jsp:include page="headerGuest.jsp" />
+<!--*********container*********-->
+<div class="container">
 	<jsp:include page="menu.jsp" />
-    <div>
-        <form action="login" method="post">
-            <table>
-                <tr>
-                    <td>Username:</td>
+    <div class="clientForm">
+		<form name="clientSearchForm" action="login" method="post">
+			<table class="searchTable">
+				<tr>
+                    <td colspan="2"><h3 class="h3_title_index">-Login-</h3></td>
+                </tr>
+				<tr>
+                    <td><h4 class="form_title">Login Name:</h4></td>
                     <td><input type="text" name="username" placeholder="username"/></td>
                 </tr>
                 <tr>
-                    <td>Password:</td>
+                    <td><h4 class="form_title">Login Password:</h4></td>
                     <td><input type="password" name="password" placeholder="password"/></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><button type="submit">Login</button></td>
+                	<td></td>
+                    <td><input id="loginButton" type="submit" value="Login"  /></td>
                 </tr>
-            </table>
-        </form>
-    </div>
+                <tr>
+                	<td><span id ="error"><font color="red"><b>${error}</b></font></span></td>
+                </tr>
+			</table>
+		</form>		
+</div>
 </body>
 </html>

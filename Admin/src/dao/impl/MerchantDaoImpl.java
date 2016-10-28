@@ -3,6 +3,7 @@ package dao.impl;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -13,8 +14,10 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import common.util.DateFormatter;
 import po.Merchant;
+
+import common.util.DateFormatter;
+
 import dao.MerchantDao;
 
 @Repository
@@ -48,28 +51,35 @@ public class MerchantDaoImpl implements MerchantDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Merchant> getMerchantsByCriteria(String mid, String name, String gender, Integer ageIndex, String regDate, String status) {
+		
+		System.out.println(mid + "..." + name + "..." + gender + "..." + ageIndex + "..." + regDate + "..." + status);
+		
 		Session session = (Session)em.getDelegate();
 		
 		// Add criteria
 		Criteria criteria = session.createCriteria(Merchant.class);
 		
-		if (mid != null) {
+		if (mid != null && mid.length() > 0) {
 			System.out.println("A");
+			System.out.println(mid);
 			criteria.add(Restrictions.eq("mid", mid));
 		}
 		
 		if (name != null && name.length() > 0) {
+			System.out.println("B");
 			System.out.println(name);
 			criteria.add(Restrictions.like("name", name, MatchMode.ANYWHERE));
 		}
 		
-		if (gender != null) {
+		if (gender != null && !"0".equals(gender)) {
+			System.out.println("C");
 			System.out.println(gender);
 			criteria.add(Restrictions.eq("gender", gender));
 		}
 		
 		if (ageIndex != null && ageIndex > 0) {
 			System.out.println("D");
+			System.out.println(ageIndex);
 			Date currentDate = new Date();
 			criteria.add(Restrictions.between(
 				"birthDate", 
@@ -79,8 +89,10 @@ public class MerchantDaoImpl implements MerchantDao {
 		}
 
 		if (regDate != null && regDate.length() > 0) {
+			System.out.println("E");
+			System.out.println(regDate);
 			DateFormatter formatter = DateFormatter.getDateFormatter();
-			Date fromDate = formatter.parseDate(regDate);
+			Date fromDate = formatter.parse(regDate.replace("-", "")); // not planned to update DateFormatter, not sure somewhere else will use this
 			Date toDate = getNextDay(fromDate);
 			criteria.add(Restrictions.ge("regDate", fromDate));
 			criteria.add(Restrictions.lt("regDate", toDate));
@@ -122,9 +134,4 @@ public class MerchantDaoImpl implements MerchantDao {
 		return merchant;
 	}
 
-	@Override
-	public List<Merchant> getMerchantByStatus(String status) {
-		String jqpl = "from Merchant m where m.status = :status";
-		return em.createQuery(jqpl).setParameter("status", status).getResultList();
-	}
 }

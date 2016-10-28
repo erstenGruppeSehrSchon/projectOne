@@ -1,5 +1,6 @@
 createAcceptButton = function(merchantId) {
 	var acceptButton = document.createElement("button");
+	acceptButton.setAttribute("class","btn btn-default");
 	acceptButton.innerHTML = "Accept";
 	acceptButton.onclick = function() {
 		updateMerchantStatus(merchantId, "Accepted");
@@ -9,6 +10,7 @@ createAcceptButton = function(merchantId) {
 
 createRejectButton = function(merchantId) {
 	var rejectButton = document.createElement("button");
+	rejectButton.setAttribute("class","btn btn-default");
 	rejectButton.innerHTML = "Reject";
 	rejectButton.onclick = function() {
 		updateMerchantStatus(merchantId, "Rejected");
@@ -18,6 +20,7 @@ createRejectButton = function(merchantId) {
 
 createBacklistButton = function(merchantId) {
 	var backlistButton = document.createElement("button");
+	backlistButton.setAttribute("class","btn btn-default");
 	backlistButton.innerHTML = "Backlist";
 	backlistButton.onclick = function() {
 		updateMerchantStatus(merchantId, "Frozen");
@@ -27,6 +30,7 @@ createBacklistButton = function(merchantId) {
 
 createResumeButton = function(merchantId) {
 	var resumeButton = document.createElement("button");
+	resumeButton.setAttribute("class","btn btn-default");
 	resumeButton.innerHTML = "Resume";
 	resumeButton.onclick = function() {
 		updateMerchantStatus(merchantId, "Accepted");

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -14,16 +15,17 @@
 </head>
 <body>
 	<jsp:include page="header.jsp" />
+		<div class="container">
 	<jsp:include page="menu.jsp" />
-	<div class="container">
-	<h3 class="h3_title_index">- Serach Result -</h3>
+
+	<h3 class="h3_title_index">- Search Result -</h3>
 	  <div>
 		<table id = "searchResultTable" class = "table">
 		<tr>
 			<td><p class="form_title">Merchant ID</p></td>
 			<td><p class="form_title">Merchant Name</p></td>
-			<td><p class="form_title">Status</h3></p>
-			<td><p class="form_title">Edit</h3></p>
+			<td><p class="form_title">Status</p></td>
+			<td><p class="form_title">Edit</p></td>
 		</tr>
 		<c:forEach var="merchant" items="${merchants}">
 			<tr>

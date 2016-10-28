@@ -29,10 +29,6 @@ public class Advertisement {
 
 	@Column(nullable=false)
 	private Date createdTime;
-	
-	@ManyToOne
-	@JoinColumn(name="shop_id")
-	private Shop shop;
 
 	public String getAdvId() {
 		return advId;
@@ -56,14 +52,6 @@ public class Advertisement {
 
 	public void setStatus(String status) {
 		this.status = status;
-	}
-
-	public Shop getShop() {
-		return shop;
-	}
-
-	public void setShop(Shop shop) {
-		this.shop = shop;
 	}
 
 	public Date getCreatedTime() {

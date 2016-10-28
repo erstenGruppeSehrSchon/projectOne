@@ -22,15 +22,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import po.Admin;
 import po.Advertisement;
 import po.Merchant;
 import service.AdminManager;
 import service.AdvertisementManager;
 import service.MerchantManager;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 @SessionAttributes("admin")
@@ -59,11 +59,12 @@ public class AdminController {
         if (admin == null) {
         	System.out.println("admin is null");
         	modelAndView.setViewName("login");
+        	modelAndView.addObject("error", "Invalid username/password!");
         } else {
         	// Set view
             modelAndView.setViewName("index");
             modelAndView.addObject("admin", admin);
-            modelAndView.addObject("aMerchants", merchantManager.getMerchantByStatus("Pending"));
+            modelAndView.addObject("aMerchants", merchantManager.getMerchantsByCriteria(null, null, null, null, null, "Pending"));
         }
         
 		return modelAndView;
@@ -88,14 +89,15 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="searchMerchants", method={RequestMethod.GET})
-	public ModelAndView searchMerchants(String mid, String name, String gender, Integer ageIndex, String regDate, String status) {
+	public ModelAndView searchMerchants(String id, String name, String gender, Integer ageIndex, String regDate, String status) {
+		
         ModelAndView modelAndView = new ModelAndView();
         
         // Set view
         modelAndView.setViewName("searchResult");
         
         // Set match merchant
-        List<Merchant> merchants = merchantManager.getMerchantsByCriteria(mid, name, gender, ageIndex, regDate, status);
+        List<Merchant> merchants = merchantManager.getMerchantsByCriteria(id, name, gender, ageIndex, regDate, status);
         modelAndView.addObject("merchants", merchants);
         
 		return modelAndView;
@@ -103,6 +105,9 @@ public class AdminController {
 	
 	@RequestMapping(value="showMerchantDetails", method={RequestMethod.GET})
 	public ModelAndView showMerchantDetails(String mid) {
+		
+		System.out.println("show merchant details");
+		
         ModelAndView modelAndView = new ModelAndView();
         
         // Set view
@@ -123,7 +128,6 @@ public class AdminController {
 		return merchant;
 	}
 	
-	//http://localhost:8080/Admin/getAdvertisementsByStatus?status=Pending
 	@RequestMapping(value="getAdvertisementsByStatus", method={RequestMethod.GET})
 	@ResponseBody
 	public List<Advertisement> getAdvertisementsByStatus(String status) {
@@ -131,30 +135,12 @@ public class AdminController {
 		return advertisementManager.getAdvertisementsByStatus(status);
 	}
 	
-	//http://localhost:8080/Admin/updateAdvertisementStatus?advId=-1&status=abc
-	@RequestMapping(value="updateAdvertisementStatus", method={RequestMethod.GET})
+	@RequestMapping(value="updateAdvertisementStatus", method={RequestMethod.POST})
 	@ResponseBody
-	public void updateAdvertisementStatus(String advId, String status) {
-		System.out.println("enter updateAdvertisementStatus " + status);
+	public Advertisement updateAdvertisementStatus(String advId, String status) {
 		Advertisement adv = advertisementManager.updateAdvertisementStatus(advId, status);
 		sendUpdateAdvStatus(adv);
-	}
-	
-	@RequestMapping(value="showAcceptedAdvertisement", method={RequestMethod.GET})
-	@ResponseBody
-	public List<Advertisement> showAcceptedAdvertisement() {    		
-		return advertisementManager.getAdvertisementsByStatus("Accepted");
-	}
-	
-	@RequestMapping(value="controlAdvertisement", method={RequestMethod.GET})
-	public void controlAdv(String advId, String status) {  
-		advertisementManager.updateAdvertisementStatus(advId, status);
-	}
-	
-	@RequestMapping(value="showRejectedAdvertisement", method={RequestMethod.GET})
-	@ResponseBody
-	public List<Advertisement> showRejectedAdvertisement() {    		
-		return advertisementManager.getAdvertisementsByStatus("Rejected");
+		return adv;
 	}
 	
 	private void sendUpdateStatus(Merchant merchant){
@@ -212,4 +198,5 @@ public class AdminController {
 			e.printStackTrace();
 		}
 	}
+
 }

@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name="M_SHOP") // Change default table name
+@Table(name="A_SHOP") // Change default table name
 public class Shop {
 
 	@Id
@@ -41,10 +41,6 @@ public class Shop {
 	
 	@Column(name="IMG_PATH", length=500, nullable=false)
 	private String imgPath;
-	
-	@OneToMany(fetch=FetchType.EAGER)
-	@JoinColumn(name="shop_id")	
-	private Set<Dish> dishes = new HashSet<>();
 
 	@Embedded
 	private ShopContact shopContact;
@@ -104,14 +100,6 @@ public class Shop {
 
 	public void setImgPath(String imgPath) {
 		this.imgPath = imgPath;
-	}
-
-	public Set<Dish> getDishes() {
-		return dishes;
-	}
-
-	public void setDishes(Set<Dish> dishes) {
-		this.dishes = dishes;
 	}
 
 	public ShopContact getShopContact() {
