@@ -47,13 +47,23 @@ public class MerchantControllerTest {
 		
 		AdvertisementManager adv = (AdvertisementManager) context.getBean(AdvertisementManager.class);
 		
-		Merchant merchant = m.getMerchantByMid("8a5eb9b758017b6b0158017b70f80000");
+		Merchant merchant = m.getMerchantByMid("8a5eb9b75806a6c1015806a710b70000");
 		List<Advertisement> result = new ArrayList<Advertisement>();
 		
 		for(Shop s: merchant.getShops()){
+			System.out.println(adv.getAdvertisementBySid(s.getSid()).size());
 			result.addAll(adv.getAdvertisementBySid(s.getSid()));
 		}
 		
-		Assert.assertTrue(result.size() == 0);
+		Assert.assertTrue(result.size() == 1);
+	}
+	
+	@Test
+	public void testGetAdvertisementBySid(){
+		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");		
+		AdvertisementManager adv = (AdvertisementManager) context.getBean(AdvertisementManager.class);
+		
+		List<Advertisement> ads = adv.getAdvertisementBySid("8a5eb9b75805363d0158053709660000");
+		
 	}
 }

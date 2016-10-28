@@ -44,35 +44,28 @@
                 if(!isEmpty(userName)){
                     
                     if(data.shops.length > 0){
-                        var tableOP = $('<table class="largeThumb">');
+						var tableOP = $('<table id="shopTable" class="largeThumb"></table>');
                         $(tableOP).appendTo('#shopList');
-
+						
                         $.each(data.shops, function(i, ad){
-                            
-                            // open of new row
-                            if(i % 3 == 0){
-                                var rowOP = $('<tr>');
-                                $(rowOP).appendTo('#shopList'); 
-                            }
-
+							
                             var sid = data.shops[i].sid;
                             var ipath = data.shops[i].imgPath;
                             var shopName = data.shops[i].name;
 
                             var shopInfo = $('<td><a href="getShopBySid?sid='+ sid+ '"><img src="'+ipath+'" title="'+shopName+'"/></br><p>'+shopName+'</p></a></td>');
-                            $(shopInfo).appendTo('#shopList');
-
-                            // end of new row
-                            if(i % 3 == 0){
-                                var rowEn = $('</tr>');
-                                $(rowEn).appendTo('#shopList');
-                            }
+                            $(shopInfo).appendTo('#shopTable');
+                         
                         });
-
-                        var tableEn = $('</table>');
-                        $(tableEn).appendTo('#shopList');
+						
+						var tds = $("#shopTable > td");
+						for(var i = 0; i < tds.length; i+=3) {
+						  tds.slice(i, i+3).wrapAll("<tr></tr>");
+						}
                     }
                     else{
+                        document.getElementById("shopList").innerHTML = '';
+                        
                         var noShop = $('<p>You have no shops now.</p>');
                         $(noShop).appendTo('#shopList');
                     }
