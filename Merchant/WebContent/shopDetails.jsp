@@ -23,7 +23,7 @@
 	<!--*********My Shop details*********--><!-- 3 in one line -->
 	<div class="myShop">
 		<h3 class="h3_title_index">- My Shop details-</h3>
-		<a href="./shopEdit.jsp"><input type="submit" value="Edit Shop"/></a>
+		<a href="./showShopUpdatePage?sid=${shop.sid}"><input type="submit" value="Edit Shop"/></a>
 		<table class="largeThumb">
 			<tr>
 				<td>
