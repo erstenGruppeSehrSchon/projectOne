@@ -92,7 +92,7 @@ public class MerchantDaoImpl implements MerchantDao {
 			System.out.println("E");
 			System.out.println(regDate);
 			DateFormatter formatter = DateFormatter.getDateFormatter();
-			Date fromDate = formatter.parse(regDate.replace("-", "")); // not planned to update DateFormatter, not sure somewhere else will use this
+			Date fromDate = formatter.parseDate(regDate.replace("-", "")); // not planned to update DateFormatter, not sure somewhere else will use this
 			Date toDate = getNextDay(fromDate);
 			criteria.add(Restrictions.ge("regDate", fromDate));
 			criteria.add(Restrictions.lt("regDate", toDate));
