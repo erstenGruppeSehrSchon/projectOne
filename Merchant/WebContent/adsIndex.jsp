@@ -20,31 +20,22 @@ $(function(){
             
             if(!isEmpty(data)){
                 if(data.length > 0){
-                    var tableOP = $('<table class="largeThumb">');
-                    $(tableOP).appendTo('#advertList');
-                    $.each(data, function(i, ad){
-                        
-                        // open of new row
-                        if(i % 3 == 0){
-                            var rowOP = $('<tr>');
-                            $(rowOP).appendTo('#advertList'); 
-                        }
+					var tableOP = $('<table id="advertTable" class="largeThumb"></table>');
+					$(tableOP).appendTo('#advertList');
 
-                        var ipath = data[i].imgPath;
-                        var shopName = data[i].shop.name;
-						//alert(data[i].advId);
-                        var advertInfo = $('<td><img src="'+ipath+'" title="'+shopName+'"/></br></td>');
-                        $(advertInfo).appendTo('#advertList');
+					$.each(data, function(i, ad){
+						var ipath = data[i].imgPath;
+						var shopName = data[i].shop.name;
 
-                        // end of new row
-                        if(i % 3 == 0){
-                            var rowEn = $('</tr>');
-                            $(rowEn).appendTo('#advertList');
-                        }
-                    });
+						var advertInfo = $('<td><img src="'+ipath+'" title="'+shopName+'"/></td>');
+						$(advertInfo).appendTo('#advertTable');
 
-                    var tableEn = $('</table>');
-                    $(tableEn).appendTo('#advertList');
+					});
+
+					var tds = $("#advertTable > td");
+					for(var i = 0; i < tds.length; i+=3) {
+					  tds.slice(i, i+3).wrapAll("<tr></tr>");
+					}
                 }
                 else{
                     var noShop = $('<p>You have no advertisement now.</p>');
