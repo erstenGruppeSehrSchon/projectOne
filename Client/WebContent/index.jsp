@@ -108,7 +108,7 @@ $(function(){
 		url:'getAllShop',
 		success:function(shopList){
 			
-			 if(shopList.length>0){
+			 if(!(Dishlist[0].name)){
    			  
 				  var tableOP = $('<table>');
                  $(tableOP).appendTo('#shopList');
@@ -126,9 +126,9 @@ $(function(){
                      var name = shopList[index].name;
                      var type = shopList[index].type;
                      var description = shopList[index].description;
-                     var img = shopList[index].imgPath;
+                     var img = Dishlist[index].imgPath;
 
-                     var shopInfo = $('<td><a href="getShopInfoBySid?sid='+ sid+ '"><img src="'+ img +'" title="'+name+'"/></br><p>'+name+'</p></a></td>');
+                     var shopInfo = $('<td><a href="getDishByDid?did='+ sid+ '"><img src="'+ img +'" title="'+name+'"/></br><p>'+name+'</p></a></td>');
                      $(shopInfo).appendTo('#shopList');
 
                      // end of new row

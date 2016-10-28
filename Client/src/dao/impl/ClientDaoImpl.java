@@ -1,16 +1,22 @@
 package dao.impl;
 
 import java.util.List;
+import java.util.Set;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
 import po.Address;
 import po.Client;
+
 import common.util.PasswordEncrypter;
+
 import dao.ClientDao;
 
 
@@ -47,7 +53,7 @@ public class ClientDaoImpl implements ClientDao {
 		return clientList;
 	}
 
-	@SuppressWarnings("unused")
+	@SuppressWarnings({ "unchecked", "unused" })
 	@Override
 	public Client loginClient(String username, String password) {
 

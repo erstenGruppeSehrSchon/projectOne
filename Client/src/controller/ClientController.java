@@ -82,18 +82,25 @@ public class ClientController {
 		public List<Shop> getShopsByName(String name, String type, String address) {
 			return shopManager.getShopsByCriteria(name, type, address);
 		}
-	
-	@RequestMapping(value="getShopInfoBySid", method={RequestMethod.GET})
-	@ResponseBody
-	public ModelAndView getShopInfoBySid(String sid) {
-		return shopInfoManager.getShopInfoBySid(sid);
-	}
-	
-	@RequestMapping(value="getAllShop", method={RequestMethod.GET})
-	@ResponseBody
-	public List<Shop> getAllShop() {
-		return shopManager.getAllShops();
-	}
+		
+		@RequestMapping(value="getAllShop", method={RequestMethod.GET})
+		@ResponseBody
+		public List<Shop> getAllShop() {
+			return shopManager.getAllShops();
+		}
+		
+		@RequestMapping(value="getShopByDid", method={RequestMethod.GET})
+		@ResponseBody
+		public Shop getShopByDid(String did) {
+			return shopManager.getShopByDid(did);
+		}
+		
+		@RequestMapping(value="getShopInfoBySid", method={RequestMethod.GET})
+		@ResponseBody
+		public ModelAndView getShopInfoBySid(String sid) {
+			return shopInfoManager.getShopInfoBySid(sid);
+		}
+		
 		// Shop End
 	
 	
@@ -118,12 +125,6 @@ public class ClientController {
 	@ResponseBody
 	public List<Dish> getDishesBySid(String name, String type, Float lowerPrice, Float higherPrice) {
 		return dishManager.getDishesByCriteria(name, type, lowerPrice, higherPrice);
-	}
-	
-	@RequestMapping(value="getDishInfoByDid", method={RequestMethod.GET})
-	@ResponseBody
-	public ModelAndView getDishInfoByDid(String did,String sid) {
-		return shopInfoManager.getDishInfoByDid(did,sid);
 	}
 	// Dish End
 	

@@ -100,7 +100,7 @@ function loadShop (){
                           var description = Dishlist[index].description;
                           var img = Dishlist[index].dishImages[0].imgPath;
                           
-                          console.log(img);
+                          
 
                           var shopInfo = $('<td><a href="./dishDetails.jsp?did='+ did+ '"><img src="'+ img +'" title= "'+ name +'" id= "' + did + '"   /></br><p>'+name+'</p></a></td>');
                           $(shopInfo).appendTo('#dishList');

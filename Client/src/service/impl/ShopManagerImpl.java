@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import dao.ShopDao;
 import po.Shop;
 import service.ShopManager;
@@ -27,6 +28,11 @@ public class ShopManagerImpl implements ShopManager {
 	@Override
 	public List<Shop> getAllShops() {
 		return dao.getAllShops();
+	}
+
+	@Override
+	public Shop getShopByDid(String did) {
+		return dao.getShopByDid(did);
 	}
 
 }

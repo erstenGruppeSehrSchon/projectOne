@@ -22,8 +22,8 @@ import org.hibernate.annotations.GenericGenerator;
 public class Client {
 	
 	@Id
-	@GenericGenerator(strategy="uuid", name="uuid")
-	@GeneratedValue(generator = "uuid")
+	@GenericGenerator(name="miduuid",strategy="uuid")
+	@GeneratedValue(generator="miduuid")
 	private String cid;
 	
 	@Column(length=100, nullable=false, unique=true)
