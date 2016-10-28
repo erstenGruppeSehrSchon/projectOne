@@ -33,7 +33,7 @@
 					</br>
 					<p><h4 class="form_title">Dishes Description:</h4><p id = "dishdes"></p></p>
 				</td>
-				<td><img src=  "http://www.foodmanufacture.co.uk/var/plain_site/storage/images/publications/food-beverage-nutrition/foodmanufacture.co.uk/npd/top-10-functional-food-trends/11097085-1-eng-GB/Top-10-functional-food-trends_strict_xxl.jpg"/></td>
+				<td><img id = "dishimg"/></td>
 			</tr>
 			<tr>
 				<td id="orderDishDiv">
@@ -65,13 +65,16 @@
 					</br>
 					<p><h4 class="form_title">Shop type:</h4> <p id = "shoptype"></p></p>
 				</td>
-				<td><img src=  "http://www.icon2s.com/img256/256x256-black-white-android-user.png"/></td>
+				<td><img id="shopimg"/></td>
 			</tr>
 		</table>
 	</div>
 </div>
 
 <script>
+var orderDetail={};
+var orderObj ={};
+
 var did ="${param.did}";
 $(function(){
 	$.ajax({
@@ -84,20 +87,60 @@ $(function(){
 			$("#dishprice").text(dish.price);
 			$("#dishstatus").text(dish.status);
 			$("#dishdes").text(dish.description);
+			$("#dishimg").attr("src",dish.dishImages[0].imgPath);
 			
+			var did = dish.did;
 		   
 		    $.ajax({
 		    	type:'GET',
 		    	url:'getShopByDid',
 		    	data:{did:did},
 		    	success:function(shop){
-		    		console.log(shop.merchant_id);
+		    		
 		    		$("#shopname").text(shop.name);
 					$("#shoptype").text(shop.type);
 					$("#shoptel").text(shop.shopContact.phone);
 					$("#shopaddress").text(shop.shopContact.address);
+					$("#dishimg").attr("src",shop.imgPath);
+
 					var sid = shop.sid;
-					
+					console.log(sid);
+							
+					$('#order').on('click',function(){
+						
+						var orderArray = JSON.parse(localStorage.getItem("orderObj"));
+						
+						if (orderArray===null){
+							var orderArray = [];
+						}
+						
+						console.log(JSON.parse(localStorage.getItem("orderObj")));
+						
+					//	AddressObj = localStorage.getItem("userObj");
+					//	orderObj.deliveryAddress = "Country: "+AddressObj.country +" City: " + AddressObj.city + "District :" +AddressObj.district + " Street" +AddressObj.street;
+						
+					    orderObj.sid = sid;
+					    orderObj.name = dish.name;
+					    orderObj.type = dish.type;
+					    orderObj.price = dish.price;
+					    orderObj.status = dish.status;
+					    orderObj.shop = shop.name;
+					    orderObj.description = dish.description;
+					    
+					    
+						orderDetail.deliveryAddress = "TESTING ADDRESS";
+					    orderDetail.did=did;
+						orderDetail.quantity = document.getElementById("quantity"); 
+						orderObj.orderDetails = orderDetail;
+							
+						orderArray.push(orderObj);
+						
+						localStorage.setItem("orderObj",  JSON.stringify(orderArray));
+						
+						window.location.assign("index.jsp");
+						
+						
+					});
 		    		
 		    	},error:function(){
 		    		
@@ -112,16 +155,7 @@ $(function(){
 	});
 	
 	
-		$('#order').on('click',function(){
-			
-			$.ajax({
-				type:'GET',
-				url:'addOrder',
-				data:{sid:sid}
-				
-			});
-			
-		});
+		
 		
 	
 

@@ -47,8 +47,12 @@
       function isSet(val) { 
 	   return ((val != undefined) && (val != null));
 	   }
+      
+      function ClearLocal(){
+    	  localStorage.clear();
+      }
 
-   
+   window.onload = ClearLocal();
    
    $(function(){
         
@@ -62,6 +66,7 @@
                      console.log(client.username);
                 	 if(client.username != undefined){
                 		 localStorage.setItem("username", client.username);
+                		 localStorage.setItem("userObj", client);
                 		 window.location.assign('index.jsp');
                 	 }else{
                 		 

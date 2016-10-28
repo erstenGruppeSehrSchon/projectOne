@@ -187,7 +187,10 @@
 										
 										alert("Login in as " + client.username);
 										localStorage.setItem("username", client.username);
+										localStorage.setItem("userObj", client);
+										
 										console.log(localStorage.getItem("username"));
+										
 										window.location.assign("index.jsp");
 										
 									}

@@ -114,6 +114,41 @@
 	</div>
 </div>
 <script>
+
+
+
+$(function(){
+	
+	var orderList = getSessionChart();
+	$.each(orderList,function(index,value){
+		
+
+		
+		
+		
+		 var tableOP = $('<table>');
+         $(tableOP).appendTo('#orderList');
+		 $('<tr>').appendTo('#orderList');
+		
+		 $('<td><p>Order Dish Name:</p><p>'+ orderList[index].name + 
+	       '</p>' + '<p>Order Dish Type:</p><p>'+ orderList[index].type + 
+	       '</p>' + '<p>Order Dish Price:</p><p>'+ orderList[index].price + 
+	       '</p></td>').appendTo('#orderList');
+		 
+		 $('</tr>').appendTo('#orderList');
+		 
+		 $('<tr>').appendTo('#orderList');
+		 	
+		 $('<td><input type = "submit" value ="Order Confirm"  onclick = "" /> <input type = "submit" value ="Delete Order"  onclick = "" /> <input type = "submit" value ="Give Comment"  onclick = "" /></td>').appendTo('#orderList');
+		 
+		 $('</tr>').appendTo('#orderList');
+		var tableEND = $('</table>');
+        $(tableEND).appendTo('#orderList');
+		
+	});
+	
+});
+
 function commentBoxShow(boxId) {
     var div = document.getElementById("commentBox"+boxId);
     var p = "</br><p>Comment:</p>";
@@ -130,6 +165,16 @@ function ratingBoxShow(boxId) {
     div.innerHTML = p + rating + button;
 }
 
+function getSessionChart(){
+	var orderArray = JSON.parse(localStorage.getItem("orderObj"));
+	if (orderArray===null){
+		console.log("no Added Chart");
+		return null;
+	}else{
+		console.log(orderArray);
+		return orderArray;
+	}
+}
 
 function getAllChart (){
 	
