@@ -18,51 +18,38 @@
 <div class="container">
 <jsp:include page="./menu.jsp" />
 </div>
-<!--*********container*********-->
-<!-- <div class="container"> -->
-<!-- 	<h3 class="h3_title_index">- Client Side Advertisement View -</h3> -->
-<!-- 	<!--*********banner*********--> 
-<!-- 	<div id="slider" class="carousel slide"> -->
+<!-- *********container*********-->
+ <div class="container">
+ 	<h3 class="h3_title_index">- Client Side Advertisement View -</h3>
+ 	<!-- *********banner*********--> 
+ 	<div id="slider" class="carousel slide">
 	
-<!-- 	<ol class="carousel-indicators"> -->
-<!-- 	<!-- count of li is equaled to number of ads --> 
-<!-- 		<li data-target="#slider" data-slide-to="0" class="active"></li> -->
-<!-- 		<li data-target="#slider" data-slide-to="1"></li> -->
-<!-- 		<li data-target="#slider" data-slide-to="2"></li> -->
-<!-- 		<li data-target="#slider" data-slide-to="3"></li> -->
-<!-- 	</ol>    -->
+ 	<ol class="carousel-indicators">
+ 		<li data-target="#slider" data-slide-to="0" class="active"></li>
+ 		<li data-target="#slider" data-slide-to="1"></li>
+ 		<li data-target="#slider" data-slide-to="2"></li>
+ 		<li data-target="#slider" data-slide-to="3"></li>
+ 	</ol>   
 	
-<!-- 	<div class="carousel-inner"> -->
-<!-- 		<div class="item active"> -->
-<!-- 			<img src="./img/banner1.jpg" alt="ads 1"/> -->
-<!-- 		</div> -->
-<!-- 		<div class="item"> -->
-<!-- 			<img src="./img/banner2.jpg" alt="ads 2"> -->
-<!-- 		</div> -->
-<!-- 		<div class="item"> -->
-<!-- 			<img src="./img/banner3.jpg" alt="ads 3"> -->
-<!-- 		</div> -->
-<!-- 		<div class="item"> -->
-<!-- 			<img src="./img/banner4.jpg" alt="ads 4"> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
+ 	<div class="carousel-inner" id = "sliderShow">
+ 	</div>
 	
-<!-- 	<a class="carousel-control left" href="#slider"  -->
-<!-- 	   data-slide="prev"><span class="glyphicon glyphicon-chevron-left"/></a> -->
-<!-- 	<a class="carousel-control right" href="#slider"  -->
-<!-- 	   data-slide="next"><span class="glyphicon glyphicon-chevron-right"/></a> -->
-<!-- 	</div>  -->
-<!-- </div> -->
+ 	<a class="carousel-control left" href="#slider" 
+ 	   data-slide="prev"><span class="glyphicon glyphicon-chevron-left"/></a>
+ 	<a class="carousel-control right" href="#slider" 
+ 	   data-slide="next"><span class="glyphicon glyphicon-chevron-right"/></a>
+ 	</div> 
+ </div>
 
-<!-- <div class="container"> -->
-<!-- 	<div class="block-divider-index"></div> -->
-<!-- </div> -->
+ <div class="container">
+ 	<div class="block-divider-index"></div>
+ </div>
 
 <div class="container">
 	<!--********Current ads**********--><!-- 3 in one line -->
 	<div class="myShop">
 		<h3 class="h3_title_index">- Current Advertisements -</h3>
-		<table id="acceptedAdvertisementTable" class = "table"></table>
+		<table id="acceptedAdvertisementTable" class = "largeThumb"></table>
 	</div>
 </div>
 
@@ -74,7 +61,7 @@
 	<!--********Pending ads**********--><!-- 3 in one line -->
 	<div class="myShop">
 		<h3 class="h3_title_index">- Pending Advertisements -</h3>
-		<table id="pendingAdvertisementTable" class = "table"></table>
+		<table id="pendingAdvertisementTable" class = "largeThumb"></table>
 	</div>
 </div>
 </body>
