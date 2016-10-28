@@ -20,8 +20,9 @@
 </head>
 <body>
 	<jsp:include page="header.jsp" />
+	<div class="container">
 	<jsp:include page="menu.jsp" />
-<div class="container">
+
 	<table class= "largeThumb">
 	<tr>		
 		<td colspan = "3"><h3 class="h3_title_index">-Merchant Information-</h3></td>

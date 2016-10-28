@@ -17,9 +17,10 @@
 </head>
 <body>
 <jsp:include page="./header.jsp" />
-<jsp:include page="./menu.jsp" />
 <!--*********container*********-->
 <div class="container">
+<jsp:include page="./menu.jsp" />
+
 	<h3 class="h3_title_index">- Customer Complain -</h3>
 	<!--*********Complaint details*********-->
 	<table class="largeThumb commentBox">

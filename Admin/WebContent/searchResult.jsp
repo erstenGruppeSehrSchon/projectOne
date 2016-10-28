@@ -15,8 +15,9 @@
 </head>
 <body>
 	<jsp:include page="header.jsp" />
+		<div class="container">
 	<jsp:include page="menu.jsp" />
-	<div class="container">
+
 	<h3 class="h3_title_index">- Search Result -</h3>
 	  <div>
 		<table id = "searchResultTable" class = "table">

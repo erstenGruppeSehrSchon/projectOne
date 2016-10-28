@@ -15,7 +15,15 @@ $(function() {
         		// Name and id
         		var tdInfo = document.createElement("td");
         		var spanName = document.createElement("span");
-        		spanName.innerHTML = merchants[i].name;
+        		
+        		var p = document.createElement("p");
+        		p.setAttribute("class", "form_title");
+        		var text = document.createTextNode(merchants[i].name);
+        		p.appendChild(text);
+        		spanName.appendChild(p);
+        		
+        		
+        		//spanName.innerHTML = merchants[i].name;
            		var idHidden = document.createElement("input");
            		idHidden.setAttribute("type", "hidden");
            		idHidden.setAttribute("value", merchants[i].mid);
@@ -25,6 +33,7 @@ $(function() {
         		var tdAccept = document.createElement("td");
         		var acceptButton = document.createElement("button");
         		acceptButton.innerHTML = "Accept";
+        		acceptButton.setAttribute("class","btn btn-default");
         		acceptButton.onclick = function(event) {
         			var source = event.target || event.srcElement;
         			var id = source.parentNode.parentNode.childNodes[0].lastChild.value;
@@ -35,6 +44,7 @@ $(function() {
         		var tdReject = document.createElement("td");
         		var rejectButton = document.createElement("button");
         		rejectButton.innerHTML = "Reject";
+        		rejectButton.setAttribute("class","btn btn-default");
         		rejectButton.onclick = function(event) {
         			var source = event.target || event.srcElement;
         			var id = source.parentNode.parentNode.childNodes[0].lastChild.value;

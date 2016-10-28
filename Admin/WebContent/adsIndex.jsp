@@ -15,7 +15,9 @@
 </head>
 <body>
 <jsp:include page="./header.jsp" />
+<div class="container">
 <jsp:include page="./menu.jsp" />
+</div>
 <!--*********container*********-->
 <!-- <div class="container"> -->
 <!-- 	<h3 class="h3_title_index">- Client Side Advertisement View -</h3> -->

@@ -36,9 +36,9 @@
 			<td>
 				<form action="searchMerchants" method="get">
 					<table>
-						<tr><td>Merchant Id:</td><td><input type="text" name="id" id="searchMerchantId" class="form-control"/></td></tr>
-						<tr><td>Merchant Name:</td><td><input type="text" name="name" id="searchMerchantName" class="form-control"/></td></tr>
-						<tr><td>Age:</td>
+						<tr><td><p class = "form_title">Merchant Id:</p></td><td><input type="text" name="id" id="searchMerchantId" class="form-control"/></td></tr>
+						<tr><td><p class = "form_title">Merchant Name:</p></td><td><input type="text" name="name" id="searchMerchantName" class="form-control"/></td></tr>
+						<tr><td><p class = "form_title">Age:</p></td>
 							<td>
 								<select name="ageIndex" class="form-control" type="select">
 								  <option value="0" selected></option>
@@ -49,7 +49,7 @@
 								  <option value="5">80-100</option>
 								</select>
 							</td></tr>
-						<tr><td>Gender:</td>
+						<tr><td><p class = "form_title">Gender:</p></td>
 							<td>
 								<select name="gender" class="form-control" type="select">
 								  <option value="0" selected></option>
@@ -59,7 +59,7 @@
 								</select>
 							</td>
 						</tr>
-						<tr><td>Registration Date:</td><td><input type="date" name="regDate" id="searchMerchantRegistrationDate" class="form-control"></td></tr>
+						<tr><td><p class = "form_title">Registration Date:</p></td><td><input type="date" name="regDate" id="searchMerchantRegistrationDate" class="form-control"></td></tr>
 					</table>
 					<button class="btn btn-default">Search</button>
 				</form>
