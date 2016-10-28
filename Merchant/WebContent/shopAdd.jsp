@@ -32,7 +32,7 @@
 				<tr>
 					<td><h4 class="form_title">Shop Type:</h4></td>
 					<td>
-                    	<select class="form-control" name="type">
+                    	<select class="form-control" name="type" type="select">
                     		<option value="Convenience Store">Convenience Store</option>
 							<option value="Cantonese Restaurant">Cantonese Restaurant</option>
 							<option value="Chinese Restaurant">Chinese Restaurant</option>
