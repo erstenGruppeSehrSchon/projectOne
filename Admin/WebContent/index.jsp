@@ -14,6 +14,9 @@
 </head>
 <body>
 	<jsp:include page="header.jsp" />
+	
+	<!--*********container*********-->
+<div class="container">
 	<jsp:include page="menu.jsp" />
 
 	
@@ -37,7 +40,7 @@
 						<tr><td>Merchant Name:</td><td><input type="text" name="name" id="searchMerchantName" class="form-control"/></td></tr>
 						<tr><td>Age:</td>
 							<td>
-								<select name="ageIndex" class="form-control">
+								<select name="ageIndex" class="form-control" type="select">
 								  <option value="0" selected></option>
 								  <option value="1">0-20</option>
 								  <option value="2">21-40</option>
@@ -48,7 +51,7 @@
 							</td></tr>
 						<tr><td>Gender:</td>
 							<td>
-								<select name="gender" class="form-control">
+								<select name="gender" class="form-control" type="select">
 								  <option value="0" selected></option>
 								  <option value="M">M</option>
 								  <option value="F">F</option>
@@ -64,5 +67,6 @@
 		</tr>
 	</table>
 	</div>
+</div>
 </body>
 </html>

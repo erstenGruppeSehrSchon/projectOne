@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="M_ORDER")
+@Table(name="A_ORDER")
 public class Order {
 	
 	public static final String INIT_STATUS = "Pending";
@@ -28,7 +28,7 @@ public class Order {
 
 	private Date orderTime;
 	
-	private String comment;
+	private String comments;
 	
 	private Date commentTime;
 	
@@ -41,10 +41,6 @@ public class Order {
 	@ManyToOne(targetEntity=Shop.class)
 	@JoinColumn(name="shop_id")
 	private Shop shop;
-	
-	@OneToMany
-	@JoinColumn(name="order_id")
-	private Set<OrderDetail> orderDetails = new HashSet<>();
 
 	public String getOid() {
 		return oid;
@@ -79,12 +75,12 @@ public class Order {
 		this.orderTime = orderTime;
 	}
 
-	public String getComment() {
-		return comment;
+	public String getComments() {
+		return comments;
 	}
 
-	public void setComment(String comment) {
-		this.comment = comment;
+	public void setComments(String comments) {
+		this.comments = comments;
 	}
 
 	public Date getCommentTime() {
@@ -126,15 +122,6 @@ public class Order {
 	public void setShop(Shop shop) {
 		this.shop = shop;
 	}
-
-	public Set<OrderDetail> getOrderDetails() {
-		return orderDetails;
-	}
-
-	public void setOrderDetails(Set<OrderDetail> orderDetails) {
-		this.orderDetails = orderDetails;
-	}
-	
 	
 
 }

@@ -17,12 +17,15 @@ public class AdminManagerImpl implements AdminManager {
 	@Override
 	public Admin login(String username, String password) {
 		Admin admin = dao.getAdmin(username);
+		System.out.println("username" + username);
+		System.out.println("password" + password);
+				
 		PasswordEncrypter encrypter = PasswordEncrypter.getPasswordEncrypter();
 		String encryptedPassword = encrypter.encrypt(password);
 		
 		System.out.println(encryptedPassword);
 		
-		if (encryptedPassword.equals(admin.getPassword())) {
+		if (admin!=null && encryptedPassword.equals(admin.getPassword())) {
 			// Remove password from object
 			admin.setPassword(null);
 			return admin;
