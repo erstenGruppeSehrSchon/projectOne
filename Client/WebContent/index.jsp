@@ -32,8 +32,8 @@
 		<li data-target="#slider" data-slide-to="3"></li>
 	</ol>   
 	
-	<div class="carousel-inner">
-		<div class="item active">
+	<div class="carousel-inner" id="advList">
+		<!-- <div class="item active">
 			<img src="./img/banner1.jpg" alt="ads 1"/>
 		</div>
 		<div class="item">
@@ -44,7 +44,7 @@
 		</div>
 		<div class="item">
 			<img src="./img/banner4.jpg" alt="ads 4">
-		</div>
+		</div>-->
 	</div>
 	
 	<a class="carousel-control left" href="#slider" 
@@ -108,7 +108,7 @@ $(function(){
 		url:'getAllShop',
 		success:function(shopList){
 			
-			 if(!(Dishlist[0].name)){
+			 if(shopList.length>0){
    			  
 				  var tableOP = $('<table>');
                  $(tableOP).appendTo('#shopList');
@@ -126,9 +126,9 @@ $(function(){
                      var name = shopList[index].name;
                      var type = shopList[index].type;
                      var description = shopList[index].description;
-                     var img = Dishlist[index].imgPath;
+                     var img = shopList[index].imgPath;
 
-                     var shopInfo = $('<td><a href="getDishByDid?did='+ sid+ '"><img src="'+ img +'" title="'+name+'"/></br><p>'+name+'</p></a></td>');
+                     var shopInfo = $('<td><a href="getShopInfoBySid?sid='+ sid+ '"><img src="'+ img +'" title="'+name+'"/></br><p>'+name+'</p></a></td>');
                      $(shopInfo).appendTo('#shopList');
 
                      // end of new row
@@ -149,6 +149,38 @@ $(function(){
 		},
 		error:function(){
 			
+		}
+		
+	});
+
+	$.ajax({
+		type:'GET',
+		url:'getLatestAdv',
+		success:function(advList){
+			if (advList.length>0){
+				$.each(advList, function(index, value){
+					var divOp ='';
+					if (index ==4){
+						break;
+					}
+					if (index==0){
+						divOp='<div class="item active">';
+					} else {
+						divOp = '<div class="item">';
+					}
+					var sid = advList[index].shop.sid;
+					var imgStr = '<a href="getShopInfoBySid?sid='+ sid+ '"><img src='+advList[index].imgPath+' alt = "adv'+index+1+'"></a>';
+					divOp+=imgStr;
+					var divEn = '</div>'; 
+					divOp += divEn;
+					$(divOp).appendTo('#advList');
+				});
+			} else {
+				var img = '<div class="item active"><a href="#"><img src="http://www.vishmax.com/en/innovattive-cms/themes/themax-theme-2015/images/no-image-found.gif"></a></div>';
+				$(img).appendTo('#advList');
+			}
+		},
+		error:function(){
 		}
 		
 	});
