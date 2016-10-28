@@ -188,7 +188,7 @@ public class AdminController {
 			ObjectMapper mapper = new ObjectMapper();
 			Advertisement a = new Advertisement();
 			a.setAdvId(adv.getAdvId());
-			a.setStatus(adv.getAdvId());
+			a.setStatus(adv.getStatus());
 			TextMessage msg = session.createTextMessage(mapper.writeValueAsString(a));
 			producer.send(msg);
 		} catch (JMSException e) {
