@@ -68,33 +68,24 @@
                 if(!isEmpty(userName)){
                     
                     if(data.shops.length > 0){
-                        var tableOP = $('<table class="largeThumb">');
+						var tableOP = $('<table id="shopTable" class="largeThumb"></table>');
                         $(tableOP).appendTo('#shopList');
-
+						
                         $.each(data.shops, function(i, ad){
-                            
-                            // open of new row
-                            if(i % 3 == 0){
-                                var rowOP = $('<tr>');
-                                $(rowOP).appendTo('#shopList'); 
-                            }
-
+							
                             var sid = data.shops[i].sid;
                             var ipath = data.shops[i].imgPath;
                             var shopName = data.shops[i].name;
 
                             var shopInfo = $('<td><a href="getShopBySid?sid='+ sid+ '"><img src="'+ipath+'" title="'+shopName+'"/></br><p>'+shopName+'</p></a></td>');
-                            $(shopInfo).appendTo('#shopList');
-
-                            // end of new row
-                            if(i % 3 == 0){
-                                var rowEn = $('</tr>');
-                                $(rowEn).appendTo('#shopList');
-                            }
+                            $(shopInfo).appendTo('#shopTable');
+                         
                         });
-
-                        var tableEn = $('</table>');
-                        $(tableEn).appendTo('#shopList');
+						
+						var tds = $("#shopTable > td");
+						for(var i = 0; i < tds.length; i+=3) {
+						  tds.slice(i, i+3).wrapAll("<tr></tr>");
+						}
                     }
                     else{
                         document.getElementById("shopList").innerHTML = '';
@@ -124,32 +115,23 @@
                 if(!isEmpty(data)){
                     
                     if(data.length > 0){
-                        var tableOP = $('<table class="largeThumb">');
+                        var tableOP = $('<table id="advertTable" class="largeThumb"></table>');
                         $(tableOP).appendTo('#advertList');
 
                         $.each(data, function(i, ad){
-                            
-                            // open of new row
-                            if(i % 3 == 0){
-                                var rowOP = $('<tr>');
-                                $(rowOP).appendTo('#advertList'); 
-                            }
-
                             var ipath = data[i].imgPath;
                             var shopName = data[i].shop.name;
 
                             var advertInfo = $('<td><img src="'+ipath+'" title="'+shopName+'"/></td>');
-                            $(advertInfo).appendTo('#advertList');
-
-                            // end of new row
-                            if(i % 3 == 0){
-                                var rowEn = $('</tr>');
-                                $(rowEn).appendTo('#advertList');
-                            }
+                            $(advertInfo).appendTo('#advertTable');
+                         
                         });
+						
+						var tds = $("#advertTable > td");
+						for(var i = 0; i < tds.length; i+=3) {
+						  tds.slice(i, i+3).wrapAll("<tr></tr>");
+						}
 
-                        var tableEn = $('</table>');
-                        $(tableEn).appendTo('#advertList');
                     }
                     else{
                         document.getElementById("advertList").innerHTML = '';
@@ -178,33 +160,24 @@
                 if(!isEmpty(data)){
                     
                     if(data.length > 0){
-                        var tableOP = $('<table class="largeThumb">');
+						var tableOP = $('<table id="orderTable" class="largeThumb"></table>');
                         $(tableOP).appendTo('#orderList');
 
                         $.each(data, function(i, ad){
-                            
-                            // open of new row
-                            if(i % 3 == 0){
-                                var rowOP = $('<tr>');
-                                $(rowOP).appendTo('#orderList'); 
-                            }
 
                             var shopName = data[i].shop.name;
                             var orderId = data[i].oid;
                             var orderTime = data[i].orderTime;
 
                             var orderInfo= $("<td><p>"+shopName+"</p><p>"+orderId+"</p><p>"+orderTime+"</p></td>");
-                            $(orderInfo).appendTo('#orderList');
-
-                            // end of new row
-                            if(i % 3 == 0){
-                                var rowEn = $('</tr>');
-                                $(rowEn).appendTo('#orderList');
-                            }
+                            $(orderInfo).appendTo('#orderTable');
+                         
                         });
-
-                        var tableEn = $('</table>');
-                        $(tableEn).appendTo('#orderList');
+						
+						var tds = $("#orderTable > td");
+						for(var i = 0; i < tds.length; i+=3) {
+						  tds.slice(i, i+3).wrapAll("<tr></tr>");
+						}
                     }
                     else{
                         document.getElementById("orderList").innerHTML = '';

@@ -30,6 +30,7 @@ public class AdvertisementDaoImpl implements AdvertisementDao {
 		Criteria criteria = session.createCriteria(Advertisement.class);
 		criteria.createCriteria("shop", "s");
 		criteria.add(Restrictions.eq("s.sid", sid));
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 		List<Advertisement> advertisements = criteria.list();
 		return advertisements;
 	}

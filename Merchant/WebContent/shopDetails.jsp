@@ -135,34 +135,26 @@
                 if(!isEmpty(data)){
                     
                     if(data.length > 0){
-                        var tableOP = $('<table class="largeThumb">');
+						var tableOP = $('<table id="dishTable" class="largeThumb"></table>');
                         $(tableOP).appendTo('#dishList');
-
+						
                         $.each(data, function(i, ad){
-                            
-                            // open of new row
-                            if(i % 3 == 0){
-                                var rowOP = $('<tr>');
-                                $(rowOP).appendTo('#dishList'); 
-                            }
-
+							
                             var did = data[i].did;
                             var ipath = data[i].dishImages[0].imgPath;
                             var dishName = data[i].name;
                             var shopName = '${shop.name}';
 
                             var dishInfo = $('<td><a href="getDishByDid?did='+ did+'"><img src="'+ipath+'" title="'+dishName+'"/><br/><p>'+shopName+'</p><p>'+dishName+'</p></a></td>');
-                            $(dishInfo).appendTo('#dishList');
-
-                            // end of new row
-                            if(i % 3 == 0){
-                                var rowEn = $('</tr>');
-                                $(rowEn).appendTo('#dishList');
-                            }
+                            $(dishInfo).appendTo('#dishTable');
+                         
                         });
-
-                        var tableEn = $('</table>');
-                        $(tableEn).appendTo('#dishList');
+						
+						var tds = $("#dishTable > td");
+						for(var i = 0; i < tds.length; i+=3) {
+						  tds.slice(i, i+3).wrapAll("<tr></tr>");
+						}
+                       
                     }
                     else{
                         document.getElementById("dishList").innerHTML = '';
