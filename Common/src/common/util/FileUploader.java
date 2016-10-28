@@ -41,7 +41,7 @@ public class FileUploader {
 				file.transferTo(resultFile);
 				
 				// Add to list
-				imgPaths.add("http://localhost:8081" + context.getContextPath() + UPLOAD_DIR + resultFileName);
+				imgPaths.add("http://cheunan-w7:8081" + context.getContextPath() + UPLOAD_DIR + resultFileName);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

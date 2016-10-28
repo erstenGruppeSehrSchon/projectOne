@@ -80,7 +80,7 @@ public class MerchantDaoImpl implements MerchantDao {
 
 		if (regDate != null && regDate.length() > 0) {
 			DateFormatter formatter = DateFormatter.getDateFormatter();
-			Date fromDate = formatter.parse(regDate);
+			Date fromDate = formatter.parseDate(regDate);
 			Date toDate = getNextDay(fromDate);
 			criteria.add(Restrictions.ge("regDate", fromDate));
 			criteria.add(Restrictions.lt("regDate", toDate));
