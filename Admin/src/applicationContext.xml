@@ -27,9 +27,9 @@
 	
 	<bean id="ds" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver"></property>
-		<property name="url" value="jdbc:oracle:thin:@CHEUNAN-W7.corp.oocl.com:1521:xe"></property>
-		<property name="password" value="123"></property>
-		<property name="username" value="TRAINING"></property>
+		<property name="url" value="jdbc:oracle:thin:@ITA-031-W7.corp.oocl.com:1521:xe"></property>
+		<property name="password" value="001"></property>
+		<property name="username" value="patrick001"></property>
 	</bean>
 	
 	<bean id="mq" class="org.apache.activemq.ActiveMQConnectionFactory">
@@ -40,6 +40,10 @@
 	<!-- Listen new user request --> 
 	 <bean id="regQueue" class="org.apache.activemq.command.ActiveMQQueue">
 		<constructor-arg value="RegisterQueue" />
+	</bean>
+	
+	<bean id="regQueueTest" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg value="RegisterQueueTest" />
 	</bean>
 	<!-- user status update -->
 	<bean id="statusQueue" class="org.apache.activemq.command.ActiveMQQueue">
@@ -66,6 +70,7 @@
 	
 	<jms:listener-container connection-factory="mq">     
     	<jms:listener destination="RegisterQueue" ref="newUserJMSListener" method="messageReceived" />
+    	<!-- <jms:listener destination="RegisterQueueTest" ref="newUserJMSListener" method="messageReceived" />-->
 	</jms:listener-container>
 	
 	<bean id="complainJMSListener" class="util.ComplainJMSListener">
@@ -106,7 +111,7 @@
 			<props>
 				<prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
 				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.hbm2ddl.auto">validate</prop>
 			</props>
 		</property>
 	</bean>
